@@ -1,0 +1,1207 @@
+openapi: 3.1.0
+
+info:
+  title: OpenTerms Trace API
+  version: 0.1.0
+  description: |
+    The OpenTerms Trace API is the backend for OpenTerms Agent Action Observability.
+    It accepts cryptographically signed receipts conforming to the Open Receipt
+    Specification (ORS) v0.1, evaluates them against a deterministic policy engine,
+    stores the decision log, and exposes query and simulation endpoints for audit,
+    compliance, and policy iteration.
+
+    Receipts are signed with Ed25519 keys scoped to a workspace. Public keys are
+    published at the JWKS endpoint so any third party can verify a receipt without
+    contacting the OpenTerms service.
+
+    Authentication uses Bearer tokens scoped to a workspace. Two endpoints
+    (the JWKS endpoint and the receipt verification endpoint) are public and require
+    no authentication.
+
+  contact:
+    name: OpenTerms
+    url: https://observe.openterms.com
+    email: support@openterms.com
+
+  license:
+    name: Proprietary
+
+servers:
+  - url: https://api.observe.openterms.com/v1
+    description: Production
+  - url: https://staging-api.observe.openterms.com/v1
+    description: Staging
+
+# ============================================================================
+# Security
+# ============================================================================
+
+security:
+  - bearerAuth: []
+
+# ============================================================================
+# Tags (for grouping in documentation)
+# ============================================================================
+
+tags:
+  - name: Receipts
+    description: Ingest, query, and verify ORS-conformant receipts.
+  - name: Decisions
+    description: Query the deterministic decision log.
+  - name: Policies
+    description: Manage versioned policy rule sets.
+  - name: Simulation
+    description: Replay candidate rule sets against historical receipts.
+  - name: Keys
+    description: Manage workspace signing keys.
+  - name: Workspace
+    description: Workspace configuration.
+  - name: Public
+    description: Endpoints that require no authentication.
+
+# ============================================================================
+# Paths
+# ============================================================================
+
+paths:
+
+  # --------------------------------------------------------------------------
+  # Receipts
+  # --------------------------------------------------------------------------
+
+  /receipts/ingest:
+    post:
+      tags: [Receipts]
+      summary: Ingest a signed ORS receipt
+      description: |
+        Accepts a signed ORS v0.1 receipt. Verifies the Ed25519 signature against
+        the workspace's JWKS public key. Deduplicates by canonical hash. Persists
+        verified receipts to the append-only log.
+
+        Receipts that fail signature verification are not written to the receipts
+        table. Failed verifications log to a separate error stream.
+
+        Use the `Idempotency-Key` header to make retries safe. If a request with
+        the same idempotency key has already been processed, the stored receipt
+        is returned.
+      operationId: ingestReceipt
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignedReceipt'
+            examples:
+              preAction:
+                $ref: '#/components/examples/PreActionReceipt'
+              postAction:
+                $ref: '#/components/examples/PostActionReceipt'
+      responses:
+        '201':
+          description: Receipt ingested and persisted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestResponse'
+        '200':
+          description: |
+            Receipt was already ingested (duplicate by canonical hash). Returns
+            the stored receipt unchanged.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          description: Receipt failed ORS schema validation or signature check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                signatureInvalid:
+                  value:
+                    error:
+                      code: SIGNATURE_INVALID
+                      message: Ed25519 signature failed to verify against the workspace JWKS public key.
+                      details:
+                        kid: key-2026-05-01-a3f8
+                unknownIssuer:
+                  value:
+                    error:
+                      code: UNKNOWN_ISSUER
+                      message: The key ID in the receipt header does not match any key in the workspace JWKS.
+                      details:
+                        kid: key-2024-09-15-b1c2
+        '429':
+          $ref: '#/components/responses/RateLimited'
+
+  /receipts:
+    get:
+      tags: [Receipts]
+      summary: List receipts
+      description: |
+        List receipts in the workspace, scoped to the authenticated workspace.
+        Supports filtering, aggregation, and cursor-based pagination.
+      operationId: listReceipts
+      parameters:
+        - name: agent_id
+          in: query
+          schema: { type: string }
+          description: Filter by agent identifier.
+        - name: action_type
+          in: query
+          schema: { type: string }
+          description: Filter by action type.
+        - name: tool_id
+          in: query
+          schema: { type: string }
+          description: Filter by tool identifier.
+        - name: decision
+          in: query
+          schema: { $ref: '#/components/schemas/DecisionOutcome' }
+          description: Filter by decision outcome (allow / deny / escalate).
+        - name: triggered_rule
+          in: query
+          schema: { type: string }
+          description: Filter to receipts whose decision triggered this rule ID.
+        - name: from
+          in: query
+          schema: { type: string, format: date-time }
+          description: Inclusive lower bound on receipt timestamp.
+        - name: to
+          in: query
+          schema: { type: string, format: date-time }
+          description: Inclusive upper bound on receipt timestamp.
+        - name: q
+          in: query
+          schema: { type: string }
+          description: Full-text search across the structured reasons field of the associated decision.
+        - name: aggregate
+          in: query
+          schema:
+            type: string
+            enum: [none, count_by_decision, count_by_rule, count_by_tool, count_by_agent, count_by_hour]
+            default: none
+          description: |
+            Aggregation mode. `none` returns individual receipts. Aggregation modes
+            return counts grouped by the specified dimension.
+        - name: limit
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 200, default: 50 }
+        - name: cursor
+          in: query
+          schema: { type: string }
+          description: Opaque cursor from the previous page's `next_cursor`.
+      responses:
+        '200':
+          description: A page of receipts or an aggregation result.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ReceiptListResponse'
+                  - $ref: '#/components/schemas/AggregateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /receipts/{hash}:
+    get:
+      tags: [Receipts]
+      summary: Get a single receipt
+      description: Returns one receipt by canonical hash. Includes the receipt body, signature, and the associated decision if one has been computed.
+      operationId: getReceipt
+      parameters:
+        - $ref: '#/components/parameters/ReceiptHash'
+      responses:
+        '200':
+          description: The receipt and its associated decision.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReceiptWithDecision'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /receipts/{hash}/verify:
+    get:
+      tags: [Receipts, Public]
+      summary: Verify a receipt signature (public)
+      description: |
+        Public endpoint. Verifies the Ed25519 signature on a stored receipt
+        against the issuer's JWKS public key. Returns the verification result
+        without requiring authentication.
+
+        This endpoint exists so any third party (auditor, regulator, counterparty)
+        can confirm receipt authenticity without an account.
+      operationId: verifyReceipt
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/ReceiptHash'
+      responses:
+        '200':
+          description: Verification result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResult'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # --------------------------------------------------------------------------
+  # Decisions
+  # --------------------------------------------------------------------------
+
+  /decisions:
+    get:
+      tags: [Decisions]
+      summary: Query the decision log
+      description: |
+        List policy decisions in the workspace. Decisions are deterministic — the
+        same (policy version, receipt) pair always produces the same decision.
+        Supports the same filtering and pagination as `/receipts` plus a filter
+        on policy version.
+      operationId: listDecisions
+      parameters:
+        - name: agent_id
+          in: query
+          schema: { type: string }
+        - name: action_type
+          in: query
+          schema: { type: string }
+        - name: tool_id
+          in: query
+          schema: { type: string }
+        - name: decision
+          in: query
+          schema: { $ref: '#/components/schemas/DecisionOutcome' }
+        - name: triggered_rule
+          in: query
+          schema: { type: string }
+        - name: policy_version
+          in: query
+          schema: { type: string }
+          description: Filter to decisions made under a specific policy version.
+        - name: from
+          in: query
+          schema: { type: string, format: date-time }
+        - name: to
+          in: query
+          schema: { type: string, format: date-time }
+        - name: q
+          in: query
+          schema: { type: string }
+          description: Full-text search on the structured reasons field.
+        - name: limit
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 200, default: 50 }
+        - name: cursor
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: A page of decisions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # --------------------------------------------------------------------------
+  # Policies
+  # --------------------------------------------------------------------------
+
+  /policies:
+    get:
+      tags: [Policies]
+      summary: List policy versions
+      description: List all policy versions for the workspace, most recent first. The active version is marked.
+      operationId: listPolicies
+      responses:
+        '200':
+          description: List of policy versions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policies:
+                    type: array
+                    items: { $ref: '#/components/schemas/Policy' }
+                  active_id:
+                    type: string
+                    description: The ID of the currently active policy version.
+                    nullable: true
+                required: [policies, active_id]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      tags: [Policies]
+      summary: Create a new policy version
+      description: |
+        Create a new policy version. The new version is created as inactive.
+        Call `PATCH /policies/{id}/activate` to make it the active version.
+      operationId: createPolicy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PolicyInput' }
+      responses:
+        '201':
+          description: Policy version created.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Policy' }
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /policies/{id}/activate:
+    patch:
+      tags: [Policies]
+      summary: Activate a policy version
+      description: |
+        Activate the specified policy version. The previously active version is
+        deactivated. Only one version is active at a time. The activation is
+        immediate — all subsequent receipt evaluations use the new version.
+      operationId: activatePolicy
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Policy activated.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Policy' }
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # --------------------------------------------------------------------------
+  # Policy evaluation (stateless)
+  # --------------------------------------------------------------------------
+
+  /policy/evaluate:
+    post:
+      tags: [Policies, Simulation]
+      summary: Evaluate a receipt against a policy version (stateless)
+      description: |
+        Stateless evaluation of a receipt against a specified policy version.
+        Returns the decision without persisting anything. Used by the simulation
+        backend and by client-side dry-runs.
+
+        This endpoint is deterministic — the same `(policy_version, receipt)`
+        input always produces the same output.
+      operationId: evaluatePolicy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                policy_version:
+                  type: string
+                  description: The policy version ID to evaluate against.
+                receipt:
+                  $ref: '#/components/schemas/SignedReceipt'
+              required: [policy_version, receipt]
+      responses:
+        '200':
+          description: Decision result.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Decision' }
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          description: Policy version not found.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # --------------------------------------------------------------------------
+  # Simulation
+  # --------------------------------------------------------------------------
+
+  /simulate:
+    post:
+      tags: [Simulation]
+      summary: Replay a candidate policy against historical receipts
+      description: |
+        Replay a candidate policy version against the historical receipt corpus
+        for the specified time range. Returns counterfactual decision counts,
+        a diff against the decisions actually recorded during the period, and
+        a deterministic sample of receipts where the counterfactual differs.
+
+        Simulation is read-only on the receipt corpus — it does not affect live
+        agent behavior or modify any stored decision.
+
+        For corpora over 100,000 receipts the simulation runs asynchronously
+        and returns a `job_id`. Poll `/simulate/{job_id}` for completion.
+      operationId: simulate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                candidate_policy:
+                  oneOf:
+                    - type: string
+                      description: An existing policy version ID to test.
+                    - $ref: '#/components/schemas/PolicyInput'
+                from:
+                  type: string
+                  format: date-time
+                to:
+                  type: string
+                  format: date-time
+                sample_size:
+                  type: integer
+                  default: 100
+                  minimum: 0
+                  maximum: 1000
+                  description: Maximum number of differing receipts to return in the sample.
+              required: [candidate_policy, from, to]
+      responses:
+        '200':
+          description: Simulation completed synchronously (small corpus).
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SimulationResult' }
+        '202':
+          description: Simulation accepted and running asynchronously. Poll `/simulate/{job_id}`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id: { type: string }
+                  status: { type: string, enum: [queued, running] }
+                required: [job_id, status]
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /simulate/{job_id}:
+    get:
+      tags: [Simulation]
+      summary: Poll a simulation job
+      description: Get the status and (if complete) the result of an async simulation job.
+      operationId: getSimulationJob
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Job status and result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id: { type: string }
+                  status:
+                    type: string
+                    enum: [queued, running, complete, failed]
+                  result:
+                    $ref: '#/components/schemas/SimulationResult'
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required: [job_id, status]
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # --------------------------------------------------------------------------
+  # Keys
+  # --------------------------------------------------------------------------
+
+  /keys:
+    get:
+      tags: [Keys]
+      summary: List signing keys
+      description: |
+        Returns the workspace's signing keys. Each key has a status (active or
+        inactive). Both active and inactive keys remain in the JWKS so old
+        receipts continue to verify.
+
+        Private key material is never returned. Only the public key and metadata.
+      operationId: listKeys
+      responses:
+        '200':
+          description: List of keys.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keys:
+                    type: array
+                    items: { $ref: '#/components/schemas/PublicKey' }
+                required: [keys]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /keys/rotate:
+    post:
+      tags: [Keys]
+      summary: Rotate the active signing key
+      description: |
+        Generate a new Ed25519 key pair. The new key becomes the active signing
+        key. The previously active key is marked inactive but remains in the
+        JWKS indefinitely so receipts signed under it continue to verify.
+
+        The new private key is stored encrypted in the service environment and
+        is never returned in the response. Only the new public key and key ID
+        are returned.
+      operationId: rotateKey
+      responses:
+        '201':
+          description: New signing key generated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  new_key: { $ref: '#/components/schemas/PublicKey' }
+                  previous_key_id:
+                    type: string
+                    description: The key ID of the key that was just deactivated.
+                    nullable: true
+                required: [new_key, previous_key_id]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # --------------------------------------------------------------------------
+  # Workspace
+  # --------------------------------------------------------------------------
+
+  /workspace:
+    get:
+      tags: [Workspace]
+      summary: Get workspace configuration
+      operationId: getWorkspace
+      responses:
+        '200':
+          description: Workspace metadata.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Workspace' }
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    patch:
+      tags: [Workspace]
+      summary: Update workspace configuration
+      operationId: updateWorkspace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                contact_email: { type: string, format: email }
+                webhook_url: { type: string, format: uri }
+              additionalProperties: false
+      responses:
+        '200':
+          description: Workspace updated.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Workspace' }
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # --------------------------------------------------------------------------
+  # Public — JWKS
+  # --------------------------------------------------------------------------
+
+  /.well-known/jwks.json:
+    get:
+      tags: [Public, Keys]
+      summary: JWKS endpoint (public)
+      description: |
+        Public key distribution per RFC 7517. Returns the workspace's active and
+        inactive public Ed25519 keys in JWKS format. CORS-open, edge-cached
+        with `Cache-Control: max-age=86400`.
+
+        This endpoint requires no authentication. Any third party fetches the
+        JWKS and verifies receipts independently.
+      operationId: getJwks
+      security: []
+      servers:
+        - url: https://observe.openterms.com
+          description: The JWKS endpoint is hosted on the marketing domain root,
+            not under /v1.
+      responses:
+        '200':
+          description: JWKS document.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keys:
+                    type: array
+                    items: { $ref: '#/components/schemas/JwksKey' }
+                required: [keys]
+
+# ============================================================================
+# Components
+# ============================================================================
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API key
+
+  # --------------------------------------------------------------------------
+  # Reusable parameters
+  # --------------------------------------------------------------------------
+
+  parameters:
+
+    ReceiptHash:
+      name: hash
+      in: path
+      required: true
+      schema: { type: string, minLength: 32, maxLength: 64 }
+      description: The canonical hash of the receipt (hex-encoded SHA-256).
+
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: false
+      schema: { type: string, maxLength: 128 }
+      description: |
+        Client-supplied idempotency key. If a request with this key has been
+        processed previously, the stored response is returned instead of
+        re-processing.
+
+  # --------------------------------------------------------------------------
+  # Reusable responses
+  # --------------------------------------------------------------------------
+
+  responses:
+
+    ValidationError:
+      description: Request validation failed.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+          examples:
+            missingField:
+              value:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Receipt is missing required field 'terms_hash'.
+                  details:
+                    field: terms_hash
+
+    Unauthorized:
+      description: Missing or invalid authentication.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+
+    RateLimited:
+      description: Request rate limit exceeded.
+      headers:
+        Retry-After:
+          schema: { type: integer }
+          description: Seconds until the next request is permitted.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+
+  # --------------------------------------------------------------------------
+  # Schemas
+  # --------------------------------------------------------------------------
+
+  schemas:
+
+    # ----- ORS core -----
+
+    DecisionOutcome:
+      type: string
+      enum: [allow, deny, escalate]
+      description: The three possible outcomes of policy evaluation.
+
+    Receipt:
+      type: object
+      description: |
+        An ORS v0.1 receipt body. Conforms to the schema published at
+        github.com/jstibal/ors-spec.
+      properties:
+        ors_version:
+          type: string
+          enum: ["0.1"]
+        workspace_id:
+          type: string
+        agent_id:
+          type: string
+        action_type:
+          type: string
+          description: The type of action (e.g., http_request, db_write, file_access).
+        terms_url:
+          type: string
+          format: uri
+          description: The URL of the terms document governing this action.
+        terms_hash:
+          type: string
+          description: Content-addressed hash of the terms document at the time of the action.
+        timestamp:
+          type: string
+          format: date-time
+        pricing_version:
+          type: string
+          nullable: true
+        ors:
+          type: object
+          properties:
+            commitments:
+              type: object
+              description: |
+                Structured commitments about the action. Field set differs by
+                receipt type. For pre-action receipts: tool_id, args_hash,
+                policy_hash. For post-action receipts: additionally
+                pre_state_hash and post_state_hash.
+              additionalProperties: true
+          required: [commitments]
+      required:
+        - ors_version
+        - workspace_id
+        - agent_id
+        - action_type
+        - terms_url
+        - terms_hash
+        - timestamp
+        - ors
+
+    SignedReceipt:
+      type: object
+      description: An ORS receipt with its Ed25519 signature and key metadata.
+      properties:
+        header:
+          type: object
+          properties:
+            kid:
+              type: string
+              description: Key ID matching one of the workspace's JWKS entries.
+            alg:
+              type: string
+              enum: [EdDSA]
+          required: [kid, alg]
+        body:
+          $ref: '#/components/schemas/Receipt'
+        signature:
+          type: string
+          description: Base64url-encoded Ed25519 signature over the domain-separated canonical hash.
+      required: [header, body, signature]
+
+    IngestResponse:
+      type: object
+      properties:
+        hash:
+          type: string
+          description: Canonical hash of the ingested receipt.
+        ingested_at:
+          type: string
+          format: date-time
+        duplicate:
+          type: boolean
+          description: True if this receipt was already ingested previously.
+      required: [hash, ingested_at, duplicate]
+
+    # ----- Decisions -----
+
+    Decision:
+      type: object
+      properties:
+        decision:
+          $ref: '#/components/schemas/DecisionOutcome'
+        triggered_rules:
+          type: array
+          items: { type: string }
+          description: Rule IDs that fired during evaluation, in evaluation order.
+        reasons:
+          type: array
+          items: { type: string }
+          description: Human-readable strings explaining why the decision was reached.
+        policy_version:
+          type: string
+        evaluated_at:
+          type: string
+          format: date-time
+      required: [decision, triggered_rules, reasons, policy_version, evaluated_at]
+
+    DecisionListResponse:
+      type: object
+      properties:
+        decisions:
+          type: array
+          items:
+            allOf:
+              - $ref: '#/components/schemas/Decision'
+              - type: object
+                properties:
+                  receipt_hash: { type: string }
+                required: [receipt_hash]
+        next_cursor:
+          type: string
+          nullable: true
+      required: [decisions, next_cursor]
+
+    # ----- Receipts -----
+
+    ReceiptWithDecision:
+      type: object
+      properties:
+        receipt:
+          $ref: '#/components/schemas/SignedReceipt'
+        hash:
+          type: string
+        ingested_at:
+          type: string
+          format: date-time
+        decision:
+          $ref: '#/components/schemas/Decision'
+          nullable: true
+      required: [receipt, hash, ingested_at, decision]
+
+    ReceiptListResponse:
+      type: object
+      properties:
+        receipts:
+          type: array
+          items: { $ref: '#/components/schemas/ReceiptWithDecision' }
+        next_cursor:
+          type: string
+          nullable: true
+      required: [receipts, next_cursor]
+
+    AggregateResponse:
+      type: object
+      properties:
+        dimension:
+          type: string
+          description: The dimension that was aggregated by.
+        buckets:
+          type: array
+          items:
+            type: object
+            properties:
+              key: { type: string }
+              count: { type: integer }
+            required: [key, count]
+      required: [dimension, buckets]
+
+    # ----- Policies -----
+
+    Policy:
+      type: object
+      properties:
+        id: { type: string }
+        version: { type: string }
+        name: { type: string, nullable: true }
+        rules:
+          type: array
+          items: { $ref: '#/components/schemas/Rule' }
+        active: { type: boolean }
+        created_at: { type: string, format: date-time }
+      required: [id, version, rules, active, created_at]
+
+    PolicyInput:
+      type: object
+      properties:
+        name: { type: string, nullable: true }
+        rules:
+          type: array
+          items: { $ref: '#/components/schemas/Rule' }
+      required: [rules]
+
+    Rule:
+      type: object
+      description: A single rule in a policy rule set.
+      properties:
+        id: { type: string }
+        type:
+          type: string
+          enum:
+            - action_allowlist
+            - action_denylist
+            - spending_limit
+            - daily_limit
+            - url_prefix_allowlist
+            - url_prefix_denylist
+            - tool_id_allowlist
+            - argument_pattern_match
+            - post_state_assertion
+        outcome:
+          $ref: '#/components/schemas/DecisionOutcome'
+          description: The outcome to return if this rule fires.
+        parameters:
+          type: object
+          description: |
+            Parameters specific to this rule type. Schema depends on `type`.
+            Documented per rule type in the platform docs.
+          additionalProperties: true
+      required: [id, type, outcome, parameters]
+
+    # ----- Simulation -----
+
+    SimulationResult:
+      type: object
+      properties:
+        counterfactual_counts:
+          type: object
+          description: |
+            Decision counts produced by evaluating the candidate policy
+            against the corpus. Keyed by decision outcome.
+          properties:
+            allow: { type: integer }
+            deny: { type: integer }
+            escalate: { type: integer }
+          required: [allow, deny, escalate]
+        actual_counts:
+          type: object
+          description: Decision counts that were actually recorded in the period.
+          properties:
+            allow: { type: integer }
+            deny: { type: integer }
+            escalate: { type: integer }
+          required: [allow, deny, escalate]
+        diff_summary:
+          type: object
+          description: |
+            Receipts where the counterfactual decision differs from the
+            actual decision recorded.
+          properties:
+            total_diffs: { type: integer }
+            by_rule:
+              type: object
+              additionalProperties: { type: integer }
+              description: Number of diffs attributable to each rule.
+            by_tool:
+              type: object
+              additionalProperties: { type: integer }
+          required: [total_diffs, by_rule, by_tool]
+        sample:
+          type: array
+          description: |
+            Up to `sample_size` receipts where the counterfactual differs from
+            the actual decision. Deterministic across re-runs.
+          items:
+            type: object
+            properties:
+              receipt_hash: { type: string }
+              actual_decision: { $ref: '#/components/schemas/DecisionOutcome' }
+              counterfactual_decision: { $ref: '#/components/schemas/DecisionOutcome' }
+              counterfactual_reasons:
+                type: array
+                items: { type: string }
+            required:
+              - receipt_hash
+              - actual_decision
+              - counterfactual_decision
+              - counterfactual_reasons
+        evaluated_at:
+          type: string
+          format: date-time
+        receipts_evaluated:
+          type: integer
+      required:
+        - counterfactual_counts
+        - actual_counts
+        - diff_summary
+        - sample
+        - evaluated_at
+        - receipts_evaluated
+
+    # ----- Keys -----
+
+    PublicKey:
+      type: object
+      properties:
+        kid:
+          type: string
+          description: Key identifier.
+        created_at:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [active, inactive]
+        public_key:
+          type: string
+          description: Base64url-encoded Ed25519 public key.
+      required: [kid, created_at, status, public_key]
+
+    JwksKey:
+      type: object
+      description: A key entry in the JWKS document per RFC 7517.
+      properties:
+        kty: { type: string, enum: [OKP] }
+        crv: { type: string, enum: [Ed25519] }
+        kid: { type: string }
+        use: { type: string, enum: [sig] }
+        status: { type: string, enum: [active, inactive] }
+        x: { type: string, description: Base64url-encoded public key. }
+      required: [kty, crv, kid, use, status, x]
+
+    VerificationResult:
+      type: object
+      properties:
+        valid: { type: boolean }
+        kid:
+          type: string
+          description: Key ID used for verification.
+        verified_at:
+          type: string
+          format: date-time
+        reason:
+          type: string
+          nullable: true
+          description: If `valid` is false, the reason for the failure.
+      required: [valid, kid, verified_at, reason]
+
+    # ----- Workspace -----
+
+    Workspace:
+      type: object
+      properties:
+        workspace_id: { type: string }
+        name: { type: string }
+        contact_email: { type: string, format: email }
+        webhook_url:
+          type: string
+          format: uri
+          nullable: true
+        active_signing_key_id: { type: string }
+        jwks_url: { type: string, format: uri }
+      required:
+        - workspace_id
+        - name
+        - contact_email
+        - webhook_url
+        - active_signing_key_id
+        - jwks_url
+
+    # ----- Errors -----
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+                - VALIDATION_ERROR
+                - SIGNATURE_INVALID
+                - UNKNOWN_ISSUER
+                - DUPLICATE
+                - POLICY_NOT_FOUND
+                - POLICY_EVALUATION_TIMEOUT
+                - WORKSPACE_NOT_FOUND
+                - RATE_LIMIT_EXCEEDED
+                - NOT_FOUND
+                - UNAUTHORIZED
+                - INTERNAL_ERROR
+            message: { type: string }
+            details:
+              type: object
+              additionalProperties: true
+              nullable: true
+          required: [code, message]
+      required: [error]
+
+  # --------------------------------------------------------------------------
+  # Examples
+  # --------------------------------------------------------------------------
+
+  examples:
+
+    PreActionReceipt:
+      summary: A pre-action receipt for an HTTP request action
+      value:
+        header:
+          kid: key-2026-05-01-a3f8
+          alg: EdDSA
+        body:
+          ors_version: "0.1"
+          workspace_id: ws_01HXXXXXXXX
+          agent_id: agent_research_bot_v3
+          action_type: http_request
+          terms_url: https://example.com/terms/api-v2
+          terms_hash: sha256:9c8d2e...
+          timestamp: 2026-05-18T14:22:01.514Z
+          pricing_version: null
+          ors:
+            commitments:
+              tool_id: requests.get
+              args_hash: sha256:a3f4b7...
+              policy_hash: sha256:1122aa...
+        signature: PUx8...base64url...3dQ
+
+    PostActionReceipt:
+      summary: A post-action receipt committing the post-execution state
+      value:
+        header:
+          kid: key-2026-05-01-a3f8
+          alg: EdDSA
+        body:
+          ors_version: "0.1"
+          workspace_id: ws_01HXXXXXXXX
+          agent_id: agent_research_bot_v3
+          action_type: http_request
+          terms_url: https://example.com/terms/api-v2
+          terms_hash: sha256:9c8d2e...
+          timestamp: 2026-05-18T14:22:01.892Z
+          pricing_version: null
+          ors:
+            commitments:
+              tool_id: requests.get
+              args_hash: sha256:a3f4b7...
+              policy_hash: sha256:1122aa...
+              pre_state_hash: sha256:0000...
+              post_state_hash: sha256:f4e3d2...
+        signature: QvY9...base64url...4eR
