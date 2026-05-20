@@ -1,5 +1,9 @@
 import type { Pool, PoolClient } from 'pg';
 
+import type { AggregateBucket, AggregateMode, Filters, ParsedCursor } from './query_types.js';
+import { encodeCursor } from './query_types.js';
+import type { StoredDecision } from './decisions.js';
+
 export type Queryable = Pool | PoolClient;
 
 export interface StoredReceipt {
@@ -148,6 +152,274 @@ export async function findByCanonicalHash(
     raw_receipt: row.raw_receipt,
     ingested_at: row.ingested_at,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Query layer (list, aggregate, single fetch with joined decision).
+//
+// SQL safety: every user-supplied filter value is bound to a numbered
+// parameter ($N). The composition functions only emit static SQL fragments
+// that reference those placeholders — no value ever appears inline in SQL.
+// ---------------------------------------------------------------------------
+
+export interface ReceiptRow {
+  canonical_hash: string;
+  raw_receipt: Record<string, unknown>;
+  ingested_at: Date;
+  ts: Date;
+  receipt_id: string;
+  decision: StoredDecision | null;
+}
+
+export interface ListReceiptsResult {
+  rows: ReceiptRow[];
+  next_cursor: string | null;
+}
+
+type Bindings = unknown[];
+
+// Filters that require reading from `decisions` force the LEFT JOIN to an
+// INNER JOIN. We choose the join type up front and generate explicit SQL
+// rather than relying on Postgres to deduce equivalence from WHERE clauses.
+function needsInnerJoin(f: Filters): boolean {
+  return f.decision !== undefined || f.triggered_rule !== undefined || f.q !== undefined;
+}
+
+// Build the WHERE clause fragment for the shared receipt+decision filter set,
+// appending each value to `bindings` and emitting parameter placeholders.
+function buildFilterClauses(
+  f: Filters,
+  bindings: Bindings,
+  opts: { includeDecisionFilters: boolean },
+): string[] {
+  const clauses: string[] = [];
+  const push = (v: unknown): string => {
+    bindings.push(v);
+    return `$${bindings.length}`;
+  };
+
+  if (f.agent_id !== undefined) clauses.push(`r.agent_id = ${push(f.agent_id)}`);
+  if (f.action_type !== undefined) clauses.push(`r.action_type = ${push(f.action_type)}`);
+  if (f.tool_id !== undefined) {
+    clauses.push(`r.action_context->'ors'->'commitments'->>'tool_id' = ${push(f.tool_id)}`);
+  }
+  if (f.chain_id !== undefined) {
+    clauses.push(`r.action_context->'ors'->'chain'->>'chain_id' = ${push(f.chain_id)}`);
+  }
+  if (f.issuer !== undefined) clauses.push(`r.issuer = ${push(f.issuer)}`);
+  if (f.from !== undefined) clauses.push(`r.ts >= ${push(f.from)}`);
+  if (f.to !== undefined) clauses.push(`r.ts <= ${push(f.to)}`);
+
+  if (opts.includeDecisionFilters) {
+    if (f.decision !== undefined) clauses.push(`d.decision = ${push(f.decision)}`);
+    if (f.triggered_rule !== undefined) {
+      clauses.push(`d.triggered_rules ? ${push(f.triggered_rule)}`);
+    }
+    if (f.policy_version !== undefined) {
+      clauses.push(`d.policy_version = ${push(f.policy_version)}`);
+    }
+    if (f.q !== undefined) {
+      clauses.push(
+        `EXISTS (SELECT 1 FROM jsonb_array_elements_text(d.reasons) reason WHERE reason ILIKE ${push('%' + f.q + '%')})`,
+      );
+    }
+  }
+
+  return clauses;
+}
+
+const RECEIPT_SELECT_COLS = `
+  r.canonical_hash, r.raw_receipt, r.ingested_at, r.ts, r.receipt_id,
+  d.receipt_hash    AS d_receipt_hash,
+  d.workspace_id    AS d_workspace_id,
+  d.decision        AS d_decision,
+  d.triggered_rules AS d_triggered_rules,
+  d.reasons         AS d_reasons,
+  d.policy_version  AS d_policy_version,
+  d.evaluated_at    AS d_evaluated_at,
+  d.created_at      AS d_created_at
+`;
+
+function rowToReceiptRow(row: Record<string, unknown>): ReceiptRow {
+  const hasDecision = row.d_decision !== null && row.d_decision !== undefined;
+  return {
+    canonical_hash: row.canonical_hash as string,
+    raw_receipt: row.raw_receipt as Record<string, unknown>,
+    ingested_at: row.ingested_at as Date,
+    ts: row.ts as Date,
+    receipt_id: row.receipt_id as string,
+    decision: hasDecision
+      ? {
+          receipt_hash: row.d_receipt_hash as string,
+          workspace_id: row.d_workspace_id as string,
+          decision: row.d_decision as StoredDecision['decision'],
+          triggered_rules: row.d_triggered_rules as string[],
+          reasons: row.d_reasons as string[],
+          policy_version: row.d_policy_version as string,
+          evaluated_at: row.d_evaluated_at as Date,
+          created_at: row.d_created_at as Date,
+        }
+      : null,
+  };
+}
+
+export async function listReceipts(
+  q: Queryable,
+  workspaceId: string,
+  filters: Filters,
+  cursor: ParsedCursor | null,
+  limit: number,
+): Promise<ListReceiptsResult> {
+  const bindings: Bindings = [];
+  const push = (v: unknown): string => {
+    bindings.push(v);
+    return `$${bindings.length}`;
+  };
+
+  const where: string[] = [`r.workspace_id = ${push(workspaceId)}`];
+  where.push(...buildFilterClauses(filters, bindings, { includeDecisionFilters: true }));
+
+  // Cursor is strict `<` over (ts, receipt_id) so concurrent inserts at higher
+  // timestamps do not appear on later pages, preventing duplicates across the
+  // boundary. New inserts at lower timestamps may legitimately appear on a
+  // later page; that is acceptable for an append-only log.
+  if (cursor) {
+    const t = push(cursor.t);
+    const i = push(cursor.i);
+    where.push(`(r.ts, r.receipt_id) < (${t}, ${i})`);
+  }
+
+  const join = needsInnerJoin(filters) ? 'INNER JOIN' : 'LEFT JOIN';
+  const limitPlus1 = push(limit + 1);
+
+  const sql = `
+    SELECT ${RECEIPT_SELECT_COLS}
+    FROM receipts r
+    ${join} decisions d ON d.receipt_hash = r.canonical_hash
+    WHERE ${where.join(' AND ')}
+    ORDER BY r.ts DESC, r.receipt_id DESC
+    LIMIT ${limitPlus1}
+  `;
+
+  const result = await q.query(sql, bindings);
+  const rows = result.rows.map(rowToReceiptRow);
+
+  let next_cursor: string | null = null;
+  if (rows.length > limit) {
+    const last = rows[limit - 1]!;
+    rows.splice(limit);
+    next_cursor = encodeCursor({ t: last.ts.toISOString(), i: last.receipt_id });
+  }
+
+  return { rows, next_cursor };
+}
+
+export async function findReceiptByHashWithDecision(
+  q: Queryable,
+  workspaceId: string,
+  hash: string,
+): Promise<ReceiptRow | null> {
+  const sql = `
+    SELECT ${RECEIPT_SELECT_COLS}
+    FROM receipts r
+    LEFT JOIN decisions d ON d.receipt_hash = r.canonical_hash
+    WHERE r.workspace_id = $1 AND r.canonical_hash = $2
+  `;
+  const result = await q.query(sql, [workspaceId, hash]);
+  if (result.rowCount === 0) return null;
+  return rowToReceiptRow(result.rows[0]!);
+}
+
+// Aggregation reads decision columns only for count_by_decision and
+// count_by_rule; the other modes can stay on the LEFT JOIN. We still promote
+// to INNER JOIN if a decision-side filter (decision / triggered_rule / q) is
+// in play, so the count is consistent with the matching list query.
+export async function aggregateReceipts(
+  q: Queryable,
+  workspaceId: string,
+  filters: Filters,
+  mode: Exclude<AggregateMode, 'none'>,
+): Promise<{ dimension: string; buckets: AggregateBucket[] }> {
+  const bindings: Bindings = [];
+  const push = (v: unknown): string => {
+    bindings.push(v);
+    return `$${bindings.length}`;
+  };
+
+  const where: string[] = [`r.workspace_id = ${push(workspaceId)}`];
+  where.push(...buildFilterClauses(filters, bindings, { includeDecisionFilters: true }));
+
+  const readsDecisionCols = mode === 'count_by_decision' || mode === 'count_by_rule';
+  const join = needsInnerJoin(filters) || readsDecisionCols ? 'INNER JOIN' : 'LEFT JOIN';
+
+  let selectExpr: string;
+  let groupBy: string;
+  let orderBy: string;
+  let extraFrom = '';
+  let dimension: string;
+
+  switch (mode) {
+    case 'count_by_decision':
+      selectExpr = 'd.decision::text AS key';
+      groupBy = 'd.decision';
+      orderBy = 'count DESC, key ASC';
+      dimension = 'decision';
+      break;
+    case 'count_by_rule':
+      // Cross-join unnest of the triggered_rules JSONB array. Receipts whose
+      // decision has zero triggered rules contribute nothing — they are not
+      // attributable to any rule.
+      extraFrom = ', jsonb_array_elements_text(d.triggered_rules) AS rule';
+      selectExpr = 'rule AS key';
+      groupBy = 'rule';
+      orderBy = 'count DESC, key ASC';
+      dimension = 'rule';
+      break;
+    case 'count_by_tool':
+      selectExpr = "r.action_context->'ors'->'commitments'->>'tool_id' AS key";
+      groupBy = "r.action_context->'ors'->'commitments'->>'tool_id'";
+      // Filter out NULL tool_ids — a receipt with no commitments has no tool.
+      where.push(`r.action_context->'ors'->'commitments'->>'tool_id' IS NOT NULL`);
+      orderBy = 'count DESC, key ASC';
+      dimension = 'tool';
+      break;
+    case 'count_by_agent':
+      selectExpr = 'r.agent_id AS key';
+      groupBy = 'r.agent_id';
+      orderBy = 'count DESC, key ASC';
+      dimension = 'agent';
+      break;
+    case 'count_by_hour':
+      selectExpr =
+        "to_char(date_trunc('hour', r.ts AT TIME ZONE 'UTC'), 'YYYY-MM-DD\"T\"HH24:00:00\"Z\"') AS key";
+      groupBy = "date_trunc('hour', r.ts AT TIME ZONE 'UTC')";
+      orderBy = 'key ASC';
+      dimension = 'hour';
+      break;
+    case 'count_by_day':
+      selectExpr = "to_char(date_trunc('day', r.ts AT TIME ZONE 'UTC'), 'YYYY-MM-DD') AS key";
+      groupBy = "date_trunc('day', r.ts AT TIME ZONE 'UTC')";
+      orderBy = 'key ASC';
+      dimension = 'day';
+      break;
+  }
+
+  const sql = `
+    SELECT ${selectExpr}, COUNT(*)::bigint AS count
+    FROM receipts r
+    ${join} decisions d ON d.receipt_hash = r.canonical_hash
+    ${extraFrom}
+    WHERE ${where.join(' AND ')}
+    GROUP BY ${groupBy}
+    ORDER BY ${orderBy}
+  `;
+
+  const result = await q.query(sql, bindings);
+  const buckets: AggregateBucket[] = result.rows.map((row: Record<string, unknown>) => ({
+    key: String(row.key),
+    count: Number(row.count),
+  }));
+  return { dimension, buckets };
 }
 
 export async function recordIdempotencyKey(

@@ -4,7 +4,9 @@ import { loadConfig } from './config.js';
 import { getPool, closePool } from './db/client.js';
 import { runMigrations } from './db/migrate.js';
 import { makeJwksLoader } from './jwks/source.js';
+import { registerDecisionRoutes } from './routes/decisions.js';
 import { registerReceiptRoutes } from './routes/receipts.js';
+import { registerReceiptQueryRoutes } from './routes/receipts_query.js';
 
 export async function buildServer() {
   const config = loadConfig();
@@ -12,6 +14,8 @@ export async function buildServer() {
   const pool = getPool(config.databaseUrl);
   const loadJwks = makeJwksLoader(config.jwksSource);
   registerReceiptRoutes(app, { pool, config, loadJwks });
+  registerReceiptQueryRoutes(app, { pool, config });
+  registerDecisionRoutes(app, { pool, config });
   return { app, config, pool };
 }
 

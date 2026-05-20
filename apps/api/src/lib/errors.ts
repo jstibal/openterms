@@ -5,7 +5,8 @@ export type IngestErrorCode =
   | 'HASH_MISMATCH'
   | 'SIGNATURE_INVALID'
   | 'UNKNOWN_ISSUER'
-  | 'IDEMPOTENCY_KEY_CONFLICT';
+  | 'IDEMPOTENCY_KEY_CONFLICT'
+  | 'NOT_FOUND';
 
 // Map the internal six-code verifier vocabulary to the API-surface vocabulary
 // from openapi.yaml. KEY_NOT_FOUND, UNSUPPORTED_KEY_TYPE, and INVALID_KEY_LENGTH
