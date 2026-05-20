@@ -1,0 +1,104 @@
+{
+  "version": "demo-policy-v2",
+  "rules": [
+    {
+      "id": "max_amount",
+      "type": "max_amount",
+      "outcome": "deny",
+      "parameters": { "threshold": 2000000 }
+    },
+    {
+      "id": "daily_limit",
+      "type": "daily_limit",
+      "outcome": "deny",
+      "parameters": { "threshold": 20000000, "window": "utc_day" }
+    },
+    {
+      "id": "action_type_allowlist",
+      "type": "action_type_allowlist",
+      "outcome": "deny",
+      "parameters": {
+        "allowed": ["api_call", "data_access", "purchase", "custom"]
+      }
+    },
+    {
+      "id": "action_type_denylist",
+      "type": "action_type_denylist",
+      "outcome": "deny",
+      "parameters": { "denied": ["model_training"] }
+    },
+    {
+      "id": "url_prefix_allowlist",
+      "type": "url_prefix_allowlist",
+      "outcome": "deny",
+      "parameters": {
+        "allowed": [
+          "https://terms.acme.com/",
+          "https://policies.example.com/",
+          "https://docs.openai.com/",
+          "https://stripe.com/legal/",
+          "https://aws.amazon.com/service-terms/",
+          "https://untrusted-vendor.example.org/"
+        ]
+      }
+    },
+    {
+      "id": "url_prefix_denylist",
+      "type": "url_prefix_denylist",
+      "outcome": "deny",
+      "parameters": { "denied": ["https://blocked.example.com/"] }
+    },
+    {
+      "id": "escalation_threshold",
+      "type": "escalation_threshold",
+      "outcome": "escalate",
+      "parameters": { "threshold": 1000000 }
+    },
+    {
+      "id": "tool_id_allowlist",
+      "type": "tool_id_allowlist",
+      "outcome": "escalate",
+      "parameters": {
+        "allowed": [
+          "requests.get",
+          "requests.post",
+          "stripe.charge",
+          "bigquery.query",
+          "google-search",
+          "internal.kv.read",
+          "internal.kv.write",
+          "openai.chat",
+          "anthropic.messages",
+          "filesystem.read",
+          "filesystem.write",
+          "shell.exec"
+        ]
+      }
+    },
+    {
+      "id": "args_pattern_match",
+      "type": "args_pattern_match",
+      "outcome": "deny",
+      "parameters": {
+        "mode": "any",
+        "patterns": [
+          {
+            "path": "action_context.ors.commitments.tool_id",
+            "op": "contains",
+            "value": "debug"
+          }
+        ]
+      }
+    },
+    {
+      "id": "post_state_assertion",
+      "type": "post_state_assertion",
+      "outcome": "escalate",
+      "parameters": {
+        "field": "action_context.ors.commitments.post_state_hash",
+        "expected_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "applies_to": "post_action_only"
+      }
+    }
+  ]
+}

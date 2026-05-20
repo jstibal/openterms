@@ -1,0 +1,42 @@
+{
+  "scenario_canonical_hash": "3327aeb8a2f09ff73ae2d5a836c3139b529239bc82a315e7090d4b4f167f2193",
+  "scenario_seed": 5318008,
+  "count": 500,
+  "openterms_module_tree_sha": "1bff62d1cbc60057ad8d2442222676e5311dc81f",
+  "policies": {
+    "v1": "demo-policy-v1",
+    "v2": "demo-policy-v2"
+  },
+  "stats": {
+    "outcome_counts": {
+      "deny": 109,
+      "escalate": 64,
+      "allow": 327
+    },
+    "rule_firings": {
+      "action_type_allowlist": 25,
+      "action_type_denylist": 25,
+      "max_amount": 25,
+      "escalation_threshold": 55,
+      "daily_limit": 49,
+      "url_prefix_allowlist": 40,
+      "url_prefix_denylist": 15,
+      "tool_id_allowlist": 44,
+      "args_pattern_match": 10,
+      "post_state_assertion": 15
+    },
+    "action_type_counts": {
+      "model_training": 25,
+      "custom": 136,
+      "api_call": 128,
+      "purchase": 107,
+      "data_access": 104
+    }
+  },
+  "simulation_diffs_by_transition": {
+    "deny->deny": 24,
+    "deny->allow": 10,
+    "escalate->deny": 16
+  },
+  "simulation_total_diffs": 50
+}

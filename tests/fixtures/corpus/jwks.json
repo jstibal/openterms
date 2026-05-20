@@ -1,0 +1,18 @@
+{
+  "keys": [
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "m31FPWjNm-2juGByaYs6h9StCEssBl5EP023xIL2XUU",
+      "kid": "ot-corpus-2026a",
+      "use": "sig"
+    },
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "F-Luh_b0vzt17zo9agW55f3ZctefJrmIuvb3jzsYdk8",
+      "kid": "ot-corpus-2025z",
+      "use": "sig"
+    }
+  ]
+}

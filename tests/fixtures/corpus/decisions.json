@@ -1,0 +1,4954 @@
+[
+  {
+    "receipt_hash": "91bc0ca19187928b4049387b699076ff073e4ac305e37e49153328d038c1f2b2",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T00:00:00.001Z"
+  },
+  {
+    "receipt_hash": "c0ba6d70df221c173ee668043028a5e575ada10d644ca1b29b14f8efc35eec87",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T01:26:34.389Z"
+  },
+  {
+    "receipt_hash": "323f46bd390baa5d766bb5663cbc635f60674e4db31aa970476704e3460fd5e9",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T02:53:08.778Z"
+  },
+  {
+    "receipt_hash": "6febb67387cca47e74802d5959afbf5ff094e20d172fa0c969e3a0b38f561cf4",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T04:19:43.167Z"
+  },
+  {
+    "receipt_hash": "b7f3f99c3d85256c37157fdfb2915c7d7bf81bacbe1ed8a47cf762e5fe809f0e",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T05:46:17.556Z"
+  },
+  {
+    "receipt_hash": "58119dd3b2047d62eb49093ccbcab728d93dcbf16a85b2e24ac30e659fa80a6f",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T07:12:51.944Z"
+  },
+  {
+    "receipt_hash": "b75985a26faf682ad62bb3743acc4ba2132e03644340a74129c57b865e252f8d",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T08:39:26.333Z"
+  },
+  {
+    "receipt_hash": "7e41b7d28c10e507f1a043b1fd5d1467a9bc86cb0b056bd1468d1180b8def942",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T10:06:00.722Z"
+  },
+  {
+    "receipt_hash": "62d21428c72e9bc9de9e34399570b070c9ae79a7ccc605e2a911cdce9725f072",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T11:32:35.111Z"
+  },
+  {
+    "receipt_hash": "c0a14f1272b19b9a8554ae2b33d481c808e9154d4b75d6f9f73dabe4f79da848",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T12:59:09.499Z"
+  },
+  {
+    "receipt_hash": "fa6cefb10b9cc6c97ede6909facf486316e6c0ce86ce57c82fca7ab52082e3b9",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T14:25:43.888Z"
+  },
+  {
+    "receipt_hash": "22ed2dcfac688bc227b9075feaf576e3c443f6fd4979bf380d45642bb72f5fae",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T15:52:18.277Z"
+  },
+  {
+    "receipt_hash": "6f1fb83af5eedd0659d9ab1ebdd8a73b2bd5b63579244aebe60ceb01553edb19",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T17:18:52.666Z"
+  },
+  {
+    "receipt_hash": "1f8f3b9f703dde077298babbc1f127a1f184fff244310bb88b74d7b377fdab64",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T18:45:27.055Z"
+  },
+  {
+    "receipt_hash": "bb89fc9dddd80fd54a7069d8cd4221f30c9fbfe82f260024526d8b279c5f5391",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T20:12:01.443Z"
+  },
+  {
+    "receipt_hash": "8ebb3f50176829cd1455725ff97359168e4a7ab0e69ce32a9a0502d2cfdd9b8e",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T21:38:35.832Z"
+  },
+  {
+    "receipt_hash": "da3aadb68f2662a77168ddbb2fb17e2622221f10ecd0f48f6f1446db9a041e61",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-19T23:05:10.221Z"
+  },
+  {
+    "receipt_hash": "0ed3c15f4d7848e26f53fb62c7302d27b532ca319bd5095d94bfcddf02d4e1e5",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T00:31:44.610Z"
+  },
+  {
+    "receipt_hash": "6974f9c9bfe7bb8fbbf93eef35901acb41469a2f773084aed83ad753116d84ca",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T01:58:18.998Z"
+  },
+  {
+    "receipt_hash": "6db7e1ef1a912af85c36a711c093b63054f93c3569ebbf90679f9f0f78d0f071",
+    "decision": "deny",
+    "triggered_rules": [
+      "action_type_allowlist",
+      "action_type_denylist"
+    ],
+    "reasons": [
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T03:24:53.387Z"
+  },
+  {
+    "receipt_hash": "ac82622023260633e9fb042f9cee7c7625b4f87f200908c38dcc4059a6b9ecdb",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 6636880 exceeds threshold 5000000",
+      "ESCALATION_THRESHOLD: amount_charged 6636880 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T04:51:27.776Z"
+  },
+  {
+    "receipt_hash": "a9dc5b2bd5bee747d6a71ec116f848348fa95aeef9a83da04f68d74d5c9fa77b",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 7748749 exceeds threshold 5000000",
+      "ESCALATION_THRESHOLD: amount_charged 7748749 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T06:18:02.165Z"
+  },
+  {
+    "receipt_hash": "d8403fa1d6e788f82d51e5d07c7cef5a44d070923251273c88077cbeb37df61c",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 6397038 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 21735014 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 6397038 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T07:44:36.554Z"
+  },
+  {
+    "receipt_hash": "70243d53719a4d530a0d76a410ee1fd461ab7dd0bd00a8e37d5a7b52e0edede9",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 7734371 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 29469385 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 7734371 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T09:11:10.942Z"
+  },
+  {
+    "receipt_hash": "5ea14104395076ad1eef2f7544ddd30369dc42e7e11241fcac0097faaee5a9e3",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 6727866 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 36197251 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 6727866 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T10:37:45.331Z"
+  },
+  {
+    "receipt_hash": "1ff4ede91a8cebba1436f83b93ccee3108d3a0de07c87ff19cb48f22355232ec",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 6969712 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 43166963 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 6969712 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T12:04:19.720Z"
+  },
+  {
+    "receipt_hash": "072d114b3132e6950bab7c2806016b86af3d128a31e61ff5e68e4ee90e74f9dc",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 5931401 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 49098364 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 5931401 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T13:30:54.109Z"
+  },
+  {
+    "receipt_hash": "5d0fa944391b7f4760995079802e1dfbdfd64d7fc5e7ec1006684e1ce83318f2",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 5569157 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 54667521 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 5569157 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T14:57:28.497Z"
+  },
+  {
+    "receipt_hash": "4ce13200b5571206e76cd1438063b409f96bcc085d954f6e62636a8a29745b62",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 8581056 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 63248577 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 8581056 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T16:24:02.886Z"
+  },
+  {
+    "receipt_hash": "69d57648f9471267656176fa0244f10a133d9e06254da2a0d1a4b09b489a7fb2",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 8244454 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 71493031 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 8244454 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T17:50:37.275Z"
+  },
+  {
+    "receipt_hash": "8f105300e4bebf8a8e004ab61743da877b00870bc72717467b41e7e4be2c8745",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 9968164 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 81461195 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 9968164 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T19:17:11.664Z"
+  },
+  {
+    "receipt_hash": "4d03ad1e79e950eadae554d768af9b6d7b94c74e89d4c55ee938873c1327ed03",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 8926857 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 90388052 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 8926857 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T20:43:46.053Z"
+  },
+  {
+    "receipt_hash": "f0b0bb4263af8a6f01f3f805b3abcd3a5b0dd17b236d684f982e51d9319c771c",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 8388144 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 98776196 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 8388144 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T22:10:20.441Z"
+  },
+  {
+    "receipt_hash": "59669e2da45ef9fd097060a9aff2c75403f1d3c2a0b98a0348d967d245f4401e",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 9837966 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 108614162 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 9837966 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-20T23:36:54.830Z"
+  },
+  {
+    "receipt_hash": "0860ed86c2fd719583293c75de14aa6c80db81426ccb832a4b6a9291e13e44ef",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 6882797 exceeds threshold 5000000",
+      "ESCALATION_THRESHOLD: amount_charged 6882797 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T01:03:29.219Z"
+  },
+  {
+    "receipt_hash": "6befa886bccf942fe89b11d0b9918349e701f46291b8908ff4e12649df6aa4dd",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 8494957 exceeds threshold 5000000",
+      "ESCALATION_THRESHOLD: amount_charged 8494957 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T02:30:03.608Z"
+  },
+  {
+    "receipt_hash": "49245ee12cf144cb71ade8bd1bef4bccbff545c28e020db929f1385f9c75aacf",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 8962007 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 24339761 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 8962007 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T03:56:37.996Z"
+  },
+  {
+    "receipt_hash": "4f2a9607e31272941cf48da713c59f2a9d991528a574db62816c35d6aa27151d",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 9098524 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 33438285 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 9098524 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T05:23:12.385Z"
+  },
+  {
+    "receipt_hash": "ff58a82846482ec22af2fd3c4b06f76aa9816ab375bb7a4c6cce0a56b36a8b32",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 8816350 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 42254635 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 8816350 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T06:49:46.774Z"
+  },
+  {
+    "receipt_hash": "9b63998d1da7fe087e07e24304284f38d04bf624b6e14aafc73ac36ad55c4763",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 6666821 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 48921456 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 6666821 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T08:16:21.163Z"
+  },
+  {
+    "receipt_hash": "44b98d1c0e6ef4cf15a97927427e2977d1c99e5150a1d87d9f78cc5fe77d7af3",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 49290636 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T09:42:55.552Z"
+  },
+  {
+    "receipt_hash": "c5bf8c5c2a86c2e07790cd8e76abe0ddbd09db47f3bbca81aa622aee85242039",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 50007687 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T11:09:29.940Z"
+  },
+  {
+    "receipt_hash": "08189e4ae77fda77e8e0b290044760c0952947156733090959a0c4c3e60f4d6f",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 50989647 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T12:36:04.329Z"
+  },
+  {
+    "receipt_hash": "9a3b65d2c319f7096808bc838f92480633db4321fee1c1b0d022878f2373bc01",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 51026801 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T14:02:38.718Z"
+  },
+  {
+    "receipt_hash": "cef17a885f7166a59c94ddfa8fbeff9273f5d099ee16a37ecf36ef049e38924c",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 51912011 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T15:29:13.107Z"
+  },
+  {
+    "receipt_hash": "3bab291b1b4392c5ec79dbf539ff40c73d99113fec2cb62d53911c5633854dea",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 52559790 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T16:55:47.495Z"
+  },
+  {
+    "receipt_hash": "3b39d9ead62b1d55c2e9922b3ccddfb4fb9a558377c8a4b34c2324e5a0332a72",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 52822127 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T18:22:21.884Z"
+  },
+  {
+    "receipt_hash": "2bd73759ff8d123b527bb7e9fbde81d06dcbe03849392254c51fbbdc34c6fd88",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 52837265 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T19:48:56.273Z"
+  },
+  {
+    "receipt_hash": "30e8473a538f77fb272bf5962b8408f510f27da20a6d6fcb454ff5e170792b7f",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 53822887 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T21:15:30.662Z"
+  },
+  {
+    "receipt_hash": "ca9bffacf06017bdd8986e10649bb883da6107cd0c5e9031f281d5bcf75f49f6",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 54239239 in window utc_day exceeds threshold 20000000",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-21T22:42:05.051Z"
+  },
+  {
+    "receipt_hash": "296f037d3f10818827d7f197c48e3152225170a52df41ac8b81a158a35a84b56",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T00:08:39.439Z"
+  },
+  {
+    "receipt_hash": "f029a5d86e840d8a9bd3faad8a9e3918406fc95f12c9c05be901bae85982b199",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T01:35:13.828Z"
+  },
+  {
+    "receipt_hash": "c0bd9441bd7a339ad92086dd65b7d18287ea067b31d864b46dd5034f4fb75707",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T03:01:48.217Z"
+  },
+  {
+    "receipt_hash": "25bf77c1791cb22502f77a4725310b950fd1d6fb4540ab59c3902f9d9f843476",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T04:28:22.606Z"
+  },
+  {
+    "receipt_hash": "a30667e9b67d001de7ccd43e4224c2bb51673dff2199dbd1e0d595afdbd96c4f",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T05:54:56.994Z"
+  },
+  {
+    "receipt_hash": "907a469a38bef435475a6551527df7ea894b780d8ff909a1efb0dcf312a631ff",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T07:21:31.383Z"
+  },
+  {
+    "receipt_hash": "897218581c13ad68174ade40c7a7148c72371dd82d70434773c2774213e1fce7",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T08:48:05.772Z"
+  },
+  {
+    "receipt_hash": "c191dc0a4b40fed62c6e852a0cf23015d066ffccb0074debc68f25e792dd77a0",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T10:14:40.161Z"
+  },
+  {
+    "receipt_hash": "e49ea4edd8e8e9a9848aaccc1f1887b92f2426e4ecb96e21b91e678043a7f148",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T11:41:14.550Z"
+  },
+  {
+    "receipt_hash": "5f4bc728d94fc9b892cc8692c7a0ce6cd7fd6fde4338d2172e8da5b39efc786f",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T13:07:48.938Z"
+  },
+  {
+    "receipt_hash": "3af737608645bddc3f375213052fd1b944de0437f8c2bee6d7952ae7d52a27a8",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T14:34:23.327Z"
+  },
+  {
+    "receipt_hash": "4ee2e01bc6b856eacc2e27e1debb194e7c7b3d95434a687bbf7d3618df0abcaa",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T16:00:57.716Z"
+  },
+  {
+    "receipt_hash": "214263d95ec505704db8a6e36572dc4310e3cbb24f4599f27f068bc5a178d12a",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T17:27:32.105Z"
+  },
+  {
+    "receipt_hash": "8aba7116a7420061316c799ded777b96c9490ee6172a17c814a33cb9a3f796e2",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T18:54:06.493Z"
+  },
+  {
+    "receipt_hash": "5d97203de9d45edbe1898216714540287a238101100c512a0e1771b06c176071",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T20:20:40.882Z"
+  },
+  {
+    "receipt_hash": "db60a62433b30269f28e720eeb89f00eb89723d7e104aeb429a8b43701cf440a",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T21:47:15.271Z"
+  },
+  {
+    "receipt_hash": "f476cd6e4a9c99042bc43f4ae1de3e4ac6124f5de472c0cb7248ce464ce264e1",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-22T23:13:49.660Z"
+  },
+  {
+    "receipt_hash": "d3191da428babb0a3e6cadbd09292503ecba127d0a0c841441fd4bf0f5eacb0d",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T00:40:24.049Z"
+  },
+  {
+    "receipt_hash": "5ccda5bbd7b548c9aaa9166f3f1b7f7fe1a39abea1e2e8373975f6d155455c2b",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T02:06:58.437Z"
+  },
+  {
+    "receipt_hash": "8c2fb5ef6b2a0251d46c02707d4ed4f41be772ee36eae8317564457dd373eaad",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T03:33:32.826Z"
+  },
+  {
+    "receipt_hash": "47dc3e2537b9f7fe8ee58bc673c5c0178ded7c23e411299623574c98d0d42fe2",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T05:00:07.215Z"
+  },
+  {
+    "receipt_hash": "16f567f2d27ae3a0b12a56e5e41c1389654503127f4314a0a25ae03a4f6f23cd",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T06:26:41.604Z"
+  },
+  {
+    "receipt_hash": "d2a94ecdd421bcc28acd08975446076bbdfc6f7f2d091e4d32474ab164003fad",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T07:53:15.992Z"
+  },
+  {
+    "receipt_hash": "3eb0f6f34b378a290359da666a97f5c767a5eb5aa429589d093c0a77f9f9fade",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T09:19:50.381Z"
+  },
+  {
+    "receipt_hash": "5fb02eea2940bb5653c001a578d3ba1c4b5b15a3bd83e5f81e178c260158d13f",
+    "decision": "deny",
+    "triggered_rules": [
+      "url_prefix_allowlist",
+      "url_prefix_denylist"
+    ],
+    "reasons": [
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://blocked.example.com/terms' does not match any allowed prefix",
+      "URL_PREFIX_DENYLIST: terms_url 'https://blocked.example.com/terms' starts with denied prefix 'https://blocked.example.com/'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T10:46:24.770Z"
+  },
+  {
+    "receipt_hash": "e7f27ca2da93f994646fbfc8d68f742b51b6fd89e7ff60b148150148937be7c1",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T12:12:59.159Z"
+  },
+  {
+    "receipt_hash": "6fe28ef0d1b781543cc942f976533f60afb0782daaad5671c3846de40ded8c14",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T13:39:33.548Z"
+  },
+  {
+    "receipt_hash": "3a5f3942d53fa5a5135843bdac2b3345bf172f365036c078a3c3ec49ae1c4a9b",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T15:06:07.936Z"
+  },
+  {
+    "receipt_hash": "e6c0c66166fc0afa6f8dccd525650b871cc580c50f909f76bb6c93a4f8fca13d",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T16:32:42.325Z"
+  },
+  {
+    "receipt_hash": "d8348895c142b6febb9242bbaedf299819a46bc29f55cff9852c0c2cf1a266b5",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T17:59:16.714Z"
+  },
+  {
+    "receipt_hash": "1dbe21a0ae800130adaceaf037049a27239a5c460cdf53e2bd38aea47a82084c",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T19:25:51.103Z"
+  },
+  {
+    "receipt_hash": "e49b540cbc6f632a18f7d0a8317b16d6729f84785372a09c34dd01fa97a0adb1",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T20:52:25.491Z"
+  },
+  {
+    "receipt_hash": "fdf76f42258482d394d061ea78f1a68536173a3d5c64fc3007f2d0f737682180",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T22:18:59.880Z"
+  },
+  {
+    "receipt_hash": "0565b18ba3a8efd30954f48eb999762656a3e700bce88013f649ea8227ebea1f",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-23T23:45:34.269Z"
+  },
+  {
+    "receipt_hash": "690db0a02ab1821f526039746bd9ac82df6f02c73a7668e43ff866a356709c94",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T00:00:00.001Z"
+  },
+  {
+    "receipt_hash": "552b1b459cd18d83a5323467892d25a982651960b6e6d20a2168fc0683ccddc2",
+    "decision": "deny",
+    "triggered_rules": [
+      "tool_id_allowlist",
+      "args_pattern_match"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'internal.debug.dump' is not in the allow list",
+      "ARGS_PATTERN_MATCH: pattern at action_context.ors.commitments.tool_id matched value 'debug' (mode=any, matched=1/1)"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T01:12:08.658Z"
+  },
+  {
+    "receipt_hash": "a552043c9511386ca795ee87cf040ba50bd2a1902c3b6d6eab70426659a86d73",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T02:00:00.001Z"
+  },
+  {
+    "receipt_hash": "9a4a6ccbc994263ad5d01f4c5af71d724a36689df2739026bc87eca6d8994aaa",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T04:00:00.001Z"
+  },
+  {
+    "receipt_hash": "02ab7d9cb980e19456cb9ab173b265fae48c5dc71e487837d33439237a3f5d96",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T06:00:00.001Z"
+  },
+  {
+    "receipt_hash": "ce8da03775ca1b2c95810e2c2f9e91f57f1e1db1b2380ea529262e743bd51c8a",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T08:00:00.001Z"
+  },
+  {
+    "receipt_hash": "9d9bd0c903b0392558429227da52e2fae66c3b5c4c96c2337bfc6e40f971ee81",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2185729 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T17:04:26.934Z"
+  },
+  {
+    "receipt_hash": "efcc67ce5242962af6d4b76ec82104530b20671846c29c2c46483196e4dd7bb5",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 4377218 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T18:31:01.323Z"
+  },
+  {
+    "receipt_hash": "cec4fab6ea72158d6e786f93203a5a200efc431fb3cb33b536518e8f9511ca55",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 21509245 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 1811771 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T19:57:35.712Z"
+  },
+  {
+    "receipt_hash": "8a7db6c0415d2265bdaee3eebb9ba0d35b5d7a8e535dec5bd7aa423f173d99bb",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 23661907 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 2152662 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T21:24:10.101Z"
+  },
+  {
+    "receipt_hash": "c1d64290961c7d5ce73efa9a143dffe34a0511bd18d1f78606fdef3f25fd993d",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 25811789 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 2149882 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-24T22:50:44.489Z"
+  },
+  {
+    "receipt_hash": "754b2e347b59150b4b4ac79837494064b05508aaea3e6228090a738a083e2550",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 3165024 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T00:17:18.878Z"
+  },
+  {
+    "receipt_hash": "90c254f03352bfbe1c5abe4f52a524282288890f1d39cd589a741cb3832a7000",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 3921404 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T01:43:53.267Z"
+  },
+  {
+    "receipt_hash": "c451cb77181afc1f45cd4a7da0c8a7056cf07bab097d3af5e5ee6b1f9e72f74f",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2367553 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T03:10:27.656Z"
+  },
+  {
+    "receipt_hash": "df706cc4767b2ab2139d64dd7cbc6d97cfb6252c092c47fcf6c7b5d594d6e2a2",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 4715926 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T04:37:02.045Z"
+  },
+  {
+    "receipt_hash": "6e4c98407451472f767c13255e7ff9b7b88ac4ada9cbecd71b2b338221417eb6",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 1135489 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T06:03:36.433Z"
+  },
+  {
+    "receipt_hash": "180b41a6f53d29948ee73bd9ae4efce30bd91e27e717c8d693015aa1f8acc6b2",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 20288989 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 4983593 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T07:30:10.822Z"
+  },
+  {
+    "receipt_hash": "8853822fc3153e0778e82b6133b6ccfde960d2cf6c0db04980f0acb551c99344",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 22940324 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 2651335 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T08:56:45.211Z"
+  },
+  {
+    "receipt_hash": "233cb23eea364072628ed27dd554843d6ae78c5f061fe6c0ff16feb5af05539c",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 24713170 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 1772846 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T10:23:19.600Z"
+  },
+  {
+    "receipt_hash": "b672dd912177ae1e1e990d1bc509ca9330ae8c6c4ba4c3b8406bc5fdd0d96edd",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 29250994 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 4537824 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T11:49:53.988Z"
+  },
+  {
+    "receipt_hash": "039971f2c186bbc60770f8ee8553dabdcbe1a0863ba23f4cb5606bd184fcfb60",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 32202453 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 2951459 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T13:16:28.377Z"
+  },
+  {
+    "receipt_hash": "eeeb180cc0e3490cbed5e441d7f6d316b186748b10d87c1fad374bbd063883e0",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 35871111 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 3668658 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T14:43:02.766Z"
+  },
+  {
+    "receipt_hash": "4749c6b911e219541ce9c9da10a49f77b24ae0f464218c480a22685583c66f23",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 38512939 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 2641828 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T16:09:37.155Z"
+  },
+  {
+    "receipt_hash": "0ebe9aba3ee2c59aaeeac357d1d2e30ec5a56d00ea65b4047b1dcc3f13674422",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 41211981 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 2699042 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T17:36:11.544Z"
+  },
+  {
+    "receipt_hash": "7bf3a003098295d9ff91b8d64bbf2cca4afc5126937cd99e857f56d2bf29d9ff",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 42421348 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 1209367 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T19:02:45.932Z"
+  },
+  {
+    "receipt_hash": "4790bc858494bb5cf1af9bc5f43bd8418e03dbdd8069710fa785ff739ebd0fd2",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 43501701 in window utc_day exceeds threshold 20000000",
+      "ESCALATION_THRESHOLD: amount_charged 1080353 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T20:29:20.321Z"
+  },
+  {
+    "receipt_hash": "b76bc2f8c9019b9bae873e0fdc26b3642114089018719bf698c603ebe43c6ec6",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 44007908 in window utc_day exceeds threshold 20000000",
+      "TOOL_ID_ALLOWLIST: tool_id 'unknown.tool' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T21:55:54.710Z"
+  },
+  {
+    "receipt_hash": "d62fdcaf66682c0469f357d6ed4b0cc2182b0f09c05b754c319bf32cd30bd2b8",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit",
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 44888839 in window utc_day exceeds threshold 20000000",
+      "TOOL_ID_ALLOWLIST: tool_id 'vendor.legacy' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-25T23:22:29.099Z"
+  },
+  {
+    "receipt_hash": "fd79a698b2e8cbd2e02fe51319ff64c61cb524049f8ca02fa69fab5cee4241f9",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'vendor.legacy' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T00:49:03.487Z"
+  },
+  {
+    "receipt_hash": "47465d1c4c2b14ed9e599e2298940de4983742a7b4653934284f34fa2235ed4a",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'vendor.legacy' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T02:15:37.876Z"
+  },
+  {
+    "receipt_hash": "232d8d17e482014721797083fd818f39914e08eb38008bf6a056ae21ea7ad98d",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'vendor.legacy' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T03:42:12.265Z"
+  },
+  {
+    "receipt_hash": "4d8a8ac2b5f25bfc35fccff7f91e320d7e3b46a036105fceb64779f895c42094",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'vendor.legacy' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T05:08:46.654Z"
+  },
+  {
+    "receipt_hash": "66a2cfc925734982fb0a6055c8452c98a0737c33ec615a7c4990988f5a992565",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'unknown.tool' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T06:35:21.043Z"
+  },
+  {
+    "receipt_hash": "27d5ffbc345225aa80e097f6a8dc7043c073d1e31c09efdc988ef1520434906c",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'unknown.tool' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T08:01:55.431Z"
+  },
+  {
+    "receipt_hash": "c93e18f2f2bd731d26d0dc52250f864797db2eb7e75026541617750dd3a272b3",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'experimental.alpha' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T09:28:29.820Z"
+  },
+  {
+    "receipt_hash": "4e6f42cf6b99798248a5c68b71716f425a58b279937c9d77eac0be945efe633d",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'experimental.alpha' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T10:55:04.209Z"
+  },
+  {
+    "receipt_hash": "aa7eb9ede1b9473429e585cbc259a5293212867121bdeaab19931b4a95848efa",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'experimental.alpha' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T12:21:38.598Z"
+  },
+  {
+    "receipt_hash": "5a6bb204c622518a6c2dc24991935b16b6ef42c9cf8ad2f423bdddc5078d74ba",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'unknown.tool' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T13:48:12.986Z"
+  },
+  {
+    "receipt_hash": "4238d9a3a67affaa8adf9064e30f63b1239925c556e4e727ee9ec93cc9a84706",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'experimental.alpha' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T15:14:47.375Z"
+  },
+  {
+    "receipt_hash": "24de83ca783cf4e4203b15afd9323899dd645a6beda8f01598bc0788b36dc2eb",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'vendor.legacy' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T16:41:21.764Z"
+  },
+  {
+    "receipt_hash": "87cfcaaf6ab0752a699b71b4d5bbcfffc0ff26c4eccb34b205e143b727805a8f",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id 'vendor.legacy' is not in the allow list"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T18:07:56.153Z"
+  },
+  {
+    "receipt_hash": "80a864a11c4b6bf371c331f32d6fa1c598d5da4cf39f5ff73b1d993d6a7fdab8",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '843da5d8c79b99ee970e3a653779ce4b4c7f241b01d3a7c1afe73c6efe57c364' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T19:34:30.542Z"
+  },
+  {
+    "receipt_hash": "9432c512f6193a784901a55fd6d27219b10fbb5de600090ef100cee5b9bb7bb1",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash 'c7ce23bd092a6be548f6797344749658a9217dec9204105163798e00b6ccb2a5' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T21:01:04.930Z"
+  },
+  {
+    "receipt_hash": "48f29bf99fc7b25c9fa7dbddcadc0c352e671f99adbaa0d95b039a35ef1efe7d",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '9ba8efe0c3ef820e0a088d8fff599356bc7aa68ef90d2f7b3ac5c00eeb6281fc' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T22:27:39.319Z"
+  },
+  {
+    "receipt_hash": "3cde4629060c919e68b489b1cfddfbc789e686040fcdb78a53756d00ecf5eedb",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '2bf599f1c3ee0c0f3f568371c607b31e760b00527bd515ad467b081558d4f2c1' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-26T23:54:13.708Z"
+  },
+  {
+    "receipt_hash": "3a614c96c6b9d5d9dc472a3e0b217e023f95cf717653a69d51be6dd178c728a7",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '01c62c8f6ccdd669100946a314f7cd29185b2f8860514dc0483e386ea88b71d2' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T01:20:48.097Z"
+  },
+  {
+    "receipt_hash": "065737616756c181d8daa492f6670b11f9a75c7410deb6b225a51cab44c20722",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash 'f00597a5f6493f2a219bcfb7d7dc53e21de1457c0c6006205640223e0a8d5170' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T02:47:22.485Z"
+  },
+  {
+    "receipt_hash": "5848106d0289fd72e6eda21eab3c7ecd3de19b86f5a509dcc2537d36233b4c63",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '52e7ee543fe9abf2957156bbe09bc11514e45f867afa61e0228b674cd37010a8' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T04:13:56.874Z"
+  },
+  {
+    "receipt_hash": "b04f60727424096141b2d0c7c8e84f7b5b21aec86dd5279dd785a44e8c053e73",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '63186cf2aa12bb7c18d7051e5beceb150301bec80c2b885b626562c6263844a9' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T05:40:31.263Z"
+  },
+  {
+    "receipt_hash": "bc507e188e207624604ef76c10c4fde67b9ddbff691f7b51a608148d70eb3795",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '00f8447ded4e9e9c84dec22c0ccb349b61967ac1dbae35991effc621d9121ae9' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T07:07:05.652Z"
+  },
+  {
+    "receipt_hash": "87a1e13e462a37562dc1527f6b73138f381068306253d5812a5fdd9d034f5214",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash 'feaa6f2dab46ed22e4ea9ca9f4db2da66693f69bfae926c2c71f3596cd66ffd0' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T08:33:40.041Z"
+  },
+  {
+    "receipt_hash": "71d03a299384de5aa71588a1a8033645ba54f8150ae6b6548aa28212374877d9",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '5a9fdc5d40f96d2d1911c9e41c9161c10dade3eafd3ad2ca405e938fd9fda626' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T10:00:14.429Z"
+  },
+  {
+    "receipt_hash": "014fbe358d572608db9d545bf7b0b085f9d07bb1019f0bb43699da984b9d7198",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '3d84da7806fd84c9b63d149410518c2a18ac48b3b3096d375029dea74ba203d7' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T11:26:48.818Z"
+  },
+  {
+    "receipt_hash": "cc36fc2504594ae97133bcca521a1f899096752da16cdf159ea47624596d937d",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash 'a1fd1179c1e66132efe355b6605b040254d5fb46c568ed4ed853badc5d91be54' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T12:53:23.207Z"
+  },
+  {
+    "receipt_hash": "7616b9ecdb25d324538ef8d2b72f01f5219bb85d8794af8e7dede5abe76d30bb",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash '541088a8e7f2e8fdc2b81625ac143f43eb3ee70dd5d4a8f4467a780bdcef13ef' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T14:19:57.596Z"
+  },
+  {
+    "receipt_hash": "1fa61732fc6dc98b63203c7c32e81c676a6e53f26821eab693e77898b08bc40d",
+    "decision": "escalate",
+    "triggered_rules": [
+      "post_state_assertion"
+    ],
+    "reasons": [
+      "POST_STATE_ASSERTION: action_context.ors.commitments.post_state_hash 'e9f4e0172f39782a3b67cc987c496c330c818fadf30cfb023a4fc83e27ca5177' does not equal expected '0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T15:46:31.984Z"
+  },
+  {
+    "receipt_hash": "82a89e7568d54b41d7f1f89b7001a21b2cc78a1ce3c9dfb59648e6524fab446a",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "action_type_allowlist",
+      "action_type_denylist",
+      "url_prefix_allowlist",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 7892471 exceeds threshold 5000000",
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix",
+      "ESCALATION_THRESHOLD: amount_charged 7892471 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T17:13:06.373Z"
+  },
+  {
+    "receipt_hash": "c4a1fd8561f26aa4c90b775f0cd5fddd77929e8431d4788d4ad6b1080a94fff8",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "action_type_allowlist",
+      "action_type_denylist",
+      "url_prefix_allowlist",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 6146091 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 20747575 in window utc_day exceeds threshold 20000000",
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix",
+      "ESCALATION_THRESHOLD: amount_charged 6146091 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T18:39:40.762Z"
+  },
+  {
+    "receipt_hash": "4a59e2b35fa23feaef1a7519ccf2c57a456b8d71fe2b5ba480c8910075aa7ef0",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "action_type_allowlist",
+      "action_type_denylist",
+      "url_prefix_allowlist",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 7506187 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 28253762 in window utc_day exceeds threshold 20000000",
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix",
+      "ESCALATION_THRESHOLD: amount_charged 7506187 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T20:06:15.151Z"
+  },
+  {
+    "receipt_hash": "944396da57bce3c09ee5bf5fc244f65173219502821c22be6261498a701191ed",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "action_type_allowlist",
+      "action_type_denylist",
+      "url_prefix_allowlist",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 7738833 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 35992595 in window utc_day exceeds threshold 20000000",
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix",
+      "ESCALATION_THRESHOLD: amount_charged 7738833 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T21:32:49.540Z"
+  },
+  {
+    "receipt_hash": "59f44744900bfee7facb77d643f415c6ffa3311219f23ded1242d61c62fb9ed4",
+    "decision": "deny",
+    "triggered_rules": [
+      "max_amount",
+      "daily_limit",
+      "action_type_allowlist",
+      "action_type_denylist",
+      "url_prefix_allowlist",
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 6922952 exceeds threshold 5000000",
+      "DAILY_LIMIT: cumulative amount 42915547 in window utc_day exceeds threshold 20000000",
+      "ACTION_TYPE_ALLOWLIST: action_type 'model_training' is not on the allow list",
+      "ACTION_TYPE_DENYLIST: action_type 'model_training' is on the deny list",
+      "URL_PREFIX_ALLOWLIST: terms_url 'https://untrusted-vendor.example.org/terms' does not match any allowed prefix",
+      "ESCALATION_THRESHOLD: amount_charged 6922952 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-27T22:59:23.928Z"
+  },
+  {
+    "receipt_hash": "575b696fdfbee4598770a784e086b19a0e2b3da0274132dd9fbe0a70a8cf323e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T00:25:58.317Z"
+  },
+  {
+    "receipt_hash": "dedf6d9ab899a1514b81eee960e522404c51df7ed32c93b18dd196ba540ddc20",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T01:52:32.706Z"
+  },
+  {
+    "receipt_hash": "bda3fe0195221b806eed137bf83d2cdc9bd6c35d64909182d0725cadce3596f3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T03:19:07.095Z"
+  },
+  {
+    "receipt_hash": "9cdc6062877130515103907ad8baab33b2f57c06fda687433b4b7103426bddd8",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T04:45:41.483Z"
+  },
+  {
+    "receipt_hash": "c869f563f32dae97b8f9e9d16402fa51a21403228b2530ccae41440a71badb91",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T06:12:15.872Z"
+  },
+  {
+    "receipt_hash": "85bab61f3ca61b6340e26051f69e03ef746f8de05034544622b1523768bbc70d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T07:38:50.261Z"
+  },
+  {
+    "receipt_hash": "ce9d0150f4fc41cf399e28974e49c8d3b8b4eef273c485c4f42d8b910f5c719d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T09:05:24.650Z"
+  },
+  {
+    "receipt_hash": "a570d810d95ff72f579a0c0510861eeed18d1deaee2221845a4d04088bb3fa95",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T10:31:59.039Z"
+  },
+  {
+    "receipt_hash": "c76690c29d7df318bdd6d2d220395a495ebc93bb5bc665dab93b255d5041604a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T11:58:33.427Z"
+  },
+  {
+    "receipt_hash": "2f38f9a236f73bcac0576853e0430c0d9bc37222b6322b9a82f59da86ea193fc",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T13:25:07.816Z"
+  },
+  {
+    "receipt_hash": "2be1be883015b7e117f406c00d64226d357b9fdbd792f3ce009aa5a81b6d760c",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T14:51:42.205Z"
+  },
+  {
+    "receipt_hash": "294a62c41cd325a28b9ec7831dcd2ad89d8d889c6f567a2fd70f9176ae454215",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T16:18:16.594Z"
+  },
+  {
+    "receipt_hash": "f6db847e432a522b6d9c1de480087c7948acb4b018fe3a287a070dc5d051b409",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T17:44:50.982Z"
+  },
+  {
+    "receipt_hash": "735df343b0cf39579413a4a7a68782877194ae34fa318cf227f9b6b2415fe5e1",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T19:11:25.371Z"
+  },
+  {
+    "receipt_hash": "38c439fa86e367b51f608598136fe7134ff1ae62d4982f86273685e1400d40dc",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T20:37:59.760Z"
+  },
+  {
+    "receipt_hash": "5bcc7de2d61d854b66973115e041b4bd69a7c1514b07edcf06e757a8f1cc7662",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T22:04:34.149Z"
+  },
+  {
+    "receipt_hash": "075f0511ae536a44af9f18f976af6c64b51486e5741d1290eb04974dd2128cd3",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-28T23:31:08.538Z"
+  },
+  {
+    "receipt_hash": "6b33fd31564b0c064954a45852a8985ae4de400936f571537e36ddfedb740336",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T00:57:42.926Z"
+  },
+  {
+    "receipt_hash": "28c0ba3430b8b614533044b522c18f5fe9e3b1d3e13438c214fa4d481dcb6e5a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T02:24:17.315Z"
+  },
+  {
+    "receipt_hash": "40d92035e97cb5879ca12b48d8a11bbd687c727ab4aebdc94f31581cec175f3b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T03:50:51.704Z"
+  },
+  {
+    "receipt_hash": "7188fcc0936e10f038be346f2349414d277661f242a879a97c69689285a44d54",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T05:17:26.093Z"
+  },
+  {
+    "receipt_hash": "20b568f6529bbf399cec5be93c602a759dac603967191876f39ae1a5868d9ba2",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T06:44:00.481Z"
+  },
+  {
+    "receipt_hash": "e174c7112f6fa009bc1ed26288302acc0a00fc77b3c55e41b28ea9fa4664bad9",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T08:10:34.870Z"
+  },
+  {
+    "receipt_hash": "46fbaaa058887830e4159f6e231c268732560a417ea2d2709868f4801447db77",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T09:37:09.259Z"
+  },
+  {
+    "receipt_hash": "d9992a24d9a842e1f955bdd9f27e9bdcd1594330d80e9406dcf214f476817d09",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T11:03:43.648Z"
+  },
+  {
+    "receipt_hash": "49faf87b0cbddd32e993d76264bca795d930aae2829b060faeda19c0ff0c30e0",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T12:30:18.037Z"
+  },
+  {
+    "receipt_hash": "9b8d7d8ad5209e3fd713a649d90a4dd8f7ec0eb248aafbd9af179a70bf520172",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T13:56:52.425Z"
+  },
+  {
+    "receipt_hash": "d14beb9ee648267581fc1d2ca6433c69fd0de8574608035400cebda3e4a38ccd",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T15:23:26.814Z"
+  },
+  {
+    "receipt_hash": "c9d03ed727166f482d9ded19edbb5fb0aa0ac6056900f9a42b94f6ca2583b9e2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T16:50:01.203Z"
+  },
+  {
+    "receipt_hash": "d1ba834ca44994515921b1b5028fb53f44319a274ed42694c38cdebc9251386e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T18:16:35.592Z"
+  },
+  {
+    "receipt_hash": "827b5d12b33610a98cb91bd4ec04214cfbf7014b93ff707d3adf88ec8f38f296",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T19:43:09.980Z"
+  },
+  {
+    "receipt_hash": "c0a4a2c0d7eaf8aaa33b946b1306e42022a2d6d8328700ae554cf5c30996b67e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T21:09:44.369Z"
+  },
+  {
+    "receipt_hash": "51242d690d84771bf29e5f38cb57ba3247781d02186b0d8aaa8255b150857d95",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-29T22:36:18.758Z"
+  },
+  {
+    "receipt_hash": "0ce397e1304c7a085c308bd2576f3ff069a6ad869d0db66c339106b6c8ae08f9",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T00:02:53.147Z"
+  },
+  {
+    "receipt_hash": "0f02eb1d84912de7948ba23787da01975bf6c83702311e38dc209c958eca55fe",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T01:29:27.536Z"
+  },
+  {
+    "receipt_hash": "994cf505ce44560361f98903d1a2bc38116d76f07eb1c9554c9c1afc9c5440cc",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T02:56:01.924Z"
+  },
+  {
+    "receipt_hash": "5c30b453467371f542519db6730436ccaffcaa9f9181e3181bd40212b6a642c3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T04:22:36.313Z"
+  },
+  {
+    "receipt_hash": "20e2872fc57cc3ca20612a94947c564490066ead7d8e9ed1b9fe281cdd7509f2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T05:49:10.702Z"
+  },
+  {
+    "receipt_hash": "fc32429cb69ffaa7d6f53eb566e9302bf21959822c4f5482dfdd1c453f08eca8",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T07:15:45.091Z"
+  },
+  {
+    "receipt_hash": "60ea0e0390a2328b9cc023fd42cf292d8064be5efa8c3185e3f6d9cedf9a8fae",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T08:42:19.479Z"
+  },
+  {
+    "receipt_hash": "35a42d26afc6ee3d698ac5a3c2bda94e64502474bb399f1eaec803f22a2db243",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T10:08:53.868Z"
+  },
+  {
+    "receipt_hash": "a88c5be0f4fb1200530eac44e96030ddcd22db6bba654c16052723f515f1316d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T11:35:28.257Z"
+  },
+  {
+    "receipt_hash": "d39eed0be8c0f8e795a0ff40dbf50e4fed02d3c0f7cdc88869ce86ab6acfc9cf",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T13:02:02.646Z"
+  },
+  {
+    "receipt_hash": "48c8273c92b77975ecbbaa496204d13f1e3d3e9f72d48cacb0cbffdc7854defd",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T14:28:37.035Z"
+  },
+  {
+    "receipt_hash": "7f1d0cdd568a1c468182ce1842dcbffbf5381406fb64ae85b5cb64b898b75eb2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T15:55:11.423Z"
+  },
+  {
+    "receipt_hash": "859234e690446ad6087f042c148188f4b06517428bdbd6e2dddc5dfb6bd7d2c9",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T17:21:45.812Z"
+  },
+  {
+    "receipt_hash": "245e207d39b8b75aa912ad889e3006adc34dd42af07435b138d4389fa6d1530d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T18:48:20.201Z"
+  },
+  {
+    "receipt_hash": "06d26c1308eca91e7176432af3470be61405855e011a647bfa4d88afe1419f35",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T20:14:54.590Z"
+  },
+  {
+    "receipt_hash": "20d3b402b023b36b48cb734776b99d45e43ca928657c2351156062235783480f",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T21:41:28.978Z"
+  },
+  {
+    "receipt_hash": "b21b739898a1412bac9f3a45d8825f24ef252a962e8b4304db422a5ff4d32eb6",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-04-30T23:08:03.367Z"
+  },
+  {
+    "receipt_hash": "13e9df07fced60e89dd59eb391276266260c2f979719b08626d544d2f3a69872",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T00:34:37.756Z"
+  },
+  {
+    "receipt_hash": "6b70b53513c8ba24c4348513bb96bc75ded63021182816249187a67a59ea2ef6",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T02:01:12.145Z"
+  },
+  {
+    "receipt_hash": "3ff8e1d35921b0275d5e2a519a9664a4ef0ad1712b7cc5fb8f83178f8ddc9207",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T03:27:46.534Z"
+  },
+  {
+    "receipt_hash": "5599688eeb4d0e7bd1d80da9dcac2af7a16213baf06f66cf0b3c0ab87871814c",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T04:54:20.922Z"
+  },
+  {
+    "receipt_hash": "2bb5714a01d60fde5b4b48d1004f914fb438c0e73f04131a4b34c135c6444759",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T06:20:55.311Z"
+  },
+  {
+    "receipt_hash": "e6424510cf68068ce93f56333934c87e5b3dae4adb59bf5193df6a8ae30c44aa",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T07:47:29.700Z"
+  },
+  {
+    "receipt_hash": "5427b4fa5646aa8f189a61e07d1f8a935b5123cd590b6ebe7036c4fc4134c044",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T09:14:04.089Z"
+  },
+  {
+    "receipt_hash": "2bad6190e2a3093377f0f4bc164af9b8035f9a23433ae33274bb4678aa2467ac",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T10:40:38.477Z"
+  },
+  {
+    "receipt_hash": "945f8be0ce82b7a89036848cee987688ee5cee0f35b979d9dd4532c879b5d60a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T12:07:12.866Z"
+  },
+  {
+    "receipt_hash": "b436b6d6600f9ebc7259989da25637f2920bc2ed0cd8c2c20f998dc9b519311d",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T13:33:47.255Z"
+  },
+  {
+    "receipt_hash": "6dc82c433e8edf38102679fc20e26bbecb19b35ac9686e7e31ef363e139384f8",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T15:00:21.644Z"
+  },
+  {
+    "receipt_hash": "c4ce1731786618f3cfd8c0f582e34eafda4871eda722bc98c7e61ce2ae05aab5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T16:26:56.033Z"
+  },
+  {
+    "receipt_hash": "c481355e74f44cf9c58760e78ecbe3a7597df9aa0c903b49aee80341dc401808",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T17:53:30.421Z"
+  },
+  {
+    "receipt_hash": "ab7e4c1a8f7c2beaaafc1860ac6abc76b4d316e9fa569b6a2f724b1490456f1f",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T19:20:04.810Z"
+  },
+  {
+    "receipt_hash": "2681d224c7df04624eb38e909ca102556adb6ecf0304969462083b551e4c52e6",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T20:46:39.199Z"
+  },
+  {
+    "receipt_hash": "eb2ef9d58e345757564af425ee8413b6ca02f93d7981a08e21ac40267d397646",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T22:13:13.588Z"
+  },
+  {
+    "receipt_hash": "f31359c7e3ccb098081bcfeb536d802cd39c8ba949e35614b104fad5960e10c6",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-01T23:39:47.976Z"
+  },
+  {
+    "receipt_hash": "c3166b793f050cf2396e8ec668c8e53961d6aebaddf2bded00691d6c812729db",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T01:06:22.365Z"
+  },
+  {
+    "receipt_hash": "b819fb3f5768c118a6d56804d002dfb715ef53ceacb128f12381faef06af0db3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T02:32:56.754Z"
+  },
+  {
+    "receipt_hash": "fe3a74b3a230352115922ef7aee664eb9ff0cbb310bbac16227efc7140fecc6f",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T03:59:31.143Z"
+  },
+  {
+    "receipt_hash": "a4c2b2c5601e396814782b434e55b74f434953e5d580335ac02dd5ffbe29a73c",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T05:26:05.532Z"
+  },
+  {
+    "receipt_hash": "d948a3907163892d28a9ea1af72acd8b658013c0171cc18b7d606c8eb400dfd2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T06:52:39.920Z"
+  },
+  {
+    "receipt_hash": "aae0ac8e4c12c0b98c06d3a163edd63adddf4369e190b18959ee59de5e537787",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T08:19:14.309Z"
+  },
+  {
+    "receipt_hash": "e13ec6069d10e717ccd6cfedc0acd5a40b108f466be717e3a55e4102e7b626ba",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T09:45:48.698Z"
+  },
+  {
+    "receipt_hash": "25d7ea73b6ba270a22f1fcee5f016c949473de097aa9520de75e24b4996eb385",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T11:12:23.087Z"
+  },
+  {
+    "receipt_hash": "4a42e52eeccb41b2d7836eb095f509e66adfa6dae37dd917776abcc4f794d338",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T12:38:57.475Z"
+  },
+  {
+    "receipt_hash": "b697ebfb82f24434b0f975f351d6acccbc64ab685423b4292e778e5b65c10b10",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T14:05:31.864Z"
+  },
+  {
+    "receipt_hash": "8b092e55ff588858558d02524b715202622c54c42263667bfe015be3c1124721",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T15:32:06.253Z"
+  },
+  {
+    "receipt_hash": "019b79060e0f999c18699271f58c44c02fff2d28c7ae11d92f0d4179746d5900",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T16:58:40.642Z"
+  },
+  {
+    "receipt_hash": "1158fa5077dde5a4fc41086311a074bafa6eaf27caf4b5eddcfb42343be088e1",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T18:25:15.031Z"
+  },
+  {
+    "receipt_hash": "db01897ca4e2ad26813c0828a7ec3fd1f0755d4feb8d5b3bf08671f66dc6bc5f",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T19:51:49.419Z"
+  },
+  {
+    "receipt_hash": "a9ae14d0950bb2e6006f81d24917462c76876ce644292167e904f81ae5d98a05",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T21:18:23.808Z"
+  },
+  {
+    "receipt_hash": "12e4fa5048f40ee942959c3436d10261c65d12e6a7ac82ec63753ad3f6c9f90e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-02T22:44:58.197Z"
+  },
+  {
+    "receipt_hash": "c9db545d31907be0734d872c408ac4a99b001d19b4a0130cd52ed65c2e267bc5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T00:11:32.586Z"
+  },
+  {
+    "receipt_hash": "5632236d46152248079280ae65deea5de9305a8d5d26a6805f4ce9e75298ba4b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T01:38:06.974Z"
+  },
+  {
+    "receipt_hash": "5a7079bec150be15021d710c777508a4fc5709557e3d13e33bee1592052392d9",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T03:04:41.363Z"
+  },
+  {
+    "receipt_hash": "9ccd2452e3714f830abaed800241aedbbc61513e335640e646e0d1fbf560a92d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T04:31:15.752Z"
+  },
+  {
+    "receipt_hash": "0b4b1e48e22b5dea4b54dfb58c33843e2de9b1df491acbbf0a717d80bc76a8e1",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T05:57:50.141Z"
+  },
+  {
+    "receipt_hash": "e1b6b1297d931bc8d922087cb59272b2d12c0d812d30033992b806cbde0939d2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T07:24:24.530Z"
+  },
+  {
+    "receipt_hash": "3626dae5d1a06cf32fd2dc5d2366299cf16085ecb8c9315fbaa22a81dfcacc33",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T08:50:58.918Z"
+  },
+  {
+    "receipt_hash": "5f94fd9b61da7653e1dad89b30f4a95875250235d9492e1c3a986fc5401f007e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T10:17:33.307Z"
+  },
+  {
+    "receipt_hash": "6fbcc37161685972ff3d2ed068d735451cb40b4bf717971ec8ed721e5cd3af2b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T11:44:07.696Z"
+  },
+  {
+    "receipt_hash": "1835c9c409cb496247acc6a04247f89f3e3d8861b55cc9e3cdeff84becf51b29",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T13:10:42.085Z"
+  },
+  {
+    "receipt_hash": "3f7fc33bc3b87c8a7e9c38c57dc0fe18049da59c995e9b80647c83f4bc636e47",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T14:37:16.473Z"
+  },
+  {
+    "receipt_hash": "378362d096b3afa734cdbcbe1910783896a5b01e62f1b251f2c832c42180a35b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T16:03:50.862Z"
+  },
+  {
+    "receipt_hash": "fa39047d9c3c541e063256276260e9d0b77b17ef25a2994b3efdfad21049af51",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T17:30:25.251Z"
+  },
+  {
+    "receipt_hash": "7a691eac607cae1386693d970209c5d5e7d5d34e44f646329b11e02d838afc34",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T18:56:59.640Z"
+  },
+  {
+    "receipt_hash": "caa6d9e34b033e82ace8fca7a368970b6fd613da0886b8d641ec19dbf82ea6e2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T20:23:34.029Z"
+  },
+  {
+    "receipt_hash": "19f49d160ff168188422fd6cc6e397278b748871493bc6ed91998bbbd3232a5a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T21:50:08.417Z"
+  },
+  {
+    "receipt_hash": "b8dc7de05e738103ffe16a5a3a5a4ba65b9e865f83112be370ec2ba006c25109",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-03T23:16:42.806Z"
+  },
+  {
+    "receipt_hash": "a4fd5f844e0c340b99f4cf7acdf6f7cbd68d6cafa6d041b46c0952bd3de6af6a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T00:43:17.195Z"
+  },
+  {
+    "receipt_hash": "c29fe00abaa57b5d6287fc29dfdd701a75acb47a07e348d88b2d9d26974fb408",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T02:09:51.584Z"
+  },
+  {
+    "receipt_hash": "43c83173f3c88f605e6e88b976c64632b352bf7d8b65e219d808676e02b6d439",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T03:36:25.972Z"
+  },
+  {
+    "receipt_hash": "b5fff538485340c2f8ab33e5d30baa09129fbf834968cb66962a9e531811cfcd",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T05:03:00.361Z"
+  },
+  {
+    "receipt_hash": "8c4818431be12a15d2348daa5a150d3ae70b473a81e361aa558d8208e58acb9d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T06:29:34.750Z"
+  },
+  {
+    "receipt_hash": "66c72a97da98a8ac95d126e7f359fdb030038d773417c08d63a8bcadc0e5c316",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T07:56:09.139Z"
+  },
+  {
+    "receipt_hash": "e4610786fc93b58bb2412619f83d9b22b8f99ff237a2c7dcc96460a755178439",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T09:22:43.528Z"
+  },
+  {
+    "receipt_hash": "25b8bd1cc0494aa807020f743fd7a9bf86b11dd53bb25df4711399954bbdb55d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T10:49:17.916Z"
+  },
+  {
+    "receipt_hash": "a8abdd7fab326f513ce1d3fa8a1ce7588219272b8cbcf8a462384a6de1aea9f6",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T12:15:52.305Z"
+  },
+  {
+    "receipt_hash": "6f34e8866079b7422ad7fd78e84e2da85a4dc8bcd6e7b34d3f8e3a8767430ef1",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T13:42:26.694Z"
+  },
+  {
+    "receipt_hash": "621c5ea162760b8f2207a55a89367ecb2d8e14b3440c22e8d7051bda415fb2bf",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T15:09:01.083Z"
+  },
+  {
+    "receipt_hash": "e1499113831b8104b0039f69f9279d3a38d1e71c4ea6ab68a6f8686047ed87c6",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T16:35:35.471Z"
+  },
+  {
+    "receipt_hash": "1976064e4a6bef6953259385f884ddbab1ce93404a52c5b8288f66bf05cfd5c8",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T18:02:09.860Z"
+  },
+  {
+    "receipt_hash": "59249f1a3f504b3f064886d6cd5791f61704d1607588f33727700627a139f23a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T19:28:44.249Z"
+  },
+  {
+    "receipt_hash": "617230d18f591f851f255d3d594035930b1a9a5f9199865f963090435bd43798",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T20:55:18.638Z"
+  },
+  {
+    "receipt_hash": "ad08473436f77339dd8874d1723683f3a658745e99cbca4e053a1f01c98e6cce",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T22:21:53.027Z"
+  },
+  {
+    "receipt_hash": "65182d28fbf12ff208ddbbfe2a927980a37f99717a3276df94dec2a56dea08f4",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-04T23:48:27.415Z"
+  },
+  {
+    "receipt_hash": "5588b2cdafcb5970bf2e4900870c6936ef096d04bb474f065d1f0861d897d99e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T01:15:01.804Z"
+  },
+  {
+    "receipt_hash": "c114ffea1ad37363f988a65728265ef1d71904f1056ca9cdfec0ef264fa2a9c3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T02:41:36.193Z"
+  },
+  {
+    "receipt_hash": "14888f2bf330276ad68eafae75a71f842e2cb32af5b09d634c134f7960a1db13",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T04:08:10.582Z"
+  },
+  {
+    "receipt_hash": "d7c8b19104db0a4647c5f9fd14ca138bc9643aaaa5a16a6d457db60ae37b94e0",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T05:34:44.970Z"
+  },
+  {
+    "receipt_hash": "14f621ae7d66582bfd1ece0a02cdfbb0beb4dae6dfc369798997526bf8abf5b4",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T07:01:19.359Z"
+  },
+  {
+    "receipt_hash": "a83f887d99dda9e5ec13b106e8446400af9a9d739898aecbd46cbfbdeeb98c55",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T08:27:53.748Z"
+  },
+  {
+    "receipt_hash": "ccee3d3aee8132c64ce7aebe4d46eafb04cddbb9942e538328b6e2abdfaaf6b2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T09:54:28.137Z"
+  },
+  {
+    "receipt_hash": "ba4b585961db831c0fda23fd112c51203f86699d73a80843ee1520d8fa995521",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T11:21:02.526Z"
+  },
+  {
+    "receipt_hash": "f4f894130d05ada9d52f002822bcfe2b1d1099de8e3bf5b02d8d97c801027bec",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T12:47:36.914Z"
+  },
+  {
+    "receipt_hash": "03f6eea9479b9090b817bb72a478ed77a645441bc7f8a9e460b6f6cacb24296c",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T14:14:11.303Z"
+  },
+  {
+    "receipt_hash": "ac20c9cde34f9cfe2a3eb73fec1b9750b1a15a2ce822b7d64cb0159559e582fc",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T15:40:45.692Z"
+  },
+  {
+    "receipt_hash": "69ea31680aea9c04bf5d0112214fea0ea022623fbcf5717c7d4dee4f53d94e7d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T17:07:20.081Z"
+  },
+  {
+    "receipt_hash": "33ec866b7833403e636e06ca2412eb4dddb15a7b98d28ec7d18af77eaf556c26",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T18:33:54.469Z"
+  },
+  {
+    "receipt_hash": "5c6184e03684a03f84707cca9855a106d06ffdd21062f8d9c72a58927ac45de9",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T20:00:28.858Z"
+  },
+  {
+    "receipt_hash": "2b129e44119ba6ef94a87cef484ecb9be1f07c4bd2772205dd6dd34c6428f5f9",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T21:27:03.247Z"
+  },
+  {
+    "receipt_hash": "0042404b86e645088bf29fe2c346f3ccf0ca3ad838be675a79682689a5a6f305",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-05T22:53:37.636Z"
+  },
+  {
+    "receipt_hash": "598073469cc017c0ceaed494d1cb53ff026a189a3e2b7778608c45c28b8d5d07",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T00:20:12.025Z"
+  },
+  {
+    "receipt_hash": "260d5d2c079bdcbd5dc6e30670612816723742c49c4021d05fb12afb1940f2dc",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T01:46:46.413Z"
+  },
+  {
+    "receipt_hash": "380aaac276681df8aecf54714e4b304d0962028fdedf8d2cad3a3a1423c59a53",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T03:13:20.802Z"
+  },
+  {
+    "receipt_hash": "10b23795ff498dc1820025f12540674acb33c15f725a372a453c01bb4f9b490b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T04:39:55.191Z"
+  },
+  {
+    "receipt_hash": "470c11fa6099a6532392d08e5a5027d36270d264437e3585e56f395aa51ae5fd",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T06:06:29.580Z"
+  },
+  {
+    "receipt_hash": "60a1bc0d8337fbdb3513b26941835670e0d81bb89dfad3381df9ff6bff7bbc30",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T07:33:03.968Z"
+  },
+  {
+    "receipt_hash": "55e5912ee5a19214f990f4061df1cbc27be1a313c00b011b3a72383db431e61b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T08:59:38.357Z"
+  },
+  {
+    "receipt_hash": "4d7f4a9123d7738e5aace2c778501f61085402f1060690111dee3385561224a7",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T10:26:12.746Z"
+  },
+  {
+    "receipt_hash": "aa7fe8c62c39e2d6ec0419ec52e1d6cdd817e5e52af056523dfec05344169047",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T11:52:47.135Z"
+  },
+  {
+    "receipt_hash": "404ac82f30cf2d50e4cd9819e8d0cd595ab49b06b1ec19e1eb6ea3d9c6e558c5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T13:19:21.524Z"
+  },
+  {
+    "receipt_hash": "294557c0d0d953d32372cca31171644bb384dfbc79328d2e7ca6c3f6b5923bf5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T14:45:55.912Z"
+  },
+  {
+    "receipt_hash": "185c4b23a3c54e527e5b07531a1348783ac37d6d322f2beef440b61e3ad36c8b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T16:12:30.301Z"
+  },
+  {
+    "receipt_hash": "8fefb9891ca538e950ada2a9e2d37a488f23ad81561a52def1e04d84345fdec9",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T17:39:04.690Z"
+  },
+  {
+    "receipt_hash": "13fa2d2b9292f05f76fd6934506255625ad30e2dcbae164012c40d2ea0cfb740",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T19:05:39.079Z"
+  },
+  {
+    "receipt_hash": "6f1c40681f3110fbc18a595c22c3e95b0b05cc982d24a2f8b00202e25f290334",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T20:32:13.467Z"
+  },
+  {
+    "receipt_hash": "828b6ff075f0c57b97c0b93b0f30239fc5e2411c15e015a8d069f9130f09bbc0",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T21:58:47.856Z"
+  },
+  {
+    "receipt_hash": "fa4ff5555f185a5a3222c4dc1978727bbb7c6d33a751db2d2ae6b2f11f19b805",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-06T23:25:22.245Z"
+  },
+  {
+    "receipt_hash": "6ae42f04ffdcac73fd2519efed8b15c54d75e1b95098c45dd4e1ef4b960dfbce",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T00:00:00.001Z"
+  },
+  {
+    "receipt_hash": "66cb6a15bd01af16d2b6dd1deb7b870dfbe6341ca3cd496583456924b66898a5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T00:51:56.634Z"
+  },
+  {
+    "receipt_hash": "1faec96c8d0525e74918c3bc8546d47cf56f0ea9e6977e0ecd8569bfd043b7f7",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T02:00:00.001Z"
+  },
+  {
+    "receipt_hash": "f1231b936965015d9650a79f47ce989019049f80e0837f60427bcfe139d16c42",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T02:18:31.023Z"
+  },
+  {
+    "receipt_hash": "19b4b3f8165d7b2435b4ae526e79733188c85692fe2d30a83d4ee8b622ff1eef",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T03:45:05.411Z"
+  },
+  {
+    "receipt_hash": "f947c0e95f1c695f1242de8a1fdf3e503c3f5fdfa73f6da83e29ee6c656e4aab",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T04:00:00.001Z"
+  },
+  {
+    "receipt_hash": "75eff8120e09476e27e5574a59114add1e636167488800fc9c0cafcdf6ca372d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T05:11:39.800Z"
+  },
+  {
+    "receipt_hash": "1f932d3394039cd2e6d61d4912deb03425a5cd59be54851c9be3ecaf38311391",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T06:00:00.001Z"
+  },
+  {
+    "receipt_hash": "4cd2249c3e40f2e2300c9f0b67c974afb968403663b13d30ef060a66e4c7d5d3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T06:38:14.189Z"
+  },
+  {
+    "receipt_hash": "835790570d93774450206bea5c476dbb151b0b1f69c80050631673586782092a",
+    "decision": "escalate",
+    "triggered_rules": [
+      "escalation_threshold"
+    ],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 2500000 meets escalation threshold 1000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T08:00:00.001Z"
+  },
+  {
+    "receipt_hash": "2d4a8d9b1768c271056fe27a7d0cf019d629b58ee3a2ce655f3af8fed96c6909",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T08:04:48.578Z"
+  },
+  {
+    "receipt_hash": "91f0ccd07c38c50528e7225c5a1d3b133f19952093b7d546189bddfd439071a3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T09:31:22.966Z"
+  },
+  {
+    "receipt_hash": "374db9f8721a5570f8ed5781cd7e5fb84c802207f1ea60d3758e1a4b7b476592",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T10:57:57.355Z"
+  },
+  {
+    "receipt_hash": "3e35fbea4d5a301de71087fda7ea8a0c1e930dcde3c52a04c19904c74d958b7e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T12:24:31.744Z"
+  },
+  {
+    "receipt_hash": "df5fdcd9a403dc5f364e8c4fff93c9bdb7c1a9db56e9729ccf68eb565cd70972",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T13:51:06.133Z"
+  },
+  {
+    "receipt_hash": "f9dcf49831b9b3ac247695030b8e637641841278f7655d118e1dbee7b3a54941",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T15:17:40.522Z"
+  },
+  {
+    "receipt_hash": "72acc99ae357d0fb326f56a0fef642c3a2ffdbb9dc2983b89b2a375ae912ba86",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T16:44:14.910Z"
+  },
+  {
+    "receipt_hash": "1fdb0cbc8d1fd1bfea86d278f2c8e91da6a90790c1dddae5027b89c001a57b40",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T18:10:49.299Z"
+  },
+  {
+    "receipt_hash": "1d0cf392e6f94a60298a9eba094f79542b84d1641b2f16155149e3fe68bfbbae",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 20453666 in window utc_day exceeds threshold 20000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T19:37:23.688Z"
+  },
+  {
+    "receipt_hash": "680d2f7d62bc8f62507fa9c2a3a47a592f7f325036e0bf9354621a34e2687ffa",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 20696637 in window utc_day exceeds threshold 20000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T21:03:58.077Z"
+  },
+  {
+    "receipt_hash": "465a05e0abf4ca0b0038896363a48e32e2e27671d6cbcd30214d31b3d5385223",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 20700181 in window utc_day exceeds threshold 20000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T22:30:32.465Z"
+  },
+  {
+    "receipt_hash": "ceb5e8fb9a0d20efde777b9d3e26be4c8dc7a651bc45623487586b49c30d9222",
+    "decision": "deny",
+    "triggered_rules": [
+      "daily_limit"
+    ],
+    "reasons": [
+      "DAILY_LIMIT: cumulative amount 21464963 in window utc_day exceeds threshold 20000000"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-07T23:57:06.854Z"
+  },
+  {
+    "receipt_hash": "adeedb5ad4e6c01f5ef42d11b45aa41a0c3064f194daa362816dabf69316a8f8",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T01:23:41.243Z"
+  },
+  {
+    "receipt_hash": "131b67b3d95c0b17086c925301d6293b4cc4945cb78ed5554e975afdc52d4400",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T02:50:15.632Z"
+  },
+  {
+    "receipt_hash": "eae6947f2fb7820f9861dd2ad6d105b50ed162ea8138310644c2a3ee03ff4809",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T04:16:50.021Z"
+  },
+  {
+    "receipt_hash": "a2b97fbb89a13de2c4e6dee724bf6384669fd67ef7dddb79a8c3f43f1b7ddb3a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T05:43:24.409Z"
+  },
+  {
+    "receipt_hash": "ec2277d1980abb2c6f07a26004d07554d774902128dd3b3eb11cb2184a8e3495",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T07:09:58.798Z"
+  },
+  {
+    "receipt_hash": "11e8e4ad642c4583fa2a94ee33fc1e66c0167efa77f1e84d5b2ffcba77d973d0",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T08:36:33.187Z"
+  },
+  {
+    "receipt_hash": "4540655f28daeca0f3825123703697fa227ff942b36a5bd3b2fe14dc7b2b56e7",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T10:03:07.576Z"
+  },
+  {
+    "receipt_hash": "23da4007d673094f0d6c4840cd97bac5258b01aff1fcf7503727e2592774b4de",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T11:29:41.964Z"
+  },
+  {
+    "receipt_hash": "0911472a147e0437cae81a04f685d06a3b7fa7c6a1b3d3d9e1840856947d1d61",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T12:56:16.353Z"
+  },
+  {
+    "receipt_hash": "cfcef4c940843934bd71cc3d708c0d1f071be656740c47b4b1f1e92ed44a815e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T14:22:50.742Z"
+  },
+  {
+    "receipt_hash": "32b7ead62cf96f9960f50b8b015935b96a3acbde35936578742ec23d5ed61f12",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T15:49:25.131Z"
+  },
+  {
+    "receipt_hash": "e477d05a3039fbb46ddf8db1852e95c2f21eccb41a450ffe39c3013c3b2b16da",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T17:15:59.520Z"
+  },
+  {
+    "receipt_hash": "3a06cc4d35a630b340505d1653c68c11d148f5cbfd2e0643b7613eac816bd231",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T18:42:33.908Z"
+  },
+  {
+    "receipt_hash": "af2afa5862503585820b6f613ffeab0f9e4a121c60a933a1904900a007aac614",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T20:09:08.297Z"
+  },
+  {
+    "receipt_hash": "a3686b74fd6c8697049cb6b191439820058ad5eec8f457031333858333191cd1",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T21:35:42.686Z"
+  },
+  {
+    "receipt_hash": "06ca9dd613f8c929145d15a74a3146011bc12a81efe85d7ff0ee7965d441d624",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-08T23:02:17.075Z"
+  },
+  {
+    "receipt_hash": "697c4c5264c1bca10581bb8b4c6f65f4c7981a1288260b071021e40dab5436be",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T00:28:51.463Z"
+  },
+  {
+    "receipt_hash": "ea93d9e10dd61ad238ebae29d9fe645a33ccb7c57bd4d9cc59839bbd01a748e5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T01:55:25.852Z"
+  },
+  {
+    "receipt_hash": "c986dc4a627f14641f45e63e367adecd842defaced161f146c6ae6ee57371d38",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T03:22:00.241Z"
+  },
+  {
+    "receipt_hash": "e9b582b3369ec6ed9a98d0c6ad611457cabaa8ffa53ed9826fe916a0a78c2e42",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T04:48:34.630Z"
+  },
+  {
+    "receipt_hash": "87aad9b8c31e85c00db903fb0afaf98d37ac73ebd5d4b62afa2fe683299c4525",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T06:15:09.019Z"
+  },
+  {
+    "receipt_hash": "13e2fe3c8731f7b9bb1d659de9ebf253a4ac21e63f6956603e0a93fe041ecb97",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T07:41:43.407Z"
+  },
+  {
+    "receipt_hash": "345017bb08bc5f3fa0ec8dbddc86690c88bf4b33d54d2e8fbfbbab298f06f4bb",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T09:08:17.796Z"
+  },
+  {
+    "receipt_hash": "ab8c765408738b44b7c8fb4d381a91b956ac0b7785e168c2116ee4faf13dc5b7",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T10:34:52.185Z"
+  },
+  {
+    "receipt_hash": "02614251202b1ddd058c3301be6dedf2135da5d539457d993f6b4f880408a680",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T12:01:26.574Z"
+  },
+  {
+    "receipt_hash": "01d111067e8805c8caa29a73bc490f7720890aa142c55b4639967195f5bfff24",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T13:28:00.962Z"
+  },
+  {
+    "receipt_hash": "365573b979a83ee549aee07fc1609aca7d05f2ca9a160ef6b41752034a08645e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T14:54:35.351Z"
+  },
+  {
+    "receipt_hash": "f5e3570e00c9dc5feea08cdcf3356f02e0fecce54bd7ef92c0194bf04150c2fb",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T16:21:09.740Z"
+  },
+  {
+    "receipt_hash": "f73f544c3af98a6e03da893618421b64bf3903ac65dc91a235d7047337cfe29e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T17:47:44.129Z"
+  },
+  {
+    "receipt_hash": "f36cb5526722a9d883db546a475bfbe7834376d5bc703cd945a85f8a4353158b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T19:14:18.518Z"
+  },
+  {
+    "receipt_hash": "fc36c463316c6037ae06e646d6a111d6ee3e0d4ff23971b74cc1049822407a4f",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T20:40:52.906Z"
+  },
+  {
+    "receipt_hash": "15a8ac10dacb9e56abe47a6b7266160b7bffdd1d52e9dcb361fb46334b13e560",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T22:07:27.295Z"
+  },
+  {
+    "receipt_hash": "d6ba03f71c7f85677943d8f0d310c78eaa46e002891aab6ecb5f00aee30919ba",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-09T23:34:01.684Z"
+  },
+  {
+    "receipt_hash": "cbaa562c07c6e936716c626077508db4652eb639773a8bf9235927144da369ec",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T01:00:36.073Z"
+  },
+  {
+    "receipt_hash": "d1515a1123cdb492a2d034135b2530c207836c9ab8fc8fa0de48473e7c1e8d62",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T02:27:10.461Z"
+  },
+  {
+    "receipt_hash": "1fa8facdcd839b125ddd8c8833b2a674164facfd139001708723aa3cb5154e00",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T03:53:44.850Z"
+  },
+  {
+    "receipt_hash": "3c7cbfbf12b610e3b5f249e5943237ba29a2760df5df00736b482be740f746b5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T05:20:19.239Z"
+  },
+  {
+    "receipt_hash": "254bae2da6459bf45cee30a0cf3941c33c328be5862a07a1f268bd742bbc537b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T06:46:53.628Z"
+  },
+  {
+    "receipt_hash": "f10fff4da8ea299989f2966ce59c673b35a37febb2a22dcaaa54e9f1e95536fb",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T08:13:28.017Z"
+  },
+  {
+    "receipt_hash": "ed1628428d70d2d8d6146c4842644c449059f10eefad3c2639fdaf8698eacc56",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T09:40:02.405Z"
+  },
+  {
+    "receipt_hash": "c851f30684c0816ddb78c461bed35a1af8b7f1f5d0a7b3030eec73a3f0652180",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T11:06:36.794Z"
+  },
+  {
+    "receipt_hash": "b47c19a586845a763136f0959b855f7f84df15352c6919d24d1fdb7354422aa2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T12:33:11.183Z"
+  },
+  {
+    "receipt_hash": "a0de8165b6cee64180723f2cb38b1f67e63ff6a584180fd6df3327079a588a35",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T13:59:45.572Z"
+  },
+  {
+    "receipt_hash": "84a8a01dbe5b17e7ce63734b62081c297bfb0d949b7c947891dd774deb3538e7",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T15:26:19.960Z"
+  },
+  {
+    "receipt_hash": "5bf7b1fb6eac24126dbd9f4f32bb1682a396a6fec770305a3542fc4824d5ee6d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T16:52:54.349Z"
+  },
+  {
+    "receipt_hash": "27d6204067cb14720d80f25f7110b5848a8e9524050d44ab7aa410c5931896f7",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T18:19:28.738Z"
+  },
+  {
+    "receipt_hash": "1be125f9e4230ce71bd634f6aa5fdfe368a46cdc753ea616104ca2b67897b148",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T19:46:03.127Z"
+  },
+  {
+    "receipt_hash": "7c019b9eeb3e3e8201383a2fda1ca25e06cd7479fdf16db39379a833db17f591",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T21:12:37.516Z"
+  },
+  {
+    "receipt_hash": "958ba1310ac766c2553fbeeb0b3e95171759174a967d51e2dfedf343d0c670e0",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-10T22:39:11.904Z"
+  },
+  {
+    "receipt_hash": "a888b499a3b3be7cf68f443dac8a5d669e47d607f41f73ba849ef5990180f433",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T00:05:46.293Z"
+  },
+  {
+    "receipt_hash": "5b4dc55678bcbbb146481c9a2b6d3896161fed23473be1f6ff2b058c1cf3874a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T01:32:20.682Z"
+  },
+  {
+    "receipt_hash": "5a0c6a17f47a4470e006c60806089d20f79263d9f29a68b5b83c4dd593b8c75a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T02:58:55.071Z"
+  },
+  {
+    "receipt_hash": "99867582084e40636490f9183136dd3ba4912c65e08b2860af35268ebef2d406",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T04:25:29.459Z"
+  },
+  {
+    "receipt_hash": "a5e1dfd430b5612baf8d6500f9223d26a7817c27446933bec8353a66b7e074fa",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T05:52:03.848Z"
+  },
+  {
+    "receipt_hash": "717bc0a2850de74fc6b440baeb1a099ab7cdd761909fa46628f447a34e80157a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T07:18:38.237Z"
+  },
+  {
+    "receipt_hash": "dd44cff5a9a5fd707b90d08b6d29db5cb00d6e0c38de05d7047772c9eba0213e",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T08:45:12.626Z"
+  },
+  {
+    "receipt_hash": "fea4a145a200b666e080685e77f014230f8b07e70e8d86630d841c8ad0876162",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T10:11:47.015Z"
+  },
+  {
+    "receipt_hash": "019643be4da8c6803b822acf94ca4253a749355082c591cb5bde13bd10a03aeb",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T11:38:21.403Z"
+  },
+  {
+    "receipt_hash": "c7efea6ab6eaa352564adfa71e5d3d07a7368ae6b10f57e98ae1c177f06ce93f",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T13:04:55.792Z"
+  },
+  {
+    "receipt_hash": "79daeae2c61663fc4eb79643f83a877541de247d8a9e30c1cb6fc3d1704d86c3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T14:31:30.181Z"
+  },
+  {
+    "receipt_hash": "7d1f4b7dc984a14d9177c89e1056cfd2e952fbecb6e7eef3d0572e29d1be87fb",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T15:58:04.570Z"
+  },
+  {
+    "receipt_hash": "8fc9b41779b441ce58f3f5758b54cea4ec8461053199a1ecf44e71eb459e1a63",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T17:24:38.958Z"
+  },
+  {
+    "receipt_hash": "034da7e9af62e418e18d98b8d1e80c5cc538acf030a699b53efc1a5ee12c2b58",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T18:51:13.347Z"
+  },
+  {
+    "receipt_hash": "4b635f5ff3dbd817766a6eda2952f2583ea40596b692507fbf08b0f778564cfe",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T20:17:47.736Z"
+  },
+  {
+    "receipt_hash": "846d8ebad92905e020dc3b3b529d05c8f6f6b7ac3a0b58263f0438ee0738e2cd",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T21:44:22.125Z"
+  },
+  {
+    "receipt_hash": "13c13f2fbeafa7bba3e37a85b81ad5051004b1842a541d4290a1df919001a6f9",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-11T23:10:56.514Z"
+  },
+  {
+    "receipt_hash": "c26fa2c78cc6af704474bb91329fdc45386757c9bd9941a4dda63098af84433b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T00:37:30.902Z"
+  },
+  {
+    "receipt_hash": "f714677c3ccc07e47d587eaa52fa89016524c22dea1d2e12688d71d09afaa18f",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T02:04:05.291Z"
+  },
+  {
+    "receipt_hash": "ef1c78cf4043b936443f8cda188ed9c61610b5566eb481069065191c56780fcc",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T03:30:39.680Z"
+  },
+  {
+    "receipt_hash": "33933040a5731e9b216eeaaf1cf1c9514595e1a126a93e830f6177e950488e3c",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T04:57:14.069Z"
+  },
+  {
+    "receipt_hash": "b1ab7b6af06a03279af5096ccd05ca8227b9ce05c08cfbf757523e5b4630e5a2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T06:23:48.457Z"
+  },
+  {
+    "receipt_hash": "f3ba6bd472b307f47f515263e7eba18392725c09b02bbcfab842e1381f0bd640",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T07:50:22.846Z"
+  },
+  {
+    "receipt_hash": "427575fe5c8c61471ca39d19314bbdde423988c9ff085321ee50490f9a897e1f",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T09:16:57.235Z"
+  },
+  {
+    "receipt_hash": "69f78fb9edff2833ac1b239d80c5523bb58bb069965146dfbc73032878eb1f9a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T10:43:31.624Z"
+  },
+  {
+    "receipt_hash": "1810157d70afc339cc3fa9e936c6f031728ed8e3f0798f5a27cf1049242380fc",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T12:10:06.013Z"
+  },
+  {
+    "receipt_hash": "9ded9e7b1cb234c44808d9ed4bd02d54e8af148b1cbbfa9fd4b31a4716f8c0e5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T13:36:40.401Z"
+  },
+  {
+    "receipt_hash": "14fd196ad4427d4d84df65f9ecd6266c4fecc603295bdd25112ea879010ecd16",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T15:03:14.790Z"
+  },
+  {
+    "receipt_hash": "715b27c293dc9bd23cb6e387c3e539c447ae79afd0e1a35252a20bf009869897",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T16:29:49.179Z"
+  },
+  {
+    "receipt_hash": "5553b3853470aaa5a8a57923a90c61001434d90cbeb25985233a62bd1643d662",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T17:56:23.568Z"
+  },
+  {
+    "receipt_hash": "94ae8392c3bb43720858b6fde230e6a8eb369d93d4b3b3226a0e578d83e54afb",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T19:22:57.956Z"
+  },
+  {
+    "receipt_hash": "d21f885b4eceae4ae92a573b843f116d9ddf386e3f949aa771351c6325ea5830",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T20:49:32.345Z"
+  },
+  {
+    "receipt_hash": "1c2b0d3be2001ae931a5067416e72b1922553ef80a4019425f9583d4e14b976e",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T22:16:06.734Z"
+  },
+  {
+    "receipt_hash": "7f98a6e1f5dc8f93f90dbd809c7fca6fe9b9aa7a5c0e0c30e9885535d48ec3a2",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-12T23:42:41.123Z"
+  },
+  {
+    "receipt_hash": "61a980c789f064cbcf6d0a92cc8c0c64ac0987c587e4de32f6cd190a316a8d30",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T01:09:15.512Z"
+  },
+  {
+    "receipt_hash": "325c317035b57de172cdbe001a4bddab0a37a34c7660e7b3dea10aa73a003a80",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T02:35:49.900Z"
+  },
+  {
+    "receipt_hash": "2448a99dc590437295426c6335e3b90590e149c305906d4510b30e0829603a79",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T04:02:24.289Z"
+  },
+  {
+    "receipt_hash": "d05fc026b71a7b17642d1238e4730f893685e4eec402e9937f9958752adc92dc",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T05:28:58.678Z"
+  },
+  {
+    "receipt_hash": "24c042333fd6be922df325aa2f7a6c739aba9b0416218a24b6978a3f757f1a62",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T06:55:33.067Z"
+  },
+  {
+    "receipt_hash": "38b0f51c7f52c92b4ee0508f0fee308110e02f1e53792e2039e25cfd47d7ac46",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T08:22:07.455Z"
+  },
+  {
+    "receipt_hash": "5dcdc112c8b944668fe412aa17c0f0a6478ca86d9b567867b52855a7e7ae4f8d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T09:48:41.844Z"
+  },
+  {
+    "receipt_hash": "7c923740fd651b7f3432543ca6cea009843b99f0b511955b3857e7df37b573ec",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T11:15:16.233Z"
+  },
+  {
+    "receipt_hash": "c97e5a73f3be9a924f86af16acef26e9a2ae80b3a7e7fea6faff79affc04dc2a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T12:41:50.622Z"
+  },
+  {
+    "receipt_hash": "b2eb782d537744bc720ef6165d91f8e4d12b9bbece7b6a1b8d2c54a7de5e7c7d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T14:08:25.011Z"
+  },
+  {
+    "receipt_hash": "51e856b667b5ebf9c6b05cf4055399b0c134d321f0f34ec4d956506bb274843e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T15:34:59.399Z"
+  },
+  {
+    "receipt_hash": "133b47ddc0b2315484f8031d2c099563990ba02a1ca0acdcf6985c959ce6aebf",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T17:01:33.788Z"
+  },
+  {
+    "receipt_hash": "09bc6c9f6c0973bb2a9f0ee8f88a8f0e9330a0d998709dc66e24122322714262",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T18:28:08.177Z"
+  },
+  {
+    "receipt_hash": "bad16f07d1a52e746488a1430ab1f9dfa6bdb315415a541c58f052ce0245b686",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T19:54:42.566Z"
+  },
+  {
+    "receipt_hash": "7f0016988f13a0216cfafa8b83f1d1ea3a9caa66c767068e3debef27cb327097",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T21:21:16.954Z"
+  },
+  {
+    "receipt_hash": "4dfdf1ded31eece10d51543379273256fdf7111cbf12421e8c71b5e21c6faa73",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-13T22:47:51.343Z"
+  },
+  {
+    "receipt_hash": "d24c2be3cec9e33e6a0d0869d6be5eefe3bc31f3b05ef22dd49852615fe3816f",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T00:14:25.732Z"
+  },
+  {
+    "receipt_hash": "3755f3f5f0039eabc97f5d791f113fe6237deb222c66f00ebef2f0e17762651d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T01:41:00.121Z"
+  },
+  {
+    "receipt_hash": "0c607978c196bc6100e74440e181e8bb969e68f3b4c77a7ce29a3c68359ca870",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T03:07:34.510Z"
+  },
+  {
+    "receipt_hash": "a70a03bfa4b27370c1380b537cd1b76f51fa3e248d90d268f874c5084373091a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T04:34:08.898Z"
+  },
+  {
+    "receipt_hash": "3b62c99339389b84e7b9d900285f36d624038f0ff3e1f006eef8ff95c929c023",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T06:00:43.287Z"
+  },
+  {
+    "receipt_hash": "dfdcea2312ec8e0e9ef9153ff41989d3b3240cba4cef0693221560c4c416511d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T07:27:17.676Z"
+  },
+  {
+    "receipt_hash": "a1ea8dce5879ec2e77507fe410726e87c9d1b7fceccaaff581f60640b2f0e2a1",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T08:53:52.065Z"
+  },
+  {
+    "receipt_hash": "860fde352808614b856baca0e23aa9dcd6dd89cd1949b1432228be76015f7f68",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T10:20:26.453Z"
+  },
+  {
+    "receipt_hash": "7707bbc32b6555c00f399918f6c4f6f24c747a679fc000d75ed8a7ddc0e9b404",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T11:47:00.842Z"
+  },
+  {
+    "receipt_hash": "9730244adccd883c80a5c5b4b2d8a9fc70d772a642a0c91d0232afffc6b75ea3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T13:13:35.231Z"
+  },
+  {
+    "receipt_hash": "28fbaa6a405a06027ce42119944775a967bc93ff185b03d22809068652f6f943",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T14:40:09.620Z"
+  },
+  {
+    "receipt_hash": "bbff38ffc905f0ec7585ef759204fe889992d692374dea1084c04eeb3b2bbb8f",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T16:06:44.009Z"
+  },
+  {
+    "receipt_hash": "755d2b05d7bb7cb16412d3525e08e3082df301fd6334aede5ff5071e53fed64f",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T17:33:18.397Z"
+  },
+  {
+    "receipt_hash": "1d895483f0a6b2e7dd8799d0ec8c0bb1ac8b060ca7ec5ce3f3db5490acadfbfb",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T18:59:52.786Z"
+  },
+  {
+    "receipt_hash": "16b62f5989e62e8d727d784d2783a128862b3515d49cea11086a6c242ebfacc7",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T20:26:27.175Z"
+  },
+  {
+    "receipt_hash": "85a0c66834ca67515cadb15f8bcd40ae8c878d6064c865d146e6a12c26c8f63e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T21:53:01.564Z"
+  },
+  {
+    "receipt_hash": "25bdcf62e11b8726e272355f7373804bb49dbadb9d13a5b9e691cf1357e686d0",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-14T23:19:35.952Z"
+  },
+  {
+    "receipt_hash": "6a222087f085bbe4b016f2f31ff2fd174d0a3b3e47cbbdf392bac3609c2a0bc4",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T00:46:10.341Z"
+  },
+  {
+    "receipt_hash": "3fabd98ddac264626ed8549f0a2a083926688a343845a62b653a15727746cdd3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T02:12:44.730Z"
+  },
+  {
+    "receipt_hash": "e7bebc61f992f57b96bc67e0c7644cb3f5582d23fbcd69303f497eb51d31c4c9",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T03:39:19.119Z"
+  },
+  {
+    "receipt_hash": "0eb0eaab5fc1b8f9ced4a5076dd3cae43b7e6e2a2161e4d0a797a14417527d43",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T05:05:53.508Z"
+  },
+  {
+    "receipt_hash": "bfae006937963bf902ca9327329fba6adf198c436c7ff680ff58108a554914a3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T06:32:27.896Z"
+  },
+  {
+    "receipt_hash": "8c440ba8b6543b93437311f0ad43d12f7ce4df7f709baf58abc0eb4d1ab9cbf3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T07:59:02.285Z"
+  },
+  {
+    "receipt_hash": "66f26715eaab2387eb99cacb4e6a00c700ac5e2a26412ee294112e04cbed977e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T09:25:36.674Z"
+  },
+  {
+    "receipt_hash": "99b720ac79eb1f8abe460bfd9bc677a4cc6f41de1f49d188a14555f747db6a08",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T10:52:11.063Z"
+  },
+  {
+    "receipt_hash": "dac05a9e4ca03d52381133c9b062cc54b7b82638a95c9584c60e02267a819b1c",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T12:18:45.451Z"
+  },
+  {
+    "receipt_hash": "c50b4643c7f222300c5bb48c18c9923c60cf5ffb989385587991bfe96ccfd91c",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T13:45:19.840Z"
+  },
+  {
+    "receipt_hash": "a2f719041375c8e38f0cce2e12ddec0f8cf67230e5309764d9707c7bda8e409b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T15:11:54.229Z"
+  },
+  {
+    "receipt_hash": "8d29ac0c8cb976cd75999c883aaa9a237510b0bba5ef445d33cd72934fa5422d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T16:38:28.618Z"
+  },
+  {
+    "receipt_hash": "ea804e8e15075a8ed49000395bd8719ef2a18eb9fe34ab32d0edf7fd42241957",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T18:05:03.007Z"
+  },
+  {
+    "receipt_hash": "a0bd53078c59a6e9ccef2db9a57db72afd6b6acf60d8ac949f009c415bfb126b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T19:31:37.395Z"
+  },
+  {
+    "receipt_hash": "f910c40882d381f3a0168082808b7d6a680946d17fd6bafa9a4d1d69b40cc479",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T20:58:11.784Z"
+  },
+  {
+    "receipt_hash": "651845c1785a4f157507b2114c66b54f2a8230dfe428414742451fc7330cd188",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T22:24:46.173Z"
+  },
+  {
+    "receipt_hash": "b97e43a60a97781e458521e6a9f9af44549c5aa37c9218bb943b46bf0129a012",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-15T23:51:20.562Z"
+  },
+  {
+    "receipt_hash": "1c29b9b539b7cd144e243a838ca9bfbd5857c9aabdcdc412b4c701d01a8d13b6",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T01:17:54.950Z"
+  },
+  {
+    "receipt_hash": "a365cb82140ab08a97ec14a8e39f10ec52e5124407e72a55f6fe7ec7fb9c21eb",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T02:44:29.339Z"
+  },
+  {
+    "receipt_hash": "058966338ca2dfaf60180339115ebd8005bc94a305c5d9fb570be46310f3a610",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T04:11:03.728Z"
+  },
+  {
+    "receipt_hash": "6037858ca38a3487825b071f478b6218100d88d20bb5a0c4262e6903f9005054",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T05:37:38.117Z"
+  },
+  {
+    "receipt_hash": "467ab4b895e69edbe83ec575c7b5e4378f0b1726892c35f959241be68e0954d5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T07:04:12.506Z"
+  },
+  {
+    "receipt_hash": "a71d4bc1133ace8fdadc46cdc011950d495473744cb3aa9f58767f4a7c7be253",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T08:30:46.894Z"
+  },
+  {
+    "receipt_hash": "c25c3cd0602c062956d6ebf4132c9a17ed0e24ece7345de2ab9f49af82bbd4a1",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T09:57:21.283Z"
+  },
+  {
+    "receipt_hash": "8732c3d43bc9cf6047b3ca88c3da4a35fb2d8669a0c6d0135f484fbb9fe40df6",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T11:23:55.672Z"
+  },
+  {
+    "receipt_hash": "ee315821adaff4f5f57bbaddfcc6b3c45efa841bcfcfc287dc198527280298ee",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T12:50:30.061Z"
+  },
+  {
+    "receipt_hash": "dc22b2257dff7df00cdbe383671582a79ea283f87aaef6e53cca1259b8c0992b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T14:17:04.449Z"
+  },
+  {
+    "receipt_hash": "471390d740961e32e39493c2db3e7dfa7020aeab2d441857069abae925e17d95",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T15:43:38.838Z"
+  },
+  {
+    "receipt_hash": "b2177fd25248ecb2d7d237ba77da1909e54927101ccdac19a0bc9c6b97c6a82d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T17:10:13.227Z"
+  },
+  {
+    "receipt_hash": "d0426d669eb599e59a2025592d5d9b9ae082c4e03addef7f817a49961dfefeea",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T18:36:47.616Z"
+  },
+  {
+    "receipt_hash": "455c4476a1a3499823edbbcf33424e0953be6ab34c8f5b7d039fb0178ecf1fa1",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T20:03:22.005Z"
+  },
+  {
+    "receipt_hash": "27164ae7cf9441019546cc560a7635a1e7688647f86475889e491786f5ac5953",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T21:29:56.393Z"
+  },
+  {
+    "receipt_hash": "f0f2efa700cfaa7d546d6aab54a569fce2feb5e5a325149ba1866b0149e24722",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-16T22:56:30.782Z"
+  },
+  {
+    "receipt_hash": "ca9491947619ab127c9caec23e78880913b5b734f15553eb97edd6b2f0b1501a",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T00:23:05.171Z"
+  },
+  {
+    "receipt_hash": "09977f4189480c92e6c74adfe4440650a8931fafd5b36e5aa26d368fdc09dea3",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T01:49:39.560Z"
+  },
+  {
+    "receipt_hash": "db5f36e65b7b93581d8ccb2893f03ccc7d7dc3f61d08bc1d696e8aa985c99c1d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T03:16:13.948Z"
+  },
+  {
+    "receipt_hash": "e831ae29ef2c14f70abe5611b2f69a0e465345c4e63f130e3405db1c799ee0f0",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T04:42:48.337Z"
+  },
+  {
+    "receipt_hash": "37595dbcb2fdc283d35edc5d9c8b61a5c97ec22869db03ced317f887602c237e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T06:09:22.726Z"
+  },
+  {
+    "receipt_hash": "473b340fa292afd596095527c5af1f0495ecf3f20830b3e3f170904e23f107c8",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T07:35:57.115Z"
+  },
+  {
+    "receipt_hash": "42bdebfe554e63acbe8a8ebabaa0d773c683de8feb034138afcaa1a107b6c896",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T09:02:31.504Z"
+  },
+  {
+    "receipt_hash": "225b4a18fd79b53a3b3ecb6bac747a7d9b4a06d01a1b3797a6a85c4a3c996c9d",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T10:29:05.892Z"
+  },
+  {
+    "receipt_hash": "707d19e55fd4b73fec453d02e8caa4babb16c289af94d7a621e73ce56310126e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T11:55:40.281Z"
+  },
+  {
+    "receipt_hash": "e62103161e6ab3c846295f1a9465bf54226334f6a4b133de09ce5fa58cfa5281",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T13:22:14.670Z"
+  },
+  {
+    "receipt_hash": "260c0635231ea72bb54017470f95897d7c764ecdde598f99dbfd3742283e642c",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T14:48:49.059Z"
+  },
+  {
+    "receipt_hash": "393b4ba8db751646751762286566cbb930f28ff397ea1993bd49fd64f400d3fc",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T16:15:23.447Z"
+  },
+  {
+    "receipt_hash": "a66f9aaf119fe3cf1c616f4f77bda3c7e7d9732ce36819eba648e1d25a933688",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T17:41:57.836Z"
+  },
+  {
+    "receipt_hash": "3eff9c7679400ce70e375bdf9a22d5fb117778fae2f43929b38bcb632db4a597",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T19:08:32.225Z"
+  },
+  {
+    "receipt_hash": "827792e95ce3fd9d0f5506e1e851c09f1cabe7b636dceb8a1ad3f81b1c93f54b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T20:35:06.614Z"
+  },
+  {
+    "receipt_hash": "1c0bb7ae1cbd7cb2e74cc9d7e9d1240a9264c094e983c6056b3441ece8c04df5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T22:01:41.003Z"
+  },
+  {
+    "receipt_hash": "f3c0656fc1096079436c0f2e0816c41449a4a37ee3a4437b379a303f6ba5a997",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-17T23:28:15.391Z"
+  },
+  {
+    "receipt_hash": "44c107125498df45e06c7d3f83d29e3fd6e8ebfce8a1949927d21c33f310e650",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T00:54:49.780Z"
+  },
+  {
+    "receipt_hash": "f7cef944fa9adbe9544ef2a6c6b1629f90dd20745af0b27a9b1ed482193c95ee",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T02:21:24.169Z"
+  },
+  {
+    "receipt_hash": "0a21c80cb22392cb3c9a5b5fe6a1a0a09d78239bd8c8099ca1f52c57e0e8203b",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T03:47:58.558Z"
+  },
+  {
+    "receipt_hash": "244a1a0f18b853a2efe119dcfce9581b332e0b85a93e94aaafeb5d9fe2cd3875",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T05:14:32.946Z"
+  },
+  {
+    "receipt_hash": "8f73aae61ef6f0c2a5738a6371a14b1e88e3b668755ce4e5058522eebab800b5",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T06:41:07.335Z"
+  },
+  {
+    "receipt_hash": "ef67177955dcf04e6768c594b07f8a24cb09c6d0fad4ba801bde7dc9b7730e6c",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T08:07:41.724Z"
+  },
+  {
+    "receipt_hash": "32311a995239f2566b12384edaa44b57ffd2d57d76f4c76794bb21dc4b2b22c6",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T09:34:16.113Z"
+  },
+  {
+    "receipt_hash": "fd23bdbb96fc6f8c60675b43f6a6a7c2d69feaf931045c540ae5a8af46c87c02",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T11:00:50.502Z"
+  },
+  {
+    "receipt_hash": "7b9434acfba32c6319dba221d5e306d9c4cc8d71749f157d964186a7b7e491fc",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T12:27:24.890Z"
+  },
+  {
+    "receipt_hash": "d254c631930e63d50e9a7cb65ae47ee540975808a6245e94da3d05c017b05736",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T13:53:59.279Z"
+  },
+  {
+    "receipt_hash": "92bb5a6f5198936ffc65827cfe5726801ad2d055a8d6f04c4e49a807a308aece",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T15:20:33.668Z"
+  },
+  {
+    "receipt_hash": "63b5dba45cf652b3f666229610e37a8623428cea58e8844ebbf0241a177d0a4e",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T16:47:08.057Z"
+  },
+  {
+    "receipt_hash": "28e7b81ce980827d8fc24deca7bb0c3a31dbfc6fc20e43d0f9baae143f23e066",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T18:13:42.445Z"
+  },
+  {
+    "receipt_hash": "e4bcd2bf303e8762cecc3aac780876491656038b641f3ea3f517395d38f73666",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T19:40:16.834Z"
+  },
+  {
+    "receipt_hash": "1a2ebe59e9c530b195a384239320c4ffa43a09ebe5730ddc2dc5f931150a3882",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T21:06:51.223Z"
+  },
+  {
+    "receipt_hash": "5104c4649b542e64fc603820cb1d62b5a563d8d825c14af609409ce3556a397a",
+    "decision": "escalate",
+    "triggered_rules": [
+      "tool_id_allowlist"
+    ],
+    "reasons": [
+      "TOOL_ID_ALLOWLIST: tool_id absent from receipt commitments"
+    ],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-18T22:33:25.612Z"
+  },
+  {
+    "receipt_hash": "bbefc7ee07d583506eb94c10a128962c5b029595826aea2fd4de20581b4bc305",
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": [],
+    "policy_version": "demo-policy-v1",
+    "evaluated_at": "2026-05-19T00:00:00.001Z"
+  }
+]

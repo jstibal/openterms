@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "seed": 5318008,
+  "workspace_id": "9b8c2a48-2f9a-4d3b-a3a3-3e0c1c1a8d31",
+  "count": 500,
+  "time_window": {
+    "start": "2026-04-19T00:00:00.000Z",
+    "end": "2026-05-19T00:00:00.000Z"
+  },
+  "keys": [
+    { "kid": "ot-corpus-2026a", "status": "active", "share": 0.95 },
+    { "kid": "ot-corpus-2025z", "status": "retired", "share": 0.05 }
+  ],
+  "issuer": "https://api.observe.openterms.com",
+  "agents": [
+    "acme-research-bot",
+    "polsia-summarizer",
+    "freight-pricing-agent",
+    "kestrel-deal-scout",
+    "north-star-fact-checker",
+    "octane-marketing-writer",
+    "halcyon-support-triager",
+    "ironclad-contract-reviewer"
+  ],
+  "tools_allowed": [
+    "requests.get",
+    "requests.post",
+    "stripe.charge",
+    "bigquery.query",
+    "google-search",
+    "internal.kv.read",
+    "internal.kv.write",
+    "openai.chat",
+    "anthropic.messages",
+    "filesystem.read",
+    "filesystem.write",
+    "shell.exec"
+  ],
+  "tools_off_list": [
+    "unknown.tool",
+    "experimental.alpha",
+    "vendor.legacy"
+  ],
+  "tool_debug": "internal.debug.dump",
+  "terms_urls_allowed": [
+    "https://terms.acme.com/standard",
+    "https://policies.example.com/v3",
+    "https://docs.openai.com/policies",
+    "https://stripe.com/legal/ssa",
+    "https://aws.amazon.com/service-terms/"
+  ],
+  "terms_url_off_list": "https://untrusted-vendor.example.org/terms",
+  "terms_url_blocked": "https://blocked.example.com/terms",
+  "buckets": {
+    "model_training": 20,
+    "max_amount": 20,
+    "url_off_list": 20,
+    "url_blocked": 15,
+    "args_debug": 10,
+    "daily_limit": 10,
+    "escalation_only": 20,
+    "tool_off_list": 15,
+    "post_state_mismatch": 15,
+    "stress": 5,
+    "allow": 350
+  },
+  "amounts": {
+    "max_amount_min": 5000001,
+    "max_amount_max": 9999999,
+    "stress_min": 6000000,
+    "stress_max": 8000000,
+    "daily_limit_per_receipt": 2500000,
+    "escalation_only_min": 1000000,
+    "escalation_only_max": 4999999,
+    "allow_max": 999999
+  },
+  "policy_v1": "policy_v1.json",
+  "policy_v2": "policy_v2.json"
+}

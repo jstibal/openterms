@@ -1,0 +1,828 @@
+[
+  {
+    "receipt_hash": "44b98d1c0e6ef4cf15a97927427e2977d1c99e5150a1d87d9f78cc5fe77d7af3",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "c5bf8c5c2a86c2e07790cd8e76abe0ddbd09db47f3bbca81aa622aee85242039",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "08189e4ae77fda77e8e0b290044760c0952947156733090959a0c4c3e60f4d6f",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "9a3b65d2c319f7096808bc838f92480633db4321fee1c1b0d022878f2373bc01",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "cef17a885f7166a59c94ddfa8fbeff9273f5d099ee16a37ecf36ef049e38924c",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "3bab291b1b4392c5ec79dbf539ff40c73d99113fec2cb62d53911c5633854dea",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "3b39d9ead62b1d55c2e9922b3ccddfb4fb9a558377c8a4b34c2324e5a0332a72",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "2bd73759ff8d123b527bb7e9fbde81d06dcbe03849392254c51fbbdc34c6fd88",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "30e8473a538f77fb272bf5962b8408f510f27da20a6d6fcb454ff5e170792b7f",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "ca9bffacf06017bdd8986e10649bb883da6107cd0c5e9031f281d5bcf75f49f6",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "296f037d3f10818827d7f197c48e3152225170a52df41ac8b81a158a35a84b56",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "f029a5d86e840d8a9bd3faad8a9e3918406fc95f12c9c05be901bae85982b199",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "c0bd9441bd7a339ad92086dd65b7d18287ea067b31d864b46dd5034f4fb75707",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "25bf77c1791cb22502f77a4725310b950fd1d6fb4540ab59c3902f9d9f843476",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "a30667e9b67d001de7ccd43e4224c2bb51673dff2199dbd1e0d595afdbd96c4f",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "907a469a38bef435475a6551527df7ea894b780d8ff909a1efb0dcf312a631ff",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "897218581c13ad68174ade40c7a7148c72371dd82d70434773c2774213e1fce7",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "c191dc0a4b40fed62c6e852a0cf23015d066ffccb0074debc68f25e792dd77a0",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "e49ea4edd8e8e9a9848aaccc1f1887b92f2426e4ecb96e21b91e678043a7f148",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "5f4bc728d94fc9b892cc8692c7a0ce6cd7fd6fde4338d2172e8da5b39efc786f",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "url_prefix_allowlist"
+      ]
+    },
+    "v2": {
+      "decision": "allow",
+      "triggered_rules": []
+    }
+  },
+  {
+    "receipt_hash": "690db0a02ab1821f526039746bd9ac82df6f02c73a7668e43ff866a356709c94",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "a552043c9511386ca795ee87cf040ba50bd2a1902c3b6d6eab70426659a86d73",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "9a4a6ccbc994263ad5d01f4c5af71d724a36689df2739026bc87eca6d8994aaa",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "02ab7d9cb980e19456cb9ab173b265fae48c5dc71e487837d33439237a3f5d96",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "ce8da03775ca1b2c95810e2c2f9e91f57f1e1db1b2380ea529262e743bd51c8a",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "9d9bd0c903b0392558429227da52e2fae66c3b5c4c96c2337bfc6e40f971ee81",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "efcc67ce5242962af6d4b76ec82104530b20671846c29c2c46483196e4dd7bb5",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "8a7db6c0415d2265bdaee3eebb9ba0d35b5d7a8e535dec5bd7aa423f173d99bb",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "c1d64290961c7d5ce73efa9a143dffe34a0511bd18d1f78606fdef3f25fd993d",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "754b2e347b59150b4b4ac79837494064b05508aaea3e6228090a738a083e2550",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "90c254f03352bfbe1c5abe4f52a524282288890f1d39cd589a741cb3832a7000",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "c451cb77181afc1f45cd4a7da0c8a7056cf07bab097d3af5e5ee6b1f9e72f74f",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "df706cc4767b2ab2139d64dd7cbc6d97cfb6252c092c47fcf6c7b5d594d6e2a2",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "180b41a6f53d29948ee73bd9ae4efce30bd91e27e717c8d693015aa1f8acc6b2",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "8853822fc3153e0778e82b6133b6ccfde960d2cf6c0db04980f0acb551c99344",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "b672dd912177ae1e1e990d1bc509ca9330ae8c6c4ba4c3b8406bc5fdd0d96edd",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "039971f2c186bbc60770f8ee8553dabdcbe1a0863ba23f4cb5606bd184fcfb60",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "eeeb180cc0e3490cbed5e441d7f6d316b186748b10d87c1fad374bbd063883e0",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "4749c6b911e219541ce9c9da10a49f77b24ae0f464218c480a22685583c66f23",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "0ebe9aba3ee2c59aaeeac357d1d2e30ec5a56d00ea65b4047b1dcc3f13674422",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "82a89e7568d54b41d7f1f89b7001a21b2cc78a1ce3c9dfb59648e6524fab446a",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "url_prefix_allowlist",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "c4a1fd8561f26aa4c90b775f0cd5fddd77929e8431d4788d4ad6b1080a94fff8",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "url_prefix_allowlist",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "4a59e2b35fa23feaef1a7519ccf2c57a456b8d71fe2b5ba480c8910075aa7ef0",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "url_prefix_allowlist",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "944396da57bce3c09ee5bf5fc244f65173219502821c22be6261498a701191ed",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "url_prefix_allowlist",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "59f44744900bfee7facb77d643f415c6ffa3311219f23ded1242d61c62fb9ed4",
+    "v1": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "url_prefix_allowlist",
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "daily_limit",
+        "action_type_allowlist",
+        "action_type_denylist",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "6ae42f04ffdcac73fd2519efed8b15c54d75e1b95098c45dd4e1ef4b960dfbce",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "1faec96c8d0525e74918c3bc8546d47cf56f0ea9e6977e0ecd8569bfd043b7f7",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "f947c0e95f1c695f1242de8a1fdf3e503c3f5fdfa73f6da83e29ee6c656e4aab",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "1f932d3394039cd2e6d61d4912deb03425a5cd59be54851c9be3ecaf38311391",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  },
+  {
+    "receipt_hash": "835790570d93774450206bea5c476dbb151b0b1f69c80050631673586782092a",
+    "v1": {
+      "decision": "escalate",
+      "triggered_rules": [
+        "escalation_threshold"
+      ]
+    },
+    "v2": {
+      "decision": "deny",
+      "triggered_rules": [
+        "max_amount",
+        "escalation_threshold"
+      ]
+    }
+  }
+]
