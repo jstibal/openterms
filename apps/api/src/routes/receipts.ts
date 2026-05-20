@@ -1,7 +1,14 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 
-import type { AppConfig } from '../config.js';
+import { getActivePolicy, type AppConfig } from '../config.js';
+import { evaluate } from '../core/policy.js';
+import type { Decision } from '../core/policy_types.js';
 import { verifyReceipt } from '../core/verify.js';
+import {
+  findDecisionByReceiptHash,
+  insertDecisionTx,
+  storedDecisionToApi,
+} from '../db/decisions.js';
 import {
   findByCanonicalHash,
   insertReceipt,
@@ -71,6 +78,37 @@ function validate(
   return { ok: true, receipt };
 }
 
+// Run the policy engine against the receipt under the active policy. The
+// engine is pure and only throws on malformed rule parameters or non-integer
+// receipt amounts. Catch those and surface as an ENGINE_ERROR placeholder
+// decision so receipt ingest is not blocked by a policy-author bug. Timeouts
+// are NOT errors here — they are legitimate deny+TIMEOUT decisions returned
+// from evaluate() and pass through unchanged.
+function evaluateOrPlaceholder(
+  receipt: Record<string, unknown>,
+  config: AppConfig,
+  log: FastifyRequest['log'],
+): Decision {
+  const policy = getActivePolicy(config);
+  try {
+    return evaluate(receipt, policy);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    log.error({ err: message, policy_version: policy.version }, 'policy engine error');
+    const evaluatedAt =
+      (typeof receipt.created_at === 'string' && receipt.created_at) ||
+      (typeof receipt.timestamp === 'string' && (receipt.timestamp as string)) ||
+      '1970-01-01T00:00:00Z';
+    return {
+      decision: 'deny',
+      triggered_rules: [],
+      reasons: [`ENGINE_ERROR: ${message}`],
+      policy_version: policy.version,
+      evaluated_at: evaluatedAt,
+    };
+  }
+}
+
 export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
   app.post('/v1/receipts/ingest', async (req: FastifyRequest, reply: FastifyReply) => {
     // TODO(auth): bearer token verification belongs here, before any body
@@ -108,12 +146,14 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
       if (priorHash && priorHash === receipt.canonical_hash) {
         const stored = await findByCanonicalHash(deps.pool, priorHash);
         if (stored) {
+          const existingDecision = await findDecisionByReceiptHash(deps.pool, priorHash);
           reply.status(200);
           return {
             hash: stored.canonical_hash,
             ingested_at: stored.ingested_at.toISOString(),
             duplicate: true,
             receipt: stored.raw_receipt,
+            ...(existingDecision ? { decision: storedDecisionToApi(existingDecision) } : {}),
           };
         }
       }
@@ -133,15 +173,54 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
       return errorBody(mapped.code, verifyMessage(mapped.code), details);
     }
 
-    const { stored, duplicate } = await insertReceipt(deps.pool, receipt);
+    // Single transaction: insert-receipt + insert-decision + record-idempotency.
+    // If any of the three throws, ROLLBACK so we never end up with a stored
+    // receipt without its associated decision (or vice versa).
+    // TODO(daily-limit-aggregates): when daily_limit rules become active, this
+    // is where we compute aggregates from the receipt log inside the same tx
+    // (likely SUM(...) FOR UPDATE on receipts) before calling evaluate().
+    const client = await deps.pool.connect();
+    let stored;
+    let duplicate;
+    let decisionForResponse: Decision | null = null;
+    try {
+      await client.query('BEGIN');
+      const ins = await insertReceipt(client, receipt);
+      stored = ins.stored;
+      duplicate = ins.duplicate;
 
-    if (idempKey) {
-      await recordIdempotencyKey(
-        deps.pool,
-        deps.config.workspaceId,
-        idempKey,
-        stored.canonical_hash,
-      );
+      if (!duplicate) {
+        const decision = evaluateOrPlaceholder(receipt, deps.config, req.log);
+        const { stored: storedDecision } = await insertDecisionTx(
+          client,
+          stored.canonical_hash,
+          deps.config.workspaceId,
+          decision,
+        );
+        decisionForResponse = storedDecisionToApi(storedDecision);
+      } else {
+        // Replay of a payload we ingested before — surface the prior decision.
+        const prior = await findDecisionByReceiptHash(client, stored.canonical_hash);
+        decisionForResponse = prior ? storedDecisionToApi(prior) : null;
+      }
+
+      if (idempKey) {
+        await recordIdempotencyKey(
+          client,
+          deps.config.workspaceId,
+          idempKey,
+          stored.canonical_hash,
+        );
+      }
+
+      await client.query('COMMIT');
+    } catch (err) {
+      await client.query('ROLLBACK').catch(() => {
+        // ignore; original error is what matters
+      });
+      throw err;
+    } finally {
+      client.release();
     }
 
     reply.status(duplicate ? 200 : 201);
@@ -150,6 +229,7 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
       ingested_at: stored.ingested_at.toISOString(),
       duplicate,
       receipt: stored.raw_receipt,
+      ...(decisionForResponse ? { decision: decisionForResponse } : {}),
     };
   });
 

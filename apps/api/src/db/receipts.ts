@@ -1,4 +1,6 @@
-import type { Pool } from 'pg';
+import type { Pool, PoolClient } from 'pg';
+
+export type Queryable = Pool | PoolClient;
 
 export interface StoredReceipt {
   canonical_hash: string;
@@ -84,11 +86,11 @@ RETURNING canonical_hash, raw_receipt, ingested_at
 `;
 
 export async function insertReceipt(
-  pool: Pool,
+  q: Queryable,
   receipt: Record<string, unknown>,
 ): Promise<{ stored: StoredReceipt; duplicate: boolean }> {
   const r = rowFromReceipt(receipt);
-  const result = await pool.query(INSERT_SQL, [
+  const result = await q.query(INSERT_SQL, [
     r.canonical_hash,
     r.signature,
     r.key_id,
@@ -126,16 +128,16 @@ export async function insertReceipt(
     };
   }
 
-  const existing = await findByCanonicalHash(pool, r.canonical_hash);
+  const existing = await findByCanonicalHash(q, r.canonical_hash);
   if (!existing) throw new Error('insert conflict but row not found');
   return { stored: existing, duplicate: true };
 }
 
 export async function findByCanonicalHash(
-  pool: Pool,
+  q: Queryable,
   canonicalHash: string,
 ): Promise<StoredReceipt | null> {
-  const result = await pool.query(
+  const result = await q.query(
     'SELECT canonical_hash, raw_receipt, ingested_at FROM receipts WHERE canonical_hash = $1',
     [canonicalHash],
   );
@@ -149,12 +151,12 @@ export async function findByCanonicalHash(
 }
 
 export async function recordIdempotencyKey(
-  pool: Pool,
+  q: Queryable,
   workspaceId: string,
   key: string,
   canonicalHash: string,
 ): Promise<void> {
-  await pool.query(
+  await q.query(
     `INSERT INTO idempotency_keys (workspace_id, idempotency_key, canonical_hash)
      VALUES ($1, $2, $3)
      ON CONFLICT DO NOTHING`,
@@ -163,11 +165,11 @@ export async function recordIdempotencyKey(
 }
 
 export async function lookupIdempotencyKey(
-  pool: Pool,
+  q: Queryable,
   workspaceId: string,
   key: string,
 ): Promise<string | null> {
-  const result = await pool.query(
+  const result = await q.query(
     'SELECT canonical_hash FROM idempotency_keys WHERE workspace_id = $1 AND idempotency_key = $2',
     [workspaceId, key],
   );

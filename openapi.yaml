@@ -1336,6 +1336,14 @@ components:
           description: True if this receipt was already ingested previously (returned unchanged).
         receipt:
           $ref: '#/components/schemas/SignedReceipt'
+        decision:
+          $ref: '#/components/schemas/Decision'
+          description: |
+            The engine decision computed at ingest time under the workspace's
+            active policy. Optional: omitted only if the engine errored before
+            producing a decision (the receipt is still stored and a placeholder
+            `deny` decision with an `ENGINE_ERROR` reason is recorded
+            server-side for operator alerting).
       required: [hash, ingested_at, duplicate, receipt]
 
     # ----- Decisions -----
