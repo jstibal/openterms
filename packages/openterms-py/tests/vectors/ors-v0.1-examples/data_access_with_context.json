@@ -1,0 +1,33 @@
+{
+  "_comment": "Data access with action_context, provider binding, and ors.commitments extension.",
+  "_note": "The signature is illustrative. Use verify.py with a live issuer JWKS to verify real receipts.",
+  "receipt_id": "550e8400-e29b-41d4-a716-446655440011",
+  "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+  "agent_id": "agent-beta",
+  "action_type": "data_access",
+  "terms_url": "https://data.example.com/terms",
+  "terms_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "timestamp": "2026-02-18T12:05:00.000Z",
+  "pricing_version": "2025-01",
+  "provider": {
+    "origin": "https://data.example.com",
+    "provider_id": "provider_data_001"
+  },
+  "action_context": {
+    "model": "gpt-5.2",
+    "endpoint": "/v1/query",
+    "token_count": 1840,
+    "dataset": "customer_orders",
+    "ors": {
+      "commitments": {
+        "tool_id": "data.query",
+        "args_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    }
+  },
+  "canonical_hash": "e5dff2aac4050d92e486761ab21682ea441c3f2e1d8d7d98ac3fd884bbb91d88",
+  "signature": "c2lnbmF0dXJlX2V4YW1wbGVfZGF0YV9hY2Nlc3M",
+  "key_id": "key_demo_01",
+  "amount_charged": 1000,
+  "created_at": "2026-02-18T12:05:00.120Z"
+}

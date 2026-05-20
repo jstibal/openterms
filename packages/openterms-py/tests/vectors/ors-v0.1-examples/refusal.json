@@ -1,0 +1,28 @@
+{
+  "_comment": "Refusal receipt. decision=declined provides negative evidence that an action was denied under a specific policy.",
+  "_note": "The signature is illustrative. Use verify.py with a live issuer JWKS to verify real receipts.",
+  "receipt_id": "550e8400-e29b-41d4-a716-446655440018",
+  "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+  "agent_id": "agent-guarded",
+  "action_type": "purchase",
+  "terms_url": "https://pay.example.com/terms",
+  "terms_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "timestamp": "2026-02-18T12:40:00.000Z",
+  "pricing_version": "2025-01",
+  "decision": "declined",
+  "action_context": {
+    "decline_reason": "policy_denied",
+    "policy_version": 12,
+    "requested_amount_minor": 10000000,
+    "ors": {
+      "commitments": {
+        "policy_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    }
+  },
+  "canonical_hash": "fb8855460eb74eb1e61aa2ea11153bdce609a6ab36c13f1c3b1e03d221d7cece",
+  "signature": "c2lnbmF0dXJlX2V4YW1wbGVfcmVmdXNhbA",
+  "key_id": "key_demo_02",
+  "amount_charged": 0,
+  "created_at": "2026-02-18T12:40:00.030Z"
+}

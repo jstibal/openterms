@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "OpenTerms Python SDK — ORS v0.1 canonicalization, signing, and ingest client."
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
+dependencies = ["cryptography>=42"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]

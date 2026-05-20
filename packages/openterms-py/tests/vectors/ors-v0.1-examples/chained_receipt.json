@@ -1,0 +1,28 @@
+{
+  "_comment": "Receipt with chain fields inside action_context.ors.chain for multi agent workflows.",
+  "_note": "The signature is illustrative. Use verify.py with a live issuer JWKS to verify real receipts.",
+  "receipt_id": "550e8400-e29b-41d4-a716-446655440014",
+  "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+  "agent_id": "agent-child",
+  "action_type": "api_call",
+  "terms_url": "https://api.example.com/terms",
+  "terms_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+  "timestamp": "2026-02-18T12:20:00.000Z",
+  "pricing_version": "2025-01",
+  "action_context": {
+    "endpoint": "/v1/do-thing",
+    "ors": {
+      "chain": {
+        "parent_receipt_id": "550e8400-e29b-41d4-a716-446655440013",
+        "chain_id": "chain_01HZYY8J8S0ZQ2",
+        "chain_depth": 1,
+        "originating_agent": "agent-orchestrator"
+      }
+    }
+  },
+  "canonical_hash": "fca04b5b2fe2697e4db248656045a41dbc565b34170d1758f2b13fcf27b0a8cf",
+  "signature": "c2lnbmF0dXJlX2V4YW1wbGVfY2hhaW4",
+  "key_id": "key_demo_02",
+  "amount_charged": 1000,
+  "created_at": "2026-02-18T12:20:00.060Z"
+}

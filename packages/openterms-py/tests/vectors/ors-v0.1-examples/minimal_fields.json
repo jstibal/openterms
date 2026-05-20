@@ -1,0 +1,17 @@
+{
+  "_comment": "Only required fields. No optional payload fields.",
+  "_note": "The signature is illustrative. Use verify.py with a live issuer JWKS to verify real receipts.",
+  "receipt_id": "550e8400-e29b-41d4-a716-446655440015",
+  "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+  "agent_id": "agent-min",
+  "action_type": "api_call",
+  "terms_url": "https://api.example.com/terms",
+  "terms_hash": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+  "timestamp": "2026-02-18T12:25:00.000Z",
+  "pricing_version": "2025-01",
+  "canonical_hash": "bba87d664decc239e481405cbddeada8aa12581efe43014ac4f42110d53b6498",
+  "signature": "c2lnbmF0dXJlX2V4YW1wbGVfbWluaW1hbA",
+  "key_id": "key_demo_01",
+  "amount_charged": 1000,
+  "created_at": "2026-02-18T12:25:00.020Z"
+}

@@ -1,0 +1,20 @@
+{
+  "receipt_id": "550e8400-e29b-41d4-a716-446655440012",
+  "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+  "agent_id": "my-agent-v2",
+  "action_type": "api_call",
+  "terms_type": "Privacy Policy",
+  "terms_service": "openai",
+  "terms_version": "2024-01-15",
+  "terms_url": "https://openai.com/policies/privacy-policy",
+  "terms_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "timestamp": "2026-04-01T12:00:00.000Z",
+  "pricing_version": "2025-01",
+  "amount_charged": 0,
+  "created_at": "2026-04-01T12:00:00.050Z",
+  "ors_version": "0.2",
+  "canonical_hash": "<sha256 of canonical payload>",
+  "signature": "<base64url ed25519 signature>",
+  "key_id": "key_abc123def456",
+  "_comment": "terms_type, terms_service, and terms_version are new optional signed fields in v0.2. All three are included in canonicalization and covered by the signature. A v0.1 verifier will still validate this receipt correctly because the domain separation prefix and signing algorithm are unchanged."
+}

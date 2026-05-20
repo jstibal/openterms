@@ -1,0 +1,35 @@
+{
+  "_comment": "Custom action type with issuer field for JWKS discovery, ors_version, and ors.commitments with pre/post state hashes.",
+  "_note": "The signature is illustrative. Use verify.py with a live issuer JWKS to verify real receipts.",
+  "receipt_id": "550e8400-e29b-41d4-a716-446655440013",
+  "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+  "agent_id": "agent-orchestrator",
+  "action_type": "custom",
+  "terms_url": "https://api.example.com/terms",
+  "terms_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "timestamp": "2026-02-18T12:15:00.000Z",
+  "pricing_version": "2025-01",
+  "issuer": "https://issuer.example",
+  "ors_version": "0.1",
+  "action_context": {
+    "workflow": "multi_step_enrichment",
+    "step": 3,
+    "inputs": {
+      "source": "crm",
+      "record_type": "lead"
+    },
+    "ors": {
+      "commitments": {
+        "tool_id": "enrich.lead",
+        "args_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "pre_state_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "post_state_hash": "2222222222222222222222222222222222222222222222222222222222222222"
+      }
+    }
+  },
+  "canonical_hash": "884e6352ecf1f329df8d4215690af7be5a82cc55b51d241525eb9463f85317ad",
+  "signature": "c2lnbmF0dXJlX2V4YW1wbGVfY3VzdG9t",
+  "key_id": "key_demo_02",
+  "amount_charged": 1000,
+  "created_at": "2026-02-18T12:15:00.050Z"
+}

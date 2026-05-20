@@ -1,0 +1,31 @@
+{
+  "_comment": "Receipt with request_binding for anti replay. Provider supplied a nonce and the agent committed to a request hash.",
+  "_note": "The signature is illustrative. Use verify.py with a live issuer JWKS to verify real receipts.",
+  "receipt_id": "550e8400-e29b-41d4-a716-446655440017",
+  "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+  "agent_id": "agent-request-bound",
+  "action_type": "api_call",
+  "terms_url": "https://api.example.com/terms",
+  "terms_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "timestamp": "2026-02-18T12:35:00.000Z",
+  "pricing_version": "2025-01",
+  "provider": {
+    "origin": "https://api.example.com"
+  },
+  "request_binding": {
+    "provider_nonce": "nonce_8j2kQm3xP9",
+    "request_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "binding_method": "both",
+    "expires_at": "2026-02-18T12:40:00.000Z"
+  },
+  "action_context": {
+    "endpoint": "/v1/charge",
+    "amount": 25,
+    "currency": "USD"
+  },
+  "canonical_hash": "690f310f0cdcd5cd21094d9cf4b389d2f81dae805067287ffc3aee5c4c746041",
+  "signature": "c2lnbmF0dXJlX2V4YW1wbGVfcmVxdWVzdA",
+  "key_id": "key_demo_03",
+  "amount_charged": 1000,
+  "created_at": "2026-02-18T12:35:00.080Z"
+}
