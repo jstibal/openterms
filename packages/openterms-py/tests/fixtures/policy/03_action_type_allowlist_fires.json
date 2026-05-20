@@ -1,0 +1,24 @@
+{
+  "name": "action_type_allowlist fires when receipt action_type is not in allow list",
+  "policy": {
+    "version": "fx-ata",
+    "rules": [
+      {
+        "id": "ata",
+        "type": "action_type_allowlist",
+        "outcome": "deny",
+        "parameters": {"allowed": ["api_call", "data_access"]}
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 50,
+    "action_type": "purchase",
+    "created_at": "2026-05-20T00:00:00Z"
+  },
+  "expected": {
+    "decision": "deny",
+    "triggered_rules": ["ata"],
+    "reasons": ["ACTION_TYPE_ALLOWLIST"]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "no rules fire — default allow with no triggered rules and no reasons",
+  "policy": {
+    "version": "fx-allow",
+    "rules": [
+      {
+        "id": "ma",
+        "type": "max_amount",
+        "outcome": "deny",
+        "parameters": {"threshold": 100000}
+      },
+      {
+        "id": "ata",
+        "type": "action_type_allowlist",
+        "outcome": "deny",
+        "parameters": {"allowed": ["api_call"]}
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 10,
+    "action_type": "api_call",
+    "created_at": "2026-05-20T00:00:00Z"
+  },
+  "expected": {
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": []
+  }
+}

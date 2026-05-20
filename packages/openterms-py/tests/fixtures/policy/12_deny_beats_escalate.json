@@ -1,0 +1,33 @@
+{
+  "name": "deny beats escalate when both rules fire; both reasons recorded",
+  "policy": {
+    "version": "fx-deny-vs-esc",
+    "rules": [
+      {
+        "id": "esc",
+        "type": "escalation_threshold",
+        "outcome": "escalate",
+        "parameters": {"threshold": 100}
+      },
+      {
+        "id": "atd",
+        "type": "action_type_denylist",
+        "outcome": "deny",
+        "parameters": {"denied": ["purchase"]}
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 500,
+    "action_type": "purchase",
+    "created_at": "2026-05-20T00:00:00Z"
+  },
+  "expected": {
+    "decision": "deny",
+    "triggered_rules": ["esc", "atd"],
+    "reasons": [
+      "ESCALATION_THRESHOLD: amount_charged 500",
+      "ACTION_TYPE_DENYLIST: action_type 'purchase'"
+    ]
+  }
+}

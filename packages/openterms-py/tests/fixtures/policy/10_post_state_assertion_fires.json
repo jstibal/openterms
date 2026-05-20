@@ -1,0 +1,33 @@
+{
+  "name": "post_state_assertion fires when post_state_hash does not match expected",
+  "policy": {
+    "version": "fx-psa",
+    "rules": [
+      {
+        "id": "psa",
+        "type": "post_state_assertion",
+        "outcome": "deny",
+        "parameters": {
+          "expected_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 0,
+    "action_type": "api_call",
+    "created_at": "2026-05-20T00:00:00Z",
+    "action_context": {
+      "ors": {
+        "commitments": {
+          "post_state_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    }
+  },
+  "expected": {
+    "decision": "deny",
+    "triggered_rules": ["psa"],
+    "reasons": ["POST_STATE_ASSERTION"]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "url_prefix_denylist fires when terms_url starts with a denied prefix",
+  "policy": {
+    "version": "fx-upd",
+    "rules": [
+      {
+        "id": "upd",
+        "type": "url_prefix_denylist",
+        "outcome": "deny",
+        "parameters": {"denied": ["https://evil.example/"]}
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 100,
+    "action_type": "api_call",
+    "terms_url": "https://evil.example/path",
+    "created_at": "2026-05-20T00:00:00Z"
+  },
+  "expected": {
+    "decision": "deny",
+    "triggered_rules": ["upd"],
+    "reasons": ["URL_PREFIX_DENYLIST: terms_url 'https://evil.example/path'"]
+  }
+}

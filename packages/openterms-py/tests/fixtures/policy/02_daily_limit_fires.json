@@ -1,0 +1,25 @@
+{
+  "name": "daily_limit fires when caller-supplied aggregate plus current receipt exceeds threshold",
+  "policy": {
+    "version": "fx-daily_limit",
+    "rules": [
+      {
+        "id": "dl",
+        "type": "daily_limit",
+        "outcome": "deny",
+        "parameters": {"threshold": 10000, "window": "utc_day"}
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 1500,
+    "action_type": "purchase",
+    "created_at": "2026-05-20T18:30:00Z"
+  },
+  "aggregates": {"dl": 9000},
+  "expected": {
+    "decision": "deny",
+    "triggered_rules": ["dl"],
+    "reasons": ["DAILY_LIMIT: cumulative amount 10500"]
+  }
+}

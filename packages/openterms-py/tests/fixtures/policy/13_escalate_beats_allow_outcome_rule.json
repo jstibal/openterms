@@ -1,0 +1,33 @@
+{
+  "name": "escalate beats an allow-outcome rule that also fires; both are recorded",
+  "policy": {
+    "version": "fx-esc-vs-allow",
+    "rules": [
+      {
+        "id": "flag_low",
+        "type": "max_amount",
+        "outcome": "allow",
+        "parameters": {"threshold": 0}
+      },
+      {
+        "id": "esc",
+        "type": "escalation_threshold",
+        "outcome": "escalate",
+        "parameters": {"threshold": 200}
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 300,
+    "action_type": "api_call",
+    "created_at": "2026-05-20T00:00:00Z"
+  },
+  "expected": {
+    "decision": "escalate",
+    "triggered_rules": ["flag_low", "esc"],
+    "reasons": [
+      "MAX_AMOUNT: amount_charged 300",
+      "ESCALATION_THRESHOLD: amount_charged 300 meets escalation threshold 200"
+    ]
+  }
+}

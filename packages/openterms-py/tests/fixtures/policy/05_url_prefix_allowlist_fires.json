@@ -1,0 +1,25 @@
+{
+  "name": "url_prefix_allowlist fires when terms_url does not match any allowed prefix",
+  "policy": {
+    "version": "fx-upa",
+    "rules": [
+      {
+        "id": "upa",
+        "type": "url_prefix_allowlist",
+        "outcome": "deny",
+        "parameters": {"allowed": ["https://acme.com/terms/"]}
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 100,
+    "action_type": "api_call",
+    "terms_url": "https://evil.example/x",
+    "created_at": "2026-05-20T00:00:00Z"
+  },
+  "expected": {
+    "decision": "deny",
+    "triggered_rules": ["upa"],
+    "reasons": ["URL_PREFIX_ALLOWLIST: terms_url 'https://evil.example/x'"]
+  }
+}

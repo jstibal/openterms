@@ -1,0 +1,27 @@
+{
+  "name": "tool_id_allowlist fires when receipt tool_id is not in allow list",
+  "policy": {
+    "version": "fx-tia",
+    "rules": [
+      {
+        "id": "tia",
+        "type": "tool_id_allowlist",
+        "outcome": "deny",
+        "parameters": {"allowed": ["safe.read", "safe.list"]}
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 0,
+    "action_type": "api_call",
+    "created_at": "2026-05-20T00:00:00Z",
+    "action_context": {
+      "ors": {"commitments": {"tool_id": "filesystem.delete"}}
+    }
+  },
+  "expected": {
+    "decision": "deny",
+    "triggered_rules": ["tia"],
+    "reasons": ["TOOL_ID_ALLOWLIST: tool_id 'filesystem.delete'"]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "escalation_threshold fires at the inclusive boundary and yields escalate",
+  "policy": {
+    "version": "fx-esc",
+    "rules": [
+      {
+        "id": "esc",
+        "type": "escalation_threshold",
+        "outcome": "escalate",
+        "parameters": {"threshold": 1000}
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 1000,
+    "action_type": "purchase",
+    "created_at": "2026-05-20T00:00:00Z"
+  },
+  "expected": {
+    "decision": "escalate",
+    "triggered_rules": ["esc"],
+    "reasons": ["ESCALATION_THRESHOLD: amount_charged 1000 meets escalation threshold 1000"]
+  }
+}

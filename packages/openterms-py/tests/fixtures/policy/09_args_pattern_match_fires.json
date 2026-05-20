@@ -1,0 +1,30 @@
+{
+  "name": "args_pattern_match fires on a glob match against action_context.target",
+  "policy": {
+    "version": "fx-apm",
+    "rules": [
+      {
+        "id": "apm",
+        "type": "args_pattern_match",
+        "outcome": "deny",
+        "parameters": {
+          "patterns": [
+            {"path": "action_context.target", "op": "glob", "value": "ssn-*"}
+          ],
+          "mode": "any"
+        }
+      }
+    ]
+  },
+  "receipt": {
+    "amount_charged": 0,
+    "action_type": "data_access",
+    "created_at": "2026-05-20T00:00:00Z",
+    "action_context": {"target": "ssn-987-65-4321"}
+  },
+  "expected": {
+    "decision": "deny",
+    "triggered_rules": ["apm"],
+    "reasons": ["ARGS_PATTERN_MATCH: pattern at action_context.target matched value 'ssn-*'"]
+  }
+}

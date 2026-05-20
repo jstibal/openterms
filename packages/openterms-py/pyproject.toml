@@ -7,7 +7,7 @@ license = { text = "Apache-2.0" }
 dependencies = ["cryptography>=42"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.5"]
+dev = ["pytest>=8", "ruff>=0.5", "coverage>=7"]
 
 [build-system]
 requires = ["setuptools>=68"]
