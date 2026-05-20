@@ -1,0 +1,109 @@
+[
+  {
+    "name": "vector-01-empty-object",
+    "description": "Empty object",
+    "input": {},
+    "expected_canonical": "{}",
+    "expected_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "name": "vector-02-single-field",
+    "description": "Single field",
+    "input": { "agent_id": "test" },
+    "expected_canonical": "{\"agent_id\":\"test\"}",
+    "expected_sha256": "b39da5a32bdcb9db8522b35e35a1cbe778add6d2c38e4e06f73ba5fc7e787b0f"
+  },
+  {
+    "name": "vector-03-key-sorting",
+    "description": "Key sorting",
+    "input": { "z": 1, "a": 2, "m": 3 },
+    "expected_canonical": "{\"a\":2,\"m\":3,\"z\":1}",
+    "expected_sha256": "ebba85cfdc0a724b6cc327ecc545faeb38b9fe02eca603b430eb872f5cf75370"
+  },
+  {
+    "name": "vector-04-null-stripping",
+    "description": "Null stripping",
+    "input": { "keep": "yes", "remove": null, "also_keep": 0 },
+    "expected_canonical": "{\"also_keep\":0,\"keep\":\"yes\"}",
+    "expected_sha256": "86ce4829dedbfd52caba57d01e174b09ebd0fb208e834c1a03d53ce17c41cb27"
+  },
+  {
+    "name": "vector-05-nested-key-sorting",
+    "description": "Nested key sorting",
+    "input": { "outer": { "z_inner": 1, "a_inner": 2 }, "alpha": "first" },
+    "expected_canonical": "{\"alpha\":\"first\",\"outer\":{\"a_inner\":2,\"z_inner\":1}}",
+    "expected_sha256": "1104756fd1871c899738458b3901f52c371d40f84df184cb180020f9daa0dae8"
+  },
+  {
+    "name": "vector-06-array-order-preserved",
+    "description": "Array order preserved (not sorted)",
+    "input": { "items": ["cherry", "apple", "banana"] },
+    "expected_canonical": "{\"items\":[\"cherry\",\"apple\",\"banana\"]}",
+    "expected_sha256": "be6e07c10acac4b2efde23a707d610987187891a592c7ac0e9bf87e051aed91c"
+  },
+  {
+    "name": "vector-07-nested-null-stripping",
+    "description": "Nested null stripping",
+    "input": { "a": { "b": null, "c": "keep" }, "d": null },
+    "expected_canonical": "{\"a\":{\"c\":\"keep\"}}",
+    "expected_sha256": "07be2d06df5c92a98f246dd1081d302ff033865cd1779bc681e34eea4f27f362"
+  },
+  {
+    "name": "vector-08-booleans-and-integers",
+    "description": "Booleans and integers",
+    "input": { "active": true, "count": 42, "disabled": false },
+    "expected_canonical": "{\"active\":true,\"count\":42,\"disabled\":false}",
+    "expected_sha256": "a3231349942960a33fe10a786e2d6a316a53ba78840b555197822bdc44b26ede"
+  },
+  {
+    "name": "vector-09-unicode-preservation",
+    "description": "Unicode preservation",
+    "input": { "name": "café", "city": "東京" },
+    "expected_canonical": "{\"city\":\"東京\",\"name\":\"café\"}",
+    "expected_sha256": "d1770062ec7e67f8a0bc88436d78d1deef491d23a35895353567960821bbabe2"
+  },
+  {
+    "name": "vector-10-empty-nested-structures",
+    "description": "Empty nested structures",
+    "input": { "empty_obj": {}, "empty_arr": [], "val": "x" },
+    "expected_canonical": "{\"empty_arr\":[],\"empty_obj\":{},\"val\":\"x\"}",
+    "expected_sha256": "f3c22e5ce7ed875bd8f652e1f9b22c1413d4adb44c3eee9399d00f384202db93"
+  },
+  {
+    "name": "vector-11-minimal-receipt-payload",
+    "description": "Minimal receipt payload (with signed envelope fields)",
+    "input": {
+      "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+      "agent_id": "agent-test",
+      "action_type": "api_call",
+      "terms_url": "https://example.com/terms",
+      "terms_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "timestamp": "2026-02-18T12:00:00.000Z",
+      "pricing_version": "2025-01",
+      "receipt_id": "550e8400-e29b-41d4-a716-446655440010",
+      "amount_charged": 1000,
+      "created_at": "2026-02-18T12:00:00.100Z"
+    },
+    "expected_canonical": "{\"action_type\":\"api_call\",\"agent_id\":\"agent-test\",\"amount_charged\":1000,\"created_at\":\"2026-02-18T12:00:00.100Z\",\"pricing_version\":\"2025-01\",\"receipt_id\":\"550e8400-e29b-41d4-a716-446655440010\",\"terms_hash\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"terms_url\":\"https://example.com/terms\",\"timestamp\":\"2026-02-18T12:00:00.000Z\",\"workspace_id\":\"550e8400-e29b-41d4-a716-446655440000\"}",
+    "expected_sha256": "d45c27f864cee471b9cf6fbd8e60c051ca69d36ecd7403a76b52d5946f3836eb"
+  },
+  {
+    "name": "vector-12-receipt-with-action-context",
+    "description": "Receipt payload with action_context",
+    "input": {
+      "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+      "agent_id": "agent-test",
+      "action_type": "data_access",
+      "terms_url": "https://example.com/terms",
+      "terms_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "timestamp": "2026-02-18T12:05:00.000Z",
+      "pricing_version": "2025-01",
+      "receipt_id": "550e8400-e29b-41d4-a716-446655440011",
+      "amount_charged": 0,
+      "created_at": "2026-02-18T12:05:00.050Z",
+      "action_context": { "model": "gpt-4", "tokens": 500 }
+    },
+    "expected_canonical": "{\"action_context\":{\"model\":\"gpt-4\",\"tokens\":500},\"action_type\":\"data_access\",\"agent_id\":\"agent-test\",\"amount_charged\":0,\"created_at\":\"2026-02-18T12:05:00.050Z\",\"pricing_version\":\"2025-01\",\"receipt_id\":\"550e8400-e29b-41d4-a716-446655440011\",\"terms_hash\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"terms_url\":\"https://example.com/terms\",\"timestamp\":\"2026-02-18T12:05:00.000Z\",\"workspace_id\":\"550e8400-e29b-41d4-a716-446655440000\"}",
+    "expected_sha256": "fb8d7798be17bbc6496cf5035a2c114e6cb78a1886e27a84616077e53767b852"
+  }
+]

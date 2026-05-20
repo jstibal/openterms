@@ -1,0 +1,26 @@
+[project]
+name = "openterms"
+version = "0.1.0"
+description = "OpenTerms Python SDK — ORS v0.1 canonicalization, signing, and ingest client."
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["openterms*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
