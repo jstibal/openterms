@@ -7,6 +7,7 @@ import { makeJwksLoader } from './jwks/source.js';
 import { registerDecisionRoutes } from './routes/decisions.js';
 import { registerReceiptRoutes } from './routes/receipts.js';
 import { registerReceiptQueryRoutes } from './routes/receipts_query.js';
+import { registerSimulateRoutes } from './routes/simulate.js';
 
 export async function buildServer() {
   const config = loadConfig();
@@ -16,6 +17,7 @@ export async function buildServer() {
   registerReceiptRoutes(app, { pool, config, loadJwks });
   registerReceiptQueryRoutes(app, { pool, config });
   registerDecisionRoutes(app, { pool, config });
+  registerSimulateRoutes(app, { pool, config });
   return { app, config, pool };
 }
 
