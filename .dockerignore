@@ -1,0 +1,36 @@
+# Cut everything we don't need from the build context. Smaller context =
+# faster `docker build` + no accidental leak of host-side files.
+
+.git
+.github
+.gitignore
+.vscode
+.idea
+node_modules
+**/node_modules
+**/dist
+**/.turbo
+**/.next
+**/__pycache__
+**/*.pyc
+
+# Python packages are not part of the API image. They publish to PyPI
+# separately from the Render service.
+packages/openterms-py
+packages/langchain-openterms
+packages/crewai-openterms
+
+# Tests, fixtures, docs — none are needed at runtime.
+**/tests
+**/test
+**/*.test.ts
+**/*.spec.ts
+tests/
+docs/
+*.md
+!README.md
+
+# Local env / secrets — never ship these to the build context.
+.env
+.env.*
+*.local

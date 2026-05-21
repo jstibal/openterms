@@ -1,0 +1,57 @@
+# Render Blueprint for openterms-trace staging.
+#
+# What this provisions:
+#   - A web service backed by the repo-root Dockerfile.
+#   - A Render-hosted Postgres instance for the receipts + decisions
+#     + workspaces + api_keys tables.
+#
+# Secrets (sync: false) must be set in the Render dashboard before the
+# first deploy. See DEPLOYMENT.md for the full list and how to generate
+# values for each one.
+
+databases:
+  - name: openterms-trace-pg
+    plan: starter
+    databaseName: openterms_trace
+    user: openterms_trace
+    ipAllowList: []   # private network only; the web service reaches it
+                      # over Render's internal network.
+
+services:
+  - type: web
+    name: openterms-trace-api
+    runtime: docker
+    plan: starter
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    # Run migrations before traffic shifts. A failed migration blocks the
+    # deploy — this is intentional. The migration runner is idempotent
+    # (CREATE IF NOT EXISTS), so reruns are safe.
+    preDeployCommand: node apps/api/dist/db/migrate.js && node apps/api/dist/scripts/seed-test-workspace.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: LOG_LEVEL
+        value: info
+      - key: DATABASE_URL
+        fromDatabase:
+          name: openterms-trace-pg
+          property: connectionString
+      # ---- secrets — populate via the dashboard ----
+      - key: WORKSPACE_ID
+        sync: false      # UUID of the seeded staging workspace
+      - key: API_KEY_SALT
+        sync: false      # high-entropy random string; rotation = re-issue keys
+      - key: JWKS_SOURCE
+        sync: false      # memory:<urlencoded-jwks-json> for staging
+      - key: ACTIVE_KEY_ID
+        sync: false      # kid of the signing key used by the service
+      - key: PRIVATE_KEY_JWK
+        sync: false      # Ed25519 private JWK as JSON string
+      - key: TEST_API_KEY
+        sync: false      # token seeded into api_keys for integration tests
+      - key: CORS_ORIGIN
+        value: "*"       # permissive in staging; tighten when dashboard ships

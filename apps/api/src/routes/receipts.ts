@@ -154,8 +154,10 @@ function evaluateOrPlaceholder(
 
 export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
   app.post('/v1/receipts/ingest', async (req: FastifyRequest, reply: FastifyReply) => {
-    // TODO(auth): bearer token verification belongs here, before any body
-    // parsing. Deferred to a later session; documented in apps/api/README.md.
+    // Auth: handled by the bearer-auth onRequest hook registered in
+    // server.ts. By this point req.workspaceId is set (or the dev fallback
+    // applied in non-production environments).
+    const workspaceId = req.workspaceId ?? deps.config.workspaceId;
 
     const validation = validate(req.body);
     if (!validation.ok) {
@@ -164,12 +166,12 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
     }
     const receipt = validation.receipt;
 
-    if (receipt.workspace_id !== deps.config.workspaceId) {
+    if (receipt.workspace_id !== workspaceId) {
       reply.status(400);
       return errorBody('VALIDATION_ERROR', 'workspace_id does not match this service instance', {
         field: 'workspace_id',
         received: receipt.workspace_id,
-        expected: deps.config.workspaceId,
+        expected: workspaceId,
       });
     }
 
@@ -177,7 +179,7 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
     const idempKey = typeof idempotencyKey === 'string' ? idempotencyKey : null;
 
     if (idempKey) {
-      const priorHash = await lookupIdempotencyKey(deps.pool, deps.config.workspaceId, idempKey);
+      const priorHash = await lookupIdempotencyKey(deps.pool, workspaceId, idempKey);
       if (priorHash && priorHash !== receipt.canonical_hash) {
         reply.status(409);
         return errorBody(
@@ -217,7 +219,7 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
       // failure here must not change the user-visible response.
       try {
         await recordVerificationError(deps.pool, {
-          workspaceId: deps.config.workspaceId,
+          workspaceId: workspaceId,
           claimedHash: typeof receipt.canonical_hash === 'string' ? receipt.canonical_hash : null,
           errorCode: result.error,
           details,
@@ -249,7 +251,7 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
           .map((r) => r.id);
         const aggregates = await computeDailyLimitAggregates(
           client,
-          deps.config.workspaceId,
+          workspaceId,
           typeof receipt.timestamp === 'string' ? receipt.timestamp : new Date().toISOString(),
           dailyLimitRuleIds,
         );
@@ -257,7 +259,7 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
         const { stored: storedDecision } = await insertDecisionTx(
           client,
           stored.canonical_hash,
-          deps.config.workspaceId,
+          workspaceId,
           decision,
         );
         decisionForResponse = storedDecisionToApi(storedDecision);
@@ -270,7 +272,7 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
       if (idempKey) {
         await recordIdempotencyKey(
           client,
-          deps.config.workspaceId,
+          workspaceId,
           idempKey,
           stored.canonical_hash,
         );
@@ -296,7 +298,6 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
     };
   });
 
-  app.get('/healthz', async () => ({ ok: true }));
 }
 
 function verifyMessage(code: string): string {

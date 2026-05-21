@@ -27,6 +27,7 @@ import { sha512 } from '@noble/hashes/sha2';
 import { canonicalHash, signingInput } from '@openterms/sdk';
 import type { Jwks } from '@openterms/sdk';
 import { registerReceiptRoutes } from '../src/routes/receipts.js';
+import { testConfig } from './_helpers/config.js';
 import { runMigrations } from '../src/db/migrate.js';
 import { MAX_AMOUNT_DEFAULT } from '../src/config.js';
 
@@ -100,13 +101,10 @@ describe.skipIf(!HAS_DB)('POST /v1/receipts/ingest — decision integration', ()
     app = Fastify({ logger: false });
     registerReceiptRoutes(app, {
       pool,
-      config: {
+      config: testConfig({
         databaseUrl: TEST_DATABASE_URL!,
-        jwksSource: 'memory:test',
         workspaceId: WORKSPACE_ID,
-        port: 0,
-        logLevel: 'silent',
-      },
+      }),
       loadJwks: async () => sharedJwks,
     });
     await app.ready();

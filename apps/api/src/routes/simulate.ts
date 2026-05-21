@@ -178,7 +178,8 @@ export function registerSimulateRoutes(app: FastifyInstance, deps: Deps): void {
     // requested [from, to] window — pre-window receipts read for
     // aggregate-state reconstruction (see simulation.ts) are an
     // implementation detail and don't influence the gate.
-    const inWindowCount = await countReceiptsInWindow(deps.pool, deps.config.workspaceId, from, to);
+    const workspaceId = req.workspaceId ?? deps.config.workspaceId;
+    const inWindowCount = await countReceiptsInWindow(deps.pool, workspaceId, from, to);
     if (inWindowCount > SYNC_THRESHOLD) {
       // Async path is stubbed — surface a clean 400 rather than silently
       // pretending to enqueue. When async lands, this branch enqueues a
@@ -192,7 +193,7 @@ export function registerSimulateRoutes(app: FastifyInstance, deps: Deps): void {
     }
 
     const result = await runSimulation(deps.pool, {
-      workspaceId: deps.config.workspaceId,
+      workspaceId,
       candidatePolicy,
       from,
       to,

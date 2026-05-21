@@ -12,8 +12,6 @@ interface Deps {
 }
 
 export function registerDecisionRoutes(app: FastifyInstance, deps: Deps): void {
-  // TODO(auth): workspace comes from the authenticated bearer token once auth
-  // lands. Until then we scope every query to deps.config.workspaceId.
   app.get('/v1/decisions', async (req: FastifyRequest, reply: FastifyReply) => {
     const parsed = parseDecisionQuery((req.query ?? {}) as Record<string, unknown>);
     if (!parsed.ok) {
@@ -22,9 +20,10 @@ export function registerDecisionRoutes(app: FastifyInstance, deps: Deps): void {
     }
     const { filters, limit, cursor } = parsed.value;
 
+    const workspaceId = req.workspaceId ?? deps.config.workspaceId;
     const { rows, next_cursor } = await listDecisions(
       deps.pool,
-      deps.config.workspaceId,
+      workspaceId,
       filters,
       cursor,
       limit,

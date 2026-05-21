@@ -20,6 +20,7 @@ import { registerReceiptRoutes } from '../src/routes/receipts.js';
 import { registerReceiptQueryRoutes } from '../src/routes/receipts_query.js';
 import { registerDecisionRoutes } from '../src/routes/decisions.js';
 import { runMigrations } from '../src/db/migrate.js';
+import { testConfig } from './_helpers/config.js';
 
 ed.etc.sha512Sync = (...m) => sha512(ed.etc.concatBytes(...m));
 
@@ -95,13 +96,10 @@ describe.skipIf(!HAS_DB)('corpus ingest + query integration', () => {
     pool = new pg.Pool({ connectionString: TEST_DATABASE_URL });
 
     app = Fastify({ logger: false });
-    const config = {
+    const config = testConfig({
       databaseUrl: TEST_DATABASE_URL!,
-      jwksSource: 'memory:test',
       workspaceId: WORKSPACE_ID,
-      port: 0,
-      logLevel: 'silent',
-    };
+    });
     registerReceiptRoutes(app, { pool, config, loadJwks: async () => JWKS });
     registerReceiptQueryRoutes(app, { pool, config });
     registerDecisionRoutes(app, { pool, config });

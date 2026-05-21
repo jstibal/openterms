@@ -6,7 +6,11 @@ export type IngestErrorCode =
   | 'SIGNATURE_INVALID'
   | 'UNKNOWN_ISSUER'
   | 'IDEMPOTENCY_KEY_CONFLICT'
-  | 'NOT_FOUND';
+  | 'NOT_FOUND'
+  | 'UNAUTHORIZED'
+  | 'INVALID_TOKEN'
+  | 'REVOKED'
+  | 'INTERNAL_ERROR';
 
 // Map the internal six-code verifier vocabulary to the API-surface vocabulary
 // from openapi.yaml. KEY_NOT_FOUND, UNSUPPORTED_KEY_TYPE, and INVALID_KEY_LENGTH

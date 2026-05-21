@@ -17,6 +17,8 @@
   "dependencies": {
     "@noble/ed25519": "^2.2.3",
     "@noble/hashes": "^1.7.1",
+    "@fastify/cors": "^10.0.1",
+    "@fastify/rate-limit": "^10.2.1",
     "@openterms/sdk": "*",
     "fastify": "^5.2.0",
     "pg": "^8.13.1"

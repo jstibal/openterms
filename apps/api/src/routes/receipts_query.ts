@@ -29,8 +29,6 @@ function receiptRowToApi(row: ReceiptRow) {
 }
 
 export function registerReceiptQueryRoutes(app: FastifyInstance, deps: Deps): void {
-  // TODO(auth): workspace comes from the authenticated bearer token once auth
-  // lands. Until then we scope every query to deps.config.workspaceId.
   app.get('/v1/receipts', async (req: FastifyRequest, reply: FastifyReply) => {
     const parsed = parseReceiptQuery((req.query ?? {}) as Record<string, unknown>);
     if (!parsed.ok) {
@@ -38,15 +36,16 @@ export function registerReceiptQueryRoutes(app: FastifyInstance, deps: Deps): vo
       return errorBody('VALIDATION_ERROR', parsed.error.message, { field: parsed.error.field });
     }
     const { filters, aggregate, limit, cursor } = parsed.value;
+    const workspaceId = req.workspaceId ?? deps.config.workspaceId;
 
     if (aggregate !== 'none') {
-      const agg = await aggregateReceipts(deps.pool, deps.config.workspaceId, filters, aggregate);
+      const agg = await aggregateReceipts(deps.pool, workspaceId, filters, aggregate);
       return agg;
     }
 
     const { rows, next_cursor } = await listReceipts(
       deps.pool,
-      deps.config.workspaceId,
+      workspaceId,
       filters,
       cursor,
       limit,
@@ -67,7 +66,8 @@ export function registerReceiptQueryRoutes(app: FastifyInstance, deps: Deps): vo
           field: 'hash',
         });
       }
-      const row = await findReceiptByHashWithDecision(deps.pool, deps.config.workspaceId, hash);
+      const workspaceId = req.workspaceId ?? deps.config.workspaceId;
+      const row = await findReceiptByHashWithDecision(deps.pool, workspaceId, hash);
       if (!row) {
         reply.status(404);
         return errorBody('NOT_FOUND', 'Receipt not found.', { hash });
