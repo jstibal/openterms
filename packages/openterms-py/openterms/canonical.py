@@ -65,6 +65,12 @@ PAYLOAD_KEYS_OPTIONAL = (
     "provider",
     "decision",
     "request_binding",
+    # ORS v0.2 optional signed fields. Pass-through only; canonicalization
+    # is unchanged. Matches the v0.2 pass-through list in the TS port
+    # (apps/api/src/core/canonical.ts → packages/openterms-ts/src/canonical.ts).
+    "terms_type",
+    "terms_service",
+    "terms_version",
 )
 
 

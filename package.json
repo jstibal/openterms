@@ -1,0 +1,17 @@
+{
+  "name": "openterms-trace",
+  "private": true,
+  "version": "0.0.0",
+  "description": "OpenTerms monorepo root — workspace coordinator for apps/api and packages/*.",
+  "workspaces": [
+    "apps/*",
+    "packages/openterms-ts",
+    "packages/langchain-openterms"
+  ],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  }
+}
