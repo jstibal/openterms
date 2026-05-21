@@ -6,13 +6,33 @@ deferred. It exists so a reader of [README.md](README.md) or
 contract surface.
 
 The build plan is [`LLM_Handoff_Brief.md`](LLM_Handoff_Brief.md) Section 8
-(a ten-step sequence). The current state is **end of Step 8** (SDK
-packaging + framework adapters shipped, layered on top of the Step 7
-simulate endpoint and the Step 3–6 ingest / policy / query / JWKS
-surface). Steps 9 (documentation site) and 10 (deployment, hosted JWKS,
-auth, rate limiting, key management) are not done.
+(a ten-step sequence). **All ten steps have shipped in code.** Step 10
+(deployment, hosted JWKS, bearer auth, rate limiting, key management) is
+implemented; the only remaining work is the operator action of
+provisioning the Render service and turning it on. See
+[DEPLOYMENT.md](DEPLOYMENT.md) for the runbook.
 
-Step 8 deliverables in this repo:
+Step 10 deliverables in this repo:
+
+- [`render.yaml`](render.yaml) and [`Dockerfile`](Dockerfile) — Render
+  service definition and container image.
+- [`apps/api/src/auth/bearer.ts`](apps/api/src/auth/bearer.ts) — bearer
+  token middleware (`ot_live_` / `ot_test_` prefixes, HMAC lookup against
+  `api_keys`, per-request `workspaceId` derivation, opt-out wrapper for
+  public routes). Production forces the dev fallback off.
+- [`apps/api/src/server.ts`](apps/api/src/server.ts) — `@fastify/rate-limit`
+  wired with separate buckets for authenticated ingest, authenticated
+  query, and per-IP on public endpoints.
+- [`apps/api/src/routes/jwks.ts`](apps/api/src/routes/jwks.ts) — public
+  `GET /.well-known/jwks.json` with 24h `max-age` + stale-while-revalidate.
+- [`apps/api/src/db/migrations/005_create_workspaces_and_api_keys.sql`](apps/api/src/db/migrations/005_create_workspaces_and_api_keys.sql)
+  — `workspaces` and `api_keys` tables.
+- Seed script and [`scripts/smoke-staging.sh`](scripts/smoke-staging.sh)
+  for post-deploy verification.
+- [`DEPLOYMENT.md`](DEPLOYMENT.md) — production runbook (provisioning,
+  env vars, secrets, smoke verification, rotation).
+
+Step 8 deliverables (SDKs and adapters) remain as previously shipped:
 
 - [`packages/openterms-py`](packages/openterms-py/) — `openterms` on PyPI
   (prepared, not published). `IngestClient.emit_receipt` /
@@ -39,45 +59,63 @@ Postgres → query → offline Python re-verify).
 
 | Endpoint | Status | Notes |
 | --- | --- | --- |
-| `POST /v1/receipts/ingest` | Implemented | Verifies Ed25519, persists to Postgres, idempotency by `Idempotency-Key` or canonical hash. |
-| `GET /v1/receipts` | Implemented | Cursor pagination, filters by `agent_id`, `action_type`, `decision`, `tool_id`, time window. |
-| `GET /v1/receipts/{canonical_hash}` | Implemented | Returns the stored receipt by canonical hash. |
-| `GET /v1/decisions` | Implemented | Query decisions joined to receipts. |
-| `POST /v1/simulate` | Implemented | Step 8: evaluates a policy against a fixture corpus. |
-| `GET /.well-known/jwks.json` | **Planned — Step 10** | Public JWKS distribution. Current JWKS loader supports `file:` and `memory:` schemes for development only. |
-| `POST /v1/policies` / `GET /v1/policies/...` | **Planned** | Policy CRUD. Active policy is currently hardcoded — see "Policy management" below. |
-| Auth-related endpoints (key creation / rotation) | **Planned — Step 10** | See "Key management" below. |
+| `GET /healthz` | Implemented (public) | Liveness probe, no auth, no rate limit beyond per-IP. |
+| `POST /v1/receipts/ingest` | Implemented (authenticated) | Verifies Ed25519, persists to Postgres, idempotency by `Idempotency-Key` or canonical hash. |
+| `GET /v1/receipts` | Implemented (authenticated) | Cursor pagination, filters by `agent_id`, `action_type`, `decision`, `tool_id`, time window. |
+| `GET /v1/receipts/{canonical_hash}` | Implemented (authenticated) | Returns the stored receipt by canonical hash. |
+| `GET /v1/decisions` | Implemented (authenticated) | Query decisions joined to receipts. |
+| `POST /v1/simulate` | Implemented (authenticated) | Evaluates a policy against a fixture corpus. |
+| `GET /v1/simulate/{job_id}` | Implemented (authenticated) | Async-result stub: no job store yet, so any `job_id` returns 404. Surface contract reserved for the async simulation flow. |
+| `GET /.well-known/jwks.json` | Implemented (public) | 24h `max-age` + stale-while-revalidate. JWKS source still selected by env (`file:` or `memory:`); rotation propagates on next request. |
+| `POST /v1/policies` / `GET /v1/policies/...` | **Planned** | Policy CRUD. Active policy is currently hardcoded — see "Policy management" below. Returns 404. |
+| Auth key creation / rotation endpoints | **Planned** | API keys are provisioned via the seed script / DB today. Returns 404. |
+| All other paths described in `openapi.yaml` | **Planned** | Contract surface only; returns 404. |
+
+## Product capability status
+
+| Capability | Status |
+| --- | --- |
+| Bearer authentication | Implemented (`Authorization: Bearer ot_live_…` / `ot_test_…`, HMAC lookup, per-route opt-out for public endpoints). |
+| Rate limiting | Implemented (`@fastify/rate-limit`, separate buckets for authenticated ingest, authenticated query, and per-IP public). |
+| JWKS hosting endpoint | Implemented (`GET /.well-known/jwks.json`, edge-cacheable). |
+| Multi-workspace per service instance | **Not implemented.** API keys carry `workspace_id`, but a single service instance still serves a single configured workspace. Multi-tenant routing is a separate workstream. |
+| Production deployment | Infrastructure ready (`render.yaml`, `Dockerfile`, `DEPLOYMENT.md`); operator must provision the Render service, configure env vars, and run the migration / seed. Not yet provisioned. |
+| Dashboard / OAuth | **Deferred** to a separate workstream. |
 
 ## Security and deployment readiness
 
-The service is suitable for local development and integration testing only.
-The following are **not** in place and are blockers for any non-local
-deployment:
-
-- **Authentication.** No bearer-token check on any endpoint. `TODO(auth)`
-  markers exist at the intended hook points in `apps/api/src/routes/*.ts`.
-- **Rate limiting.** No per-workspace or per-IP limits. Planned for Step 10.
-- **Secret management.** Private signing keys are loaded from local files /
-  env strings for development. Production key custody (HSM, KMS, or
-  encrypted-at-rest with rotation) is not implemented.
-- **JWKS public endpoint.** `GET /.well-known/jwks.json` is not implemented;
-  verification currently reads JWKS from `file:` or `memory:` schemes.
+- **Authentication.** Bearer-token check is wired on every non-public
+  endpoint. `NODE_ENV=production` forces the dev workspace fallback off
+  so missing/invalid tokens always return 401.
+- **Rate limiting.** Separate buckets for authenticated ingest, authenticated
+  query, and per-IP on public endpoints. Limits configurable via env.
+- **JWKS public endpoint.** Implemented at `/.well-known/jwks.json` with
+  long edge caching. The underlying JWKS source is still selected by env
+  (`file:` or `memory:`); production key custody (HSM / KMS / encrypted-
+  at-rest with rotation) remains a separate workstream.
+- **Secret management.** Documented in [`DEPLOYMENT.md`](DEPLOYMENT.md):
+  `API_KEY_SALT`, `JWKS_SOURCE`, signing key material, and `DATABASE_URL`
+  are injected via Render env vars; the seed script provisions the first
+  workspace and API key. Long-term key custody (HSM/KMS) is still a
+  future workstream.
 - **Monitoring / metrics / structured request logging.** Application logs
-  exist but no metrics export, no health endpoint beyond Fastify's default,
-  no error-rate alerting hooks.
-- **Single-workspace service instance.** The service is hardcoded to a
-  single `WORKSPACE_ID` env var. Multi-tenant routing is not implemented.
-- **CI gates.** Coverage gates and a Postgres-backed integration job are
-  partial (see "CI" below).
+  exist. `GET /healthz` is the liveness probe. Metrics export and error-rate
+  alerting are not yet wired.
+- **Production deployment.** Render service is not yet provisioned. Once
+  the operator follows the runbook, `scripts/smoke-staging.sh` exercises
+  the live endpoint to confirm health, auth, and ingest round-trip.
+- **CI gates.** Green on both jobs as of commit `02288e8` — the Python
+  unit/parity job and the API job (typecheck + unit + Postgres-backed
+  integration tests).
 
 ## Policy management
 
 - The active policy is **hardcoded** in the service for the current build
   (intentional — policy CRUD is a separate workstream). Policy JSON ships
   with the repo; runtime policy updates require redeploy.
-- `daily_limit` rules are evaluated, but the aggregate snapshot they consume
+- `daily_limit` rules are evaluated, and the aggregate snapshot they consume
   is computed inline in the ingest path against prior receipts; see
-  `apps/api/src/routes/receipts.ts`.
+  `apps/api/src/routes/receipts.ts` (red-team item 16 — shipped).
 - `ENGINE_ERROR` from the policy engine is converted to a stored deny
   (reason `ENGINE_ERROR`) so the ingest path stays resilient. See
   [`apps/api/src/core/policy.ts`](apps/api/src/core/policy.ts) for the
@@ -86,20 +124,18 @@ deployment:
 
 ## Monorepo structure
 
-The full structure in `LLM_Handoff_Brief.md` Section 7 includes
-`packages/openterms-ts/`, `packages/langchain-openterms/`,
-`packages/crewai-openterms/`, and deployment scripts. The SDK and
-adapter packages now exist (BUILD_BRIEF Step 8); the deployment scripts
-land in Step 10. The current layout is:
-
 ```
-apps/api/                       # Fastify ingest + query + simulate service
+apps/api/                       # Fastify ingest + query + simulate + JWKS service
 packages/openterms-py/          # Python SDK (canonicalization, signing, verify, client)
 packages/openterms-ts/          # TypeScript SDK (@openterms/sdk)
 packages/langchain-openterms/   # LangChain adapter (openterms-langchain)
 packages/crewai-openterms/      # CrewAI adapter (openterms-crewai)
 tests/integration/              # Cross-language and adapter end-to-end tests
 tests/vectors/ors-v0.1/         # Shared canonicalization vectors
+tests/fixtures/corpus/          # 500-receipt simulation corpus
+render.yaml, Dockerfile         # Deployment infrastructure
+scripts/smoke-staging.sh        # Post-deploy smoke check
+DEPLOYMENT.md                   # Production runbook
 ```
 
 The monorepo is wired with npm workspaces at the root for the TypeScript
@@ -108,26 +144,56 @@ depend on `openterms>=0.1.0` for canonicalization and signing.
 
 ## CI
 
-- Unit tests (TS + Python) run via `npm test` and `pytest` respectively.
-- Integration tests (`apps/api/tests/ingest.integration.test.ts`,
-  `query.test.ts`) require `TEST_DATABASE_URL` and skip silently otherwise.
-- A GitHub Actions workflow with a Postgres service container is **planned**
-  so the integration tests run on every push without manual configuration.
+- Python job: `pytest` against `packages/openterms-py/` — **162 passing,
+  2 skipped** as of the current main.
+- API job: `npm test --workspace @openterms/api` against a Postgres 16
+  service container. Locally without Postgres, **74 tests pass and 43
+  DB-dependent tests skip**; in CI all 43 DB-dependent tests run.
+- Both jobs green on commit `02288e8` (workflow run 26225191846).
+- The workflow is defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
+  and runs on every push to `main` and every pull request.
 
 ## Audit / observability gaps
 
 - Failed receipt verifications are written to a `verification_errors`
   table (see migration `004_create_verification_errors.sql`) so they are
-  queryable after the fact rather than only appearing in application logs.
+  queryable after the fact rather than only appearing in application logs
+  (red-team item 9 — shipped).
 - `raw_receipt` is stored as `JSONB`. This preserves the semantic JSON
   (key/value structure) but **not the original byte sequence** — JSONB
   normalizes key order and whitespace. The canonical hash is the source
   of truth for tamper detection; byte-exact preservation of the request
   body is not a current requirement.
 
+## Known gaps and trade-offs
+
+- **Fixture corpus.** `tests/fixtures/corpus/` ships a deterministic
+  500-receipt corpus (seed `5318008`, two policy versions). This is well
+  past the originally-flagged target of 50 — surface this if any future
+  red-team note still references the 14→50 framing.
+- **Webhook payloads.** Outbound webhooks on receipt ingest / decision
+  events are not implemented.
+- **Regulatory and SLA commitments.** Pending product/legal input — not
+  reflected in the README or openapi.yaml.
+- **Async simulation results.** `GET /v1/simulate/{job_id}` is a stub
+  (no job store), so the async surface is reserved but not functional.
+- **Multi-tenant routing.** One service instance still serves one
+  workspace, even though `api_keys` carry `workspace_id`.
+
 ## Calibration of public claims
 
-The README and openapi.yaml describe the **target** system. They do not
-imply that auth, rate limiting, key management, multi-tenancy, JWKS hosting,
-or policy CRUD are in place today. Treat this document as the source of
+The README and openapi.yaml describe the **target** system. The current
+shipped surface is the table above. Policy CRUD, multi-tenant routing,
+webhook delivery, async simulation results, and the dashboard / OAuth
+workstream are not in place today. Treat this document as the source of
 truth for what is shipped.
+
+## How to read this document
+
+All ten BUILD_BRIEF Section 8 steps are shipped in code, including
+Step 10's auth, rate limiting, hosted JWKS, deployment manifests, and
+runbook. The remaining gap to a live service is the operator action of
+provisioning the Render service per [DEPLOYMENT.md](DEPLOYMENT.md).
+Beyond that, the open product workstreams are policy CRUD,
+multi-tenancy, dashboards / OAuth, webhooks, and the async simulation
+flow — each tracked in the tables above.
