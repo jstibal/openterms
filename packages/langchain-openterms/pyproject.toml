@@ -1,12 +1,12 @@
 [project]
 name = "langchain-openterms"
-version = "0.1.0"
+version = "0.5.0"
 description = "OpenTerms adapter for LangChain — sign and emit ORS v0.1 receipts for every tool call."
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
 readme = "README.md"
 dependencies = [
-    "openterms-py>=0.1.0",
+    "openterms-py>=0.5.0",
     "langchain-core>=0.3,<1.0",
 ]
 

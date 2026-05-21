@@ -151,7 +151,7 @@ DEPLOYMENT.md                   # Production runbook
 
 The monorepo is wired with npm workspaces at the root for the TypeScript
 packages; the Python packages are independent distributions that each
-depend on `openterms-py>=0.1.0` for canonicalization and signing.
+depend on `openterms-py>=0.5.0` for canonicalization and signing.
 
 ## CI
 
