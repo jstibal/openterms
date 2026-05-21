@@ -18,9 +18,9 @@ export {
   canonicalize,
   signingInput,
   stripNulls,
-} from './canonical.js';
+} from "./canonical.js";
 
-export { signReceipt, type SignedReceipt } from './sign.js';
+export { signReceipt, type SignedReceipt } from "./sign.js";
 
 export {
   verifyReceipt,
@@ -28,9 +28,9 @@ export {
   type Jwk,
   type VerifyError,
   type VerifyResult,
-} from './verify.js';
+} from "./verify.js";
 
-export { evaluate, evaluateWithContext } from './policy.js';
+export { evaluate, evaluateWithContext } from "./policy.js";
 export {
   policyFromDict,
   type Decision,
@@ -38,6 +38,6 @@ export {
   type EvalContext,
   type Policy,
   type Rule,
-} from './policy_types.js';
+} from "./policy_types.js";
 
-export { IngestClient, IngestError, type IngestResponse } from './client.js';
+export { IngestClient, IngestError, type IngestResponse } from "./client.js";

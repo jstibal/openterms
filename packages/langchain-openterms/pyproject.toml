@@ -1,21 +1,24 @@
 [project]
-name = "openterms"
+name = "openterms-langchain"
 version = "0.1.0"
-description = "OpenTerms Python SDK — ORS v0.1 canonicalization, signing, and ingest client."
+description = "OpenTerms adapter for LangChain — sign and emit ORS v0.1 receipts for every tool call."
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
 readme = "README.md"
-dependencies = ["cryptography>=42"]
+dependencies = [
+    "openterms>=0.1.0",
+    "langchain-core>=0.3,<1.0",
+]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.5", "coverage>=7"]
+dev = ["pytest>=8", "ruff>=0.5", "langchain>=0.3,<1.0"]
 
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["openterms*"]
+include = ["openterms_langchain*"]
 
 [tool.ruff]
 line-length = 100

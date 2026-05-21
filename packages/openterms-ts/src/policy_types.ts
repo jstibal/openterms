@@ -3,32 +3,36 @@
 // enforced by tests/policy.parity.test.ts against the shared fixture corpus
 // at packages/openterms-py/tests/fixtures/policy/.
 
-export type DecisionOutcome = 'allow' | 'deny' | 'escalate';
+export type DecisionOutcome = "allow" | "deny" | "escalate";
 
 export type RuleType =
-  | 'max_amount'
-  | 'daily_limit'
-  | 'action_type_allowlist'
-  | 'action_type_denylist'
-  | 'url_prefix_allowlist'
-  | 'url_prefix_denylist'
-  | 'escalation_threshold'
-  | 'tool_id_allowlist'
-  | 'args_pattern_match'
-  | 'post_state_assertion';
+  | "max_amount"
+  | "daily_limit"
+  | "action_type_allowlist"
+  | "action_type_denylist"
+  | "url_prefix_allowlist"
+  | "url_prefix_denylist"
+  | "escalation_threshold"
+  | "tool_id_allowlist"
+  | "args_pattern_match"
+  | "post_state_assertion";
 
-export const VALID_OUTCOMES: readonly DecisionOutcome[] = ['allow', 'deny', 'escalate'];
+export const VALID_OUTCOMES: readonly DecisionOutcome[] = [
+  "allow",
+  "deny",
+  "escalate",
+];
 export const VALID_RULE_TYPES: readonly RuleType[] = [
-  'max_amount',
-  'daily_limit',
-  'action_type_allowlist',
-  'action_type_denylist',
-  'url_prefix_allowlist',
-  'url_prefix_denylist',
-  'escalation_threshold',
-  'tool_id_allowlist',
-  'args_pattern_match',
-  'post_state_assertion',
+  "max_amount",
+  "daily_limit",
+  "action_type_allowlist",
+  "action_type_denylist",
+  "url_prefix_allowlist",
+  "url_prefix_denylist",
+  "escalation_threshold",
+  "tool_id_allowlist",
+  "args_pattern_match",
+  "post_state_assertion",
 ];
 
 export interface Rule {
@@ -64,13 +68,13 @@ export interface Decision {
 
 export class PolicyTimeoutError extends Error {
   constructor() {
-    super('Policy evaluation exceeded the per-evaluation budget');
-    this.name = 'PolicyTimeoutError';
+    super("Policy evaluation exceeded the per-evaluation budget");
+    this.name = "PolicyTimeoutError";
   }
 }
 
 export function ruleFromDict(d: Record<string, unknown>): Rule {
-  for (const k of ['id', 'type', 'outcome', 'parameters'] as const) {
+  for (const k of ["id", "type", "outcome", "parameters"] as const) {
     if (!(k in d)) {
       throw new Error(`Rule is missing required field '${k}'`);
     }
@@ -81,8 +85,12 @@ export function ruleFromDict(d: Record<string, unknown>): Rule {
   if (!VALID_OUTCOMES.includes(d.outcome as DecisionOutcome)) {
     throw new Error(`Invalid outcome: '${String(d.outcome)}'`);
   }
-  if (typeof d.parameters !== 'object' || d.parameters === null || Array.isArray(d.parameters)) {
-    throw new Error('Rule.parameters must be an object');
+  if (
+    typeof d.parameters !== "object" ||
+    d.parameters === null ||
+    Array.isArray(d.parameters)
+  ) {
+    throw new Error("Rule.parameters must be an object");
   }
   return {
     id: String(d.id),
@@ -93,10 +101,10 @@ export function ruleFromDict(d: Record<string, unknown>): Rule {
 }
 
 export function policyFromDict(d: Record<string, unknown>): Policy {
-  const version = String(d.version ?? 'inline');
+  const version = String(d.version ?? "inline");
   const rawRules = d.rules ?? [];
   if (!Array.isArray(rawRules)) {
-    throw new Error('Policy.rules must be a list');
+    throw new Error("Policy.rules must be a list");
   }
   return {
     version,

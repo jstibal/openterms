@@ -218,8 +218,7 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
       try {
         await recordVerificationError(deps.pool, {
           workspaceId: deps.config.workspaceId,
-          claimedHash:
-            typeof receipt.canonical_hash === 'string' ? receipt.canonical_hash : null,
+          claimedHash: typeof receipt.canonical_hash === 'string' ? receipt.canonical_hash : null,
           errorCode: result.error,
           details,
           receiptBody: req.body,

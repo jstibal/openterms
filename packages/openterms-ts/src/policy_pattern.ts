@@ -2,17 +2,26 @@
 // packages/openterms-py/openterms/policy_pattern.py. No regex, no fnmatch,
 // hand-rolled two-pointer glob for bounded linear-time matching.
 
-export const VALID_OPS = ['equals', 'prefix', 'suffix', 'contains', 'glob'] as const;
+export const VALID_OPS = [
+  "equals",
+  "prefix",
+  "suffix",
+  "contains",
+  "glob",
+] as const;
 export type PatternOp = (typeof VALID_OPS)[number];
 
 function isPlainObject(v: unknown): v is Record<string, unknown> {
-  return typeof v === 'object' && v !== null && !Array.isArray(v);
+  return typeof v === "object" && v !== null && !Array.isArray(v);
 }
 
-export function resolvePath(receipt: Record<string, unknown>, path: string): unknown {
+export function resolvePath(
+  receipt: Record<string, unknown>,
+  path: string,
+): unknown {
   if (!path) return null;
   let cur: unknown = receipt;
-  for (const part of path.split('.')) {
+  for (const part of path.split(".")) {
     if (isPlainObject(cur) && part in cur) {
       cur = cur[part];
     } else {
@@ -28,11 +37,14 @@ function globMatch(pattern: string, target: string): boolean {
   let star = -1;
   let match = 0;
   while (tI < target.length) {
-    if (pI < pattern.length && pattern[pI] === '*') {
+    if (pI < pattern.length && pattern[pI] === "*") {
       star = pI;
       match = tI;
       pI += 1;
-    } else if (pI < pattern.length && (pattern[pI] === '?' || pattern[pI] === target[tI])) {
+    } else if (
+      pI < pattern.length &&
+      (pattern[pI] === "?" || pattern[pI] === target[tI])
+    ) {
       pI += 1;
       tI += 1;
     } else if (star !== -1) {
@@ -43,7 +55,7 @@ function globMatch(pattern: string, target: string): boolean {
       return false;
     }
   }
-  while (pI < pattern.length && pattern[pI] === '*') {
+  while (pI < pattern.length && pattern[pI] === "*") {
     pI += 1;
   }
   return pI === pattern.length;
@@ -54,17 +66,17 @@ export function matchOne(op: string, value: string, target: unknown): boolean {
     throw new Error(`Unknown pattern operator: '${op}'`);
   }
   if (target === null || target === undefined) return false;
-  const targetStr = typeof target === 'string' ? target : String(target);
+  const targetStr = typeof target === "string" ? target : String(target);
   switch (op as PatternOp) {
-    case 'equals':
+    case "equals":
       return targetStr === value;
-    case 'prefix':
+    case "prefix":
       return targetStr.startsWith(value);
-    case 'suffix':
+    case "suffix":
       return targetStr.endsWith(value);
-    case 'contains':
+    case "contains":
       return targetStr.includes(value);
-    case 'glob':
+    case "glob":
       return globMatch(value, targetStr);
   }
 }

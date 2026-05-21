@@ -17,41 +17,57 @@
 // Python and JavaScript, so they are rejected at canonicalization time
 // rather than silently emitted as divergent bytes.
 
-import { sha256 } from '@noble/hashes/sha2';
-import { bytesToHex } from '@noble/hashes/utils';
+import { sha256 } from "@noble/hashes/sha2";
+import { bytesToHex } from "@noble/hashes/utils";
 
-export const DOMAIN_SEPARATOR = new Uint8Array([0x4f, 0x52, 0x53, 0x76, 0x30, 0x2e, 0x31, 0x00]);
+export const DOMAIN_SEPARATOR = new Uint8Array([
+  0x4f, 0x52, 0x53, 0x76, 0x30, 0x2e, 0x31, 0x00,
+]);
 // ASCII "ORSv0.1" + 0x00 = 8 bytes. Sanity: matches b"ORSv0.1\x00" in canonical.py.
 
 export const PAYLOAD_KEYS_REQUIRED = [
-  'workspace_id',
-  'agent_id',
-  'action_type',
-  'terms_url',
-  'terms_hash',
-  'timestamp',
-  'pricing_version',
+  "workspace_id",
+  "agent_id",
+  "action_type",
+  "terms_url",
+  "terms_hash",
+  "timestamp",
+  "pricing_version",
 ] as const;
 
-export const PAYLOAD_KEYS_SIGNED_ENVELOPE = ['receipt_id', 'amount_charged', 'created_at'] as const;
+export const PAYLOAD_KEYS_SIGNED_ENVELOPE = [
+  "receipt_id",
+  "amount_charged",
+  "created_at",
+] as const;
 
 export const PAYLOAD_KEYS_OPTIONAL = [
-  'action_context',
-  'ors_version',
-  'issuer',
-  'provider',
-  'decision',
-  'request_binding',
+  "action_context",
+  "ors_version",
+  "issuer",
+  "provider",
+  "decision",
+  "request_binding",
 ] as const;
 
-export const SIGNATURE_METADATA_KEYS = ['canonical_hash', 'signature', 'key_id'] as const;
+export const SIGNATURE_METADATA_KEYS = [
+  "canonical_hash",
+  "signature",
+  "key_id",
+] as const;
 
-type JsonValue = string | number | boolean | null | JsonValue[] | { [k: string]: JsonValue };
+type JsonValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JsonValue[]
+  | { [k: string]: JsonValue };
 
 export class CanonicalizationError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = 'CanonicalizationError';
+    this.name = "CanonicalizationError";
   }
 }
 
@@ -72,7 +88,7 @@ export function stripNulls(value: unknown): unknown {
   if (Array.isArray(value)) {
     return value.map((v) => stripNulls(v));
   }
-  if (typeof value === 'object') {
+  if (typeof value === "object") {
     const out: Record<string, unknown> = {};
     for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
       if (v === null || v === undefined) continue;
@@ -87,14 +103,16 @@ export function stripNulls(value: unknown): unknown {
 // been null-stripped. Matches json.dumps(sort_keys=True, separators=(",", ":"),
 // ensure_ascii=False, allow_nan=False) in canonical.py.
 function canonicalSerialize(value: unknown): string {
-  if (value === null) return 'null';
-  if (typeof value === 'boolean') return value ? 'true' : 'false';
-  if (typeof value === 'number') {
+  if (value === null) return "null";
+  if (typeof value === "boolean") return value ? "true" : "false";
+  if (typeof value === "number") {
     if (Number.isNaN(value)) {
-      throw new CanonicalizationError('NaN is not a valid canonical value');
+      throw new CanonicalizationError("NaN is not a valid canonical value");
     }
     if (!Number.isFinite(value)) {
-      throw new CanonicalizationError('Infinity is not a valid canonical value');
+      throw new CanonicalizationError(
+        "Infinity is not a valid canonical value",
+      );
     }
     if (!Number.isInteger(value)) {
       // Floats cannot round-trip identically between Python's repr() and
@@ -112,7 +130,7 @@ function canonicalSerialize(value: unknown): string {
     }
     return value.toString(10);
   }
-  if (typeof value === 'string') {
+  if (typeof value === "string") {
     // JSON.stringify produces RFC 8259-compliant escaping. JCS (RFC 8785)
     // additionally requires that non-ASCII characters appear literally, not
     // as \uXXXX escapes. JSON.stringify in Node escapes only the mandatory
@@ -121,17 +139,17 @@ function canonicalSerialize(value: unknown): string {
     return JSON.stringify(value);
   }
   if (Array.isArray(value)) {
-    return '[' + value.map((v) => canonicalSerialize(v)).join(',') + ']';
+    return "[" + value.map((v) => canonicalSerialize(v)).join(",") + "]";
   }
-  if (typeof value === 'object') {
+  if (typeof value === "object") {
     const obj = value as Record<string, unknown>;
     const keys = Object.keys(obj).sort();
     const parts: string[] = [];
     for (const k of keys) {
       assertBmpKey(k);
-      parts.push(JSON.stringify(k) + ':' + canonicalSerialize(obj[k]));
+      parts.push(JSON.stringify(k) + ":" + canonicalSerialize(obj[k]));
     }
-    return '{' + parts.join(',') + '}';
+    return "{" + parts.join(",") + "}";
   }
   throw new Error(`Cannot canonicalize value of type ${typeof value}`);
 }
@@ -158,7 +176,9 @@ export function signingInput(payload: unknown): Uint8Array {
   return out;
 }
 
-export function buildPayload(receipt: Record<string, JsonValue>): Record<string, JsonValue> {
+export function buildPayload(
+  receipt: Record<string, JsonValue>,
+): Record<string, JsonValue> {
   const payload: Record<string, JsonValue> = {};
   for (const k of PAYLOAD_KEYS_REQUIRED) {
     if (!(k in receipt)) {
@@ -178,7 +198,7 @@ export function buildPayload(receipt: Record<string, JsonValue>): Record<string,
     }
   }
   // v0.2 optional signed fields — pass through if present.
-  for (const k of ['terms_type', 'terms_service', 'terms_version'] as const) {
+  for (const k of ["terms_type", "terms_service", "terms_version"] as const) {
     if (k in receipt && receipt[k] !== null && receipt[k] !== undefined) {
       payload[k] = receipt[k] as JsonValue;
     }

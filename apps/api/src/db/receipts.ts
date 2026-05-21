@@ -464,13 +464,13 @@ export async function recordVerificationError(
 ): Promise<void> {
   let snippet: string | null = null;
   try {
-    const serialized = typeof args.receiptBody === 'string'
-      ? args.receiptBody
-      : JSON.stringify(args.receiptBody);
+    const serialized =
+      typeof args.receiptBody === 'string' ? args.receiptBody : JSON.stringify(args.receiptBody);
     if (serialized) {
-      snippet = serialized.length > VERR_SNIPPET_LIMIT
-        ? serialized.slice(0, VERR_SNIPPET_LIMIT)
-        : serialized;
+      snippet =
+        serialized.length > VERR_SNIPPET_LIMIT
+          ? serialized.slice(0, VERR_SNIPPET_LIMIT)
+          : serialized;
     }
   } catch {
     snippet = null;

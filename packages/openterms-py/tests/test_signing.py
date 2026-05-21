@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 
-import pytest
-
 import hashlib
 
+import pytest
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
 from openterms._b64 import b64url_decode, b64url_encode

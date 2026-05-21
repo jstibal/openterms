@@ -6,9 +6,34 @@ deferred. It exists so a reader of [README.md](README.md) or
 contract surface.
 
 The build plan is [`LLM_Handoff_Brief.md`](LLM_Handoff_Brief.md) Section 8
-(a ten-step sequence). The current state is **end of Step 8** (simulate
-endpoint shipped). Steps 9 (SDK packaging / framework adapters) and 10
-(deployment, JWKS hosting, auth, rate limiting, key management) are not done.
+(a ten-step sequence). The current state is **end of Step 8** (SDK
+packaging + framework adapters shipped, layered on top of the Step 7
+simulate endpoint and the Step 3–6 ingest / policy / query / JWKS
+surface). Steps 9 (documentation site) and 10 (deployment, hosted JWKS,
+auth, rate limiting, key management) are not done.
+
+Step 8 deliverables in this repo:
+
+- [`packages/openterms-py`](packages/openterms-py/) — `openterms` on PyPI
+  (prepared, not published). `IngestClient.emit_receipt` /
+  `emit_post_action_receipt` ship and the v0.2 optional signed fields
+  (`terms_type`, `terms_service`, `terms_version`) are accepted under the
+  signature.
+- [`packages/openterms-ts`](packages/openterms-ts/) — `@openterms/sdk` on
+  npm (prepared). Extracted from `apps/api/src/core/`; the API service
+  now imports canonicalization, signing, verification, and policy from
+  this package.
+- [`packages/langchain-openterms`](packages/langchain-openterms/) —
+  `openterms-langchain` on PyPI (prepared). LangChain
+  `BaseCallbackHandler` that signs and posts a receipt on every
+  `on_tool_start` (and optionally `on_tool_end`).
+- [`packages/crewai-openterms`](packages/crewai-openterms/) —
+  `openterms-crewai` on PyPI (prepared). Callable-level wrapper; CrewAI
+  is intentionally not a hard runtime dependency.
+
+The integration test `tests/integration/test_adapter_e2e.py` exercises
+the full chain (LangChain adapter → IngestClient → Fastify ingest →
+Postgres → query → offline Python re-verify).
 
 ## HTTP endpoints
 
@@ -63,18 +88,23 @@ deployment:
 
 The full structure in `LLM_Handoff_Brief.md` Section 7 includes
 `packages/openterms-ts/`, `packages/langchain-openterms/`,
-`packages/crewai-openterms/`, and deployment scripts. These are built in
-Steps 9 and 10 and **are not present yet**. The current layout is:
+`packages/crewai-openterms/`, and deployment scripts. The SDK and
+adapter packages now exist (BUILD_BRIEF Step 8); the deployment scripts
+land in Step 10. The current layout is:
 
 ```
-apps/api/                 # Fastify ingest + query + simulate service
-packages/openterms-py/    # Python SDK (canonicalization, signing, verify)
-tests/integration/        # Cross-language end-to-end test
-tests/vectors/ors-v0.1/   # Shared canonicalization vectors
+apps/api/                       # Fastify ingest + query + simulate service
+packages/openterms-py/          # Python SDK (canonicalization, signing, verify, client)
+packages/openterms-ts/          # TypeScript SDK (@openterms/sdk)
+packages/langchain-openterms/   # LangChain adapter (openterms-langchain)
+packages/crewai-openterms/      # CrewAI adapter (openterms-crewai)
+tests/integration/              # Cross-language and adapter end-to-end tests
+tests/vectors/ors-v0.1/         # Shared canonicalization vectors
 ```
 
-The absence of the additional packages is intentional staged deviation from
-the brief, not drift.
+The monorepo is wired with npm workspaces at the root for the TypeScript
+packages; the Python packages are independent distributions that each
+depend on `openterms>=0.1.0` for canonicalization and signing.
 
 ## CI
 

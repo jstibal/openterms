@@ -1,0 +1,36 @@
+[project]
+name = "openterms-crewai"
+version = "0.1.0"
+description = "OpenTerms adapter for CrewAI — sign and emit ORS v0.1 receipts for tool calls."
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+readme = "README.md"
+dependencies = [
+    "openterms>=0.1.0",
+]
+
+[project.optional-dependencies]
+# CrewAI is intentionally NOT a hard runtime dependency. The adapter wraps a
+# plain callable; CrewAI 0.x has churned its BaseTool API repeatedly, so
+# pinning here would force compatibility breaks on every CrewAI release.
+# Users install whichever CrewAI version their project already uses; the
+# adapter integrates by way of the function-tool pattern, which is stable.
+dev = ["pytest>=8", "ruff>=0.5"]
+crewai = ["crewai>=0.30"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["openterms_crewai*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

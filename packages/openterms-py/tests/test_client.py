@@ -33,7 +33,7 @@ from openterms import (
 
 
 class _Handler(BaseHTTPRequestHandler):
-    server: "_Server"  # type: ignore[assignment]
+    server: _Server  # type: ignore[assignment]
 
     def log_message(self, *_args: Any) -> None:  # silence test output
         pass
