@@ -25,9 +25,9 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
 
-from .canonical import build_payload
-from .signing import PrivateKeyInput, sign_receipt
-from .verification import VerifyResult, verify_receipt
+from .receipts.canonical import build_payload
+from .receipts.signing import PrivateKeyInput, sign_receipt
+from .receipts.verification import VerifyResult, verify_receipt
 
 _DEFAULT_TIMEOUT_SECONDS = 10.0
 

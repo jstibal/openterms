@@ -24,4 +24,4 @@ from openterms_crewai.wrapper import (
 )
 
 __all__ = ["OpenTermsToolConfig", "openterms_tool", "wrap_tool"]
-__version__ = "0.5.0"
+__version__ = "1.0.0"

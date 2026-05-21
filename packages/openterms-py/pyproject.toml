@@ -1,14 +1,43 @@
 [project]
 name = "openterms-py"
-version = "0.5.0"
-description = "OpenTerms Python SDK — ORS v0.1 canonicalization, signing, and ingest client."
+version = "1.0.0"
+description = "OpenTerms Python SDK — permission lookup and ORS v0.1 signed receipts for AI agents."
 requires-python = ">=3.10"
-license = { text = "Apache-2.0" }
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 readme = "README.md"
-dependencies = ["cryptography>=42"]
+authors = [{ name = "OpenTerms", email = "hello@openterms.com" }]
+keywords = ["openterms", "ai", "agents", "permissions", "receipts", "ors", "langchain", "crewai"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    "cryptography>=42",
+    "requests>=2.28",
+]
+
+[project.urls]
+Homepage = "https://openterms.com"
+Documentation = "https://openterms.com/docs"
+Repository = "https://github.com/jstibal/openterms-py"
+"Bug Tracker" = "https://github.com/jstibal/openterms-py/issues"
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.5", "coverage>=7"]
+dev = [
+    "pytest>=8",
+    "ruff>=0.5",
+    "coverage>=7",
+    "responses>=0.23",
+    "mypy>=1.0",
+]
 
 [build-system]
 requires = ["setuptools>=68"]

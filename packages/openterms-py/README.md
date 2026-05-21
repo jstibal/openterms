@@ -1,16 +1,37 @@
 # openterms-py
 
-OpenTerms Python SDK — ORS v0.1 canonicalization, Ed25519 signing, verification, policy evaluation, and an HTTP client for the OpenTerms ingest service.
+Python SDK for the [OpenTerms Protocol](https://openterms.com).
 
-## Install
+Two halves of the same agent-governance story, in one library:
+
+- **Permissions** — *before* an agent acts, query `openterms.json` to see what
+  the site owner permits.
+- **Receipts** — *after* an agent acts, sign and emit an ORS v0.1 receipt so
+  the action is auditable and verifiable later.
 
 ```bash
 pip install openterms-py
 ```
 
-Runtime dependency: `cryptography>=42`. No HTTP client dependency — the SDK uses `urllib.request` from the standard library.
+Runtime dependencies: `cryptography>=42`, `requests>=2.28`. Python `>=3.10`.
+
+---
 
 ## Quickstart
+
+### Before you act: check permissions
+
+```python
+import openterms
+
+result = openterms.check("example.com", "scrape_data")
+if result:
+    print("allowed")
+else:
+    print(f"blocked: {result.decision}")
+```
+
+### After you act: emit a signed receipt
 
 ```python
 from openterms import IngestClient, generate_keypair
@@ -28,80 +49,102 @@ client = IngestClient(
 
 response = client.emit_receipt(
     action_type="tool_call",
-    terms_url="https://example.com/terms",
-    terms_hash="a" * 64,
-    action_context={"tool_id": "search", "args": {"q": "hello"}},
+    action_context={"tool_id": "web.fetch", "url": "https://example.com"},
 )
-print(response.canonical_hash, response.duplicate)
+print(response.receipt_id, response.canonical_hash)
 ```
 
-For post-action receipts (after the tool has run and produced output):
+### End-to-end loop: check, act, sign
 
 ```python
-client.emit_post_action_receipt(
-    receipt_id=response.receipt["receipt_id"],
-    post_state_hash="<sha256 of the tool output>",
-    action_type="tool_call",
-    terms_url="https://example.com/terms",
-    terms_hash="a" * 64,
-)
-```
+import openterms
+from openterms import IngestClient
 
-To verify a receipt offline:
+result = openterms.check("example.com", "scrape_data")
+if not result:
+    raise SystemExit(f"blocked: {result.decision}")
 
-```python
-from openterms import verify_receipt
+# ... agent does the work ...
 
-result = verify_receipt(receipt, jwks_dict)
-assert result.valid
-```
-
-The client can also fetch a JWKS from a URL:
-
-```python
-client = IngestClient(..., jwks_url="https://example.com/.well-known/jwks.json")
-jwks = client.fetch_jwks()
-assert client.verify(receipt).valid
-```
-
-## ORS v0.2 fields
-
-The optional v0.2 signed fields (`terms_type`, `terms_service`, `terms_version`) pass through unchanged. Add them via the `extra` argument to `emit_receipt`:
-
-```python
+client = IngestClient(...)
 client.emit_receipt(
-    ...,
-    extra={
-        "terms_type": "saas",
-        "terms_service": "example",
-        "terms_version": "2025-05-01",
+    action_type="scrape_data",
+    action_context={
+        "domain": "example.com",
+        "openterms_hash": result.raw_value and "...",
     },
 )
 ```
 
-Canonicalization, signing, and verification all include these fields under the signature, so a receipt produced this way verifies as v0.1 by readers that ignore them and as v0.2 by readers that consume them.
+---
 
-## What this SDK does
+## Permissions API
 
-- Produces and verifies ORS v0.1 / v0.2 receipts (canonicalization is byte-identical with the [TypeScript SDK](https://www.npmjs.com/package/@openterms/sdk) and the reference [`jstibal/ors-spec` Python verifier](https://github.com/jstibal/ors-spec)).
-- Signs with Ed25519. The signing input is `b"ORSv0.1\x00" + sha256(canonical_bytes)`.
-- POSTs signed receipts to an OpenTerms ingest service over HTTP.
-- Verifies receipts offline against an in-memory JWKS dict or a fetched JWKS URL.
-- Evaluates the OpenTerms policy engine deterministically against a receipt (parity with the TypeScript engine).
+Top-level convenience functions:
 
-## What this SDK does NOT do
+| Function | Purpose |
+|---|---|
+| `openterms.fetch(domain)` | Fetch and parse the domain's `openterms.json` |
+| `openterms.check(domain, action)` | Decide allow/deny/not_specified |
+| `openterms.discover(domain)` | Read the `discovery` block (MCP servers, API specs) |
+| `openterms.permission_receipt(domain, action, decision)` | Local audit artifact (unsigned) |
+| `openterms.configure(...)` | Tune TTL, timeout, user agent, registry URL |
+| `openterms.clear_cache(domain=None)` | Evict cached entries |
 
-- **It does not run an ingest service.** `IngestClient.emit_receipt` POSTs to a URL you control; you must run the OpenTerms API service (or point at a hosted one) for emissions to land. See [`apps/api`](https://github.com/jstibal/openterms-trace/tree/main/apps/api).
-- **It does not handle auth.** The `api_key` parameter is a placeholder that sends `Authorization: Bearer <token>`, but the ingest service does not yet enforce bearer tokens. Auth wiring lands in BUILD_BRIEF Step 10 (see [IMPLEMENTATION_STATUS.md](https://github.com/jstibal/openterms-trace/blob/main/IMPLEMENTATION_STATUS.md)).
-- **It does not host a JWKS.** Verification requires you to supply the JWKS — either as an in-memory `dict` or as a URL the client can fetch from. A hosted `/.well-known/jwks.json` for the OpenTerms service is planned for BUILD_BRIEF Step 10.
-- **It does not manage keys.** Generating, rotating, and storing keys is your responsibility. `generate_keypair()` exists for tests and prototyping only.
-- **It does not retry on transient ingest errors.** `IngestError` is raised once; retry logic, backoff, and queueing are out of scope.
+Lookup order: `https://{domain}/.well-known/openterms.json`, then
+`https://{domain}/openterms.json`, then the configured registry URL.
 
-## Repository
+Lower-level: `openterms.OpenTermsClient`, `openterms.TermsCache`,
+`openterms.CheckResult`, `openterms.DiscoveryResult`, `openterms.PermissionReceipt`.
 
-Source and issue tracker: [`jstibal/openterms-trace`](https://github.com/jstibal/openterms-trace).
-Marketing site: <https://openterms.org> (planned).
+## Receipts API (ORS v0.1)
+
+Top-level:
+
+| Symbol | Purpose |
+|---|---|
+| `sign_receipt(payload, private_key, key_id)` | Ed25519-sign a canonical ORS payload |
+| `verify_receipt(receipt, jwks)` | Verify; returns a `VerifyResult` (no raise) |
+| `canonicalize(payload)` / `canonical_hash(payload)` | RFC 8785-ish JSON canonicalization |
+| `build_payload(receipt)` | Strip signature/key fields, return signable payload |
+| `generate_keypair()` | Ed25519 keypair |
+| `public_key_to_jwk(pk, kid)` / `build_jwks(keys)` | JWKS helpers |
+| `IngestClient` | Build, sign, POST receipts to an ingest service |
+
+## Policy engine
+
+```python
+from openterms import evaluate, Policy, Rule
+
+policy = Policy(rules=[Rule(rule_id="r1", type="max_amount", params={"amount_cents": 5000})])
+decision = evaluate(policy, receipt={...})
+```
+
+## Framework adapters
+
+| Package | Install |
+|---|---|
+| LangChain callback | `pip install langchain-openterms` |
+| CrewAI tool wrapper | `pip install crewai-openterms` |
+
+Both depend on `openterms-py>=1.0.0` and surface the same `IngestClient`.
+
+---
+
+## Migrating from 0.4.x
+
+See [CHANGELOG.md](./CHANGELOG.md) for the full migration table. The short
+version:
+
+- `Receipt` → `PermissionReceipt`
+- `openterms.receipt(...)` → `openterms.permission_receipt(...)`
+- `openterms.check(..., receipt=True)` removed — use `IngestClient.emit_receipt`
+- `openterms.receipts.sign_receipt` / `verify_receipt` now use `cryptography`
+  (not PyNaCl) and have different signatures
+- License changed: MIT → Apache-2.0
+
+---
 
 ## License
 
-Apache-2.0.
+Apache-2.0 — see [LICENSE](./LICENSE).

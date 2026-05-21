@@ -28,8 +28,8 @@ from __future__ import annotations
 import time
 from typing import Any
 
-from .policy_rules import DISPATCH
-from .policy_types import (
+from .rules import DISPATCH
+from .types import (
     Decision,
     DecisionOutcome,
     EvalContext,

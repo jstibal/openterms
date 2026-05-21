@@ -18,8 +18,8 @@ import time
 from collections.abc import Callable
 from typing import Any
 
-from .policy_pattern import VALID_OPS, match_one, resolve_path
-from .policy_types import EvalContext, PolicyTimeout, Rule, RuleResult
+from .pattern import VALID_OPS, match_one, resolve_path
+from .types import EvalContext, PolicyTimeout, Rule, RuleResult
 
 _VALID_DAILY_WINDOWS = ("utc_day", "rolling_24h")
 

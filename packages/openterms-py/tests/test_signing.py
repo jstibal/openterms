@@ -7,15 +7,15 @@ import hashlib
 import pytest
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
-from openterms._b64 import b64url_decode, b64url_encode
-from openterms.canonical import DOMAIN_SEPARATOR, canonical_hash, canonicalize
-from openterms.signing import (
+from openterms.receipts._b64 import b64url_decode, b64url_encode
+from openterms.receipts.canonical import DOMAIN_SEPARATOR, canonical_hash, canonicalize
+from openterms.receipts.signing import (
     build_jwks,
     generate_keypair,
     public_key_to_jwk,
     sign_receipt,
 )
-from openterms.verification import verify_receipt
+from openterms.receipts.verification import verify_receipt
 
 
 def _minimal_payload() -> dict:

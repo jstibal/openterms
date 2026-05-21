@@ -18,8 +18,8 @@ from typing import Any
 
 import pytest
 
-from openterms.policy import DEFAULT_BUDGET_SECONDS, evaluate, evaluate_with_context
-from openterms.policy_types import EvalContext, Policy, Rule
+from openterms.policy.engine import DEFAULT_BUDGET_SECONDS, evaluate, evaluate_with_context
+from openterms.policy.types import EvalContext, Policy, Rule
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures" / "policy"
 

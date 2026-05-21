@@ -13,10 +13,10 @@ from pathlib import Path
 
 import pytest
 
-from openterms._b64 import b64url_decode, b64url_encode
-from openterms.canonical import build_payload, canonicalize
-from openterms.signing import build_jwks, generate_keypair, sign_receipt
-from openterms.verification import verify_receipt
+from openterms.receipts._b64 import b64url_decode, b64url_encode
+from openterms.receipts.canonical import build_payload, canonicalize
+from openterms.receipts.signing import build_jwks, generate_keypair, sign_receipt
+from openterms.receipts.verification import verify_receipt
 
 EXAMPLES_DIR = Path(__file__).parent / "vectors" / "ors-v0.1-examples"
 

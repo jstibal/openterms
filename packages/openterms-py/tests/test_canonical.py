@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pytest
 
-from openterms.canonical import CanonicalizationError, canonicalize
+from openterms.receipts.canonical import CanonicalizationError, canonicalize
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 VECTORS_PATH = REPO_ROOT / "tests" / "vectors" / "ors-v0.1" / "canonicalization.json"

@@ -39,11 +39,16 @@ Step 10 deliverables in this repo:
 
 Step 8 deliverables (SDKs and adapters) remain as previously shipped:
 
-- [`packages/openterms-py`](packages/openterms-py/) — `openterms-py` on PyPI
-  (prepared, not published). `IngestClient.emit_receipt` /
-  `emit_post_action_receipt` ship and the v0.2 optional signed fields
-  (`terms_type`, `terms_service`, `terms_version`) are accepted under the
-  signature.
+- [`packages/openterms-py`](packages/openterms-py/) — `openterms-py` **1.0.0**
+  on PyPI (prepared). **As of 2026-05-21 this package combines the
+  permission-lookup library (previously released as 0.4.0) with the ORS
+  v0.1 receipts library.** Layout: `openterms.permissions` (fetch / check /
+  discover / `permission_receipt`), `openterms.receipts` (`sign_receipt`,
+  `verify_receipt`, canonicalization, JWKS), `openterms.policy` (rule
+  evaluation), top-level `openterms.IngestClient`. Test suite: 200 passing
+  (38 permissions, 162 receipts/policy/canonical) + 2 skipped. License:
+  Apache-2.0. See `packages/openterms-py/CHANGELOG.md` for the 1.0.0
+  migration table including a Silent breaking changes section.
 - [`packages/openterms-ts`](packages/openterms-ts/) — `@openterms/sdk` on
   npm (prepared). Extracted from `apps/api/src/core/`; the API service
   now imports canonicalization, signing, verification, and policy from
@@ -151,12 +156,12 @@ DEPLOYMENT.md                   # Production runbook
 
 The monorepo is wired with npm workspaces at the root for the TypeScript
 packages; the Python packages are independent distributions that each
-depend on `openterms-py>=0.5.0` for canonicalization and signing.
+depend on `openterms-py>=1.0.0` for canonicalization and signing.
 
 ## CI
 
-- Python job: `pytest` against `packages/openterms-py/` — **162 passing,
-  2 skipped** as of the current main.
+- Python job: `pytest` against `packages/openterms-py/` — **200 passing,
+  2 skipped** as of the current main (38 permissions + 162 receipts).
 - API job: `npm test --workspace @openterms/api` against a Postgres 16
   service container. Locally without Postgres, **74 tests pass and 43
   DB-dependent tests skip**; in CI all 43 DB-dependent tests run.

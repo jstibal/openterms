@@ -14,9 +14,9 @@ from __future__ import annotations
 
 from typing import Any
 
-from openterms.policy import evaluate
-from openterms.policy_rules import DISPATCH
-from openterms.policy_types import EvalContext, Rule
+from openterms.policy.engine import evaluate
+from openterms.policy.rules import DISPATCH
+from openterms.policy.types import EvalContext, Rule
 
 
 def _run(rule_dict: dict[str, Any], receipt: dict[str, Any], **kwargs: Any) -> Any:

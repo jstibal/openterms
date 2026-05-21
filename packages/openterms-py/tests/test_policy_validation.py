@@ -13,10 +13,10 @@ from typing import Any
 
 import pytest
 
-from openterms.policy import evaluate
-from openterms.policy_pattern import VALID_OPS, match_one, resolve_path
-from openterms.policy_rules import DISPATCH
-from openterms.policy_types import EvalContext, Policy, Rule
+from openterms.policy.engine import evaluate
+from openterms.policy.pattern import VALID_OPS, match_one, resolve_path
+from openterms.policy.rules import DISPATCH
+from openterms.policy.types import EvalContext, Policy, Rule
 
 
 def _evaluate_rule(rule_dict: dict[str, Any], receipt: dict[str, Any]) -> Any:
@@ -374,8 +374,8 @@ def test_pattern_loop_deadline_check_triggers_inside_evaluator() -> None:
     exercises the per-pattern deadline check (the orchestrator's pre-rule check
     is bypassed because we are not going through ``evaluate``).
     """
-    from openterms.policy_rules import eval_args_pattern_match
-    from openterms.policy_types import PolicyTimeout
+    from openterms.policy.rules import eval_args_pattern_match
+    from openterms.policy.types import PolicyTimeout
 
     rule = Rule.from_dict(
         {

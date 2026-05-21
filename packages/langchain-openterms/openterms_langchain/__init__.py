@@ -11,4 +11,4 @@ which have been stable through the 0.3 line.
 from openterms_langchain.handler import OpenTermsCallbackHandler
 
 __all__ = ["OpenTermsCallbackHandler"]
-__version__ = "0.5.0"
+__version__ = "1.0.0"

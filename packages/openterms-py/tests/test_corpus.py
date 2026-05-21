@@ -19,7 +19,7 @@ from pathlib import Path
 
 import pytest
 
-from openterms.verification import verify_receipt
+from openterms.receipts.verification import verify_receipt
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 CORPUS_DIR = REPO_ROOT / "tests" / "fixtures" / "corpus"
@@ -88,7 +88,7 @@ def test_canonical_hashes_unique(receipts):
 
 def test_decisions_reproducible(receipts, decisions, policy_v1):
     """Re-run the engine on every receipt and assert byte-equal to stored."""
-    from openterms.policy import evaluate  # local import keeps fixture cheap
+    from openterms.policy.engine import evaluate  # local import keeps fixture cheap
 
     daily_id = next(r["id"] for r in policy_v1["rules"] if r["type"] == "daily_limit")
     per_day: dict[str, int] = {}

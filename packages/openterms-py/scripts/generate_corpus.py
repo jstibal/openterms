@@ -44,12 +44,12 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import (  # noqa: E402
     Ed25519PrivateKey,
 )
 
-from openterms.policy import evaluate  # noqa: E402
-from openterms.signing import (  # noqa: E402
+from openterms.policy.engine import evaluate  # noqa: E402
+from openterms.receipts.signing import (  # noqa: E402
     build_jwks,
     sign_receipt,
 )
-from openterms.verification import verify_receipt  # noqa: E402
+from openterms.receipts.verification import verify_receipt  # noqa: E402
 
 CORPUS_DIR = REPO_ROOT / "tests" / "fixtures" / "corpus"
 
