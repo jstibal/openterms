@@ -11,7 +11,7 @@
 
 databases:
   - name: openterms-trace-pg
-    plan: starter
+    plan: basic_256mb
     databaseName: openterms_trace
     user: openterms_trace
     ipAllowList: []   # private network only; the web service reaches it
@@ -21,7 +21,7 @@ services:
   - type: web
     name: openterms-trace-api
     runtime: docker
-    plan: basic_256mb
+    plan: starter
     region: oregon
     dockerfilePath: ./Dockerfile
     healthCheckPath: /healthz
