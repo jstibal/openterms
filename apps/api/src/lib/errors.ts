@@ -1,4 +1,4 @@
-import type { VerifyError } from '../core/verify.js';
+import type { VerifyError } from '@openterms/sdk';
 
 export type IngestErrorCode =
   | 'VALIDATION_ERROR'

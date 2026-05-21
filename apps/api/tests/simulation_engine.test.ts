@@ -7,7 +7,7 @@
 
 import { describe, expect, it } from 'vitest';
 
-import type { Policy } from '../src/core/policy_types.js';
+import type { Policy } from '@openterms/sdk';
 import { runSimulation, utcDayStart, type WalkRow } from '../src/core/simulation.js';
 
 function row(partial: Partial<WalkRow> & { canonical_hash: string; ts: string }): WalkRow {

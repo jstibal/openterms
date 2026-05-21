@@ -26,7 +26,7 @@ import pg from 'pg';
 import * as ed from '@noble/ed25519';
 import { sha512 } from '@noble/hashes/sha2';
 
-import type { Jwks } from '../src/core/verify.js';
+import type { Jwks } from '@openterms/sdk';
 import { registerReceiptRoutes } from '../src/routes/receipts.js';
 import { registerSimulateRoutes } from '../src/routes/simulate.js';
 import { runMigrations } from '../src/db/migrate.js';

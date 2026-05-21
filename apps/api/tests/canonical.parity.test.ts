@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, test } from 'vitest';
 import { createHash } from 'node:crypto';
 
-import { CanonicalizationError, canonicalize, canonicalString } from '../src/core/canonical.js';
+import { CanonicalizationError, canonicalize, canonicalString } from '@openterms/sdk';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(here, '../../..');

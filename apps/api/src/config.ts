@@ -1,4 +1,4 @@
-import type { Policy } from './core/policy_types.js';
+import type { Policy } from '@openterms/sdk';
 
 export interface AppConfig {
   databaseUrl: string;

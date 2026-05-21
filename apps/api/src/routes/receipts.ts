@@ -1,9 +1,7 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 
 import { getActivePolicy, type AppConfig } from '../config.js';
-import { evaluate } from '../core/policy.js';
-import type { Decision } from '../core/policy_types.js';
-import { verifyReceipt } from '../core/verify.js';
+import { evaluate, verifyReceipt, type Decision } from '@openterms/sdk';
 import {
   findDecisionByReceiptHash,
   insertDecisionTx,

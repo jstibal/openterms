@@ -26,10 +26,9 @@
 //     and sliced to sample_size. canonical_hash is content-addressed and
 //     globally unique, so the sort is stable across re-runs.
 
-import type { Queryable } from '../db/receipts.js';
+import { evaluate, type Decision, type DecisionOutcome, type Policy } from '@openterms/sdk';
 
-import { evaluate } from './policy.js';
-import type { Decision, DecisionOutcome, Policy } from './policy_types.js';
+import type { Queryable } from '../db/receipts.js';
 
 export interface SimulationInput {
   workspaceId: string;
