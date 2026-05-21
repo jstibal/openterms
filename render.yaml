@@ -21,7 +21,7 @@ services:
   - type: web
     name: openterms-trace-api
     runtime: docker
-    plan: starter
+    plan: free
     region: oregon
     dockerfilePath: ./Dockerfile
     healthCheckPath: /healthz
