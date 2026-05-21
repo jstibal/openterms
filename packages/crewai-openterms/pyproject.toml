@@ -1,12 +1,12 @@
 [project]
-name = "openterms-crewai"
+name = "crewai-openterms"
 version = "0.1.0"
 description = "OpenTerms adapter for CrewAI — sign and emit ORS v0.1 receipts for tool calls."
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
 readme = "README.md"
 dependencies = [
-    "openterms>=0.1.0",
+    "openterms-py>=0.1.0",
 ]
 
 [project.optional-dependencies]

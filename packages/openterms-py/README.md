@@ -1,11 +1,11 @@
-# openterms
+# openterms-py
 
 OpenTerms Python SDK — ORS v0.1 canonicalization, Ed25519 signing, verification, policy evaluation, and an HTTP client for the OpenTerms ingest service.
 
 ## Install
 
 ```bash
-pip install openterms
+pip install openterms-py
 ```
 
 Runtime dependency: `cryptography>=42`. No HTTP client dependency — the SDK uses `urllib.request` from the standard library.

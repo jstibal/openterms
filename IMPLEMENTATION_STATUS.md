@@ -39,7 +39,7 @@ Step 10 deliverables in this repo:
 
 Step 8 deliverables (SDKs and adapters) remain as previously shipped:
 
-- [`packages/openterms-py`](packages/openterms-py/) — `openterms` on PyPI
+- [`packages/openterms-py`](packages/openterms-py/) — `openterms-py` on PyPI
   (prepared, not published). `IngestClient.emit_receipt` /
   `emit_post_action_receipt` ship and the v0.2 optional signed fields
   (`terms_type`, `terms_service`, `terms_version`) are accepted under the
@@ -49,11 +49,11 @@ Step 8 deliverables (SDKs and adapters) remain as previously shipped:
   now imports canonicalization, signing, verification, and policy from
   this package.
 - [`packages/langchain-openterms`](packages/langchain-openterms/) —
-  `openterms-langchain` on PyPI (prepared). LangChain
+  `langchain-openterms` on PyPI (prepared). LangChain
   `BaseCallbackHandler` that signs and posts a receipt on every
   `on_tool_start` (and optionally `on_tool_end`).
 - [`packages/crewai-openterms`](packages/crewai-openterms/) —
-  `openterms-crewai` on PyPI (prepared). Callable-level wrapper; CrewAI
+  `crewai-openterms` on PyPI (prepared). Callable-level wrapper; CrewAI
   is intentionally not a hard runtime dependency.
 
 The integration test `tests/integration/test_adapter_e2e.py` exercises
@@ -139,8 +139,8 @@ Postgres → query → offline Python re-verify).
 apps/api/                       # Fastify ingest + query + simulate + JWKS service
 packages/openterms-py/          # Python SDK (canonicalization, signing, verify, client)
 packages/openterms-ts/          # TypeScript SDK (@openterms/sdk)
-packages/langchain-openterms/   # LangChain adapter (openterms-langchain)
-packages/crewai-openterms/      # CrewAI adapter (openterms-crewai)
+packages/langchain-openterms/   # LangChain adapter (langchain-openterms)
+packages/crewai-openterms/      # CrewAI adapter (crewai-openterms)
 tests/integration/              # Cross-language and adapter end-to-end tests
 tests/vectors/ors-v0.1/         # Shared canonicalization vectors
 tests/fixtures/corpus/          # 500-receipt simulation corpus
@@ -151,7 +151,7 @@ DEPLOYMENT.md                   # Production runbook
 
 The monorepo is wired with npm workspaces at the root for the TypeScript
 packages; the Python packages are independent distributions that each
-depend on `openterms>=0.1.0` for canonicalization and signing.
+depend on `openterms-py>=0.1.0` for canonicalization and signing.
 
 ## CI
 

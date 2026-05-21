@@ -1,13 +1,13 @@
-# openterms-crewai
+# crewai-openterms
 
 CrewAI adapter for [OpenTerms](https://github.com/jstibal/openterms-trace) — wraps any callable so each invocation emits a signed ORS v0.1 receipt before the tool runs.
 
-Depends on [`openterms>=0.1.0`](https://pypi.org/project/openterms/) for canonicalization, signing, and the HTTP client. One signing path is shared with `openterms-langchain`.
+Depends on [`openterms-py>=0.1.0`](https://pypi.org/project/openterms-py/) for canonicalization, signing, and the HTTP client. One signing path is shared with `langchain-openterms`.
 
 ## Install
 
 ```bash
-pip install openterms-crewai
+pip install crewai-openterms
 ```
 
 CrewAI itself is **not** a hard runtime dependency. CrewAI's `BaseTool` API has shifted repeatedly across the 0.x line (constructor signatures, the `_run`-vs-`run` hook, pydantic model versions), so this adapter wraps a plain callable — the function-tool pattern, which is stable across CrewAI versions. Plug the wrapped function into CrewAI however your project already does (`Tool(name=..., func=...)`, the `@tool` decorator, or as the body of a `BaseTool._run`).

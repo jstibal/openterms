@@ -1,13 +1,13 @@
-# openterms-langchain
+# langchain-openterms
 
 LangChain adapter for [OpenTerms](https://github.com/jstibal/openterms-trace) — emits a signed ORS v0.1 receipt for every tool invocation in a LangChain chain or agent.
 
-Depends on [`openterms>=0.1.0`](https://pypi.org/project/openterms/) for canonicalization, signing, and the HTTP client. One signing path is shared with `openterms-crewai`.
+Depends on [`openterms-py>=0.1.0`](https://pypi.org/project/openterms-py/) for canonicalization, signing, and the HTTP client. One signing path is shared with `crewai-openterms`.
 
 ## Install
 
 ```bash
-pip install openterms-langchain
+pip install langchain-openterms
 ```
 
 This pulls in `langchain-core>=0.3,<1.0`. The adapter uses only the public `BaseCallbackHandler` hooks, which have been stable through the 0.3 line. If you need to run against an older LangChain version, pin `langchain-core` and report compatibility issues on the repo.
