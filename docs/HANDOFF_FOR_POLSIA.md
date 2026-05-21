@@ -14,7 +14,7 @@ The conventional track of `openterms-trace` is now feature-complete through BUIL
 
 ## Section 2 — Page-by-page updates
 
-The 17 pages below match the Polsia information architecture in use at `observe.openterms.com/docs`. For each page: current state, updates required, and exact text to paste. Wherever a real URL is needed, the placeholder `{{STAGING_URL}}` appears — see Section 6 for the full substitution list.
+The 17 pages below match the Polsia information architecture in use at `observe.openterms.com/docs`. For each page: current state, updates required, and exact text to paste. Wherever a real URL is needed, the placeholder `https://openterms-trace-api.onrender.com` appears — see Section 6 for the full substitution list.
 
 ### 2.1 — `/docs/` (Introduction / Landing)
 
@@ -289,7 +289,7 @@ implemented today, so the 202 path is not reachable in the current deploy.
 ```markdown
 # API overview
 
-Base URL: `{{STAGING_URL}}` (staging). Production cutover pending.
+Base URL: `https://openterms-trace-api.onrender.com` (staging). Production cutover pending.
 
 All `/v1/*` endpoints require `Authorization: Bearer <api_key>` unless
 otherwise marked. `/healthz` and `/.well-known/jwks.json` are public.
@@ -401,7 +401,7 @@ written to the receipts table; failures log to a separate
 
 ```http
 POST /v1/receipts/ingest HTTP/1.1
-Host: {{STAGING_URL_HOST}}
+Host: openterms-trace-api.onrender.com
 Authorization: Bearer ot_test_…
 Content-Type: application/json
 Idempotency-Key: optional-client-supplied-key
@@ -604,7 +604,7 @@ required.
 
 ```http
 GET /.well-known/jwks.json HTTP/1.1
-Host: {{STAGING_URL_HOST}}
+Host: openterms-trace-api.onrender.com
 ```
 
 ### Response
@@ -633,7 +633,7 @@ Cache-Control: public, max-age=86400, stale-while-revalidate=3600
 Both active and inactive keys remain in the JWKS indefinitely so receipts
 signed under prior keys continue to verify.
 
-The full JWKS URL on staging is `{{STAGING_URL}}/.well-known/jwks.json`.
+The full JWKS URL on staging is `https://openterms-trace-api.onrender.com/.well-known/jwks.json`.
 ```
 
 ---
@@ -691,7 +691,7 @@ Runtime dependency: `cryptography>=42`. The SDK uses `urllib.request` from
 the standard library — no HTTP client dependency.
 ```
 
-And the full quickstart from [packages/openterms-py/README.md](../packages/openterms-py/README.md) lines 13–82. Add a "Verifying receipts" subsection with the offline-verify example. Replace `http://localhost:3000` with `{{STAGING_URL}}` in the docs version.
+And the full quickstart from [packages/openterms-py/README.md](../packages/openterms-py/README.md) lines 13–82. Add a "Verifying receipts" subsection with the offline-verify example. Replace `http://localhost:3000` with `https://openterms-trace-api.onrender.com` in the docs version.
 
 ---
 
@@ -701,7 +701,7 @@ And the full quickstart from [packages/openterms-py/README.md](../packages/opent
 
 **Updates needed.** Use [packages/openterms-ts/README.md](../packages/openterms-ts/README.md) verbatim. Real npm package is `@openterms/sdk`.
 
-**Exact text to apply.** Install + quickstart from the package README. Replace `http://localhost:3000` with `{{STAGING_URL}}`.
+**Exact text to apply.** Install + quickstart from the package README. Replace `http://localhost:3000` with `https://openterms-trace-api.onrender.com`.
 
 ```markdown
 ## Install
@@ -819,9 +819,9 @@ to verify under the prior key throughout this window.
 ```markdown
 # Staging environment
 
-- API base URL: `{{STAGING_URL}}`
-- JWKS URL: `{{STAGING_URL}}/.well-known/jwks.json`
-- Health: `{{STAGING_URL}}/healthz` (public)
+- API base URL: `https://openterms-trace-api.onrender.com`
+- JWKS URL: `https://openterms-trace-api.onrender.com/.well-known/jwks.json`
+- Health: `https://openterms-trace-api.onrender.com/healthz` (public)
 
 ## Test API keys
 
@@ -835,7 +835,7 @@ the only difference is the prefix, which simplifies log redaction.
 After every staging deploy:
 
 ```bash
-STAGING_URL={{STAGING_URL}} \
+STAGING_URL=https://openterms-trace-api.onrender.com \
 TEST_API_KEY=ot_test_… \
 ./scripts/smoke-staging.sh
 ```
@@ -885,13 +885,13 @@ with the failing vector name.
 
 ## Section 5 — Code samples
 
-Each sample is self-contained: install commands, environment setup, code, expected output. All samples use `{{STAGING_URL}}` and `ot_test_…` placeholders.
+Each sample is self-contained: install commands, environment setup, code, expected output. All samples use `https://openterms-trace-api.onrender.com` and `ot_test_…` placeholders.
 
 ### 5.1 — Python: sign and emit a receipt
 
 ```bash
 pip install openterms
-export OPENTERMS_API_URL={{STAGING_URL}}
+export OPENTERMS_API_URL=https://openterms-trace-api.onrender.com
 export OPENTERMS_API_KEY=ot_test_…
 export OPENTERMS_WORKSPACE_ID=00000000-0000-4000-8000-0000000000aa
 ```
@@ -931,7 +931,7 @@ print(response.canonical_hash, response.duplicate)
 
 ```bash
 npm install @openterms/sdk
-export OPENTERMS_API_URL={{STAGING_URL}}
+export OPENTERMS_API_URL=https://openterms-trace-api.onrender.com
 export OPENTERMS_API_KEY=ot_test_…
 export OPENTERMS_WORKSPACE_ID=00000000-0000-4000-8000-0000000000aa
 ```
@@ -970,7 +970,7 @@ console.log(response.canonicalHash, response.duplicate);
 
 ```bash
 pip install openterms openterms-langchain langchain-core
-export OPENTERMS_API_URL={{STAGING_URL}}
+export OPENTERMS_API_URL=https://openterms-trace-api.onrender.com
 export OPENTERMS_API_KEY=ot_test_…
 export OPENTERMS_WORKSPACE_ID=00000000-0000-4000-8000-0000000000aa
 ```
@@ -1018,7 +1018,7 @@ Two receipts are POSTed to OpenTerms: one on `on_tool_start` (args = `{a:2, b:3}
 
 ```bash
 pip install openterms openterms-crewai
-export OPENTERMS_API_URL={{STAGING_URL}}
+export OPENTERMS_API_URL=https://openterms-trace-api.onrender.com
 export OPENTERMS_API_KEY=ot_test_…
 export OPENTERMS_WORKSPACE_ID=00000000-0000-4000-8000-0000000000aa
 ```
@@ -1072,7 +1072,7 @@ import json, urllib.request
 from openterms import verify_receipt
 
 # 1. Fetch the public JWKS — no authentication needed.
-with urllib.request.urlopen("{{STAGING_URL}}/.well-known/jwks.json") as resp:
+with urllib.request.urlopen("https://openterms-trace-api.onrender.com/.well-known/jwks.json") as resp:
     jwks = json.loads(resp.read())
 
 # 2. Receipt obtained from your own logs, the GET /v1/receipts/{hash}
@@ -1100,19 +1100,19 @@ False HASH_MISMATCH
 
 ## Section 6 — Staging URL placeholder
 
-The staging URL is not deployed at the time of this handoff. Polsia (or the operator) substitutes `{{STAGING_URL}}` with the real URL after the first Render deploy. The expected value is the form `https://openterms-trace-api.onrender.com` (or whatever Render assigns), with no trailing slash and no `/v1` suffix.
+The staging URL is not deployed at the time of this handoff. Polsia (or the operator) substitutes `https://openterms-trace-api.onrender.com` with the real URL after the first Render deploy. The expected value is the form `https://openterms-trace-api.onrender.com` (or whatever Render assigns), with no trailing slash and no `/v1` suffix.
 
-The placeholder `{{STAGING_URL_HOST}}` is the same URL with the `https://` scheme stripped (used only inside HTTP example `Host:` lines).
+The placeholder `openterms-trace-api.onrender.com` is the same URL with the `https://` scheme stripped (used only inside HTTP example `Host:` lines).
 
 ### Substitution checklist
 
-Every occurrence of `{{STAGING_URL}}` in this handoff. Specifically:
+Every occurrence of `https://openterms-trace-api.onrender.com` in this handoff. Specifically:
 
 | Section | Occurrence count |
 | ------- | ---------------- |
 | 2.6 API overview — base URL | 1 |
-| 2.8 Receipts ingest — `Host:` line | 1 (`{{STAGING_URL_HOST}}`) |
-| 2.12 JWKS — example `Host:` line | 1 (`{{STAGING_URL_HOST}}`) |
+| 2.8 Receipts ingest — `Host:` line | 1 (`openterms-trace-api.onrender.com`) |
+| 2.12 JWKS — example `Host:` line | 1 (`openterms-trace-api.onrender.com`) |
 | 2.12 JWKS — body text | 1 |
 | 2.14 Python SDK — replace `http://localhost:3000` | 1 |
 | 2.15 TypeScript SDK — replace `http://localhost:3000` | 1 |
@@ -1124,7 +1124,7 @@ Every occurrence of `{{STAGING_URL}}` in this handoff. Specifically:
 | 5.4 CrewAI sample — `OPENTERMS_API_URL` | 1 |
 | 5.5 Verify sample — JWKS fetch URL | 1 |
 
-Total: 14 occurrences of `{{STAGING_URL}}`, 2 of `{{STAGING_URL_HOST}}`. `sed -i 's|{{STAGING_URL}}|<actual-url>|g'` is safe.
+Total: 14 occurrences of `https://openterms-trace-api.onrender.com`, 2 of `openterms-trace-api.onrender.com`. `sed -i 's|https://openterms-trace-api.onrender.com|<actual-url>|g'` is safe.
 
 ---
 
@@ -1196,8 +1196,8 @@ INPUT:  The text block under "Exact text to apply" in Section 2.<N> of
         docs/HANDOFF_FOR_POLSIA.md.
 TASK:   Replace the current page content with the input. Preserve the
         page's frontmatter (title, slug, sidebar order). Substitute every
-        {{STAGING_URL}} occurrence with the deployed staging URL listed
-        in Section 6. Substitute every {{STAGING_URL_HOST}} with the
+        https://openterms-trace-api.onrender.com occurrence with the deployed staging URL listed
+        in Section 6. Substitute every openterms-trace-api.onrender.com with the
         host-only form of that URL.
 VERIFY: Run the corresponding checklist row from Section 8.3.
 ```
@@ -1209,7 +1209,7 @@ Repeat for each of the 17 pages plus the 3 new pages (Section 3) plus the remova
 For every docs change, verify against the source-of-truth files:
 
 - [ ] **2.1 Introduction.** Capability list matches the endpoint table in `apps/api/src/server.ts` route registrations.
-- [ ] **2.2 Quickstart.** Code runs against `{{STAGING_URL}}` and returns a `canonical_hash` (manually exercised by the operator with a real `ot_test_…` key).
+- [ ] **2.2 Quickstart.** Code runs against `https://openterms-trace-api.onrender.com` and returns a `canonical_hash` (manually exercised by the operator with a real `ot_test_…` key).
 - [ ] **2.3 Receipts concept.** Three field groups match the `SignedReceipt` schema in `openapi.yaml`.
 - [ ] **2.4 Policies and decisions.** Rule type enum matches the `Rule.type` enum in `openapi.yaml` and the policy engine in `packages/openterms-py/src/openterms/policy.py`.
 - [ ] **2.5 Simulation concept.** Request and response shapes match `SimulationResult` in `openapi.yaml` and the handler at `apps/api/src/routes/simulate.ts`.
@@ -1229,7 +1229,7 @@ For every docs change, verify against the source-of-truth files:
 - [ ] **3.2 Staging.** Smoke checks match `scripts/smoke-staging.sh`.
 - [ ] **3.3 Test vectors.** Link resolves and the file at the link is the same one that `apps/api/tests/canonical.test.ts` and `packages/openterms-py/tests/test_canonical.py` consume.
 - [ ] **All pages.** No mention of `POST /v1/policies`, `POST /v1/keys/rotate`, `GET /v1/workspace`, `POST /v1/webhooks/test`, `GET /v1/receipts/verify/{hash}`, or OAuth2 as available. Each is either omitted or carried under a "planned" callout.
-- [ ] **All pages.** Every `{{STAGING_URL}}` and `{{STAGING_URL_HOST}}` has been substituted.
+- [ ] **All pages.** Every `https://openterms-trace-api.onrender.com` and `openterms-trace-api.onrender.com` has been substituted.
 - [ ] **[`IMPLEMENTATION_STATUS.md`](../IMPLEMENTATION_STATUS.md) refreshed.** Before the docs are made public, the source-of-truth status document must be updated to reflect Step 10 shipped (calibration item 1).
 
 ---
