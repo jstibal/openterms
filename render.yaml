@@ -25,10 +25,11 @@ services:
     region: oregon
     dockerfilePath: ./Dockerfile
     healthCheckPath: /healthz
-    # Run migrations before traffic shifts. A failed migration blocks the
-    # deploy — this is intentional. The migration runner is idempotent
-    # (CREATE IF NOT EXISTS), so reruns are safe.
-    preDeployCommand: node apps/api/dist/db/migrate.js && node apps/api/dist/scripts/seed-test-workspace.js
+    # Migrations and the staging seed run at server startup before Fastify
+    # listens (see apps/api/src/server.ts:main). Render's free tier does
+    # not support preDeployCommand, so the startup path owns this work.
+    # Both steps are idempotent; a failure exits non-zero so Render marks
+    # the deploy failed rather than serving a broken container.
     envVars:
       - key: NODE_ENV
         value: production

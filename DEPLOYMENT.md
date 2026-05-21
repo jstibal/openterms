@@ -3,8 +3,11 @@
 The openterms-trace API runs on [Render](https://render.com) for staging,
 provisioned declaratively via [`render.yaml`](render.yaml) at the repo
 root. The service is built from the repo-root [`Dockerfile`](Dockerfile)
-(multi-stage, Node 20). Migrations and the test-workspace seed run via
-Render's `preDeployCommand`, gating traffic on a clean migration apply.
+(multi-stage, Node 20). Migrations and the test-workspace seed run at
+server startup before Fastify begins listening. Render's free tier does
+not support `preDeployCommand`, so the startup path owns this work; a
+failure during either step exits non-zero and Render marks the deploy
+failed rather than shifting traffic to a broken container.
 
 This document covers staging only. Production cutover (Neon Postgres,
 Redis-backed rate limit store, custom DNS, locked-down CORS) is tracked
@@ -30,12 +33,15 @@ as a separate workstream — see "Hardening for production" at the bottom.
 1. Push to `main`. Render auto-detects `render.yaml` and offers to create
    the blueprint. Approve.
 2. Render provisions `openterms-trace-pg` and `openterms-trace-api`. The
-   first deploy will fail at `preDeployCommand` until the secrets below
-   are set — this is expected.
+   first deploy will fail at startup until the secrets below are set —
+   this is expected.
 3. In the Render dashboard for the web service, set each environment
    variable marked `sync: false` in `render.yaml`. See "Secrets" below.
-4. Trigger a manual redeploy. The `preDeployCommand` runs migrations and
-   the seed script; the service then starts and `/healthz` flips green.
+4. Trigger a manual redeploy. The container starts, runs migrations,
+   seeds the test workspace, then begins serving on `/healthz`. **Watch
+   the first startup log** to confirm `[startup] running migrations`,
+   `[startup] migrations applied: [...]`, and `[startup] running seed`
+   appear before declaring the deploy healthy.
 5. Run [`scripts/smoke-staging.sh`](scripts/smoke-staging.sh) against
    the staging URL to confirm the public surface is healthy.
 
@@ -78,17 +84,21 @@ copied into `apps/api/dist/db/migrations/` by the Dockerfile build step.
   (production) or `src/db/migrations` (dev / tests) — both paths work.
 - Migrations are idempotent (`CREATE TABLE IF NOT EXISTS`), so rerunning
   is safe.
-- In staging, `preDeployCommand` runs `node apps/api/dist/db/migrate.js`.
-  A failed migration blocks the deploy before traffic shifts to the new
-  container.
+- In production (`NODE_ENV === 'production'`), `server.ts:main()` runs
+  migrations and the seed at startup, before `app.listen()`. A failure
+  in either step logs `[startup] migration failed:` or `[startup] seed
+  failed:` and exits non-zero so Render marks the deploy failed.
 - In local dev (`NODE_ENV !== 'production'`), migrations also run on
   server boot — see `server.ts:main()` — so `npm run dev` "just works"
-  against a clean database.
+  against a clean database. The seed is skipped in non-production.
 
 ## Test workspace seeding
 
 [`apps/api/src/scripts/seed-test-workspace.ts`](apps/api/src/scripts/seed-test-workspace.ts)
-runs as the second half of `preDeployCommand`. It:
+runs at server startup in production, after migrations and before
+Fastify listens. It exports `seedTestWorkspace()` for the startup path
+and keeps a CLI entry point (`node apps/api/dist/scripts/seed-test-workspace.js`)
+for manual reruns. It:
 
 - Inserts the `WORKSPACE_ID` row into `workspaces` (idempotent).
 - Inserts the `TEST_API_KEY` row into `api_keys` keyed by its HMAC hash

@@ -1,23 +1,24 @@
 // Idempotent seed for the staging test workspace + API key.
 //
 // Reads WORKSPACE_ID and TEST_API_KEY from the environment. If either is
-// missing, the script exits 0 with a notice — it must be safe to invoke
-// from preDeployCommand even before the secrets are populated (the
-// operator wires them up on the first deploy and re-runs the seed).
+// missing, exits 0 with a notice — it must be safe to invoke before the
+// secrets are populated (the operator wires them up on the first deploy
+// and the next restart re-runs the seed).
 //
-// Run via:
-//   node apps/api/dist/scripts/seed-test-workspace.js
+// Two entry points:
+//   - `seedTestWorkspace()` is called from server startup in production;
+//     it leaves the pool open so the server can keep using it.
+//   - CLI (`node apps/api/dist/scripts/seed-test-workspace.js`) wraps it
+//     and closes the pool when done.
 //
 // Re-running is safe:
 //   - workspaces row uses INSERT ... ON CONFLICT DO NOTHING
 //   - api_keys row uses INSERT ... ON CONFLICT (key_hash) DO NOTHING
-// Rotating the key = generate a new TEST_API_KEY value, redeploy. The
-// prior key remains valid until you mark it revoked manually.
 
 import { closePool, getPool } from '../db/client.js';
 import { createApiKey, ensureWorkspace } from '../db/api_keys.js';
 
-async function main(): Promise<void> {
+export async function seedTestWorkspace(): Promise<void> {
   const workspaceId = process.env.WORKSPACE_ID;
   const testApiKey = process.env.TEST_API_KEY;
   const salt = process.env.API_KEY_SALT;
@@ -36,23 +37,23 @@ async function main(): Promise<void> {
   }
 
   const pool = getPool();
-  try {
-    await ensureWorkspace(pool, workspaceId, 'staging-test-workspace');
-    const result = await createApiKey(pool, salt, {
-      workspaceId,
-      env: testApiKey.startsWith('ot_test_') ? 'test' : 'live',
-      token: testApiKey,
-    });
-    console.log(
-      `[seed] workspace=${workspaceId} api_key_id=${result.id} ` +
-        `prefix=${result.prefix} (idempotent)`,
-    );
-  } finally {
-    await closePool();
-  }
+  await ensureWorkspace(pool, workspaceId, 'staging-test-workspace');
+  const result = await createApiKey(pool, salt, {
+    workspaceId,
+    env: testApiKey.startsWith('ot_test_') ? 'test' : 'live',
+    token: testApiKey,
+  });
+  console.log(
+    `[seed] workspace=${workspaceId} api_key_id=${result.id} ` +
+      `prefix=${result.prefix} (idempotent)`,
+  );
 }
 
-main().catch((err) => {
-  console.error('[seed] failed:', err);
-  process.exit(1);
-});
+if (import.meta.url === `file://${process.argv[1]}`) {
+  seedTestWorkspace()
+    .then(() => closePool())
+    .catch((err) => {
+      console.error('[seed] failed:', err);
+      process.exit(1);
+    });
+}

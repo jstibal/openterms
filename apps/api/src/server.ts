@@ -5,6 +5,7 @@ import rateLimit from '@fastify/rate-limit';
 import { loadConfig, type AppConfig } from './config.js';
 import { getPool, closePool } from './db/client.js';
 import { runMigrations } from './db/migrate.js';
+import { seedTestWorkspace } from './scripts/seed-test-workspace.js';
 import { makeJwksLoader } from './jwks/source.js';
 import { PUBLIC_ROUTE, registerBearerAuth } from './auth/bearer.js';
 import { registerDecisionRoutes } from './routes/decisions.js';
@@ -66,10 +67,29 @@ export async function buildServer(opts?: { config?: AppConfig }) {
 }
 
 async function main() {
-  // Migrations are owned by `preDeployCommand` in production (render.yaml)
-  // so a failed migration blocks the deploy before traffic shifts. In
-  // non-production we still auto-run on boot for local dev ergonomics.
-  if (process.env.NODE_ENV !== 'production') {
+  // Render's free tier does not support preDeployCommand, so migrations
+  // and the staging seed run here at startup, before Fastify listens.
+  // Both steps are idempotent. Failure exits non-zero so Render retries
+  // the deploy rather than shifting traffic to a broken container.
+  // Startup-step logs use console.* (Fastify's logger is not built yet)
+  // so they appear unconditionally in Render's deploy logs.
+  if (process.env.NODE_ENV === 'production') {
+    console.log('[startup] running migrations');
+    try {
+      const applied = await runMigrations();
+      console.log(`[startup] migrations applied: ${JSON.stringify(applied)}`);
+    } catch (err) {
+      console.error('[startup] migration failed:', err);
+      process.exit(1);
+    }
+    console.log('[startup] running seed');
+    try {
+      await seedTestWorkspace();
+    } catch (err) {
+      console.error('[startup] seed failed:', err);
+      process.exit(1);
+    }
+  } else {
     await runMigrations();
   }
   const { app, config } = await buildServer();
