@@ -4,8 +4,14 @@
 --   1. The API layer only ever inserts.
 --   2. Triggers on UPDATE/DELETE raise so even an out-of-band psql session
 --      cannot mutate stored rows. Use TRUNCATE (DDL, not row-level) to clear
---      the table in test setup. The `raw_receipt` JSONB column preserves the
---      exact on-wire form so GET /receipts/{hash} can echo the original bytes.
+--      the table in test setup.
+--
+-- raw_receipt is JSONB, which stores the *semantic JSON* (key/value
+-- structure) but NOT the exact byte sequence of the request body: Postgres
+-- normalizes key order and whitespace on storage. The canonical_hash
+-- column is the source of truth for tamper detection — any client can
+-- recompute the canonical bytes from raw_receipt and check the hash.
+-- Byte-exact preservation of the request body is not a current requirement.
 
 CREATE TABLE IF NOT EXISTS receipts (
   -- Section 3c signature metadata (NOT signed, but stored alongside payload).

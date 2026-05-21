@@ -423,7 +423,14 @@ def module_tree_sha(repo_root: Path) -> str:
 
 
 def scenario_canonical_hash(scenario: dict[str, Any]) -> str:
-    return canonical_hash(scenario)
+    # Provenance hash of the scenario file. Cannot use openterms.canonical
+    # here because scenario.json legitimately contains floats (key share
+    # weights for random.choices), which the ORS canonicalizer rejects.
+    # A plain sort_keys json.dumps is sufficient for a deterministic
+    # fingerprint over a file we control.
+    return hashlib.sha256(
+        json.dumps(scenario, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
 
 
 def validate_corpus(

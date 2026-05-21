@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import pytest
 
+import hashlib
+
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+
 from openterms._b64 import b64url_decode, b64url_encode
-from openterms.canonical import canonical_hash
+from openterms.canonical import DOMAIN_SEPARATOR, canonical_hash, canonicalize
 from openterms.signing import (
     build_jwks,
     generate_keypair,
@@ -135,6 +139,39 @@ def test_sign_accepts_raw_seed_bytes():
     jwks = build_jwks([(pk, "k")])
     signed = sign_receipt(_minimal_payload(), seed, "k")
     assert verify_receipt(signed, jwks).valid is True
+
+
+def test_signs_raw_hash_bytes_not_hex_string() -> None:
+    """Gate against an easy implementation regression.
+
+    The Ed25519 signing input is ``DOMAIN_SEPARATOR || raw_sha256(canonical_bytes)``
+    where the hash is 32 raw bytes. A common mistake is to sign the 64-character
+    hex *string* of the hash instead. The two produce different signatures.
+    Lock in the correct behavior by signing the expected bytes directly with
+    the same key and asserting the production code matches.
+    """
+    sk, _ = generate_keypair()
+    payload = _minimal_payload()
+    canonical = canonicalize(payload)
+    raw_hash = hashlib.sha256(canonical).digest()
+    hex_hash = raw_hash.hex().encode("ascii")
+
+    expected_message = DOMAIN_SEPARATOR + raw_hash
+    wrong_message = DOMAIN_SEPARATOR + hex_hash
+
+    sk_obj = sk if isinstance(sk, Ed25519PrivateKey) else Ed25519PrivateKey.from_private_bytes(sk)
+    expected_sig = sk_obj.sign(expected_message)
+    wrong_sig = sk_obj.sign(wrong_message)
+
+    signed = sign_receipt(payload, sk, "k")
+    produced_sig = b64url_decode(signed["signature"])
+
+    assert produced_sig == expected_sig, (
+        "sign_receipt must sign DOMAIN_SEPARATOR || raw_sha256(canonical_bytes)"
+    )
+    assert produced_sig != wrong_sig, (
+        "sign_receipt must NOT sign the hex string of the hash"
+    )
 
 
 def test_public_key_to_jwk_shape():

@@ -1,0 +1,18 @@
+{
+  "name": "empty policy default-allow — zero rules means allow",
+  "description": "Locks in the documented semantic: a policy with zero rules evaluates every receipt to allow (no triggered_rules, no reasons). Pairs with 11_no_rules_fire_default_allow.json, which covers a non-empty policy where no rule happens to fire; this fixture covers the degenerate empty-rules case.",
+  "policy": {
+    "version": "fx-empty",
+    "rules": []
+  },
+  "receipt": {
+    "amount_charged": 999999,
+    "action_type": "anything_at_all",
+    "created_at": "2026-05-20T00:00:00Z"
+  },
+  "expected": {
+    "decision": "allow",
+    "triggered_rules": [],
+    "reasons": []
+  }
+}

@@ -2,7 +2,7 @@
   "scenario_canonical_hash": "3327aeb8a2f09ff73ae2d5a836c3139b529239bc82a315e7090d4b4f167f2193",
   "scenario_seed": 5318008,
   "count": 500,
-  "openterms_module_tree_sha": "1bff62d1cbc60057ad8d2442222676e5311dc81f",
+  "openterms_module_tree_sha": "a5c3ee7543b0f60fe83dc00b9e9501aa1cbd3d89",
   "policies": {
     "v1": "demo-policy-v1",
     "v2": "demo-policy-v2"

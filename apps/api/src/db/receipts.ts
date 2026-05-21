@@ -448,3 +448,43 @@ export async function lookupIdempotencyKey(
   if (result.rowCount === 0) return null;
   return result.rows[0]!.canonical_hash as string;
 }
+
+// Cap to keep a malformed-or-malicious receipt from blowing up the table.
+const VERR_SNIPPET_LIMIT = 4096;
+
+export async function recordVerificationError(
+  q: Queryable,
+  args: {
+    workspaceId: string;
+    claimedHash: string | null;
+    errorCode: string;
+    details: Record<string, unknown> | null;
+    receiptBody: unknown;
+  },
+): Promise<void> {
+  let snippet: string | null = null;
+  try {
+    const serialized = typeof args.receiptBody === 'string'
+      ? args.receiptBody
+      : JSON.stringify(args.receiptBody);
+    if (serialized) {
+      snippet = serialized.length > VERR_SNIPPET_LIMIT
+        ? serialized.slice(0, VERR_SNIPPET_LIMIT)
+        : serialized;
+    }
+  } catch {
+    snippet = null;
+  }
+  await q.query(
+    `INSERT INTO verification_errors
+       (workspace_id, claimed_hash, error_code, details, receipt_snippet)
+     VALUES ($1, $2, $3, $4, $5)`,
+    [
+      args.workspaceId,
+      args.claimedHash,
+      args.errorCode,
+      args.details ? JSON.stringify(args.details) : null,
+      snippet,
+    ],
+  );
+}

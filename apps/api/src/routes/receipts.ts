@@ -14,8 +14,9 @@ import {
   insertReceipt,
   lookupIdempotencyKey,
   recordIdempotencyKey,
+  recordVerificationError,
 } from '../db/receipts.js';
-import type { Pool } from 'pg';
+import type { Pool, PoolClient } from 'pg';
 import type { JwksLoader } from '../jwks/source.js';
 import { errorBody, mapVerifyError } from '../lib/errors.js';
 
@@ -78,20 +79,64 @@ function validate(
   return { ok: true, receipt };
 }
 
+// Compute the per-utc-day running total of amount_charged for this workspace,
+// over receipts already stored at the same calendar UTC day as `receiptTs`,
+// excluding the current receipt (it is not yet inserted at call time).
+// Matches the aggregate shape the simulation engine builds — a single per-day
+// bucket assigned to every daily_limit rule id. The query runs inside the
+// ingest transaction so concurrent inserts are serialized by row locks on the
+// scanned range (the receipts table is append-only).
+async function computeDailyLimitAggregates(
+  client: PoolClient,
+  workspaceId: string,
+  receiptTs: string,
+  dailyLimitRuleIds: string[],
+): Promise<Record<string, number>> {
+  if (dailyLimitRuleIds.length === 0) return {};
+  const ts = new Date(receiptTs);
+  if (Number.isNaN(ts.getTime())) return {};
+  // [dayStart, dayEnd) — start-inclusive, end-exclusive UTC day window.
+  const dayStart = new Date(Date.UTC(ts.getUTCFullYear(), ts.getUTCMonth(), ts.getUTCDate()));
+  const dayEnd = new Date(dayStart.getTime() + 24 * 60 * 60 * 1000);
+  const result = await client.query(
+    `SELECT COALESCE(SUM(amount_charged), 0)::bigint AS total
+       FROM receipts
+      WHERE workspace_id = $1 AND ts >= $2 AND ts < $3`,
+    [workspaceId, dayStart.toISOString(), dayEnd.toISOString()],
+  );
+  const total = Number(result.rows[0]?.total ?? 0);
+  const aggs: Record<string, number> = {};
+  for (const id of dailyLimitRuleIds) aggs[id] = total;
+  return aggs;
+}
+
 // Run the policy engine against the receipt under the active policy. The
 // engine is pure and only throws on malformed rule parameters or non-integer
 // receipt amounts. Catch those and surface as an ENGINE_ERROR placeholder
 // decision so receipt ingest is not blocked by a policy-author bug. Timeouts
 // are NOT errors here — they are legitimate deny+TIMEOUT decisions returned
 // from evaluate() and pass through unchanged.
+//
+// ENGINE_ERROR semantics. We INTENTIONALLY convert engine exceptions into a
+// stored deny decision (reason `ENGINE_ERROR: <message>`) rather than 5xx-ing
+// the ingest call. The receipt is still verified and persisted, and the
+// failure is auditable on the decisions row. Rationale: a misconfigured rule
+// in the active policy must not take the ingest path offline — the agent
+// already produced a signed receipt and we need to capture it. Operators
+// detect engine errors by querying decisions WHERE reasons @> ARRAY['ENGINE_ERROR%'].
+// Trade-off: this conflates "policy returned deny" with "engine bug returned
+// deny" in the same column. Acceptable for v1; a dedicated
+// policy_evaluation_errors table is the right fix if/when that conflation
+// becomes load-bearing for operators.
 function evaluateOrPlaceholder(
   receipt: Record<string, unknown>,
   config: AppConfig,
   log: FastifyRequest['log'],
+  aggregates: Record<string, number>,
 ): Decision {
   const policy = getActivePolicy(config);
   try {
-    return evaluate(receipt, policy);
+    return evaluate(receipt, policy, { aggregates });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     log.error({ err: message, policy_version: policy.version }, 'policy engine error');
@@ -170,15 +215,26 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
         details.computed = result.canonicalHash;
       }
       details.verify_error = result.error;
+      // Persist to the queryable failure stream. Best-effort: a write
+      // failure here must not change the user-visible response.
+      try {
+        await recordVerificationError(deps.pool, {
+          workspaceId: deps.config.workspaceId,
+          claimedHash:
+            typeof receipt.canonical_hash === 'string' ? receipt.canonical_hash : null,
+          errorCode: result.error,
+          details,
+          receiptBody: req.body,
+        });
+      } catch (err) {
+        req.log.warn({ err }, 'failed to persist verification_errors row');
+      }
       return errorBody(mapped.code, verifyMessage(mapped.code), details);
     }
 
-    // Single transaction: insert-receipt + insert-decision + record-idempotency.
-    // If any of the three throws, ROLLBACK so we never end up with a stored
-    // receipt without its associated decision (or vice versa).
-    // TODO(daily-limit-aggregates): when daily_limit rules become active, this
-    // is where we compute aggregates from the receipt log inside the same tx
-    // (likely SUM(...) FOR UPDATE on receipts) before calling evaluate().
+    // Single transaction: aggregate-compute + insert-receipt + insert-decision
+    // + record-idempotency. If any throws, ROLLBACK so we never end up with a
+    // stored receipt without its associated decision (or vice versa).
     const client = await deps.pool.connect();
     let stored;
     let duplicate;
@@ -190,7 +246,17 @@ export function registerReceiptRoutes(app: FastifyInstance, deps: Deps): void {
       duplicate = ins.duplicate;
 
       if (!duplicate) {
-        const decision = evaluateOrPlaceholder(receipt, deps.config, req.log);
+        const activePolicy = getActivePolicy(deps.config);
+        const dailyLimitRuleIds = activePolicy.rules
+          .filter((r) => r.type === 'daily_limit')
+          .map((r) => r.id);
+        const aggregates = await computeDailyLimitAggregates(
+          client,
+          deps.config.workspaceId,
+          typeof receipt.timestamp === 'string' ? receipt.timestamp : new Date().toISOString(),
+          dailyLimitRuleIds,
+        );
+        const decision = evaluateOrPlaceholder(receipt, deps.config, req.log, aggregates);
         const { stored: storedDecision } = await insertDecisionTx(
           client,
           stored.canonical_hash,

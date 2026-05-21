@@ -21,12 +21,17 @@ matches ``verify.py``):
   * Empty containers (``{}`` and ``[]``) survive even after their last key was
     null-stripped; they are never pruned.
   * No Unicode normalization. NFC and NFD inputs produce different bytes.
-  * Floats are emitted as Python's ``json.dumps`` writes them. The ORS spec
-    says floats SHOULD NOT appear in payloads; the SDK input layer is where to
-    enforce integer-only, not here.
+  * Floats are REJECTED at canonicalize() time. Python ``repr`` and
+    JavaScript ``Number.prototype.toString`` do not agree on every IEEE-754
+    double, so silent pass-through risks cross-language divergence. Encode
+    monetary amounts as integer cents, not as floats.
+  * Non-BMP object keys are REJECTED. They would sort differently in JS
+    (UTF-16 code units) vs Python (Unicode code points), producing
+    divergent canonical bytes.
+  * Integers beyond ``Number.MAX_SAFE_INTEGER`` (2**53 - 1) are REJECTED
+    for the same reason — JS Number cannot represent them exactly. Encode
+    such values as strings.
   * Key sort is by Python's default string ordering (Unicode code point).
-    Cross-language parity with JS (UTF-16 code unit) is only guaranteed for
-    keys in the Basic Multilingual Plane.
 """
 
 from __future__ import annotations
@@ -63,6 +68,58 @@ PAYLOAD_KEYS_OPTIONAL = (
 )
 
 
+class CanonicalizationError(ValueError):
+    """Raised when a value cannot be canonicalized identically across languages."""
+
+
+# Beyond this magnitude, JavaScript's Number cannot represent the integer
+# exactly, so the JS port emits a different string than Python would.
+# Reject at canonicalization time to avoid silent cross-language divergence.
+_MAX_SAFE_INTEGER = 9007199254740991  # 2**53 - 1
+
+
+def _validate(obj: Any) -> None:
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if not isinstance(k, str):
+                raise CanonicalizationError(
+                    f"Object keys must be strings; got {type(k).__name__}"
+                )
+            # Non-BMP keys would sort differently in JS (UTF-16 code units)
+            # vs Python (Unicode code points), producing divergent canonical
+            # bytes. Reject explicitly.
+            for ch in k:
+                if ord(ch) > 0xFFFF:
+                    raise CanonicalizationError(
+                        "Object key contains a non-BMP (supplementary-plane) "
+                        f"character; not supported by ORS v0.1 canonicalization: {k!r}"
+                    )
+            _validate(v)
+        return
+    if isinstance(obj, list):
+        for v in obj:
+            _validate(v)
+        return
+    if isinstance(obj, bool):
+        return  # bool is a subclass of int; check before int
+    if isinstance(obj, int):
+        if abs(obj) > _MAX_SAFE_INTEGER:
+            raise CanonicalizationError(
+                f"Integer {obj} exceeds JavaScript Number.MAX_SAFE_INTEGER; "
+                "encode as a string instead"
+            )
+        return
+    if isinstance(obj, float):
+        # Floats cannot round-trip identically between Python's repr() and
+        # JS's Number.prototype.toString in all cases. NaN/Infinity also
+        # fail allow_nan=False downstream, but reject up-front for clearer
+        # error messages.
+        raise CanonicalizationError(
+            f"Float values are not allowed in ORS v0.1 canonical receipts (got {obj!r})"
+        )
+    # str, None, and other JSON-leaf values are fine.
+
+
 def strip_nulls(obj: Any) -> Any:
     if isinstance(obj, dict):
         return {k: strip_nulls(v) for k, v in obj.items() if v is not None}
@@ -72,6 +129,7 @@ def strip_nulls(obj: Any) -> Any:
 
 
 def canonicalize(payload: dict) -> bytes:
+    _validate(payload)
     cleaned = strip_nulls(payload)
     canonical_str = json.dumps(
         cleaned,

@@ -216,6 +216,49 @@ describe.skipIf(!HAS_DB)('POST /v1/receipts/ingest — decision integration', ()
     );
     expect(decisionRows.rows[0].n).toBe(1);
   });
+
+  it('replays the same canonical hash without an Idempotency-Key (duplicate path)', async () => {
+    // Covers the path where a client retries the exact same payload without
+    // sending Idempotency-Key. The service must still detect the duplicate by
+    // canonical_hash (via the ON CONFLICT on the receipts PK), return 200
+    // with duplicate=true, surface the prior decision, and never produce a
+    // second decision row.
+    const { receipt } = makeSignedReceipt({
+      amount_charged: 444,
+      receipt_id: '11111111-1111-4111-8111-1111111111dd',
+    });
+    const first = await app.inject({
+      method: 'POST',
+      url: '/v1/receipts/ingest',
+      payload: receipt,
+      headers: { 'content-type': 'application/json' },
+    });
+    expect(first.statusCode).toBe(201);
+
+    const replay = await app.inject({
+      method: 'POST',
+      url: '/v1/receipts/ingest',
+      payload: receipt,
+      headers: { 'content-type': 'application/json' }, // no Idempotency-Key
+    });
+    expect(replay.statusCode).toBe(200);
+    const body = replay.json();
+    expect(body.duplicate).toBe(true);
+    expect(body.hash).toBe(receipt.canonical_hash);
+    expect(body.decision).toBeDefined();
+
+    const decisionRows = await pool.query(
+      'SELECT COUNT(*)::int AS n FROM decisions WHERE receipt_hash = $1',
+      [receipt.canonical_hash],
+    );
+    expect(decisionRows.rows[0].n).toBe(1);
+
+    const receiptRows = await pool.query(
+      'SELECT COUNT(*)::int AS n FROM receipts WHERE canonical_hash = $1',
+      [receipt.canonical_hash],
+    );
+    expect(receiptRows.rows[0].n).toBe(1);
+  });
 });
 
 describe.skipIf(HAS_DB)('integration tests skipped (no TEST_DATABASE_URL)', () => {

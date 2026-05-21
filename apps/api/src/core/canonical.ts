@@ -8,9 +8,14 @@
 // default JavaScript string comparator, which compares UTF-16 code units.
 // Python's json.dumps(sort_keys=True) sorts by Unicode code point. The two
 // orderings agree for any key whose characters are entirely within the Basic
-// Multilingual Plane (U+0000 - U+FFFF). All shipped test vectors are BMP.
-// Keys containing supplementary-plane characters (U+10000 and above) are NOT
-// supported; the SDK input layer is the right place to reject them.
+// Multilingual Plane (U+0000 - U+FFFF). Supplementary-plane keys would sort
+// differently across languages and silently produce divergent canonical
+// output, so canonicalize() rejects them explicitly (see assertBmpKey).
+//
+// Numeric handling is also strict: floats, NaN, Infinity, and integers
+// outside Number.MAX_SAFE_INTEGER cannot round-trip identically between
+// Python and JavaScript, so they are rejected at canonicalization time
+// rather than silently emitted as divergent bytes.
 
 import { sha256 } from '@noble/hashes/sha2';
 import { bytesToHex } from '@noble/hashes/utils';
@@ -43,6 +48,25 @@ export const SIGNATURE_METADATA_KEYS = ['canonical_hash', 'signature', 'key_id']
 
 type JsonValue = string | number | boolean | null | JsonValue[] | { [k: string]: JsonValue };
 
+export class CanonicalizationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'CanonicalizationError';
+  }
+}
+
+function assertBmpKey(key: string): void {
+  for (let i = 0; i < key.length; i++) {
+    const code = key.charCodeAt(i);
+    // Surrogate pair => supplementary-plane code point (U+10000+).
+    if (code >= 0xd800 && code <= 0xdbff) {
+      throw new CanonicalizationError(
+        `Object key contains a non-BMP (supplementary-plane) character; not supported by ORS v0.1 canonicalization: ${JSON.stringify(key)}`,
+      );
+    }
+  }
+}
+
 export function stripNulls(value: unknown): unknown {
   if (value === null) return null;
   if (Array.isArray(value)) {
@@ -66,16 +90,27 @@ function canonicalSerialize(value: unknown): string {
   if (value === null) return 'null';
   if (typeof value === 'boolean') return value ? 'true' : 'false';
   if (typeof value === 'number') {
+    if (Number.isNaN(value)) {
+      throw new CanonicalizationError('NaN is not a valid canonical value');
+    }
     if (!Number.isFinite(value)) {
-      throw new Error('Non-finite number cannot be canonicalized');
+      throw new CanonicalizationError('Infinity is not a valid canonical value');
     }
-    if (Number.isInteger(value)) {
-      return value.toString(10);
+    if (!Number.isInteger(value)) {
+      // Floats cannot round-trip identically between Python's repr() and
+      // JavaScript's Number.prototype.toString in all cases. Reject rather
+      // than emit divergent bytes. Negative zero falls under this branch
+      // (it is not Number.isInteger) and is also rejected.
+      throw new CanonicalizationError(
+        `Float values are not allowed in ORS v0.1 canonical receipts (got ${value})`,
+      );
     }
-    // Float emission matches Python's json.dumps repr for IEEE-754 doubles in
-    // the common cases. The ORS spec says floats SHOULD NOT appear; enforce at
-    // the SDK input layer, not here.
-    return JSON.stringify(value);
+    if (!Number.isSafeInteger(value)) {
+      throw new CanonicalizationError(
+        `Integer ${value} exceeds Number.MAX_SAFE_INTEGER; encode as a string instead`,
+      );
+    }
+    return value.toString(10);
   }
   if (typeof value === 'string') {
     // JSON.stringify produces RFC 8259-compliant escaping. JCS (RFC 8785)
@@ -93,6 +128,7 @@ function canonicalSerialize(value: unknown): string {
     const keys = Object.keys(obj).sort();
     const parts: string[] = [];
     for (const k of keys) {
+      assertBmpKey(k);
       parts.push(JSON.stringify(k) + ':' + canonicalSerialize(obj[k]));
     }
     return '{' + parts.join(',') + '}';

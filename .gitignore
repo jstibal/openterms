@@ -1,12 +1,18 @@
+# Python
 __pycache__/
 *.pyc
 *.egg-info/
 .pytest_cache/
-.venv/
-node_modules/
-dist/
-build/
-__pycache__/
+.ruff_cache/
 .venv/
 .coverage
 htmlcov/
+
+# Node
+node_modules/
+dist/
+build/
+
+# OS / archive cruft
+.DS_Store
+__MACOSX/

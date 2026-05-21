@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, test } from 'vitest';
 import { createHash } from 'node:crypto';
 
-import { canonicalize, canonicalString } from '../src/core/canonical.js';
+import { CanonicalizationError, canonicalize, canonicalString } from '../src/core/canonical.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(here, '../../..');
@@ -64,5 +64,41 @@ describe('ORS v0.1 corner cases (parity with test_canonical.py)', () => {
     // does not affect any conformant receipt. Document the gap rather than
     // hack a tag-type wrapper in.
     expect(canonicalString({ n: 1000 })).toBe('{"n":1000}');
+  });
+});
+
+describe('ORS v0.1 strict rejections (defense in depth)', () => {
+  test('rejects NaN', () => {
+    expect(() => canonicalString({ n: NaN })).toThrow(CanonicalizationError);
+  });
+
+  test('rejects Infinity', () => {
+    expect(() => canonicalString({ n: Infinity })).toThrow(CanonicalizationError);
+    expect(() => canonicalString({ n: -Infinity })).toThrow(CanonicalizationError);
+  });
+
+  test('rejects floats', () => {
+    expect(() => canonicalString({ n: 1.5 })).toThrow(/Float/);
+  });
+
+  test('rejects negative zero (not an integer)', () => {
+    // -0 is not Number.isInteger in V8, so it falls through to the float reject.
+    // The point is that it does not silently emit divergent bytes.
+    expect(() => canonicalString({ n: -0.5 })).toThrow(CanonicalizationError);
+  });
+
+  test('rejects integers beyond MAX_SAFE_INTEGER', () => {
+    // 2^53 == Number.MAX_SAFE_INTEGER + 1 — first integer that loses precision.
+    expect(() => canonicalString({ n: 9007199254740992 + 1 })).toThrow(/safe/i);
+  });
+
+  test('rejects non-BMP object keys', () => {
+    // U+1F600 GRINNING FACE — surrogate pair in UTF-16.
+    expect(() => canonicalString({ '😀': 1 })).toThrow(/non-BMP/);
+  });
+
+  test('accepts BMP key with non-ASCII (sanity)', () => {
+    // Verifies the rejection is narrow — ordinary unicode keys still work.
+    expect(canonicalString({ café: 1 })).toBe('{"café":1}');
   });
 });

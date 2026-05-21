@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pytest
 
-from openterms.canonical import canonicalize
+from openterms.canonical import CanonicalizationError, canonicalize
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 VECTORS_PATH = REPO_ROOT / "tests" / "vectors" / "ors-v0.1" / "canonicalization.json"
@@ -99,12 +99,38 @@ def test_corner_unicode_no_normalization() -> None:
     assert nfd == '{"name":"café"}'.encode()
 
 
-def test_corner_integer_that_arrived_as_float() -> None:
-    """A Python float ``1000.0`` serializes as ``1000.0``, not ``1000``.
+def test_corner_integer_that_arrived_as_float_is_rejected() -> None:
+    """Floats are rejected outright (parity with the TS port).
 
-    The canonicalizer does not coerce float-typed integers to int. SDK input
-    validation (not this function) is responsible for rejecting floats where
-    integers are expected, per the ORS spec's "integers MUST remain as
-    integers" rule. Locks in the decision flagged as ambiguity #4.
+    Previously the canonicalizer passed floats through as ``1000.0``, but
+    Python ``repr`` and JavaScript ``Number.prototype.toString`` do not
+    agree on every IEEE-754 double, so silent pass-through risks
+    cross-language divergence. The strict rejection is defense in depth.
     """
-    assert canonicalize({"n": 1000.0}) == b'{"n":1000.0}'
+    with pytest.raises(CanonicalizationError):
+        canonicalize({"n": 1000.0})
+
+
+# --- Strict rejection parity (matches apps/api canonical.parity.test.ts) ---
+
+
+def test_reject_float() -> None:
+    with pytest.raises(CanonicalizationError, match="Float"):
+        canonicalize({"n": 1.5})
+
+
+def test_reject_unsafe_integer() -> None:
+    # 2**53 — first integer JS Number cannot represent exactly.
+    with pytest.raises(CanonicalizationError, match="MAX_SAFE_INTEGER"):
+        canonicalize({"n": 9007199254740992})
+
+
+def test_reject_non_bmp_key() -> None:
+    # U+1F600 GRINNING FACE
+    with pytest.raises(CanonicalizationError, match="non-BMP"):
+        canonicalize({"😀": 1})
+
+
+def test_accept_bmp_unicode_key() -> None:
+    # Sanity: ordinary unicode keys still work.
+    assert canonicalize({"café": 1}) == '{"café":1}'.encode()
