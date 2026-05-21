@@ -6,11 +6,16 @@ deferred. It exists so a reader of [README.md](README.md) or
 contract surface.
 
 The build plan is [`LLM_Handoff_Brief.md`](LLM_Handoff_Brief.md) Section 8
-(a ten-step sequence). **All ten steps have shipped in code.** Step 10
-(deployment, hosted JWKS, bearer auth, rate limiting, key management) is
-implemented; the only remaining work is the operator action of
-provisioning the Render service and turning it on. See
-[DEPLOYMENT.md](DEPLOYMENT.md) for the runbook.
+(a ten-step sequence). **All ten steps have shipped in code and Step 10
+is live in staging.** The service is deployed to Render at
+[`https://openterms-trace-api.onrender.com`](https://openterms-trace-api.onrender.com),
+the public JWKS endpoint, bearer auth, and rate limiting are all running
+against managed Postgres, and the post-deploy smoke test passed on
+**2026-05-21** (`/healthz` 200, `/.well-known/jwks.json` 200 with keys,
+authenticated `/v1/receipts` 200, unauthenticated `/v1/receipts` 401).
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the runbook. Production cutover
+(separate Render service, production-grade Postgres, production secrets,
+custom domain) is still future work.
 
 Step 10 deliverables in this repo:
 
@@ -79,7 +84,8 @@ Postgres → query → offline Python re-verify).
 | Rate limiting | Implemented (`@fastify/rate-limit`, separate buckets for authenticated ingest, authenticated query, and per-IP public). |
 | JWKS hosting endpoint | Implemented (`GET /.well-known/jwks.json`, edge-cacheable). |
 | Multi-workspace per service instance | **Not implemented.** API keys carry `workspace_id`, but a single service instance still serves a single configured workspace. Multi-tenant routing is a separate workstream. |
-| Production deployment | Infrastructure ready (`render.yaml`, `Dockerfile`, `DEPLOYMENT.md`); operator must provision the Render service, configure env vars, and run the migration / seed. Not yet provisioned. |
+| Staging deployment | **Live** at `https://openterms-trace-api.onrender.com`. Smoke test green on 2026-05-21 (health, JWKS, authenticated query, unauthenticated rejection). |
+| Production deployment | **Not yet provisioned.** Requires a separate Render service, production-grade Postgres (not free-tier), production secrets, and a real domain. Infrastructure templates (`render.yaml`, `Dockerfile`, `DEPLOYMENT.md`) cover the procedure. |
 | Dashboard / OAuth | **Deferred** to a separate workstream. |
 
 ## Security and deployment readiness
@@ -101,9 +107,14 @@ Postgres → query → offline Python re-verify).
 - **Monitoring / metrics / structured request logging.** Application logs
   exist. `GET /healthz` is the liveness probe. Metrics export and error-rate
   alerting are not yet wired.
-- **Production deployment.** Render service is not yet provisioned. Once
-  the operator follows the runbook, `scripts/smoke-staging.sh` exercises
-  the live endpoint to confirm health, auth, and ingest round-trip.
+- **Staging deployment.** Live at
+  `https://openterms-trace-api.onrender.com`. `scripts/smoke-staging.sh`
+  was run against the live endpoint on 2026-05-21 and confirmed health,
+  JWKS, authenticated query, and unauthenticated rejection.
+- **Production deployment.** Not yet provisioned. A separate Render
+  service with production-grade Postgres, production secrets, and a real
+  domain is required; the runbook in [`DEPLOYMENT.md`](DEPLOYMENT.md)
+  applies.
 - **CI gates.** Green on both jobs as of commit `02288e8` — the Python
   unit/parity job and the API job (typecheck + unit + Postgres-backed
   integration tests).
@@ -190,10 +201,11 @@ truth for what is shipped.
 
 ## How to read this document
 
-All ten BUILD_BRIEF Section 8 steps are shipped in code, including
-Step 10's auth, rate limiting, hosted JWKS, deployment manifests, and
-runbook. The remaining gap to a live service is the operator action of
-provisioning the Render service per [DEPLOYMENT.md](DEPLOYMENT.md).
-Beyond that, the open product workstreams are policy CRUD,
-multi-tenancy, dashboards / OAuth, webhooks, and the async simulation
-flow — each tracked in the tables above.
+All ten BUILD_BRIEF Section 8 steps are shipped in code and Step 10 is
+live in staging at `https://openterms-trace-api.onrender.com` (smoke
+test green 2026-05-21). The remaining gap is the production cutover:
+a separate Render service with production-grade Postgres, production
+secrets, and a real domain, per [DEPLOYMENT.md](DEPLOYMENT.md). Beyond
+that, the open product workstreams are policy CRUD, multi-tenancy,
+dashboards / OAuth, webhooks, and the async simulation flow — each
+tracked in the tables above.
