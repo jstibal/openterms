@@ -47,6 +47,8 @@ Four SDK packages are published:
 - `crewai-openterms` 1.0.0 (PyPI, imported as `openterms_crewai`) —
   CrewAI callable wrapper.
 
+`langchain-openterms` and `crewai-openterms` are independently published by OpenTerms. **They are not official LangChain or CrewAI project packages and have not been vetted or endorsed by those projects.** They adapt OpenTerms to those frameworks. The docs must never describe them as "official integrations" or otherwise imply that the LangChain or CrewAI teams have reviewed or sanctioned them.
+
 The docs updates below land the SDK install/quickstart content for both halves, the API response schemas, the simulation schema, the key rotation procedure, and the ORS test-vector link. They leave explicit gap markers for webhooks (not implemented), regulatory context (pending), SLA terms (pending), and several openapi.yaml endpoints that are documented in the contract but not yet implemented in the service (policies CRUD, keys CRUD, workspace, public verify, webhook test). The docs must not overstate any of these. The calibrated truth in [`IMPLEMENTATION_STATUS.md`](../IMPLEMENTATION_STATUS.md) is the binding reference.
 
 ---
@@ -786,6 +788,11 @@ pip install langchain-openterms
 PyPI distribution name is `langchain-openterms`; the importable module
 is `openterms_langchain`. Pulls in `langchain-core>=0.3,<1.0`. Uses only
 the public `BaseCallbackHandler` hooks.
+
+`langchain-openterms` is an independently published PyPI package
+maintained by OpenTerms. It is not an official LangChain project package
+and has not been vetted or endorsed by the LangChain project; it adapts
+OpenTerms to LangChain's public callback API.
 ```
 
 ---
@@ -810,6 +817,11 @@ PyPI distribution name is `crewai-openterms`; the importable module is
 adapter wraps a plain callable; plug the wrapped function into CrewAI
 the way your project already does (`Tool(name=..., func=...)`, the
 `@tool` decorator, or as the body of a `BaseTool._run`).
+
+`crewai-openterms` is an independently published PyPI package maintained
+by OpenTerms. It is not an official CrewAI project package and has not
+been vetted or endorsed by the CrewAI project; it adapts OpenTerms to
+CrewAI's function-tool pattern.
 ```
 
 ---
@@ -1252,6 +1264,8 @@ Re-reading the proposed updates against [`IMPLEMENTATION_STATUS.md`](../IMPLEMEN
 
 8. **Regulatory context and SLA terms are out of scope for this session.** Both are flagged in the relevant docs locations as "pending product/legal input." The docs must not invent regulatory or contractual language.
 
+9. **Adapter relationship language is constrained.** `langchain-openterms` and `crewai-openterms` are independently published PyPI packages maintained by OpenTerms. They were **not** submitted to, accepted by, or endorsed by the LangChain or CrewAI projects, and they are not official packages of those projects. Docs pages must describe them with language that cannot be misread as official endorsement (recommended framing: "OpenTerms provides independently published PyPI adapter packages for LangChain and CrewAI workflows. These packages are maintained by OpenTerms and are not official LangChain or CrewAI project packages."). Avoid bare phrases like "official integration" or anything implying the framework teams vetted these packages. The accurate claim is that the packages adapt OpenTerms to those frameworks.
+
 ### Eight documented content gaps — disposition
 
 | Gap | Disposition |
@@ -1265,7 +1279,7 @@ Re-reading the proposed updates against [`IMPLEMENTATION_STATUS.md`](../IMPLEMEN
 | SLA terms | **Gap retained** — pending product input. |
 | ORS test vectors | **Filled** — Section 3.3 (links to `tests/vectors/ors-v0.1/canonicalization.json`). |
 
-No page in this handoff claims more than what is shipped at commit `01ebde5`.
+No page in this handoff claims more than what is shipped at the current head of `main` (the 1.0.0 package release: `openterms-py` 1.0.0, `langchain-openterms` 1.0.0, `crewai-openterms` 1.0.0, `@openterms-ai/sdk` 1.0.1, staging live at `https://openterms-trace-api.onrender.com`).
 
 ---
 

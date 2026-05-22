@@ -1,39 +1,108 @@
-# OpenTerms Agent Action Observability
+# OpenTerms
 
-Verifiable audit trail for autonomous AI agent actions. Every action produces an
-[ORS v0.1](https://github.com/jstibal/ors-spec) signed receipt; this repo
-contains the ingest pipeline, SDKs, and (eventually) the policy, query, and
-simulation surfaces.
+OpenTerms is two halves of one agent-governance story:
 
-See [`LLM_Handoff_Brief.md`](LLM_Handoff_Brief.md) for the full product brief
-and [`openapi.yaml`](openapi.yaml) for the public API contract.
+- **Permissions — before an agent acts.** Look up `openterms.json` for a
+  domain to see what the site owner permits.
+- **Receipts — after an agent acts.** Sign and emit an
+  [ORS v0.1](https://github.com/jstibal/ors-spec) receipt so the action is
+  cryptographically auditable.
 
-## Packages
+The two halves ship in a single Python library (`openterms-py`), with
+framework adapters and a TypeScript SDK alongside.
 
-| Path | What it is | How to test |
-| --- | --- | --- |
-| [`apps/api/`](apps/api/) | TypeScript/Fastify ingest service. Verifies Ed25519 signatures and persists receipts to Postgres. | `cd apps/api && npm test` |
-| [`packages/openterms-py/`](packages/openterms-py/) | Python SDK. Canonicalization, signing, verification, JWKS helpers. | `cd packages/openterms-py && .venv/bin/pytest` |
-| [`tests/integration/`](tests/integration/) | Cross-language end-to-end test. Spawns `apps/api/`, signs from Python, verifies in TypeScript, persists to Postgres. | `.venv/bin/pytest tests/integration -v` |
-| [`tests/vectors/ors-v0.1/`](tests/vectors/ors-v0.1/) | Shared canonicalization test vectors. Read by both Python and TypeScript test suites. | — |
+## Published packages
+
+| Package | Registry | Version | Install |
+| --- | --- | --- | --- |
+| `openterms-py` | PyPI | 1.0.0 | `pip install openterms-py` |
+| `langchain-openterms` | PyPI | 1.0.0 | `pip install langchain-openterms` |
+| `crewai-openterms` | PyPI | 1.0.0 | `pip install crewai-openterms` |
+| `@openterms-ai/sdk` | npm | 1.0.1 | `npm install @openterms-ai/sdk` |
+
+`langchain-openterms` and `crewai-openterms` are independently published
+PyPI adapter packages maintained by OpenTerms. They are not official
+LangChain or CrewAI project packages and have not been vetted or endorsed
+by those projects; they adapt OpenTerms to those frameworks.
+
+## Two halves
+
+### Before you act: check permissions
+
+```python
+import openterms
+
+result = openterms.check("example.com", "scrape_data")
+if result:
+    print("allowed")
+else:
+    print(f"blocked: {result.decision}")
+```
+
+Lookup order: `https://{domain}/.well-known/openterms.json`, then
+`https://{domain}/openterms.json`, then the configured registry URL.
+
+### After you act: emit a signed receipt
+
+```python
+from openterms import IngestClient, generate_keypair
+
+sk, _pk = generate_keypair()
+client = IngestClient(
+    base_url="https://openterms-trace-api.onrender.com",
+    api_key="ot_test_…",
+    workspace_id="00000000-0000-4000-8000-0000000000aa",
+    key_id="my-key",
+    private_key=sk.private_bytes_raw(),
+    agent_id="my-agent",
+)
+client.emit_receipt(
+    action_type="tool_call",
+    action_context={"tool_id": "web.fetch", "url": "https://example.com"},
+)
+```
+
+See [`packages/openterms-py/README.md`](packages/openterms-py/README.md) for
+the full API surface (permissions, receipts, policy engine, JWKS helpers).
+
+## Live staging service
+
+The ingest + query + simulate + JWKS service is deployed at
+**https://openterms-trace-api.onrender.com**.
+
+- `GET /healthz` — liveness probe (public)
+- `GET /.well-known/jwks.json` — public JWKS for offline verification
+- `POST /v1/receipts/ingest` — authenticated ingest (`Authorization: Bearer ot_…`)
+- `GET /v1/receipts`, `GET /v1/decisions`, `POST /v1/simulate` — authenticated query / simulate
+
+For staging API keys, contact support. See [`DEPLOYMENT.md`](DEPLOYMENT.md)
+for the production runbook and [`IMPLEMENTATION_STATUS.md`](IMPLEMENTATION_STATUS.md)
+for the binding capability reference.
+
+## Repository layout
+
+| Path | What it is |
+| --- | --- |
+| [`apps/api/`](apps/api/) | TypeScript/Fastify ingest service. Verifies Ed25519, persists to Postgres, evaluates policy. |
+| [`packages/openterms-py/`](packages/openterms-py/) | Python library: permissions + receipts + policy + JWKS. |
+| [`packages/openterms-ts/`](packages/openterms-ts/) | TypeScript SDK published as `@openterms-ai/sdk`. |
+| [`packages/langchain-openterms/`](packages/langchain-openterms/) | LangChain `BaseCallbackHandler` adapter. |
+| [`packages/crewai-openterms/`](packages/crewai-openterms/) | CrewAI callable-wrapping adapter. |
+| [`tests/integration/`](tests/integration/) | Cross-language end-to-end tests. |
+| [`tests/vectors/ors-v0.1/`](tests/vectors/ors-v0.1/) | Shared canonicalization vectors. |
 
 ## Quick test (everything)
 
 ```bash
-# Python SDK unit + verification tests
+# Python SDK
 cd packages/openterms-py && .venv/bin/pytest -q
 
-# TypeScript unit tests (canonical parity + 6 verify error codes)
-cd ../../apps/api && npm install && npm test
+# TypeScript API service
+cd apps/api && npm install && npm test
 
 # Cross-language integration (requires Postgres running locally)
-cd ../.. && packages/openterms-py/.venv/bin/pytest tests/integration -v
+packages/openterms-py/.venv/bin/pytest tests/integration -v
 ```
 
-## Status
-
-See [`IMPLEMENTATION_STATUS.md`](IMPLEMENTATION_STATUS.md) for the
-authoritative reference on what is shipped, what is planned, and what is
-deferred. The Fastify ingest service is live in staging at
-[`https://openterms-trace-api.onrender.com`](https://openterms-trace-api.onrender.com)
-with bearer auth, rate limiting, and a public JWKS endpoint.
+See [`LLM_Handoff_Brief.md`](LLM_Handoff_Brief.md) for the product brief
+and [`openapi.yaml`](openapi.yaml) for the public API contract.

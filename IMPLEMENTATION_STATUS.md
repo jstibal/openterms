@@ -57,10 +57,14 @@ Step 8 deliverables (SDKs and adapters) remain as previously shipped:
   `langchain-openterms` **1.0.0** on PyPI (importable as
   `openterms_langchain`). LangChain `BaseCallbackHandler` that signs and
   posts a receipt on every `on_tool_start` (and optionally `on_tool_end`).
+  Independently published by OpenTerms; not an official LangChain project
+  package and not endorsed by the LangChain project.
 - [`packages/crewai-openterms`](packages/crewai-openterms/) —
   `crewai-openterms` **1.0.0** on PyPI (importable as
   `openterms_crewai`). Callable-level wrapper; CrewAI is intentionally
-  not a hard runtime dependency.
+  not a hard runtime dependency. Independently published by OpenTerms; not
+  an official CrewAI project package and not endorsed by the CrewAI
+  project.
 
 The integration test `tests/integration/test_adapter_e2e.py` exercises
 the full chain (LangChain adapter → IngestClient → Fastify ingest →
