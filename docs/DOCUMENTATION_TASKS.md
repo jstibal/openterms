@@ -1,8 +1,8 @@
-# Docs Handoff for Polsia
+# Documentation Tasks
 
 **Source build:** `openterms-trace` at the head of `main` (post BUILD_BRIEF Step 10, with `@openterms-ai/sdk` bumped to 1.0.1 and `openterms-py` 1.0.0 carrying both the permissions and receipts halves).
 **Source of truth for capabilities:** [`IMPLEMENTATION_STATUS.md`](../IMPLEMENTATION_STATUS.md), the four package READMEs under [`packages/`](../packages/), [`openapi.yaml`](../openapi.yaml), and [`DEPLOYMENT.md`](../DEPLOYMENT.md).
-**Target docs surface:** `observe.openterms.com/docs`, managed by Polsia. This handoff does not modify the Polsia surface; it captures the updates Polsia needs to apply.
+**Target docs surface:** `observe.openterms.com/docs`, managed by the documentation contributor. This handoff does not modify the docs surface directly; it captures the updates the documentation contributor needs to apply.
 
 **Package name reference (canonical).**
 
@@ -55,7 +55,7 @@ The docs updates below land the SDK install/quickstart content for both halves, 
 
 ## Section 2 — Page-by-page updates
 
-The 17 pages below match the Polsia information architecture in use at `observe.openterms.com/docs`. For each page: current state, updates required, and exact text to paste. Wherever a real URL is needed, the placeholder `https://openterms-trace-api.onrender.com` appears — see Section 6 for the full substitution list.
+The 17 pages below match the information architecture in use at `observe.openterms.com/docs`. For each page: current state, updates required, and exact text to paste. Wherever a real URL is needed, the placeholder `https://openterms-trace-api.onrender.com` appears — see Section 6 for the full substitution list.
 
 ### 2.1 — `/docs/` (Introduction / Landing)
 
@@ -943,7 +943,7 @@ with the failing vector name.
 | Current page | Action | Rationale |
 | ------------ | ------ | --------- |
 | `/docs/coming-soon` (if present) | Remove | Every "coming soon" SDK section now has real content. |
-| `/docs/concepts/dashboard` (placeholder for Polsia UI) | Keep but mark as Polsia-managed | The OpenTerms API does not ship a dashboard; the Polsia surface owns this. |
+| `/docs/concepts/dashboard` (placeholder for dashboard UI) | Keep but mark as dashboard-managed | The OpenTerms API does not ship a dashboard; the dashboard surface owns this. |
 | Any page that claims OAuth2 is available | Remove or rewrite | OAuth2 is documented in the OpenAPI contract but **not implemented**. Bearer-token is the only enforced scheme. |
 | Any page that documents `POST /v1/policies` / `POST /v1/keys/rotate` / `GET /v1/workspace` / `POST /v1/webhooks/test` as available | Move to a "Planned" section | These endpoints return 404 today. |
 
@@ -1214,7 +1214,7 @@ print(receipt["permission_receipt_id"])
 
 ## Section 6 — Staging URL placeholder
 
-The staging URL is not deployed at the time of this handoff. Polsia (or the operator) substitutes `https://openterms-trace-api.onrender.com` with the real URL after the first Render deploy. The expected value is the form `https://openterms-trace-api.onrender.com` (or whatever Render assigns), with no trailing slash and no `/v1` suffix.
+The staging URL is not deployed at the time of this handoff. The documentation contributor (or the operator) substitutes `https://openterms-trace-api.onrender.com` with the real URL after the first Render deploy. The expected value is the form `https://openterms-trace-api.onrender.com` (or whatever Render assigns), with no trailing slash and no `/v1` suffix.
 
 The placeholder `openterms-trace-api.onrender.com` is the same URL with the `https://` scheme stripped (used only inside HTTP example `Host:` lines).
 
@@ -1302,14 +1302,14 @@ Order of application (highest impact first):
 11. **2.3, 2.4 Concept pages.** Lowest urgency; conceptual reference.
 12. **Section 4 removals.** Last, so links into removed pages have already been rewritten by the earlier updates.
 
-### 8.2 — If applied by Polsia after June 1
+### 8.2 — If applied by the documentation contributor after June 1
 
-A structured prompt per page. Polsia consumes one prompt at a time, applies the diff, and runs the verification checklist (8.3) before moving to the next page.
+A structured prompt per page. The documentation contributor consumes one prompt at a time, applies the diff, and runs the verification checklist (8.3) before moving to the next page.
 
 ```text
 SYSTEM: You are updating the OpenTerms docs page at <PATH>.
 INPUT:  The text block under "Exact text to apply" in Section 2.<N> of
-        docs/HANDOFF_FOR_POLSIA.md.
+        docs/DOCUMENTATION_TASKS.md.
 TASK:   Replace the current page content with the input. Preserve the
         page's frontmatter (title, slug, sidebar order). Substitute every
         https://openterms-trace-api.onrender.com occurrence with the deployed staging URL listed

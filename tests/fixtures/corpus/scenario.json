@@ -14,7 +14,7 @@
   "issuer": "https://api.observe.openterms.com",
   "agents": [
     "acme-research-bot",
-    "polsia-summarizer",
+    "summit-summarizer",
     "freight-pricing-agent",
     "kestrel-deal-scout",
     "north-star-fact-checker",

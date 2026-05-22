@@ -56,7 +56,7 @@
     "evaluated_at": "2026-04-19T04:19:43.167Z"
   },
   {
-    "receipt_hash": "b7f3f99c3d85256c37157fdfb2915c7d7bf81bacbe1ed8a47cf762e5fe809f0e",
+    "receipt_hash": "f524ddbc79107b9cbbc8bc6abd4b07bd9dd74602c0c74742b24f7c3f47f1e68d",
     "decision": "deny",
     "triggered_rules": [
       "action_type_allowlist",
@@ -126,7 +126,7 @@
     "evaluated_at": "2026-04-19T11:32:35.111Z"
   },
   {
-    "receipt_hash": "c0a14f1272b19b9a8554ae2b33d481c808e9154d4b75d6f9f73dabe4f79da848",
+    "receipt_hash": "222b3ed70bda91e055acc50be613fe4ec2ed3231e60325f6ee558df587ab8875",
     "decision": "deny",
     "triggered_rules": [
       "action_type_allowlist",
@@ -168,7 +168,7 @@
     "evaluated_at": "2026-04-19T15:52:18.277Z"
   },
   {
-    "receipt_hash": "6f1fb83af5eedd0659d9ab1ebdd8a73b2bd5b63579244aebe60ceb01553edb19",
+    "receipt_hash": "708ac6e777cf0fb0fa060fd773b9fc3c0a9725fdb2488c31f989a7be168c3d4d",
     "decision": "deny",
     "triggered_rules": [
       "action_type_allowlist",
@@ -224,7 +224,7 @@
     "evaluated_at": "2026-04-19T21:38:35.832Z"
   },
   {
-    "receipt_hash": "da3aadb68f2662a77168ddbb2fb17e2622221f10ecd0f48f6f1446db9a041e61",
+    "receipt_hash": "cab89abe8a481a94c0c57b68c3e89200c68e1a48d0439cdb3bb883cb4d1b3943",
     "decision": "deny",
     "triggered_rules": [
       "action_type_allowlist",
@@ -238,7 +238,7 @@
     "evaluated_at": "2026-04-19T23:05:10.221Z"
   },
   {
-    "receipt_hash": "0ed3c15f4d7848e26f53fb62c7302d27b532ca319bd5095d94bfcddf02d4e1e5",
+    "receipt_hash": "b41c4cb443c815fc9b6fa8bf8d3c510fae39091bac047edb98f57878bc25d195",
     "decision": "deny",
     "triggered_rules": [
       "action_type_allowlist",
@@ -372,7 +372,7 @@
     "evaluated_at": "2026-04-20T12:04:19.720Z"
   },
   {
-    "receipt_hash": "072d114b3132e6950bab7c2806016b86af3d128a31e61ff5e68e4ee90e74f9dc",
+    "receipt_hash": "41b92baed4f734a16d32fdd866063323366163b7783310e5932f76ddd0b23ea4",
     "decision": "deny",
     "triggered_rules": [
       "max_amount",
@@ -704,7 +704,7 @@
     "evaluated_at": "2026-04-21T19:48:56.273Z"
   },
   {
-    "receipt_hash": "30e8473a538f77fb272bf5962b8408f510f27da20a6d6fcb454ff5e170792b7f",
+    "receipt_hash": "fc928301948bfebb028a49acc57e75db86fd03f634082790215f31929ee290ba",
     "decision": "deny",
     "triggered_rules": [
       "daily_limit",
@@ -756,7 +756,7 @@
     "evaluated_at": "2026-04-22T01:35:13.828Z"
   },
   {
-    "receipt_hash": "c0bd9441bd7a339ad92086dd65b7d18287ea067b31d864b46dd5034f4fb75707",
+    "receipt_hash": "3e1e08704354af00c20b8f822076e916a7ed5feb6bc27d865bfd1a5455ccadd7",
     "decision": "deny",
     "triggered_rules": [
       "url_prefix_allowlist"
@@ -1006,7 +1006,7 @@
     "evaluated_at": "2026-04-23T05:00:07.215Z"
   },
   {
-    "receipt_hash": "16f567f2d27ae3a0b12a56e5e41c1389654503127f4314a0a25ae03a4f6f23cd",
+    "receipt_hash": "69a0be6bd7b0466347c091a1c008cf989fa2f627410af4a074c6eb36f83f4715",
     "decision": "deny",
     "triggered_rules": [
       "url_prefix_allowlist",
@@ -1020,7 +1020,7 @@
     "evaluated_at": "2026-04-23T06:26:41.604Z"
   },
   {
-    "receipt_hash": "d2a94ecdd421bcc28acd08975446076bbdfc6f7f2d091e4d32474ab164003fad",
+    "receipt_hash": "2b8c5c58577d0d79ea844174a06db55618227f73378315d0e4739aecb3c64742",
     "decision": "deny",
     "triggered_rules": [
       "url_prefix_allowlist",
@@ -1076,7 +1076,7 @@
     "evaluated_at": "2026-04-23T12:12:59.159Z"
   },
   {
-    "receipt_hash": "6fe28ef0d1b781543cc942f976533f60afb0782daaad5671c3846de40ded8c14",
+    "receipt_hash": "f8b05c9593939d93695b495e14f403530f5e95c9e1f2901e56c5f8e4157bada9",
     "decision": "deny",
     "triggered_rules": [
       "tool_id_allowlist",
@@ -1200,7 +1200,7 @@
     "evaluated_at": "2026-04-24T00:00:00.001Z"
   },
   {
-    "receipt_hash": "552b1b459cd18d83a5323467892d25a982651960b6e6d20a2168fc0683ccddc2",
+    "receipt_hash": "82af3f697d42184590e19d3b844c179d27a80fc0aebf8403309a19ffcd9f406e",
     "decision": "deny",
     "triggered_rules": [
       "tool_id_allowlist",
@@ -1486,7 +1486,7 @@
     "evaluated_at": "2026-04-25T16:09:37.155Z"
   },
   {
-    "receipt_hash": "0ebe9aba3ee2c59aaeeac357d1d2e30ec5a56d00ea65b4047b1dcc3f13674422",
+    "receipt_hash": "6902735348f71c83350686131f9868d9cb6ec8f1becc2c5d50a727f3f8ac13b7",
     "decision": "deny",
     "triggered_rules": [
       "daily_limit",
@@ -1604,7 +1604,7 @@
     "evaluated_at": "2026-04-26T05:08:46.654Z"
   },
   {
-    "receipt_hash": "66a2cfc925734982fb0a6055c8452c98a0737c33ec615a7c4990988f5a992565",
+    "receipt_hash": "698fb13511c187c2a734c8bd1ddaee70047c08418b4162070f354b6b87553a7b",
     "decision": "escalate",
     "triggered_rules": [
       "tool_id_allowlist"
@@ -1640,7 +1640,7 @@
     "evaluated_at": "2026-04-26T09:28:29.820Z"
   },
   {
-    "receipt_hash": "4e6f42cf6b99798248a5c68b71716f425a58b279937c9d77eac0be945efe633d",
+    "receipt_hash": "57d3591bb391bfff215d12f668b21e400235c1c178abdf863670929daae18a72",
     "decision": "escalate",
     "triggered_rules": [
       "tool_id_allowlist"
@@ -1820,7 +1820,7 @@
     "evaluated_at": "2026-04-27T07:07:05.652Z"
   },
   {
-    "receipt_hash": "87a1e13e462a37562dc1527f6b73138f381068306253d5812a5fdd9d034f5214",
+    "receipt_hash": "11da826798a96352facccc5bb260af3eee4a5c443e1647fbc1fc4abdf4b07add",
     "decision": "escalate",
     "triggered_rules": [
       "post_state_assertion"
@@ -1856,7 +1856,7 @@
     "evaluated_at": "2026-04-27T11:26:48.818Z"
   },
   {
-    "receipt_hash": "cc36fc2504594ae97133bcca521a1f899096752da16cdf159ea47624596d937d",
+    "receipt_hash": "1540fffeec69f4f12d10cffa91b6e3ec11d9b04031bc88cfbd3dcce0ce91db1a",
     "decision": "escalate",
     "triggered_rules": [
       "post_state_assertion"
@@ -1934,7 +1934,7 @@
     "evaluated_at": "2026-04-27T18:39:40.762Z"
   },
   {
-    "receipt_hash": "4a59e2b35fa23feaef1a7519ccf2c57a456b8d71fe2b5ba480c8910075aa7ef0",
+    "receipt_hash": "600015dacf643b7b6d37b74149252037c9926b9f05c449a5d3dab8203bfc0b80",
     "decision": "deny",
     "triggered_rules": [
       "max_amount",
@@ -2032,7 +2032,7 @@
     "evaluated_at": "2026-04-28T04:45:41.483Z"
   },
   {
-    "receipt_hash": "c869f563f32dae97b8f9e9d16402fa51a21403228b2530ccae41440a71badb91",
+    "receipt_hash": "89920c437b79060b55affc3354ecfb32c812597b2d93b1800852a5153b94850e",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2112,7 +2112,7 @@
     "evaluated_at": "2026-04-28T19:11:25.371Z"
   },
   {
-    "receipt_hash": "38c439fa86e367b51f608598136fe7134ff1ae62d4982f86273685e1400d40dc",
+    "receipt_hash": "ea7488b7f1dc85197cc982ef4fe9566fc2af6db968709f0f4abb8b8fea4e9ae1",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2148,7 +2148,7 @@
     "evaluated_at": "2026-04-29T00:57:42.926Z"
   },
   {
-    "receipt_hash": "28c0ba3430b8b614533044b522c18f5fe9e3b1d3e13438c214fa4d481dcb6e5a",
+    "receipt_hash": "d231f599eae0e73c56b147864e0893fddfd97cf2600dbfa70349a3bb5542a88f",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2172,7 +2172,7 @@
     "evaluated_at": "2026-04-29T05:17:26.093Z"
   },
   {
-    "receipt_hash": "20b568f6529bbf399cec5be93c602a759dac603967191876f39ae1a5868d9ba2",
+    "receipt_hash": "2b2ae31e5eaa1bdef41a9b4062c42ceb47951c407e0e13277862f5ac9a9ff406",
     "decision": "escalate",
     "triggered_rules": [
       "tool_id_allowlist"
@@ -2276,7 +2276,7 @@
     "evaluated_at": "2026-04-29T22:36:18.758Z"
   },
   {
-    "receipt_hash": "0ce397e1304c7a085c308bd2576f3ff069a6ad869d0db66c339106b6c8ae08f9",
+    "receipt_hash": "231341916b8afb7a9899026dab4fc828bddff1103b149d04c3fcc40e342400ce",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2316,7 +2316,7 @@
     "evaluated_at": "2026-04-30T05:49:10.702Z"
   },
   {
-    "receipt_hash": "fc32429cb69ffaa7d6f53eb566e9302bf21959822c4f5482dfdd1c453f08eca8",
+    "receipt_hash": "6e062315dad0311d227af496f4b7772fbdf4c0ad82b92e759739955464156a8b",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2340,7 +2340,7 @@
     "evaluated_at": "2026-04-30T10:08:53.868Z"
   },
   {
-    "receipt_hash": "a88c5be0f4fb1200530eac44e96030ddcd22db6bba654c16052723f515f1316d",
+    "receipt_hash": "fb4be9e305d51ea20270661830cd386d26158c5d1a10b6e69f926f88c56a9dac",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2380,7 +2380,7 @@
     "evaluated_at": "2026-04-30T17:21:45.812Z"
   },
   {
-    "receipt_hash": "245e207d39b8b75aa912ad889e3006adc34dd42af07435b138d4389fa6d1530d",
+    "receipt_hash": "220f210f7964ddc7bc68d5bd17f44c0a1a27aa51f6497d7f4ca0b5b193bd2ab8",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2396,7 +2396,7 @@
     "evaluated_at": "2026-04-30T20:14:54.590Z"
   },
   {
-    "receipt_hash": "20d3b402b023b36b48cb734776b99d45e43ca928657c2351156062235783480f",
+    "receipt_hash": "f3dd97e4b5037943509a82f71f77f68d5cb01d4cb3d607be7bd2379b13ff17c5",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2412,7 +2412,7 @@
     "evaluated_at": "2026-04-30T23:08:03.367Z"
   },
   {
-    "receipt_hash": "13e9df07fced60e89dd59eb391276266260c2f979719b08626d544d2f3a69872",
+    "receipt_hash": "641f9f396a71399e4686baa6e6438e730abfef576156b4a5596f7aa2daae4083",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2496,7 +2496,7 @@
     "evaluated_at": "2026-05-01T13:33:47.255Z"
   },
   {
-    "receipt_hash": "6dc82c433e8edf38102679fc20e26bbecb19b35ac9686e7e31ef363e139384f8",
+    "receipt_hash": "14e54f3c737bde5a24d69434c5ef7607a7ebe30d1b0fdad003182a3c890e0e7f",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2544,7 +2544,7 @@
     "evaluated_at": "2026-05-01T22:13:13.588Z"
   },
   {
-    "receipt_hash": "f31359c7e3ccb098081bcfeb536d802cd39c8ba949e35614b104fad5960e10c6",
+    "receipt_hash": "81e95388cb7a5de264c0cedae2c7a53204108ba65627c3493caae155bad1a817",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2624,7 +2624,7 @@
     "evaluated_at": "2026-05-02T12:38:57.475Z"
   },
   {
-    "receipt_hash": "b697ebfb82f24434b0f975f351d6acccbc64ab685423b4292e778e5b65c10b10",
+    "receipt_hash": "783bf791bd25d52a5260d55aa3b711f9b781dea87b3360b5b7fe1ceb2a71b9df",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2664,7 +2664,7 @@
     "evaluated_at": "2026-05-02T19:51:49.419Z"
   },
   {
-    "receipt_hash": "a9ae14d0950bb2e6006f81d24917462c76876ce644292167e904f81ae5d98a05",
+    "receipt_hash": "744e2f3a7ee3ff266165fa73e672ddb76c5367254897a5089709fc432cc9c30b",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2744,7 +2744,7 @@
     "evaluated_at": "2026-05-03T10:17:33.307Z"
   },
   {
-    "receipt_hash": "6fbcc37161685972ff3d2ed068d735451cb40b4bf717971ec8ed721e5cd3af2b",
+    "receipt_hash": "354ecc2aca330cfcbb7417aa734b7ca8f31a611192fb3aedc3c699301cf6bebe",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2868,7 +2868,7 @@
     "evaluated_at": "2026-05-04T07:56:09.139Z"
   },
   {
-    "receipt_hash": "e4610786fc93b58bb2412619f83d9b22b8f99ff237a2c7dcc96460a755178439",
+    "receipt_hash": "bd30298c3f98865bc8d50e336ae14b4e4e9272d89b8c6cd2ccc413770881a39f",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2908,7 +2908,7 @@
     "evaluated_at": "2026-05-04T15:09:01.083Z"
   },
   {
-    "receipt_hash": "e1499113831b8104b0039f69f9279d3a38d1e71c4ea6ab68a6f8686047ed87c6",
+    "receipt_hash": "b32986fb6c40f18399a5c733846ca3a66915a0455aa2efc3e709b8d64af829ba",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2932,7 +2932,7 @@
     "evaluated_at": "2026-05-04T19:28:44.249Z"
   },
   {
-    "receipt_hash": "617230d18f591f851f255d3d594035930b1a9a5f9199865f963090435bd43798",
+    "receipt_hash": "ad64d5f4a03d2e37c51b8c1cedd4c6c8acb5a1f62c87688a63e3d07d4e79fb08",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -2956,7 +2956,7 @@
     "evaluated_at": "2026-05-04T23:48:27.415Z"
   },
   {
-    "receipt_hash": "5588b2cdafcb5970bf2e4900870c6936ef096d04bb474f065d1f0861d897d99e",
+    "receipt_hash": "f5e6da13840014355c86b0c504d7c45537e5215a034ee91ab95c523dcd1af889",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -3088,7 +3088,7 @@
     "evaluated_at": "2026-05-05T22:53:37.636Z"
   },
   {
-    "receipt_hash": "598073469cc017c0ceaed494d1cb53ff026a189a3e2b7778608c45c28b8d5d07",
+    "receipt_hash": "8b77d5c0f34bd9a61f0e38139bc2396be5938c4e5f3be566987a69b290b0ed56",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -3168,7 +3168,7 @@
     "evaluated_at": "2026-05-06T13:19:21.524Z"
   },
   {
-    "receipt_hash": "294557c0d0d953d32372cca31171644bb384dfbc79328d2e7ca6c3f6b5923bf5",
+    "receipt_hash": "4a1092c4de3a18295d7286af1a4175aba70a4da54581e81754fea6f53a45b2e5",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -3276,7 +3276,7 @@
     "evaluated_at": "2026-05-07T03:45:05.411Z"
   },
   {
-    "receipt_hash": "f947c0e95f1c695f1242de8a1fdf3e503c3f5fdfa73f6da83e29ee6c656e4aab",
+    "receipt_hash": "639685836ab0b10296d6372137e1a6b7b7c7b51fa9f5277b918f56d54cce20ef",
     "decision": "escalate",
     "triggered_rules": [
       "escalation_threshold"
@@ -3384,7 +3384,7 @@
     "evaluated_at": "2026-05-07T16:44:14.910Z"
   },
   {
-    "receipt_hash": "1fdb0cbc8d1fd1bfea86d278f2c8e91da6a90790c1dddae5027b89c001a57b40",
+    "receipt_hash": "5630db216457c6eeef2c34d68e15f1ef339df9840c485750b297bfcbc4ef6c90",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -3392,7 +3392,7 @@
     "evaluated_at": "2026-05-07T18:10:49.299Z"
   },
   {
-    "receipt_hash": "1d0cf392e6f94a60298a9eba094f79542b84d1641b2f16155149e3fe68bfbbae",
+    "receipt_hash": "91f924fdfc61523bd8759e355fa21d5eb84ee138acec29f94fde3992901d0329",
     "decision": "deny",
     "triggered_rules": [
       "daily_limit"
@@ -3404,7 +3404,7 @@
     "evaluated_at": "2026-05-07T19:37:23.688Z"
   },
   {
-    "receipt_hash": "680d2f7d62bc8f62507fa9c2a3a47a592f7f325036e0bf9354621a34e2687ffa",
+    "receipt_hash": "4f9573734c4ae716bf545c06655d966cabbfbbc3680ea67d7d848b662920d255",
     "decision": "deny",
     "triggered_rules": [
       "daily_limit"
@@ -3496,7 +3496,7 @@
     "evaluated_at": "2026-05-08T10:03:07.576Z"
   },
   {
-    "receipt_hash": "23da4007d673094f0d6c4840cd97bac5258b01aff1fcf7503727e2592774b4de",
+    "receipt_hash": "b0bd8a58830625d57fde70b04172dced9d4181d22c98e2445f2b7625b795e8a2",
     "decision": "escalate",
     "triggered_rules": [
       "tool_id_allowlist"
@@ -3548,7 +3548,7 @@
     "evaluated_at": "2026-05-08T18:42:33.908Z"
   },
   {
-    "receipt_hash": "af2afa5862503585820b6f613ffeab0f9e4a121c60a933a1904900a007aac614",
+    "receipt_hash": "6a1ddeaa176ab8bc6303c8629805749fe258d84e0ff05e9f18da6af8f94d1a5a",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -3644,7 +3644,7 @@
     "evaluated_at": "2026-05-09T12:01:26.574Z"
   },
   {
-    "receipt_hash": "01d111067e8805c8caa29a73bc490f7720890aa142c55b4639967195f5bfff24",
+    "receipt_hash": "d62b29cf47e505eb8e16dd2ec43a2f9cb01196675d41c9f431a8241c1150f639",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -3704,7 +3704,7 @@
     "evaluated_at": "2026-05-09T22:07:27.295Z"
   },
   {
-    "receipt_hash": "d6ba03f71c7f85677943d8f0d310c78eaa46e002891aab6ecb5f00aee30919ba",
+    "receipt_hash": "47985e62904547b0efe8343b2721c33460fc69850875507685f1c8b470c45538",
     "decision": "escalate",
     "triggered_rules": [
       "tool_id_allowlist"
@@ -3732,7 +3732,7 @@
     "evaluated_at": "2026-05-10T02:27:10.461Z"
   },
   {
-    "receipt_hash": "1fa8facdcd839b125ddd8c8833b2a674164facfd139001708723aa3cb5154e00",
+    "receipt_hash": "e5ad413d5ca6cdaf3ab1b9056f126bde97420d26151481cf9dd49916e9fccb99",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -3748,7 +3748,7 @@
     "evaluated_at": "2026-05-10T05:20:19.239Z"
   },
   {
-    "receipt_hash": "254bae2da6459bf45cee30a0cf3941c33c328be5862a07a1f268bd742bbc537b",
+    "receipt_hash": "8c96defca2550704ecd4cf4a7c6cd638424d1adfdf2264155a153d15e7beb633",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -3756,7 +3756,7 @@
     "evaluated_at": "2026-05-10T06:46:53.628Z"
   },
   {
-    "receipt_hash": "f10fff4da8ea299989f2966ce59c673b35a37febb2a22dcaaa54e9f1e95536fb",
+    "receipt_hash": "de490d27c17f7882455c83eef72ecf7eb3ce43cd93e25388f7ddde2d0365e5c0",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -3964,7 +3964,7 @@
     "evaluated_at": "2026-05-11T18:51:13.347Z"
   },
   {
-    "receipt_hash": "4b635f5ff3dbd817766a6eda2952f2583ea40596b692507fbf08b0f778564cfe",
+    "receipt_hash": "0228cffbb260cecdbe7d94048cfc4c3413a7b486fc20b2cb398ff2d3f5b17f23",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -4036,7 +4036,7 @@
     "evaluated_at": "2026-05-12T07:50:22.846Z"
   },
   {
-    "receipt_hash": "427575fe5c8c61471ca39d19314bbdde423988c9ff085321ee50490f9a897e1f",
+    "receipt_hash": "055a7e59f8e20739ea93d8870ac3217879d8c875aaba5dd11c911aaab0fcc156",
     "decision": "escalate",
     "triggered_rules": [
       "tool_id_allowlist"
@@ -4300,7 +4300,7 @@
     "evaluated_at": "2026-05-14T04:34:08.898Z"
   },
   {
-    "receipt_hash": "3b62c99339389b84e7b9d900285f36d624038f0ff3e1f006eef8ff95c929c023",
+    "receipt_hash": "0ac4b8a75230729295371242bb2930e5da1f60dbff668473120cccda989ccde3",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -4380,7 +4380,7 @@
     "evaluated_at": "2026-05-14T18:59:52.786Z"
   },
   {
-    "receipt_hash": "16b62f5989e62e8d727d784d2783a128862b3515d49cea11086a6c242ebfacc7",
+    "receipt_hash": "598d78f1845c48df5256e3e20d8a8e69e03fd9904eaf3d1b5506bade21cb3eb0",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -4500,7 +4500,7 @@
     "evaluated_at": "2026-05-15T16:38:28.618Z"
   },
   {
-    "receipt_hash": "ea804e8e15075a8ed49000395bd8719ef2a18eb9fe34ab32d0edf7fd42241957",
+    "receipt_hash": "a903e4bb916212a27f54aa67eef9d4dc696c6a639ea40d6cae17ba79308b3862",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -4524,7 +4524,7 @@
     "evaluated_at": "2026-05-15T20:58:11.784Z"
   },
   {
-    "receipt_hash": "651845c1785a4f157507b2114c66b54f2a8230dfe428414742451fc7330cd188",
+    "receipt_hash": "8585ae0bf52517b962b4ce8fcbeca2a12b854a11233e1e08d8bf9a0309452874",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -4540,7 +4540,7 @@
     "evaluated_at": "2026-05-15T23:51:20.562Z"
   },
   {
-    "receipt_hash": "1c29b9b539b7cd144e243a838ca9bfbd5857c9aabdcdc412b4c701d01a8d13b6",
+    "receipt_hash": "139cb9e86b72208f094b2c32e99054c1131e49b9befc4bc8e0b858cd327d712f",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -4612,7 +4612,7 @@
     "evaluated_at": "2026-05-16T12:50:30.061Z"
   },
   {
-    "receipt_hash": "dc22b2257dff7df00cdbe383671582a79ea283f87aaef6e53cca1259b8c0992b",
+    "receipt_hash": "eb22f53ee91f1a22833b0b600f491879fa0fc9f3ebbcb38e70c1466768011ac7",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -4628,7 +4628,7 @@
     "evaluated_at": "2026-05-16T15:43:38.838Z"
   },
   {
-    "receipt_hash": "b2177fd25248ecb2d7d237ba77da1909e54927101ccdac19a0bc9c6b97c6a82d",
+    "receipt_hash": "316d725e9ee9bf97b198a60eafc6c68d248a57674e351cd0c1e224e706c7f4d8",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -4740,7 +4740,7 @@
     "evaluated_at": "2026-05-17T10:29:05.892Z"
   },
   {
-    "receipt_hash": "707d19e55fd4b73fec453d02e8caa4babb16c289af94d7a621e73ce56310126e",
+    "receipt_hash": "78a7ec75685bb853085148025eeb8db5740dd523d9f6a3aa8e61393bcdc9d7af",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],
@@ -4812,7 +4812,7 @@
     "evaluated_at": "2026-05-17T23:28:15.391Z"
   },
   {
-    "receipt_hash": "44c107125498df45e06c7d3f83d29e3fd6e8ebfce8a1949927d21c33f310e650",
+    "receipt_hash": "bef5b6927e51d27004443655eb604d726996476f30edf6d5ba75c625df8ba0cd",
     "decision": "allow",
     "triggered_rules": [],
     "reasons": [],

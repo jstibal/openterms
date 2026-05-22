@@ -1,7 +1,7 @@
 # OpenTerms fixture corpus
 
 500 signed ORS receipts plus their decisions under a demo policy. The corpus
-exists so the Python SDK, the TypeScript API, and the future Polsia dashboard
+exists so the Python SDK, the TypeScript API, and the future dashboard
 can be exercised against realistic data without each consumer having to
 fabricate its own.
 

@@ -4,7 +4,7 @@
 
 You are building the backend services, SDK packages, and persistence layer for a new product called OpenTerms Agent Action Observability. The product gives enterprises a verifiable audit trail of every action their autonomous AI agents take. Each agent action produces a cryptographically signed receipt conforming to the Open Receipt Specification v0.1. Receipts are ingested, validated, and stored in an append-only log that customers query for audit, compliance, simulation, and policy iteration.
 
-You are working in a conventional development environment (terminal, Cursor or VS Code, GitHub, Render, Neon Postgres). A separate platform called Polsia handles the dashboard UI, the marketing site, and the user-facing onboarding flows. You do not touch Polsia. Polsia consumes your API and renders the human interface. Your responsibility ends at the public API surface.
+You are working in a conventional development environment (terminal, Cursor or VS Code, GitHub, Render, Neon Postgres). A separate dashboard surface handles the dashboard UI, the marketing site, and the user-facing onboarding flows. You do not touch that surface. It consumes your API and renders the human interface. Your responsibility ends at the public API surface.
 
 ## 2. What This Product Is
 
@@ -31,12 +31,12 @@ Two execution surfaces, joined by a public REST API.
 - SDK packages (openterms-py, langchain-openterms, crewai-openterms)
 - Documentation site (markdown source in this repo, deploys to static hosting)
 
-**Polsia scope (not yours):**
+**Dashboard surface scope (not yours):**
 - Dashboard (React SPA, six tabs, consumes your public API)
 - Marketing site (landing page, pricing)
 - User onboarding flows (request access, workspace creation UI)
 
-Polsia talks to your service via HTTPS API calls with API keys for SDK consumers and OAuth for dashboard users. Polsia never accesses your database directly. Polsia never sees private key material.
+The dashboard surface talks to your service via HTTPS API calls with API keys for SDK consumers and OAuth for dashboard users. It never accesses your database directly. It never sees private key material.
 
 ## 4. Hard Correctness Constraints
 
@@ -187,9 +187,9 @@ Make `scripts/verify-release.sh` the gate for production deployment. The script 
 
 Acceptance: CI runs verify-release on every push to main. Production deployment fails if verify-release fails. The script outputs a structured report. A run history is captured for the prior 30 deployments.
 
-## 9. API Contract (Stable Surface for Polsia)
+## 9. API Contract (Stable Surface for the Dashboard)
 
-Polsia depends on the public API. Once shipped, breaking changes require a versioned new endpoint, not a modification of the existing one. The stable surface:
+The dashboard surface depends on the public API. Once shipped, breaking changes require a versioned new endpoint, not a modification of the existing one. The stable surface:
 
 ```
 POST   /v1/receipts/ingest             # SDK emits receipts here
@@ -220,7 +220,7 @@ All endpoints except `/v1/receipts/{hash}/verify` and `/.well-known/jwks.json` r
 - Do not introduce wallet, USDC, or on-chain settlement primitives. The legacy codebase contains these; do not port them.
 - Do not introduce provider-side verification flows in the initial release. Defers to a later workstream.
 - Do not store private keys in source control, in logs, or in any API response. Render environment variables only.
-- Do not build a dashboard or any UI in this repository. Polsia owns UI surfaces.
+- Do not build a dashboard or any UI in this repository. A separate dashboard surface owns UI surfaces.
 - Do not weaken the release gate to ship faster. The release gate is the product's correctness claim.
 - Do not bypass CI for any reason. The release gate is the only path to production.
 
@@ -236,7 +236,7 @@ All ten steps in section 8 pass acceptance. The release gate fires on every push
 - Publishes a JWKS with at least one active Ed25519 key
 - Documents the DR runbook for key management
 
-The Polsia team consumes the public API contract from section 9 to build the dashboard. Coordinate on contract changes; do not break the contract once shipped.
+The dashboard team consumes the public API contract from section 9 to build the dashboard. Coordinate on contract changes; do not break the contract once shipped.
 
 ## 12. Communication Protocol
 
