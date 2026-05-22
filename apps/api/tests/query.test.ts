@@ -19,8 +19,8 @@ import pg from 'pg';
 import * as ed from '@noble/ed25519';
 import { sha512 } from '@noble/hashes/sha2';
 
-import { canonicalHash, signingInput } from '@openterms/sdk';
-import type { Jwks } from '@openterms/sdk';
+import { canonicalHash, signingInput } from '@openterms-ai/sdk';
+import type { Jwks } from '@openterms-ai/sdk';
 import { registerReceiptRoutes } from '../src/routes/receipts.js';
 import { registerReceiptQueryRoutes } from '../src/routes/receipts_query.js';
 import { registerDecisionRoutes } from '../src/routes/decisions.js';

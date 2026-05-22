@@ -1,4 +1,4 @@
-// Public surface of @openterms/sdk.
+// Public surface of @openterms-ai/sdk.
 //
 // Re-exports the ORS v0.1 canonicalization, signing, verification, and policy
 // evaluation modules previously housed inside apps/api/src/core. The API

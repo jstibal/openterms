@@ -56,7 +56,7 @@ jobs:
       - name: Install workspaces (root)
         run: npm ci || npm install
       - name: Build SDK (workspace dep of @openterms/api)
-        run: npm run build --workspace @openterms/sdk
+        run: npm run build --workspace @openterms-ai/sdk
       - name: Typecheck API
         run: npm run typecheck --workspace @openterms/api
       - name: Unit + integration tests (Postgres-backed)

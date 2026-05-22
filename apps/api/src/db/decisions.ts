@@ -1,6 +1,6 @@
 import type { Pool, PoolClient } from 'pg';
 
-import type { Decision } from '@openterms/sdk';
+import type { Decision } from '@openterms-ai/sdk';
 import type { Filters, ParsedCursor } from './query_types.js';
 import { encodeCursor } from './query_types.js';
 

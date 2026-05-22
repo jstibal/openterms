@@ -1,4 +1,4 @@
-# @openterms/sdk
+# @openterms-ai/sdk
 
 OpenTerms TypeScript SDK — ORS v0.1 canonicalization, Ed25519 signing, verification, policy evaluation, and an HTTP client for the OpenTerms ingest service.
 
@@ -7,7 +7,7 @@ Behavioral parity with [`openterms` on PyPI](https://pypi.org/project/openterms/
 ## Install
 
 ```bash
-npm install @openterms/sdk
+npm install @openterms-ai/sdk
 ```
 
 Runtime dependencies: `@noble/ed25519`, `@noble/hashes`. No HTTP client dependency — the SDK uses the global `fetch` (Node 18+).
@@ -15,7 +15,7 @@ Runtime dependencies: `@noble/ed25519`, `@noble/hashes`. No HTTP client dependen
 ## Quickstart
 
 ```typescript
-import { IngestClient } from '@openterms/sdk';
+import { IngestClient } from '@openterms-ai/sdk';
 import { randomBytes } from 'node:crypto';
 
 const privateKey = randomBytes(32); // 32-byte Ed25519 seed
@@ -52,7 +52,7 @@ await client.emitPostActionReceipt({
 Offline verification:
 
 ```typescript
-import { verifyReceipt } from '@openterms/sdk';
+import { verifyReceipt } from '@openterms-ai/sdk';
 const result = verifyReceipt(receipt, jwks);
 console.assert(result.valid);
 ```

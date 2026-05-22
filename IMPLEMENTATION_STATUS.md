@@ -49,7 +49,7 @@ Step 8 deliverables (SDKs and adapters) remain as previously shipped:
   (38 permissions, 162 receipts/policy/canonical) + 2 skipped. License:
   Apache-2.0. See `packages/openterms-py/CHANGELOG.md` for the 1.0.0
   migration table including a Silent breaking changes section.
-- [`packages/openterms-ts`](packages/openterms-ts/) — `@openterms/sdk` on
+- [`packages/openterms-ts`](packages/openterms-ts/) — `@openterms-ai/sdk` on
   npm (prepared). Extracted from `apps/api/src/core/`; the API service
   now imports canonicalization, signing, verification, and policy from
   this package.
@@ -143,7 +143,7 @@ Postgres → query → offline Python re-verify).
 ```
 apps/api/                       # Fastify ingest + query + simulate + JWKS service
 packages/openterms-py/          # Python SDK (canonicalization, signing, verify, client)
-packages/openterms-ts/          # TypeScript SDK (@openterms/sdk)
+packages/openterms-ts/          # TypeScript SDK (@openterms-ai/sdk)
 packages/langchain-openterms/   # LangChain adapter (langchain-openterms)
 packages/crewai-openterms/      # CrewAI adapter (crewai-openterms)
 tests/integration/              # Cross-language and adapter end-to-end tests

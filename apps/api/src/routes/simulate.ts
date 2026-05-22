@@ -12,7 +12,7 @@ import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import type { Pool } from 'pg';
 
 import type { AppConfig } from '../config.js';
-import { policyFromDict, type Policy } from '@openterms/sdk';
+import { policyFromDict, type Policy } from '@openterms-ai/sdk';
 import { countReceiptsInWindow, runSimulation } from '../core/simulation.js';
 import { getJob } from '../core/simulation_jobs.js';
 import { errorBody } from '../lib/errors.js';

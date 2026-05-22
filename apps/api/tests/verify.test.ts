@@ -2,8 +2,8 @@ import { describe, expect, test } from 'vitest';
 import * as ed from '@noble/ed25519';
 import { sha512 } from '@noble/hashes/sha2';
 
-import { canonicalHash, signingInput } from '@openterms/sdk';
-import { verifyReceipt, type Jwks } from '@openterms/sdk';
+import { canonicalHash, signingInput } from '@openterms-ai/sdk';
+import { verifyReceipt, type Jwks } from '@openterms-ai/sdk';
 
 ed.etc.sha512Sync = (...m) => sha512(ed.etc.concatBytes(...m));
 

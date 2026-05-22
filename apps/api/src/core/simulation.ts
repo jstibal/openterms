@@ -26,7 +26,7 @@
 //     and sliced to sample_size. canonical_hash is content-addressed and
 //     globally unique, so the sort is stable across re-runs.
 
-import { evaluate, type Decision, type DecisionOutcome, type Policy } from '@openterms/sdk';
+import { evaluate, type Decision, type DecisionOutcome, type Policy } from '@openterms-ai/sdk';
 
 import type { Queryable } from '../db/receipts.js';
 

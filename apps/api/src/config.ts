@@ -1,4 +1,4 @@
-import type { Policy } from '@openterms/sdk';
+import type { Policy } from '@openterms-ai/sdk';
 
 export interface AppConfig {
   databaseUrl: string;

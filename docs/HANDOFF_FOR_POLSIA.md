@@ -8,7 +8,7 @@
 
 ## Section 1 — Overview of changes
 
-The conventional track of `openterms-trace` is now feature-complete through BUILD_BRIEF Step 10. The Fastify API service accepts signed ORS v0.1 / v0.2 receipts, verifies Ed25519 signatures against a hosted JWKS, persists receipts to an append-only Postgres log, evaluates a deterministic policy engine on every ingest, supports cursor-paginated query of receipts and decisions, runs synchronous policy simulations against the corpus, and is deployed behind bearer-token auth with per-workspace rate limiting and a public `/.well-known/jwks.json` endpoint. Four SDK packages are prepared for publication: `openterms` (PyPI), `@openterms/sdk` (npm), `openterms-langchain` (PyPI), `openterms-crewai` (PyPI). The docs updates below land the SDK install/quickstart content, the API response schemas, the simulation schema, the key rotation procedure, and the ORS test-vector link, and they leave explicit gap markers for webhooks (not implemented), regulatory context (pending), SLA terms (pending), and several openapi.yaml endpoints that are documented in the contract but not yet implemented in the service (policies CRUD, keys CRUD, workspace, public verify, webhook test). The docs must not overstate any of these. The calibrated truth in [`IMPLEMENTATION_STATUS.md`](../IMPLEMENTATION_STATUS.md) (once refreshed against this commit) is the binding reference.
+The conventional track of `openterms-trace` is now feature-complete through BUILD_BRIEF Step 10. The Fastify API service accepts signed ORS v0.1 / v0.2 receipts, verifies Ed25519 signatures against a hosted JWKS, persists receipts to an append-only Postgres log, evaluates a deterministic policy engine on every ingest, supports cursor-paginated query of receipts and decisions, runs synchronous policy simulations against the corpus, and is deployed behind bearer-token auth with per-workspace rate limiting and a public `/.well-known/jwks.json` endpoint. Four SDK packages are prepared for publication: `openterms` (PyPI), `@openterms-ai/sdk` (npm), `openterms-langchain` (PyPI), `openterms-crewai` (PyPI). The docs updates below land the SDK install/quickstart content, the API response schemas, the simulation schema, the key rotation procedure, and the ORS test-vector link, and they leave explicit gap markers for webhooks (not implemented), regulatory context (pending), SLA terms (pending), and several openapi.yaml endpoints that are documented in the contract but not yet implemented in the service (policies CRUD, keys CRUD, workspace, public verify, webhook test). The docs must not overstate any of these. The calibrated truth in [`IMPLEMENTATION_STATUS.md`](../IMPLEMENTATION_STATUS.md) (once refreshed against this commit) is the binding reference.
 
 ---
 
@@ -45,7 +45,7 @@ policy engine evaluates each receipt at ingest time.
 - **Public JWKS** — `GET /.well-known/jwks.json` is CORS-open and
   edge-cached for 24 hours so any third party can verify receipts
   independently.
-- **SDKs** — Python (`openterms`), TypeScript (`@openterms/sdk`),
+- **SDKs** — Python (`openterms`), TypeScript (`@openterms-ai/sdk`),
   LangChain adapter (`openterms-langchain`), CrewAI adapter
   (`openterms-crewai`).
 
@@ -91,7 +91,7 @@ Get a signed receipt landed in OpenTerms in under five minutes.
 ## Pick your SDK
 
 - [Python (`openterms`)](#python) — covered below.
-- [TypeScript (`@openterms/sdk`)](#typescript) — covered below.
+- [TypeScript (`@openterms-ai/sdk`)](#typescript) — covered below.
 - [LangChain (`openterms-langchain`)](/docs/integrations/langchain).
 - [CrewAI (`openterms-crewai`)](/docs/integrations/crewai).
 ```
@@ -699,7 +699,7 @@ And the full quickstart from [packages/openterms-py/README.md](../packages/opent
 
 **Current state.** Says "SDK to be packaged."
 
-**Updates needed.** Use [packages/openterms-ts/README.md](../packages/openterms-ts/README.md) verbatim. Real npm package is `@openterms/sdk`.
+**Updates needed.** Use [packages/openterms-ts/README.md](../packages/openterms-ts/README.md) verbatim. Real npm package is `@openterms-ai/sdk`.
 
 **Exact text to apply.** Install + quickstart from the package README. Replace `http://localhost:3000` with `https://openterms-trace-api.onrender.com`.
 
@@ -707,7 +707,7 @@ And the full quickstart from [packages/openterms-py/README.md](../packages/opent
 ## Install
 
 ```bash
-npm install @openterms/sdk
+npm install @openterms-ai/sdk
 ```
 
 Runtime dependencies: `@noble/ed25519`, `@noble/hashes`. Uses the global
@@ -930,14 +930,14 @@ print(response.canonical_hash, response.duplicate)
 ### 5.2 — TypeScript: sign and emit a receipt
 
 ```bash
-npm install @openterms/sdk
+npm install @openterms-ai/sdk
 export OPENTERMS_API_URL=https://openterms-trace-api.onrender.com
 export OPENTERMS_API_KEY=ot_test_…
 export OPENTERMS_WORKSPACE_ID=00000000-0000-4000-8000-0000000000aa
 ```
 
 ```typescript
-import { IngestClient } from '@openterms/sdk';
+import { IngestClient } from '@openterms-ai/sdk';
 import { randomBytes } from 'node:crypto';
 
 const privateKey = randomBytes(32);
@@ -1222,7 +1222,7 @@ For every docs change, verify against the source-of-truth files:
 - [ ] **2.12 JWKS.** Cache header matches `apps/api/src/routes/jwks.ts`.
 - [ ] **2.13 Rate limits.** Default values match `apps/api/src/config.ts` (`rateLimitAuthIngest`, `rateLimitAuthQuery`, `rateLimitPublicPerIp`).
 - [ ] **2.14 Python SDK.** Install command matches `packages/openterms-py/pyproject.toml` package name. Quickstart matches `packages/openterms-py/README.md`.
-- [ ] **2.15 TypeScript SDK.** Install command matches `packages/openterms-ts/package.json` package name (`@openterms/sdk`).
+- [ ] **2.15 TypeScript SDK.** Install command matches `packages/openterms-ts/package.json` package name (`@openterms-ai/sdk`).
 - [ ] **2.16 LangChain.** Install + quickstart match `packages/langchain-openterms/README.md`.
 - [ ] **2.17 CrewAI.** Install + quickstart match `packages/crewai-openterms/README.md`.
 - [ ] **3.1 Key rotation.** Procedure matches `DEPLOYMENT.md` (`JWKS_SOURCE`, `ACTIVE_KEY_ID`, `PRIVATE_KEY_JWK`).

@@ -1,4 +1,4 @@
-import type { VerifyError } from '@openterms/sdk';
+import type { VerifyError } from '@openterms-ai/sdk';
 
 export type IngestErrorCode =
   | 'VALIDATION_ERROR'

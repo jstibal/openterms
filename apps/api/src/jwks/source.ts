@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 
-import type { Jwks } from '@openterms/sdk';
+import type { Jwks } from '@openterms-ai/sdk';
 
 // JWKS source loader. Scheme-prefixed string:
 //   file:<path>         Re-read on every call. Suitable for dev and tests

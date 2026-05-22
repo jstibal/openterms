@@ -19,8 +19,8 @@ import { fileURLToPath } from 'node:url';
 
 import { describe, expect, it } from 'vitest';
 
-import { evaluate, evaluateWithContext } from '@openterms/sdk';
-import type { EvalContext } from '@openterms/sdk';
+import { evaluate, evaluateWithContext } from '@openterms-ai/sdk';
+import type { EvalContext } from '@openterms-ai/sdk';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const FIXTURES_DIR = path.resolve(
