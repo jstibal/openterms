@@ -1,43 +1,18 @@
 # Implementation Status
 
 This document tracks what is built, what is planned, and what is intentionally
-deferred. It exists so a reader of [README.md](README.md) or
-[openapi.yaml](openapi.yaml) can immediately distinguish shipped behavior from
-contract surface.
+deferred for the **SDKs in this monorepo**. The backend service (HTTP endpoints,
+deployment, runbook, openapi.yaml contract) lives in the private **openterms-api**
+repository; the implementation-status content for the server has moved there.
 
 The build plan is [`LLM_Handoff_Brief.md`](LLM_Handoff_Brief.md) Section 8
 (a ten-step sequence). **All ten steps have shipped in code and Step 10
-is live in staging.** The service is deployed to Render at
-[`https://openterms-trace-api.onrender.com`](https://openterms-trace-api.onrender.com),
-the public JWKS endpoint, bearer auth, and rate limiting are all running
-against managed Postgres, and the post-deploy smoke test passed on
-**2026-05-21** (`/healthz` 200, `/.well-known/jwks.json` 200 with keys,
-authenticated `/v1/receipts` 200, unauthenticated `/v1/receipts` 401).
-See [DEPLOYMENT.md](DEPLOYMENT.md) for the runbook. Production cutover
-(separate Render service, production-grade Postgres, production secrets,
-custom domain) is still future work.
+is live in staging** at `https://openterms-trace-api.onrender.com` — see
+the openterms-api repo's `DEPLOYMENT.md` for the runbook, smoke results,
+and Step 10 deliverables (render.yaml, Dockerfile, bearer auth, rate
+limiting, JWKS endpoint, workspaces/api_keys migrations).
 
-Step 10 deliverables in this repo:
-
-- [`render.yaml`](render.yaml) and [`Dockerfile`](Dockerfile) — Render
-  service definition and container image.
-- [`apps/api/src/auth/bearer.ts`](apps/api/src/auth/bearer.ts) — bearer
-  token middleware (`ot_live_` / `ot_test_` prefixes, HMAC lookup against
-  `api_keys`, per-request `workspaceId` derivation, opt-out wrapper for
-  public routes). Production forces the dev fallback off.
-- [`apps/api/src/server.ts`](apps/api/src/server.ts) — `@fastify/rate-limit`
-  wired with separate buckets for authenticated ingest, authenticated
-  query, and per-IP on public endpoints.
-- [`apps/api/src/routes/jwks.ts`](apps/api/src/routes/jwks.ts) — public
-  `GET /.well-known/jwks.json` with 24h `max-age` + stale-while-revalidate.
-- [`apps/api/src/db/migrations/005_create_workspaces_and_api_keys.sql`](apps/api/src/db/migrations/005_create_workspaces_and_api_keys.sql)
-  — `workspaces` and `api_keys` tables.
-- Seed script and [`scripts/smoke-staging.sh`](scripts/smoke-staging.sh)
-  for post-deploy verification.
-- [`DEPLOYMENT.md`](DEPLOYMENT.md) — production runbook (provisioning,
-  env vars, secrets, smoke verification, rotation).
-
-Step 8 deliverables (SDKs and adapters) remain as previously shipped:
+SDK / adapter deliverables shipped in this monorepo:
 
 - [`packages/openterms-py`](packages/openterms-py/) — `openterms-py` **1.0.0**
   on PyPI. **As of 2026-05-21 this package combines the
@@ -50,9 +25,9 @@ Step 8 deliverables (SDKs and adapters) remain as previously shipped:
   Apache-2.0. See `packages/openterms-py/CHANGELOG.md` for the 1.0.0
   migration table including a Silent breaking changes section.
 - [`packages/openterms-ts`](packages/openterms-ts/) — `@openterms-ai/sdk` **1.0.1**
-  on npm. Extracted from `apps/api/src/core/`; the API service
-  now imports canonicalization, signing, verification, and policy from
-  this package.
+  on npm. Provides canonicalization, signing, verification, and the
+  deterministic policy engine; consumed by the openterms-api backend as
+  a regular published npm dependency.
 - [`packages/langchain-openterms`](packages/langchain-openterms/) —
   `langchain-openterms` **1.0.0** on PyPI (importable as
   `openterms_langchain`). LangChain `BaseCallbackHandler` that signs and
@@ -66,97 +41,34 @@ Step 8 deliverables (SDKs and adapters) remain as previously shipped:
   an official CrewAI project package and not endorsed by the CrewAI
   project.
 
-The integration test `tests/integration/test_adapter_e2e.py` exercises
-the full chain (LangChain adapter → IngestClient → Fastify ingest →
-Postgres → query → offline Python re-verify).
+The cross-language integration tests (LangChain adapter → IngestClient
+→ Fastify ingest → Postgres → query → offline Python re-verify) live in
+the openterms-api repository alongside the server they exercise. They
+consume the published `openterms-py` and `langchain-openterms` packages
+from PyPI.
 
-## HTTP endpoints
+## Backend surface (HTTP endpoints, capabilities, security/deployment, policy)
 
-| Endpoint | Status | Notes |
-| --- | --- | --- |
-| `GET /healthz` | Implemented (public) | Liveness probe, no auth, no rate limit beyond per-IP. |
-| `POST /v1/receipts/ingest` | Implemented (authenticated) | Verifies Ed25519, persists to Postgres, idempotency by `Idempotency-Key` or canonical hash. |
-| `GET /v1/receipts` | Implemented (authenticated) | Cursor pagination, filters by `agent_id`, `action_type`, `decision`, `tool_id`, time window. |
-| `GET /v1/receipts/{canonical_hash}` | Implemented (authenticated) | Returns the stored receipt by canonical hash. |
-| `GET /v1/decisions` | Implemented (authenticated) | Query decisions joined to receipts. |
-| `POST /v1/simulate` | Implemented (authenticated) | Evaluates a policy against a fixture corpus. |
-| `GET /v1/simulate/{job_id}` | Implemented (authenticated) | Async-result stub: no job store yet, so any `job_id` returns 404. Surface contract reserved for the async simulation flow. |
-| `GET /.well-known/jwks.json` | Implemented (public) | 24h `max-age` + stale-while-revalidate. JWKS source still selected by env (`file:` or `memory:`); rotation propagates on next request. |
-| `POST /v1/policies` / `GET /v1/policies/...` | **Planned** | Policy CRUD. Active policy is currently hardcoded — see "Policy management" below. Returns 404. |
-| Auth key creation / rotation endpoints | **Planned** | API keys are provisioned via the seed script / DB today. Returns 404. |
-| All other paths described in `openapi.yaml` | **Planned** | Contract surface only; returns 404. |
+These sections — HTTP endpoint table, product capability status, security
+and deployment readiness, policy management — describe the backend
+service and have moved to the openterms-api repository's
+`IMPLEMENTATION_STATUS.md`. They are no longer tracked here.
 
-## Product capability status
+## Repository structure
 
-| Capability | Status |
-| --- | --- |
-| Bearer authentication | Implemented (`Authorization: Bearer ot_live_…` / `ot_test_…`, HMAC lookup, per-route opt-out for public endpoints). |
-| Rate limiting | Implemented (`@fastify/rate-limit`, separate buckets for authenticated ingest, authenticated query, and per-IP public). |
-| JWKS hosting endpoint | Implemented (`GET /.well-known/jwks.json`, edge-cacheable). |
-| Multi-workspace per service instance | **Not implemented.** API keys carry `workspace_id`, but a single service instance still serves a single configured workspace. Multi-tenant routing is a separate workstream. |
-| Staging deployment | **Live** at `https://openterms-trace-api.onrender.com`. Smoke test green on 2026-05-21 (health, JWKS, authenticated query, unauthenticated rejection). |
-| Production deployment | **Not yet provisioned.** Requires a separate Render service, production-grade Postgres (not free-tier), production secrets, and a real domain. Infrastructure templates (`render.yaml`, `Dockerfile`, `DEPLOYMENT.md`) cover the procedure. |
-| Dashboard / OAuth | **Deferred** to a separate workstream. |
-
-## Security and deployment readiness
-
-- **Authentication.** Bearer-token check is wired on every non-public
-  endpoint. `NODE_ENV=production` forces the dev workspace fallback off
-  so missing/invalid tokens always return 401.
-- **Rate limiting.** Separate buckets for authenticated ingest, authenticated
-  query, and per-IP on public endpoints. Limits configurable via env.
-- **JWKS public endpoint.** Implemented at `/.well-known/jwks.json` with
-  long edge caching. The underlying JWKS source is still selected by env
-  (`file:` or `memory:`); production key custody (HSM / KMS / encrypted-
-  at-rest with rotation) remains a separate workstream.
-- **Secret management.** Documented in [`DEPLOYMENT.md`](DEPLOYMENT.md):
-  `API_KEY_SALT`, `JWKS_SOURCE`, signing key material, and `DATABASE_URL`
-  are injected via Render env vars; the seed script provisions the first
-  workspace and API key. Long-term key custody (HSM/KMS) is still a
-  future workstream.
-- **Monitoring / metrics / structured request logging.** Application logs
-  exist. `GET /healthz` is the liveness probe. Metrics export and error-rate
-  alerting are not yet wired.
-- **Staging deployment.** Live at
-  `https://openterms-trace-api.onrender.com`. `scripts/smoke-staging.sh`
-  was run against the live endpoint on 2026-05-21 and confirmed health,
-  JWKS, authenticated query, and unauthenticated rejection.
-- **Production deployment.** Not yet provisioned. A separate Render
-  service with production-grade Postgres, production secrets, and a real
-  domain is required; the runbook in [`DEPLOYMENT.md`](DEPLOYMENT.md)
-  applies.
-- **CI gates.** Green on both jobs as of commit `02288e8` — the Python
-  unit/parity job and the API job (typecheck + unit + Postgres-backed
-  integration tests).
-
-## Policy management
-
-- The active policy is **hardcoded** in the service for the current build
-  (intentional — policy CRUD is a separate workstream). Policy JSON ships
-  with the repo; runtime policy updates require redeploy.
-- `daily_limit` rules are evaluated, and the aggregate snapshot they consume
-  is computed inline in the ingest path against prior receipts; see
-  `apps/api/src/routes/receipts.ts` (red-team item 16 — shipped).
-- `ENGINE_ERROR` from the policy engine is converted to a stored deny
-  (reason `ENGINE_ERROR`) so the ingest path stays resilient. See
-  [`apps/api/src/core/policy.ts`](apps/api/src/core/policy.ts) for the
-  rationale; the receipt is still persisted, with the engine failure
-  recorded as the decision reason rather than dropped.
-
-## Monorepo structure
+This is the public **openterms** monorepo — SDKs and shared spec assets
+only. The backend service (Fastify + Postgres, Dockerfile, render.yaml,
+deployment runbook, cross-language integration tests, openapi.yaml) lives
+in the private **openterms-api** repository and consumes `@openterms-ai/sdk`
+as a regular published npm dependency.
 
 ```
-apps/api/                       # Fastify ingest + query + simulate + JWKS service
 packages/openterms-py/          # Python SDK (canonicalization, signing, verify, client)
 packages/openterms-ts/          # TypeScript SDK (@openterms-ai/sdk)
 packages/langchain-openterms/   # LangChain adapter (langchain-openterms)
 packages/crewai-openterms/      # CrewAI adapter (crewai-openterms)
-tests/integration/              # Cross-language and adapter end-to-end tests
-tests/vectors/ors-v0.1/         # Shared canonicalization vectors
+tests/vectors/ors-v0.1/         # Shared ORS canonicalization vectors
 tests/fixtures/corpus/          # 500-receipt simulation corpus
-render.yaml, Dockerfile         # Deployment infrastructure
-scripts/smoke-staging.sh        # Post-deploy smoke check
-DEPLOYMENT.md                   # Production runbook
 ```
 
 The monorepo is wired with npm workspaces at the root for the TypeScript
@@ -167,55 +79,17 @@ depend on `openterms-py>=1.0.0` for canonicalization and signing.
 
 - Python job: `pytest` against `packages/openterms-py/` — **200 passing,
   2 skipped** as of the current main (38 permissions + 162 receipts).
-- API job: `npm test --workspace @openterms/api` against a Postgres 16
-  service container. Locally without Postgres, **74 tests pass and 43
-  DB-dependent tests skip**; in CI all 43 DB-dependent tests run.
-- Both jobs green on commit `02288e8` (workflow run 26225191846).
 - The workflow is defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
   and runs on every push to `main` and every pull request.
+- The backend service (TypeScript API + cross-language integration tests)
+  is tested in the openterms-api repository's own CI.
 
-## Audit / observability gaps
-
-- Failed receipt verifications are written to a `verification_errors`
-  table (see migration `004_create_verification_errors.sql`) so they are
-  queryable after the fact rather than only appearing in application logs
-  (red-team item 9 — shipped).
-- `raw_receipt` is stored as `JSONB`. This preserves the semantic JSON
-  (key/value structure) but **not the original byte sequence** — JSONB
-  normalizes key order and whitespace. The canonical hash is the source
-  of truth for tamper detection; byte-exact preservation of the request
-  body is not a current requirement.
-
-## Known gaps and trade-offs
+## Known gaps and trade-offs (SDKs)
 
 - **Fixture corpus.** `tests/fixtures/corpus/` ships a deterministic
-  500-receipt corpus (seed `5318008`, two policy versions). This is well
-  past the originally-flagged target of 50 — surface this if any future
-  red-team note still references the 14→50 framing.
-- **Webhook payloads.** Outbound webhooks on receipt ingest / decision
-  events are not implemented.
-- **Regulatory and SLA commitments.** Pending product/legal input — not
-  reflected in the README or openapi.yaml.
-- **Async simulation results.** `GET /v1/simulate/{job_id}` is a stub
-  (no job store), so the async surface is reserved but not functional.
-- **Multi-tenant routing.** One service instance still serves one
-  workspace, even though `api_keys` carry `workspace_id`.
+  500-receipt corpus (seed `5318008`, two policy versions). Regenerated
+  by `packages/openterms-py/scripts/generate_corpus.py`.
 
-## Calibration of public claims
-
-The README and openapi.yaml describe the **target** system. The current
-shipped surface is the table above. Policy CRUD, multi-tenant routing,
-webhook delivery, async simulation results, and the dashboard / OAuth
-workstream are not in place today. Treat this document as the source of
-truth for what is shipped.
-
-## How to read this document
-
-All ten BUILD_BRIEF Section 8 steps are shipped in code and Step 10 is
-live in staging at `https://openterms-trace-api.onrender.com` (smoke
-test green 2026-05-21). The remaining gap is the production cutover:
-a separate Render service with production-grade Postgres, production
-secrets, and a real domain, per [DEPLOYMENT.md](DEPLOYMENT.md). Beyond
-that, the open product workstreams are policy CRUD, multi-tenancy,
-dashboards / OAuth, webhooks, and the async simulation flow — each
-tracked in the tables above.
+Server-side gaps (webhooks, async simulation results, multi-tenant
+routing, policy CRUD, production deployment) are tracked in the
+openterms-api repository's `IMPLEMENTATION_STATUS.md`.

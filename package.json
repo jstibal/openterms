@@ -1,10 +1,9 @@
 {
-  "name": "openterms-trace",
+  "name": "openterms",
   "private": true,
   "version": "0.0.0",
-  "description": "OpenTerms monorepo root — workspace coordinator for apps/api and packages/*.",
+  "description": "OpenTerms monorepo root — workspace coordinator for the SDK packages. The backend service lives in the openterms-api repo.",
   "workspaces": [
-    "apps/*",
     "packages/openterms-ts"
   ],
   "scripts": {
