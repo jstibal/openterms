@@ -1,6 +1,6 @@
 # langchain-openterms
 
-LangChain adapter for [OpenTerms](https://github.com/jstibal/openterms-trace) — emits a signed ORS v0.1 receipt for every tool invocation in a LangChain chain or agent.
+LangChain adapter for [OpenTerms](https://github.com/jstibal/openterms) — emits a signed ORS v0.1 receipt for every tool invocation in a LangChain chain or agent.
 
 Depends on [`openterms-py>=0.1.0`](https://pypi.org/project/openterms-py/) for canonicalization, signing, and the HTTP client. One signing path is shared with `crewai-openterms`.
 
@@ -62,7 +62,7 @@ See [`examples/quickstart.py`](examples/quickstart.py) for a runnable copy.
 
 ## What this adapter does NOT do
 
-- **It does not run an ingest service.** You must point `IngestClient` at a running OpenTerms API. See [`apps/api`](https://github.com/jstibal/openterms-trace/tree/main/apps/api) and [IMPLEMENTATION_STATUS.md](https://github.com/jstibal/openterms-trace/blob/main/IMPLEMENTATION_STATUS.md).
+- **It does not run an ingest service.** You must point `IngestClient` at a running OpenTerms API. See [`apps/api`](https://github.com/jstibal/openterms/tree/main/apps/api) and [IMPLEMENTATION_STATUS.md](https://github.com/jstibal/openterms/blob/main/IMPLEMENTATION_STATUS.md).
 - **It does not handle auth.** The bearer-token placeholder on `IngestClient` is not yet enforced by the service.
 - **It does not host a JWKS.** Verification requires a JWKS you supply.
 - **It does not buffer or retry.** A failed emission is logged once (or re-raised if `strict=True`) and the call proceeds.
@@ -70,7 +70,7 @@ See [`examples/quickstart.py`](examples/quickstart.py) for a runnable copy.
 
 ## Repository
 
-Source and issue tracker: [`jstibal/openterms-trace`](https://github.com/jstibal/openterms-trace).
+Source and issue tracker: [`jstibal/openterms`](https://github.com/jstibal/openterms).
 
 ## License
 

@@ -2,7 +2,7 @@
 
 OpenTerms TypeScript SDK — ORS v0.1 canonicalization, Ed25519 signing, verification, policy evaluation, and an HTTP client for the OpenTerms ingest service.
 
-Behavioral parity with [`openterms` on PyPI](https://pypi.org/project/openterms/) is enforced by the shared canonicalization vectors in [`tests/vectors/ors-v0.1/canonicalization.json`](https://github.com/jstibal/openterms-trace/blob/main/tests/vectors/ors-v0.1/canonicalization.json).
+Behavioral parity with [`openterms` on PyPI](https://pypi.org/project/openterms/) is enforced by the shared canonicalization vectors in [`tests/vectors/ors-v0.1/canonicalization.json`](https://github.com/jstibal/openterms/blob/main/tests/vectors/ors-v0.1/canonicalization.json).
 
 ## Install
 
@@ -67,15 +67,15 @@ console.assert(result.valid);
 
 ## What this SDK does NOT do
 
-- **It does not run an ingest service.** `IngestClient.emitReceipt` POSTs to a URL you control; you must run the OpenTerms API service (or point at a hosted one) for emissions to land. See [`apps/api`](https://github.com/jstibal/openterms-trace/tree/main/apps/api).
-- **It does not handle auth.** The `apiKey` option is a placeholder that sends `Authorization: Bearer <token>`, but the ingest service does not yet enforce bearer tokens. Auth lands in BUILD_BRIEF Step 10 (see [IMPLEMENTATION_STATUS.md](https://github.com/jstibal/openterms-trace/blob/main/IMPLEMENTATION_STATUS.md)).
+- **It does not run an ingest service.** `IngestClient.emitReceipt` POSTs to a URL you control; you must run the OpenTerms API service (or point at a hosted one) for emissions to land. See [`apps/api`](https://github.com/jstibal/openterms/tree/main/apps/api).
+- **It does not handle auth.** The `apiKey` option is a placeholder that sends `Authorization: Bearer <token>`, but the ingest service does not yet enforce bearer tokens. Auth lands in BUILD_BRIEF Step 10 (see [IMPLEMENTATION_STATUS.md](https://github.com/jstibal/openterms/blob/main/IMPLEMENTATION_STATUS.md)).
 - **It does not host a JWKS.** Verification requires you to supply the JWKS — either inline or via `jwksUrl`. A hosted `/.well-known/jwks.json` for the OpenTerms service is planned for BUILD_BRIEF Step 10.
 - **It does not manage keys.** Key generation, rotation, and storage are your responsibility.
 - **It does not retry on transient ingest errors.** `IngestError` is thrown once; retry logic, backoff, and queueing are out of scope.
 
 ## Repository
 
-Source and issue tracker: [`jstibal/openterms-trace`](https://github.com/jstibal/openterms-trace).
+Source and issue tracker: [`jstibal/openterms`](https://github.com/jstibal/openterms).
 
 ## License
 

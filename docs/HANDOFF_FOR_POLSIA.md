@@ -108,7 +108,7 @@ current deploy:
 - OAuth2 authorization-code flow (bearer-token auth is the only scheme
   currently enforced)
 
-See [Implementation Status](https://github.com/jstibal/openterms-trace/blob/main/IMPLEMENTATION_STATUS.md)
+See [Implementation Status](https://github.com/jstibal/openterms/blob/main/IMPLEMENTATION_STATUS.md)
 for the authoritative reference.
 ```
 
@@ -182,7 +182,7 @@ that ignore those fields.
 
 The reference canonicalization vectors (12 spec vectors plus 4 corner
 cases) ship in the repository at
-[`tests/vectors/ors-v0.1/canonicalization.json`](https://github.com/jstibal/openterms-trace/blob/main/tests/vectors/ors-v0.1/canonicalization.json).
+[`tests/vectors/ors-v0.1/canonicalization.json`](https://github.com/jstibal/openterms/blob/main/tests/vectors/ors-v0.1/canonicalization.json).
 Both the Python and TypeScript SDKs are verified against these vectors in
 CI; any compliant ORS implementation should pass them.
 ```
@@ -368,7 +368,7 @@ otherwise marked. `/healthz` and `/.well-known/jwks.json` are public.
 | POST   | `/v1/webhooks/test` | Webhook delivery — not implemented. |
 
 The full machine-readable contract is in
-[openapi.yaml](https://github.com/jstibal/openterms-trace/blob/main/openapi.yaml).
+[openapi.yaml](https://github.com/jstibal/openterms/blob/main/openapi.yaml).
 Endpoints in the contract that are not yet served return `404` today.
 ```
 
@@ -928,7 +928,7 @@ The script asserts:
 ORS canonicalization is RFC 8785 plus the null-stripping rule. The
 reference test vectors (12 spec vectors plus 4 corner cases) are
 published in the openterms-trace repository at
-[`tests/vectors/ors-v0.1/canonicalization.json`](https://github.com/jstibal/openterms-trace/blob/main/tests/vectors/ors-v0.1/canonicalization.json).
+[`tests/vectors/ors-v0.1/canonicalization.json`](https://github.com/jstibal/openterms/blob/main/tests/vectors/ors-v0.1/canonicalization.json).
 
 Both the Python and TypeScript SDKs are checked against these vectors in
 CI. Any compliant ORS implementation should pass them. If your

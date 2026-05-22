@@ -1,6 +1,6 @@
 [project]
 name = "openterms-py"
-version = "1.0.0"
+version = "1.0.1"
 description = "OpenTerms Python SDK — permission lookup and ORS v0.1 signed receipts for AI agents."
 requires-python = ">=3.10"
 license = "Apache-2.0"
@@ -27,8 +27,9 @@ dependencies = [
 [project.urls]
 Homepage = "https://openterms.com"
 Documentation = "https://openterms.com/docs"
-Repository = "https://github.com/jstibal/openterms-py"
-"Bug Tracker" = "https://github.com/jstibal/openterms-py/issues"
+Repository = "https://github.com/jstibal/openterms"
+"Bug Tracker" = "https://github.com/jstibal/openterms/issues"
+"Source" = "https://github.com/jstibal/openterms/tree/main/packages/openterms-py"
 
 [project.optional-dependencies]
 dev = [

@@ -1,6 +1,6 @@
 # crewai-openterms
 
-CrewAI adapter for [OpenTerms](https://github.com/jstibal/openterms-trace) — wraps any callable so each invocation emits a signed ORS v0.1 receipt before the tool runs.
+CrewAI adapter for [OpenTerms](https://github.com/jstibal/openterms) — wraps any callable so each invocation emits a signed ORS v0.1 receipt before the tool runs.
 
 Depends on [`openterms-py>=0.1.0`](https://pypi.org/project/openterms-py/) for canonicalization, signing, and the HTTP client. One signing path is shared with `langchain-openterms`.
 
@@ -83,7 +83,7 @@ See [`examples/quickstart.py`](examples/quickstart.py) for a runnable copy.
 
 ## Repository
 
-Source and issue tracker: [`jstibal/openterms-trace`](https://github.com/jstibal/openterms-trace).
+Source and issue tracker: [`jstibal/openterms`](https://github.com/jstibal/openterms).
 
 ## License
 

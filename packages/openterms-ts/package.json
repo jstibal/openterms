@@ -1,8 +1,17 @@
 {
   "name": "@openterms-ai/sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "OpenTerms TypeScript SDK — ORS v0.1 canonicalization, signing, verification, and policy evaluation.",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstibal/openterms.git",
+    "directory": "packages/openterms-ts"
+  },
+  "homepage": "https://github.com/jstibal/openterms/tree/main/packages/openterms-ts#readme",
+  "bugs": {
+    "url": "https://github.com/jstibal/openterms/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

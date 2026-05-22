@@ -1,6 +1,6 @@
 [project]
 name = "crewai-openterms"
-version = "1.0.0"
+version = "1.0.1"
 description = "OpenTerms adapter for CrewAI — sign and emit ORS v0.1 receipts for tool calls."
 requires-python = ">=3.10"
 license = "Apache-2.0"
@@ -8,6 +8,13 @@ readme = "README.md"
 dependencies = [
     "openterms-py>=1.0.0",
 ]
+
+[project.urls]
+Homepage = "https://openterms.com"
+Documentation = "https://openterms.com/docs"
+Repository = "https://github.com/jstibal/openterms"
+"Bug Tracker" = "https://github.com/jstibal/openterms/issues"
+"Source" = "https://github.com/jstibal/openterms/tree/main/packages/crewai-openterms"
 
 [project.optional-dependencies]
 # CrewAI is intentionally NOT a hard runtime dependency. The adapter wraps a
