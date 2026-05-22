@@ -49,8 +49,8 @@ Step 8 deliverables (SDKs and adapters) remain as previously shipped:
   (38 permissions, 162 receipts/policy/canonical) + 2 skipped. License:
   Apache-2.0. See `packages/openterms-py/CHANGELOG.md` for the 1.0.0
   migration table including a Silent breaking changes section.
-- [`packages/openterms-ts`](packages/openterms-ts/) — `@openterms-ai/sdk` on
-  npm (prepared). Extracted from `apps/api/src/core/`; the API service
+- [`packages/openterms-ts`](packages/openterms-ts/) — `@openterms-ai/sdk` **1.0.0**
+  on npm. Extracted from `apps/api/src/core/`; the API service
   now imports canonicalization, signing, verification, and policy from
   this package.
 - [`packages/langchain-openterms`](packages/langchain-openterms/) —

@@ -1,6 +1,6 @@
 {
   "name": "@openterms-ai/sdk",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "OpenTerms TypeScript SDK — ORS v0.1 canonicalization, signing, verification, and policy evaluation.",
   "license": "Apache-2.0",
   "type": "module",
