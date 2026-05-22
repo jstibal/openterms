@@ -40,7 +40,7 @@ Step 10 deliverables in this repo:
 Step 8 deliverables (SDKs and adapters) remain as previously shipped:
 
 - [`packages/openterms-py`](packages/openterms-py/) — `openterms-py` **1.0.0**
-  on PyPI (prepared). **As of 2026-05-21 this package combines the
+  on PyPI. **As of 2026-05-21 this package combines the
   permission-lookup library (previously released as 0.4.0) with the ORS
   v0.1 receipts library.** Layout: `openterms.permissions` (fetch / check /
   discover / `permission_receipt`), `openterms.receipts` (`sign_receipt`,
@@ -49,17 +49,18 @@ Step 8 deliverables (SDKs and adapters) remain as previously shipped:
   (38 permissions, 162 receipts/policy/canonical) + 2 skipped. License:
   Apache-2.0. See `packages/openterms-py/CHANGELOG.md` for the 1.0.0
   migration table including a Silent breaking changes section.
-- [`packages/openterms-ts`](packages/openterms-ts/) — `@openterms-ai/sdk` **1.0.0**
+- [`packages/openterms-ts`](packages/openterms-ts/) — `@openterms-ai/sdk` **1.0.1**
   on npm. Extracted from `apps/api/src/core/`; the API service
   now imports canonicalization, signing, verification, and policy from
   this package.
 - [`packages/langchain-openterms`](packages/langchain-openterms/) —
-  `langchain-openterms` on PyPI (prepared). LangChain
-  `BaseCallbackHandler` that signs and posts a receipt on every
-  `on_tool_start` (and optionally `on_tool_end`).
+  `langchain-openterms` **1.0.0** on PyPI (importable as
+  `openterms_langchain`). LangChain `BaseCallbackHandler` that signs and
+  posts a receipt on every `on_tool_start` (and optionally `on_tool_end`).
 - [`packages/crewai-openterms`](packages/crewai-openterms/) —
-  `crewai-openterms` on PyPI (prepared). Callable-level wrapper; CrewAI
-  is intentionally not a hard runtime dependency.
+  `crewai-openterms` **1.0.0** on PyPI (importable as
+  `openterms_crewai`). Callable-level wrapper; CrewAI is intentionally
+  not a hard runtime dependency.
 
 The integration test `tests/integration/test_adapter_e2e.py` exercises
 the full chain (LangChain adapter → IngestClient → Fastify ingest →

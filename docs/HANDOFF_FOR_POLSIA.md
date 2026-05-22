@@ -1,14 +1,53 @@
 # Docs Handoff for Polsia
 
-**Source build:** `openterms-trace` at commit `01ebde5` (end of BUILD_BRIEF Step 10).
-**Source of truth for capabilities:** [`IMPLEMENTATION_STATUS.md`](../IMPLEMENTATION_STATUS.md) (see calibration note in Section 7 — this file is stale and needs to be updated before the docs go live), the four package READMEs under [`packages/`](../packages/), [`openapi.yaml`](../openapi.yaml), and [`DEPLOYMENT.md`](../DEPLOYMENT.md).
+**Source build:** `openterms-trace` at the head of `main` (post BUILD_BRIEF Step 10, with `@openterms-ai/sdk` bumped to 1.0.1 and `openterms-py` 1.0.0 carrying both the permissions and receipts halves).
+**Source of truth for capabilities:** [`IMPLEMENTATION_STATUS.md`](../IMPLEMENTATION_STATUS.md), the four package READMEs under [`packages/`](../packages/), [`openapi.yaml`](../openapi.yaml), and [`DEPLOYMENT.md`](../DEPLOYMENT.md).
 **Target docs surface:** `observe.openterms.com/docs`, managed by Polsia. This handoff does not modify the Polsia surface; it captures the updates Polsia needs to apply.
+
+**Package name reference (canonical).**
+
+| Half | PyPI/npm distribution | Import path |
+| ---- | --------------------- | ----------- |
+| Permissions + receipts (Python) | `openterms-py` 1.0.0 | `import openterms` (submodules `openterms.permissions`, `openterms.receipts`, `openterms.policy`; top-level `openterms.IngestClient`) |
+| Canonicalization / signing / verify / policy (TypeScript) | `@openterms-ai/sdk` 1.0.1 | `import { … } from '@openterms-ai/sdk'` |
+| LangChain adapter | `langchain-openterms` 1.0.0 | `import openterms_langchain` |
+| CrewAI adapter | `crewai-openterms` 1.0.0 | `import openterms_crewai` |
+
+Distribution names and import names diverge by design; every install block below uses the distribution name, every import statement uses the import path.
 
 ---
 
 ## Section 1 — Overview of changes
 
-The conventional track of `openterms-trace` is now feature-complete through BUILD_BRIEF Step 10. The Fastify API service accepts signed ORS v0.1 / v0.2 receipts, verifies Ed25519 signatures against a hosted JWKS, persists receipts to an append-only Postgres log, evaluates a deterministic policy engine on every ingest, supports cursor-paginated query of receipts and decisions, runs synchronous policy simulations against the corpus, and is deployed behind bearer-token auth with per-workspace rate limiting and a public `/.well-known/jwks.json` endpoint. Four SDK packages are prepared for publication: `openterms` (PyPI), `@openterms-ai/sdk` (npm), `openterms-langchain` (PyPI), `openterms-crewai` (PyPI). The docs updates below land the SDK install/quickstart content, the API response schemas, the simulation schema, the key rotation procedure, and the ORS test-vector link, and they leave explicit gap markers for webhooks (not implemented), regulatory context (pending), SLA terms (pending), and several openapi.yaml endpoints that are documented in the contract but not yet implemented in the service (policies CRUD, keys CRUD, workspace, public verify, webhook test). The docs must not overstate any of these. The calibrated truth in [`IMPLEMENTATION_STATUS.md`](../IMPLEMENTATION_STATUS.md) (once refreshed against this commit) is the binding reference.
+`openterms-trace` ships two halves of the OpenTerms surface from one repo:
+
+1. **Receipts / ORS** — the Fastify API service accepts signed ORS v0.1 / v0.2
+   receipts, verifies Ed25519 signatures against a hosted JWKS, persists
+   receipts to an append-only Postgres log, evaluates a deterministic
+   policy engine on every ingest, supports cursor-paginated query of
+   receipts and decisions, runs synchronous policy simulations against
+   the corpus, and is deployed behind bearer-token auth with
+   per-workspace rate limiting and a public `/.well-known/jwks.json`
+   endpoint.
+2. **Permissions** — the Python SDK ships a permission-lookup library
+   (`openterms.permissions`) for fetch / check / discover flows and
+   `permission_receipt` issuance. As of 2026-05-21 this was merged into
+   `openterms-py` 1.0.0 (previously released separately as 0.4.0) so a
+   single distribution carries both the permissions and receipts halves.
+
+Four SDK packages are published:
+
+- `openterms-py` 1.0.0 (PyPI, imported as `openterms`) — permissions +
+  receipts + policy.
+- `@openterms-ai/sdk` 1.0.1 (npm) — TypeScript canonicalization, signing,
+  verification, and policy. 1.0.0 had a broken entry point; 1.0.1 fixes
+  the `exports` map.
+- `langchain-openterms` 1.0.0 (PyPI, imported as `openterms_langchain`)
+  — LangChain `BaseCallbackHandler` adapter.
+- `crewai-openterms` 1.0.0 (PyPI, imported as `openterms_crewai`) —
+  CrewAI callable wrapper.
+
+The docs updates below land the SDK install/quickstart content for both halves, the API response schemas, the simulation schema, the key rotation procedure, and the ORS test-vector link. They leave explicit gap markers for webhooks (not implemented), regulatory context (pending), SLA terms (pending), and several openapi.yaml endpoints that are documented in the contract but not yet implemented in the service (policies CRUD, keys CRUD, workspace, public verify, webhook test). The docs must not overstate any of these. The calibrated truth in [`IMPLEMENTATION_STATUS.md`](../IMPLEMENTATION_STATUS.md) is the binding reference.
 
 ---
 
@@ -45,9 +84,13 @@ policy engine evaluates each receipt at ingest time.
 - **Public JWKS** — `GET /.well-known/jwks.json` is CORS-open and
   edge-cached for 24 hours so any third party can verify receipts
   independently.
-- **SDKs** — Python (`openterms`), TypeScript (`@openterms-ai/sdk`),
-  LangChain adapter (`openterms-langchain`), CrewAI adapter
-  (`openterms-crewai`).
+- **SDKs** — Python (`openterms-py`, imported as `openterms`),
+  TypeScript (`@openterms-ai/sdk`), LangChain adapter
+  (`langchain-openterms`, imported as `openterms_langchain`), CrewAI
+  adapter (`crewai-openterms`, imported as `openterms_crewai`). The
+  Python SDK ships both the permission-lookup library
+  (`openterms.permissions`) and the ORS receipts library
+  (`openterms.receipts`).
 
 ## What is not yet in the service
 
@@ -90,10 +133,10 @@ Get a signed receipt landed in OpenTerms in under five minutes.
 
 ## Pick your SDK
 
-- [Python (`openterms`)](#python) — covered below.
+- [Python (`openterms-py`)](#python) — covered below.
 - [TypeScript (`@openterms-ai/sdk`)](#typescript) — covered below.
-- [LangChain (`openterms-langchain`)](/docs/integrations/langchain).
-- [CrewAI (`openterms-crewai`)](/docs/integrations/crewai).
+- [LangChain (`langchain-openterms`)](/docs/integrations/langchain).
+- [CrewAI (`crewai-openterms`)](/docs/integrations/crewai).
 ```
 
 (Then paste the Python sample from Section 5.1 and the TypeScript sample from Section 5.2.)
@@ -676,7 +719,7 @@ change.
 
 **Current state.** Says "SDK to be packaged."
 
-**Updates needed.** Real install + quickstart from [packages/openterms-py/README.md](../packages/openterms-py/README.md). Include the v0.2 optional-field example.
+**Updates needed.** Real install + quickstart from [packages/openterms-py/README.md](../packages/openterms-py/README.md). Cover both halves of the package: the permissions library (`openterms.permissions`) and the receipts library (`openterms.receipts`). Include the v0.2 optional-field example.
 
 **Exact text to apply.** Use the package README content verbatim. Specifically, the install block:
 
@@ -684,14 +727,23 @@ change.
 ## Install
 
 ```bash
-pip install openterms
+pip install openterms-py
 ```
 
-Runtime dependency: `cryptography>=42`. The SDK uses `urllib.request` from
-the standard library — no HTTP client dependency.
+The PyPI distribution name is `openterms-py`; the importable module is
+`openterms`. Runtime dependencies: `cryptography>=42`, `requests>=2.28`.
+
+`openterms-py` 1.0.0 supersedes the prior 0.4.0 permissions-only release.
+It combines the permission-lookup library (`openterms.permissions` —
+fetch / check / discover / `permission_receipt`) and the ORS receipts
+library (`openterms.receipts` — `sign_receipt`, `verify_receipt`,
+canonicalization, JWKS) into one distribution. The top-level
+`openterms.IngestClient` is the standard entry point for emitting
+receipts against the OpenTerms API; `openterms.policy` exposes the
+deterministic rule engine.
 ```
 
-And the full quickstart from [packages/openterms-py/README.md](../packages/openterms-py/README.md) lines 13–82. Add a "Verifying receipts" subsection with the offline-verify example. Replace `http://localhost:3000` with `https://openterms-trace-api.onrender.com` in the docs version.
+And the full quickstart from [packages/openterms-py/README.md](../packages/openterms-py/README.md). Add a "Verifying receipts" subsection with the offline-verify example. Replace `http://localhost:3000` with `https://openterms-trace-api.onrender.com` in the docs version.
 
 ---
 
@@ -728,11 +780,12 @@ Runtime dependencies: `@noble/ed25519`, `@noble/hashes`. Uses the global
 ## Install
 
 ```bash
-pip install openterms-langchain
+pip install langchain-openterms
 ```
 
-Pulls in `langchain-core>=0.3,<1.0`. Uses only the public
-`BaseCallbackHandler` hooks.
+PyPI distribution name is `langchain-openterms`; the importable module
+is `openterms_langchain`. Pulls in `langchain-core>=0.3,<1.0`. Uses only
+the public `BaseCallbackHandler` hooks.
 ```
 
 ---
@@ -749,13 +802,14 @@ Pulls in `langchain-core>=0.3,<1.0`. Uses only the public
 ## Install
 
 ```bash
-pip install openterms-crewai
+pip install crewai-openterms
 ```
 
-CrewAI itself is not a runtime dependency. The adapter wraps a plain
-callable; plug the wrapped function into CrewAI the way your project
-already does (`Tool(name=..., func=...)`, the `@tool` decorator, or as
-the body of a `BaseTool._run`).
+PyPI distribution name is `crewai-openterms`; the importable module is
+`openterms_crewai`. CrewAI itself is not a runtime dependency. The
+adapter wraps a plain callable; plug the wrapped function into CrewAI
+the way your project already does (`Tool(name=..., func=...)`, the
+`@tool` decorator, or as the body of a `BaseTool._run`).
 ```
 
 ---
@@ -890,7 +944,7 @@ Each sample is self-contained: install commands, environment setup, code, expect
 ### 5.1 — Python: sign and emit a receipt
 
 ```bash
-pip install openterms
+pip install openterms-py
 export OPENTERMS_API_URL=https://openterms-trace-api.onrender.com
 export OPENTERMS_API_KEY=ot_test_…
 export OPENTERMS_WORKSPACE_ID=00000000-0000-4000-8000-0000000000aa
@@ -969,7 +1023,7 @@ console.log(response.canonicalHash, response.duplicate);
 ### 5.3 — LangChain integration
 
 ```bash
-pip install openterms openterms-langchain langchain-core
+pip install openterms-py langchain-openterms langchain-core
 export OPENTERMS_API_URL=https://openterms-trace-api.onrender.com
 export OPENTERMS_API_KEY=ot_test_…
 export OPENTERMS_WORKSPACE_ID=00000000-0000-4000-8000-0000000000aa
@@ -1017,7 +1071,7 @@ Two receipts are POSTed to OpenTerms: one on `on_tool_start` (args = `{a:2, b:3}
 ### 5.4 — CrewAI integration
 
 ```bash
-pip install openterms openterms-crewai
+pip install openterms-py crewai-openterms
 export OPENTERMS_API_URL=https://openterms-trace-api.onrender.com
 export OPENTERMS_API_KEY=ot_test_…
 export OPENTERMS_WORKSPACE_ID=00000000-0000-4000-8000-0000000000aa
@@ -1064,7 +1118,7 @@ A pre-action and a post-action receipt are POSTed during the call.
 ### 5.5 — Verify a receipt against the public JWKS
 
 ```bash
-pip install openterms cryptography
+pip install openterms-py cryptography
 ```
 
 ```python
@@ -1095,6 +1149,54 @@ True None
 ```
 False HASH_MISMATCH
 ```
+
+### 5.6 — Python: permission lookup (the other half of `openterms-py`)
+
+The permissions library is the second half of `openterms-py`. It is a
+client-side flow: an agent asks the OpenTerms permissions service what a
+given site's machine-readable terms allow, then optionally issues a
+`permission_receipt` to record the lookup. Receipts emitted by the
+receipts half of the SDK can reference the `permission_receipt` ID to
+chain a "we checked the terms before we acted" audit trail.
+
+```bash
+pip install openterms-py
+```
+
+```python
+from openterms.permissions import fetch, check, discover, permission_receipt
+
+# 1. Discover the OpenTerms manifest URL advertised by a site.
+manifest_url = discover("https://example.com")
+
+# 2. Fetch the manifest itself.
+manifest = fetch(manifest_url)
+
+# 3. Check whether a specific action is allowed.
+result = check(manifest, action="api_call", scope="search")
+print(result.allowed, result.reason)
+
+# 4. Emit a permission_receipt recording the lookup.
+receipt = permission_receipt(
+    manifest=manifest,
+    action="api_call",
+    scope="search",
+    decision=result,
+)
+print(receipt["permission_receipt_id"])
+```
+
+**Notes for the docs page.**
+
+- The receipts library (`openterms.receipts`, `openterms.IngestClient`)
+  and the permissions library (`openterms.permissions`) ship together in
+  `openterms-py` and share the canonicalization layer. Either half is
+  usable standalone; chaining them is optional.
+- The permissions HTTP endpoints are owned by a separate service from
+  the ingest API documented in Section 2. The docs page for permissions
+  should link to that service's reference; the SDK call surface is the
+  same regardless of which deployment of the permissions service the
+  client talks to.
 
 ---
 
@@ -1134,7 +1236,7 @@ Re-reading the proposed updates against [`IMPLEMENTATION_STATUS.md`](../IMPLEMEN
 
 ### Calibration items to address before docs go live
 
-1. **`IMPLEMENTATION_STATUS.md` is stale.** That file says Step 9 (documentation site) and Step 10 (deployment, hosted JWKS, auth, rate limiting, key management) are not done. Commit `01ebde5` ships Step 10. Before the docs go live, `IMPLEMENTATION_STATUS.md` must be refreshed against the current code or this handoff will be inconsistent with the linked source-of-truth document. **This handoff has been written against the actual code state at commit `01ebde5`, not against the stale status doc.**
+1. **`IMPLEMENTATION_STATUS.md` is current.** The status document reflects Step 10 shipped (staging deployed, bearer auth, rate limiting, public JWKS) and has been updated to drop the `(prepared)` labels from the published SDK packages. This handoff and the status document are consistent.
 
 2. **`docs/security/secrets-handling.md` is referenced in the prompt but does not exist in this commit.** I searched the tree; no such file exists. The handoff therefore creates a self-contained page at `/docs/operations/key-rotation` (Section 3.1) that captures the operator-driven rotation procedure. When the secrets-handling document ships in-repo, the docs page should be relinked to it.
 
@@ -1221,10 +1323,10 @@ For every docs change, verify against the source-of-truth files:
 - [ ] **2.11 Simulate (API).** Sync threshold matches `SYNC_THRESHOLD` in `apps/api/src/routes/simulate.ts`.
 - [ ] **2.12 JWKS.** Cache header matches `apps/api/src/routes/jwks.ts`.
 - [ ] **2.13 Rate limits.** Default values match `apps/api/src/config.ts` (`rateLimitAuthIngest`, `rateLimitAuthQuery`, `rateLimitPublicPerIp`).
-- [ ] **2.14 Python SDK.** Install command matches `packages/openterms-py/pyproject.toml` package name. Quickstart matches `packages/openterms-py/README.md`.
-- [ ] **2.15 TypeScript SDK.** Install command matches `packages/openterms-ts/package.json` package name (`@openterms-ai/sdk`).
-- [ ] **2.16 LangChain.** Install + quickstart match `packages/langchain-openterms/README.md`.
-- [ ] **2.17 CrewAI.** Install + quickstart match `packages/crewai-openterms/README.md`.
+- [ ] **2.14 Python SDK.** Install command is `pip install openterms-py`; the import statement uses `import openterms`. Quickstart matches `packages/openterms-py/README.md` and covers both `openterms.permissions` and `openterms.receipts`.
+- [ ] **2.15 TypeScript SDK.** Install command matches `packages/openterms-ts/package.json` package name (`@openterms-ai/sdk`); the version on npm is 1.0.1 (1.0.0 had a broken exports map).
+- [ ] **2.16 LangChain.** Install command is `pip install langchain-openterms`; the import statement uses `import openterms_langchain`. Quickstart matches `packages/langchain-openterms/README.md`.
+- [ ] **2.17 CrewAI.** Install command is `pip install crewai-openterms`; the import statement uses `import openterms_crewai`. Quickstart matches `packages/crewai-openterms/README.md`.
 - [ ] **3.1 Key rotation.** Procedure matches `DEPLOYMENT.md` (`JWKS_SOURCE`, `ACTIVE_KEY_ID`, `PRIVATE_KEY_JWK`).
 - [ ] **3.2 Staging.** Smoke checks match `scripts/smoke-staging.sh`.
 - [ ] **3.3 Test vectors.** Link resolves and the file at the link is the same one that `apps/api/tests/canonical.test.ts` and `packages/openterms-py/tests/test_canonical.py` consume.

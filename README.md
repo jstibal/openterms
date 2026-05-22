@@ -32,10 +32,8 @@ cd ../.. && packages/openterms-py/.venv/bin/pytest tests/integration -v
 
 ## Status
 
-Built so far: ORS canonicalization (Python + TypeScript, byte-parity proven by
-shared vectors), Ed25519 signing (Python) and verification (Python +
-TypeScript), `POST /v1/receipts/ingest` with idempotency and append-only
-Postgres storage.
-
-**Not production-ready.** Bearer auth is deliberately deferred. See
-[`apps/api/README.md`](apps/api/README.md) for the full deferred list.
+See [`IMPLEMENTATION_STATUS.md`](IMPLEMENTATION_STATUS.md) for the
+authoritative reference on what is shipped, what is planned, and what is
+deferred. The Fastify ingest service is live in staging at
+[`https://openterms-trace-api.onrender.com`](https://openterms-trace-api.onrender.com)
+with bearer auth, rate limiting, and a public JWKS endpoint.
